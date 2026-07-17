@@ -1,0 +1,27 @@
+---
+import { render } from "astro:content";
+import { getPublishedPosts } from "@/data/collections";
+import BlogPost from "@/layouts/BlogPost.astro";
+
+export async function getStaticPaths() {
+	const posts = await getPublishedPosts();
+	return posts.map((post, i) => ({
+		params: { slug: post.id },
+		// posts are newest-first: "prev" = older post, "next" = newer post
+		props: { post, prev: posts[i + 1], next: posts[i - 1] },
+	}));
+}
+
+const { post, prev, next } = Astro.props;
+const { Content, headings, remarkPluginFrontmatter } = await render(post);
+---
+
+<BlogPost
+	post={post}
+	headings={headings}
+	minutesRead={remarkPluginFrontmatter.minutesRead}
+	prev={prev}
+	next={next}
+>
+	<Content />
+</BlogPost>

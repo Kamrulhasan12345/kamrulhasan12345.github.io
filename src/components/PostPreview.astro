@@ -1,0 +1,67 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "@/components/FormattedDate.astro";
+
+interface Props {
+	post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="preview">
+	<div class="meta">
+		<FormattedDate date={post.data.publishDate} />
+		{post.data.draft && <span class="draft">[draft]</span>}
+	</div>
+	<h3 class="title">
+		<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+	</h3>
+	<p class="desc">{post.data.description}</p>
+	{
+		post.data.tags.length > 0 && (
+			<div class="tags">
+				{post.data.tags.map((tag) => (
+					<a class="chip" href={`/tags/${tag}/`}>
+						{tag}
+					</a>
+				))}
+			</div>
+		)
+	}
+</article>
+
+<style>
+	.preview {
+		padding: 1.1rem 0;
+		border-bottom: 1px dashed var(--c-line);
+	}
+	.meta {
+		font-size: var(--text-xs);
+		color: var(--c-dim);
+	}
+	.draft {
+		color: var(--c-amber);
+		margin-left: 0.5rem;
+	}
+	.title {
+		margin: 0.2rem 0 0.3rem;
+		font-size: var(--text-lg);
+	}
+	.title a {
+		text-decoration: none;
+		color: var(--c-bright);
+	}
+	.title a:hover {
+		color: var(--c-accent);
+	}
+	.desc {
+		margin: 0 0 0.4rem;
+		font-size: var(--text-sm);
+	}
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 0.75rem;
+	}
+</style>

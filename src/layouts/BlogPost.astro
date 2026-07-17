@@ -1,0 +1,173 @@
+---
+import type { MarkdownHeading } from "astro";
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "@/components/FormattedDate.astro";
+import TOC from "@/components/TOC.astro";
+import Base from "@/layouts/Base.astro";
+import "katex/dist/katex.min.css";
+
+interface Props {
+	post: CollectionEntry<"blog">;
+	headings: MarkdownHeading[];
+	minutesRead: number;
+	prev?: CollectionEntry<"blog">;
+	next?: CollectionEntry<"blog">;
+}
+
+const { post, headings, minutesRead, prev, next } = Astro.props;
+const { title, description, publishDate, updatedDate, tags, draft } = post.data;
+---
+
+<Base
+	title={title}
+	description={description}
+	ogImage={`/og/${post.id}.png`}
+	articleDate={publishDate}
+>
+	<div class="container container--wide layout">
+		<article class="post">
+			<header class="post-header">
+				<p class="cmd">cat ~/blog/{post.id}.md</p>
+				<h1>{title}</h1>
+				<p class="meta">
+					<FormattedDate date={publishDate} />
+					{
+						updatedDate && (
+							<span>
+								· updated <FormattedDate date={updatedDate} />
+							</span>
+						)
+					}
+					<span>· {minutesRead} min read</span>
+					{draft && <span class="draft">· [draft]</span>}
+				</p>
+				{
+					tags.length > 0 && (
+						<p class="tags">
+							{tags.map((tag) => (
+								<a class="chip" href={`/tags/${tag}/`}>
+									{tag}
+								</a>
+							))}
+						</p>
+					)
+				}
+			</header>
+
+			<div class="toc-inline">
+				<details>
+					<summary>table of contents</summary>
+					<TOC headings={headings} />
+				</details>
+			</div>
+
+			<div class="prose">
+				<slot />
+			</div>
+
+			<nav class="pager" aria-label="Post navigation">
+				{
+					prev ? (
+						<a class="pager-link" href={`/blog/${prev.id}/`}>
+							<span class="dir">← prev</span>
+							<span>{prev.data.title}</span>
+						</a>
+					) : (
+						<span />
+					)
+				}
+				{
+					next && (
+						<a class="pager-link next" href={`/blog/${next.id}/`}>
+							<span class="dir">next →</span>
+							<span>{next.data.title}</span>
+						</a>
+					)
+				}
+			</nav>
+		</article>
+
+		<aside class="sidebar">
+			<div class="sticky">
+				<TOC headings={headings} />
+			</div>
+		</aside>
+	</div>
+</Base>
+
+<style>
+	.layout {
+		display: grid;
+		grid-template-columns: minmax(0, var(--w-prose)) 1fr;
+		gap: 3.5rem;
+		padding-block: 2.5rem;
+	}
+	.post-header {
+		margin-bottom: 2rem;
+	}
+	.post-header .cmd {
+		margin-bottom: 1.5rem;
+	}
+	.meta {
+		color: var(--c-dim);
+		font-size: var(--text-sm);
+		margin: 0.4rem 0;
+	}
+	.draft {
+		color: var(--c-amber);
+	}
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 0.75rem;
+		margin: 0.4rem 0 0;
+	}
+	.sidebar {
+		display: none;
+	}
+	.toc-inline {
+		margin-bottom: 2rem;
+		font-size: var(--text-sm);
+	}
+	.toc-inline summary {
+		cursor: pointer;
+		color: var(--c-dim);
+	}
+	.pager {
+		display: flex;
+		justify-content: space-between;
+		gap: 1.5rem;
+		margin-top: 3.5rem;
+		padding-top: 1.5rem;
+		border-top: 1px dashed var(--c-line);
+		font-size: var(--text-sm);
+	}
+	.pager-link {
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+		text-decoration: none;
+		max-width: 45%;
+	}
+	.pager-link.next {
+		text-align: right;
+		margin-left: auto;
+	}
+	.pager-link .dir {
+		color: var(--c-dim);
+		font-size: var(--text-xs);
+	}
+
+	@media (min-width: 1100px) {
+		.sidebar {
+			display: block;
+		}
+		.sticky {
+			position: sticky;
+			top: 2rem;
+		}
+		.toc-inline {
+			display: none;
+		}
+	}
+</style>

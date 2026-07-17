@@ -1,0 +1,136 @@
+---
+import PostPreview from "@/components/PostPreview.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import { getFeaturedProjects, getPublishedPosts } from "@/data/collections";
+import Base from "@/layouts/Base.astro";
+import { PROMPT, siteConfig } from "@/site.config";
+
+const featured = (await getFeaturedProjects()).slice(0, 3);
+const latest = (await getPublishedPosts()).slice(0, 5);
+---
+
+<Base>
+	<script is:inline>
+		// Boot animation plays once per session; repeat visits get the static hero.
+		if (!sessionStorage.getItem("booted")) {
+			document.documentElement.classList.add("booting");
+			sessionStorage.setItem("booted", "1");
+		}
+	</script>
+
+	<div class="container container--wide">
+		<section class="hero" aria-label="Introduction">
+			<p class="boot-line line-1">
+				<span class="prompt">{PROMPT}:~$</span> whoami
+			</p>
+			<div class="boot-line line-2">
+				<h1>Mohammad Kamrul Hasan</h1>
+				<p class="tagline">
+					systems programming · hardware security · reverse engineering
+				</p>
+			</div>
+			<p class="boot-line line-3 sub">
+				CSE undergrad at BUET. Writing C since before it was a course requirement.
+				Happiest a few layers below the abstraction everyone else stops at —
+				pwn CTFs, firmware, and small sharp tools shipped under the
+				<strong>{siteConfig.studio}</strong> label.
+			</p>
+			<p class="boot-line line-4">
+				<span class="prompt">{PROMPT}:~$</span>
+				<span class="cursor" aria-hidden="true"></span>
+			</p>
+		</section>
+
+		<section aria-labelledby="featured-cmd">
+			<p class="cmd" id="featured-cmd">ls ~/projects --featured</p>
+			<div class="grid">
+				{featured.map((project) => <ProjectCard project={project} />)}
+			</div>
+			<p class="more"><a href="/projects/">all projects →</a></p>
+		</section>
+
+		<section aria-labelledby="latest-cmd">
+			<p class="cmd" id="latest-cmd">tail -n {latest.length} ~/blog</p>
+			<div class="posts">
+				{latest.map((post) => <PostPreview post={post} />)}
+			</div>
+			<p class="more"><a href="/blog/">all posts →</a></p>
+		</section>
+	</div>
+</Base>
+
+<style>
+	.hero {
+		padding-block: 4rem 3.5rem;
+	}
+	.prompt {
+		color: var(--c-accent);
+		font-weight: 700;
+	}
+	.boot-line {
+		margin: 0 0 0.5rem;
+	}
+	.hero h1 {
+		margin: 0.75rem 0 0.25rem;
+	}
+	.tagline {
+		color: var(--c-amber);
+		margin: 0 0 1rem;
+		font-size: var(--text-sm);
+		letter-spacing: 0.04em;
+	}
+	.sub {
+		max-width: 42rem;
+		margin-bottom: 1.5rem;
+	}
+	.sub strong {
+		color: var(--c-bright);
+	}
+
+	section {
+		margin-bottom: 4rem;
+	}
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+		gap: 1rem;
+	}
+	.more {
+		margin-top: 1.25rem;
+		font-size: var(--text-sm);
+	}
+	.posts {
+		border-top: 1px dashed var(--c-line);
+	}
+
+	/* boot sequence: lines reveal in order, only when html.booting is set */
+	:global(html.booting) .boot-line {
+		opacity: 0;
+		animation: reveal 10ms steps(1) forwards;
+	}
+	:global(html.booting) .line-1 {
+		animation-delay: 150ms;
+	}
+	:global(html.booting) .line-2 {
+		animation-delay: 650ms;
+	}
+	:global(html.booting) .line-3 {
+		animation-delay: 1000ms;
+	}
+	:global(html.booting) .line-4 {
+		animation-delay: 1400ms;
+	}
+
+	@keyframes reveal {
+		to {
+			opacity: 1;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		:global(html.booting) .boot-line {
+			opacity: 1;
+			animation: none;
+		}
+	}
+</style>

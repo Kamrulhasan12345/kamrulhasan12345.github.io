@@ -1,0 +1,78 @@
+---
+import { PROMPT, siteConfig } from "@/site.config";
+
+const currentPath = Astro.url.pathname;
+
+function isCurrent(href: string): boolean {
+	return href === "/" ? currentPath === "/" : currentPath.startsWith(href);
+}
+---
+
+<header>
+	<div class="container container--wide inner">
+		<a class="prompt" href="/">
+			<span class="user">{PROMPT}</span><span class="colon">:</span><span class="path">~</span><span
+				class="dollar">$</span
+			>
+		</a>
+		<nav aria-label="Main">
+			{
+				siteConfig.nav.map(({ label, href }) => (
+					<a href={href} aria-current={isCurrent(href) ? "page" : undefined}>
+						{label}
+					</a>
+				))
+			}
+		</nav>
+	</div>
+</header>
+
+<style>
+	header {
+		border-bottom: 1px solid var(--c-line);
+		background: color-mix(in srgb, var(--c-bg) 88%, black);
+	}
+	.inner {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.5rem 1.75rem;
+		padding-block: 0.9rem;
+	}
+	.prompt {
+		text-decoration: none;
+		font-weight: 700;
+		white-space: nowrap;
+	}
+	.user {
+		color: var(--c-accent);
+	}
+	.colon,
+	.dollar {
+		color: var(--c-dim);
+	}
+	.path {
+		color: var(--c-amber);
+	}
+	nav {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 1.25rem;
+		margin-left: auto;
+	}
+	nav a {
+		text-decoration: none;
+		color: var(--c-dim);
+		font-size: var(--text-sm);
+	}
+	nav a:hover {
+		color: var(--c-bright);
+	}
+	nav a[aria-current="page"] {
+		color: var(--c-accent);
+	}
+	nav a[aria-current="page"]::after {
+		content: " *";
+		color: var(--c-amber);
+	}
+</style>

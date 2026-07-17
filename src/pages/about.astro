@@ -1,0 +1,79 @@
+---
+import Base from "@/layouts/Base.astro";
+import { siteConfig } from "@/site.config";
+---
+
+<Base
+	title="About"
+	description="Who I am: systems programmer, hardware security student, builder of small sharp tools."
+>
+	<div class="container">
+		<h1>About</h1>
+		<p class="cmd">cat ~/about.md</p>
+
+		<div class="prose">
+			<p>
+				I'm <strong>Mohammad Kamrul Hasan</strong> — a computer science undergrad at
+				<strong>BUET</strong> (Bangladesh University of Engineering and Technology), writing
+				code since grade 5. The interest arc has been consistent: general programming, then C,
+				then assembly, and now the thing that pulls hardest —
+				<strong>hardware security and reverse engineering</strong>.
+			</p>
+
+			<p>
+				I do pwn and reverse-engineering CTFs, and worked through CS:APP, Hacker's Delight,
+				The Art of Exploitation, and the Dragon Book on my own schedule before university got
+				around to any of it. Daily driver is Arch Linux; editor is Neovim; the site you're
+				reading ships no JavaScript framework, no tracker, and no external request — because
+				a portfolio should demonstrate the values it claims.
+			</p>
+
+			<h2>Work</h2>
+			<ul>
+				<li>
+					Backend engineering intern at <strong>Version3.ai</strong>
+					<!-- TODO: verify dates and title -->
+				</li>
+				<li>
+					Research intern at <strong>Mahzabeen Lab</strong>
+					<!-- TODO: verify lab name, dates, and focus area -->
+				</li>
+				<li>
+					Earlier internship at <strong>Edulytics</strong>
+					<!-- TODO: verify dates and role -->
+				</li>
+				<li>
+					Contributor to a research project on the economics of rickshaw pullers
+					<!-- TODO: verify project name / publication status -->
+				</li>
+			</ul>
+
+			<h2>Bitcraft</h2>
+			<p>
+				<strong>bitcraft</strong> is my personal studio label — the name over a decade of
+				pixel art, Unity game jams, and single-purpose tools. House style: "Pixel Modernist".
+				Small things, built carefully, that do one job.
+			</p>
+
+			<h2>Now</h2>
+			<ul>
+				<li>Designing an ESP32-S3 + ATECC608B hardware security device</li>
+				<li>Running a Raspberry Pi homelab</li>
+				<li>Writing about compilers; grinding CSES when the queue is empty</li>
+			</ul>
+
+			<h2>Contact</h2>
+			<p>
+				Email: <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a><br />
+				GitHub: <a href={siteConfig.social.github}>{siteConfig.social.github}</a>
+				<!-- TODO: verify handles before publishing -->
+			</p>
+		</div>
+	</div>
+</Base>
+
+<style>
+	.container {
+		padding-block: 2.5rem;
+	}
+</style>
