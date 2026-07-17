@@ -65,11 +65,11 @@
 
 :root {
 	/* calm dark surface */
-	--bg: #15181c;
-	--bg-raise: #1b1f24;
-	--bg-card: #191d21;
-	--line: #2a2f36;
-	--line-soft: #22262c;
+	--bg: #101418;
+	--bg-raise: #171c21;
+	--bg-card: #14191e;
+	--line: #262c34;
+	--line-soft: #1e242b;
 
 	/* text */
 	--text: #ced3d9;
@@ -77,18 +77,26 @@
 	--text-faint: #6b727a;
 	--heading: #eef1f4;
 
-	/* one restrained cool accent */
+	/* cool primary accent + warm secondary (badges, venues, highlights) */
 	--accent: #8ab4d8;
 	--accent-strong: #a7c8e6;
 	--accent-muted: #38475a;
+	--amber: #e0b775;
+	--amber-muted: rgba(224, 183, 117, 0.35);
+
+	/* hard pixel shadow color */
+	--px-shadow: rgba(56, 71, 90, 0.55);
+
+	/* pixel corner notch size */
+	--px: 4px;
 
 	/* type scale */
 	--text-xs: 0.78rem;
 	--text-sm: 0.875rem;
 	--text-base: 1rem;
 	--text-lg: 1.15rem;
-	--text-xl: clamp(1.4rem, 1.1rem + 1.3vw, 1.9rem);
-	--text-2xl: clamp(2rem, 1.5rem + 2.6vw, 3rem);
+	--text-xl: clamp(1.05rem, 0.9rem + 0.8vw, 1.35rem);
+	--text-2xl: clamp(1.5rem, 1.1rem + 2vw, 2.25rem);
 
 	--font-sans:
 		"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -150,22 +158,30 @@ h2,
 h3,
 h4 {
 	color: var(--heading);
-	line-height: 1.2;
+	line-height: 1.35;
 	margin: 2em 0 0.6em;
 	font-weight: 600;
-	letter-spacing: -0.011em;
+}
+
+/* display headings are pixel type — the design system's voice */
+h1,
+h2 {
+	font-family: var(--font-pixel);
+	font-weight: 400;
+	letter-spacing: 0.02em;
 }
 
 h1 {
 	font-size: var(--text-2xl);
 	margin-top: 0;
-	letter-spacing: -0.02em;
+	line-height: 1.25;
 }
 h2 {
 	font-size: var(--text-xl);
 }
 h3 {
 	font-size: var(--text-lg);
+	letter-spacing: -0.011em;
 }
 
 p {
@@ -185,7 +201,8 @@ a:hover {
 
 hr {
 	border: 0;
-	border-top: 1px solid var(--line);
+	height: 1px;
+	background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 12px);
 	margin: 2.5rem 0;
 }
 
@@ -219,7 +236,7 @@ video {
 	background: var(--accent);
 	color: var(--bg);
 	padding: 0.4rem 0.8rem;
-	border-radius: 4px;
+	
 	font-size: var(--text-sm);
 	transition: top 120ms ease;
 }
@@ -244,24 +261,130 @@ video {
 	color: var(--text-faint);
 }
 
-/* pill tag */
+/* square chip — mono, bordered, pixel shadow on hover */
 .tag {
 	font-family: var(--font-mono);
 	font-size: var(--text-xs);
 	color: var(--text-dim);
 	text-decoration: none;
 	border: 1px solid var(--line);
-	border-radius: 999px;
 	padding: 0.1rem 0.6rem;
 	white-space: nowrap;
 	transition:
 		color 140ms ease,
-		border-color 140ms ease;
+		border-color 140ms ease,
+		transform 140ms ease,
+		box-shadow 140ms ease;
 }
 a.tag:hover {
 	color: var(--accent-strong);
 	border-color: var(--accent-muted);
+	background: rgba(138, 180, 216, 0.06);
+	transform: translate(-1px, -1px);
+	box-shadow: 3px 3px 0 var(--px-shadow);
 	text-decoration: none;
+}
+
+/* pxbox — card with notched pixel corners (the design system's card) */
+.pxbox {
+	position: relative;
+	background: var(--bg-card);
+	border: 1px solid var(--line);
+	clip-path: polygon(
+		0 var(--px),
+		var(--px) var(--px),
+		var(--px) 0,
+		calc(100% - var(--px)) 0,
+		calc(100% - var(--px)) var(--px),
+		100% var(--px),
+		100% calc(100% - var(--px)),
+		calc(100% - var(--px)) calc(100% - var(--px)),
+		calc(100% - var(--px)) 100%,
+		var(--px) 100%,
+		var(--px) calc(100% - var(--px)),
+		0 calc(100% - var(--px))
+	);
+}
+
+/* buttons — pixel type, hard offset shadow, press-down active */
+.btn {
+	font-family: var(--font-pixel);
+	font-size: 0.72rem;
+	letter-spacing: 0.04em;
+	text-decoration: none;
+	padding: 0.75rem 1.4rem;
+	display: inline-block;
+	cursor: pointer;
+	transition:
+		transform 100ms ease,
+		box-shadow 100ms ease,
+		color 140ms ease,
+		border-color 140ms ease;
+}
+.btn:hover {
+	text-decoration: none;
+}
+.btn-primary {
+	background: var(--accent);
+	color: #10151a;
+	box-shadow: var(--px) var(--px) 0 var(--accent-muted);
+}
+.btn-primary:hover {
+	background: var(--accent-strong);
+	color: #10151a;
+	transform: translate(-2px, -2px);
+	box-shadow: 6px 6px 0 var(--accent-muted);
+}
+.btn-primary:active {
+	transform: translate(2px, 2px);
+	box-shadow: 0 0 0 var(--accent-muted);
+}
+.btn-ghost {
+	border: 1px solid var(--line);
+	color: var(--text);
+	background: transparent;
+}
+.btn-ghost:hover {
+	border-color: var(--accent-muted);
+	color: var(--heading);
+	transform: translate(-2px, -2px);
+	box-shadow: var(--px) var(--px) 0 var(--px-shadow);
+}
+.btn-ghost:active {
+	transform: translate(1px, 1px);
+	box-shadow: 0 0 0 var(--px-shadow);
+}
+
+/* numbered section head: 01 TITLE ---------- */
+.sec-head {
+	display: flex;
+	align-items: baseline;
+	gap: 1rem;
+	margin: 0 0 1.75rem;
+}
+.sec-head .idx {
+	font-family: var(--font-pixel);
+	font-size: 0.72rem;
+	color: var(--accent);
+}
+.sec-head h2 {
+	margin: 0;
+	font-size: var(--text-xl);
+}
+.sec-head::after {
+	content: "";
+	flex: 1;
+	height: 1px;
+	align-self: center;
+	background: repeating-linear-gradient(90deg, var(--text-faint) 0 6px, transparent 6px 12px);
+	opacity: 0.45;
+}
+.sec-head .sec-more {
+	font-family: var(--font-mono);
+	font-size: var(--text-sm);
+	color: var(--text-dim);
+	white-space: nowrap;
+	order: 1;
 }
 
 /* ------------------------------------------------------------------ */
@@ -273,6 +396,21 @@ a.tag:hover {
 }
 .prose > :first-child {
 	margin-top: 0;
+}
+
+.prose h2 {
+	font-size: 1.05rem;
+	margin: 2.6em 0 0.8em;
+}
+.prose h2::before {
+	content: "## ";
+	color: var(--accent-muted);
+	font-size: 0.85em;
+}
+.prose h3 {
+	font-family: var(--font-sans);
+	font-weight: 600;
+	font-size: var(--text-lg);
 }
 
 .prose ul,
@@ -319,7 +457,7 @@ a.tag:hover {
 	font-size: 0.86em;
 	background: var(--bg-raise);
 	border: 1px solid var(--line-soft);
-	border-radius: 4px;
+	border-radius: 0;
 	padding: 0.12em 0.38em;
 	color: var(--accent-strong);
 }
@@ -327,7 +465,7 @@ a.tag:hover {
 .prose pre {
 	background: var(--bg-raise) !important;
 	border: 1px solid var(--line);
-	border-radius: 8px;
+	border-radius: 0;
 	padding: 1.1rem 1.25rem;
 	overflow-x: auto;
 	margin: 1.5rem 0;
@@ -368,7 +506,7 @@ a.tag:hover {
 	padding: 0.85rem 1.15rem;
 	border: 1px solid var(--line);
 	border-left: 3px solid var(--accent);
-	border-radius: 6px;
+	border-radius: 0;
 	background: var(--bg-card);
 	font-size: var(--text-sm);
 }
@@ -377,10 +515,10 @@ a.tag:hover {
 }
 .admonition-label {
 	display: block;
-	font-family: var(--font-mono);
-	font-size: var(--text-xs);
-	font-weight: 700;
-	letter-spacing: 0.06em;
+	font-family: var(--font-pixel);
+	font-size: 0.68rem;
+	font-weight: 400;
+	letter-spacing: 0.1em;
 	color: var(--accent-strong);
 	margin-bottom: 0.4rem;
 }

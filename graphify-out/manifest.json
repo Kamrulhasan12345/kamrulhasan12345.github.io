@@ -25,8 +25,8 @@
     "semantic_hash": ""
   },
   "src/components/Header.astro": {
-    "mtime": 1784268647.5838192,
-    "ast_hash": "aa5402efb62a30191e77af280c89a2e6",
+    "mtime": 1784282313.209766,
+    "ast_hash": "6b427ef5bbf5c9528b9fcc3b7ef8db9d",
     "semantic_hash": ""
   },
   "src/components/PostPreview.astro": {
@@ -85,8 +85,8 @@
     "semantic_hash": ""
   },
   "src/pages/index.astro": {
-    "mtime": 1784268775.7035701,
-    "ast_hash": "d1d736619f53480ab654976ee752f7f1",
+    "mtime": 1784282388.6581972,
+    "ast_hash": "ef3cd4decd6bc50998e5f04fa7d219f3",
     "semantic_hash": ""
   },
   "src/pages/og/[...slug].png.ts": {
@@ -252,6 +252,11 @@
   "src/content/blog/why-i-run-arch-on-6gb.md": {
     "mtime": 1784281892.155779,
     "ast_hash": "b510b0d03ab6e035b25d6a587f10698b",
+    "semantic_hash": ""
+  },
+  "src/assets/fonts/Silkscreen-OFL.txt": {
+    "mtime": 1784282282.3848166,
+    "ast_hash": "c536d28092da27f387372bc371c5fe19",
     "semantic_hash": ""
   }
 }

@@ -24,7 +24,7 @@ const { post } = Astro.props;
 
 <style>
 	.preview {
-		border-bottom: 1px solid var(--line-soft);
+		border-bottom: 1px dashed var(--line);
 	}
 	.link {
 		display: block;
@@ -44,7 +44,11 @@ const { post } = Astro.props;
 	}
 	.title {
 		margin: 0;
-		font-size: var(--text-lg);
+		font-family: var(--font-pixel);
+		font-weight: 400;
+		font-size: 0.95rem;
+		line-height: 1.5;
+		letter-spacing: 0.02em;
 		color: var(--heading);
 	}
 	.link:hover .title {

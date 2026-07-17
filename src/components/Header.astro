@@ -55,17 +55,27 @@ function isCurrent(href: string): boolean {
 		flex-wrap: wrap;
 		gap: 0.4rem 1.4rem;
 		margin-left: auto;
-		font-size: var(--text-sm);
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
 	}
 	nav a {
 		color: var(--text-dim);
 		text-decoration: none;
+		text-transform: lowercase;
+	}
+	nav a::before {
+		content: "/";
+		color: var(--text-faint);
+		margin-right: 2px;
 	}
 	nav a:hover {
-		color: var(--heading);
+		color: var(--accent-strong);
 		text-decoration: none;
 	}
 	nav a[aria-current="page"] {
 		color: var(--heading);
+	}
+	nav a[aria-current="page"]::before {
+		color: var(--accent);
 	}
 </style>
