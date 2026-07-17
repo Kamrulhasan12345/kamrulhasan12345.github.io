@@ -1,0 +1,91 @@
+{
+	"name": "phosphor",
+	"type": "dark",
+	"colors": {
+		"editor.background": "#0c120d",
+		"editor.foreground": "#a9dfb2"
+	},
+	"tokenColors": [
+		{
+			"scope": ["comment", "punctuation.definition.comment"],
+			"settings": { "foreground": "#527c5b", "fontStyle": "italic" }
+		},
+		{
+			"scope": ["keyword", "storage.type", "storage.modifier", "keyword.control"],
+			"settings": { "foreground": "#7dffa0" }
+		},
+		{
+			"scope": ["string", "punctuation.definition.string"],
+			"settings": { "foreground": "#d9f2a2" }
+		},
+		{
+			"scope": [
+				"constant.numeric",
+				"constant.language",
+				"constant.character",
+				"constant.other",
+				"keyword.other.unit"
+			],
+			"settings": { "foreground": "#ffb454" }
+		},
+		{
+			"scope": ["entity.name.function", "support.function", "meta.function-call"],
+			"settings": { "foreground": "#c8ffd4" }
+		},
+		{
+			"scope": [
+				"entity.name.type",
+				"entity.name.class",
+				"support.type",
+				"support.class",
+				"entity.other.inherited-class"
+			],
+			"settings": { "foreground": "#5fd9a8" }
+		},
+		{
+			"scope": ["variable", "variable.parameter", "variable.other"],
+			"settings": { "foreground": "#a9dfb2" }
+		},
+		{
+			"scope": ["keyword.operator", "punctuation"],
+			"settings": { "foreground": "#74a381" }
+		},
+		{
+			"scope": [
+				"meta.preprocessor",
+				"keyword.control.directive",
+				"punctuation.definition.directive",
+				"entity.name.function.preprocessor"
+			],
+			"settings": { "foreground": "#e6c075" }
+		},
+		{
+			"scope": ["entity.name.tag", "punctuation.definition.tag"],
+			"settings": { "foreground": "#7dffa0" }
+		},
+		{
+			"scope": ["entity.other.attribute-name"],
+			"settings": { "foreground": "#5fd9a8" }
+		},
+		{
+			"scope": ["support.constant", "variable.language.register", "constant.other.register"],
+			"settings": { "foreground": "#ffcf87" }
+		},
+		{
+			"scope": ["markup.heading"],
+			"settings": { "foreground": "#c8ffd4", "fontStyle": "bold" }
+		},
+		{
+			"scope": ["markup.italic"],
+			"settings": { "fontStyle": "italic" }
+		},
+		{
+			"scope": ["markup.bold"],
+			"settings": { "fontStyle": "bold" }
+		},
+		{
+			"scope": ["invalid", "invalid.illegal"],
+			"settings": { "foreground": "#ff7a66" }
+		}
+	]
+}

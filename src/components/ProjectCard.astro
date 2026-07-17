@@ -1,0 +1,70 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+	project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const { title, summary, stack, links } = project.data;
+---
+
+<article class="card">
+	<h3 class="title">
+		<a href={`/projects/${project.id}/`}>{title}</a>
+	</h3>
+	<p class="summary">{summary}</p>
+	<div class="stack">
+		{stack.map((item) => <span class="chip">{item}</span>)}
+	</div>
+	<div class="links">
+		{links.repo && <a href={links.repo}>repo ↗</a>}
+		{links.live && <a href={links.live}>live ↗</a>}
+		{links.writeup && <a href={links.writeup}>writeup</a>}
+	</div>
+</article>
+
+<style>
+	.card {
+		border: 1px solid var(--c-line);
+		background: var(--c-bg-raise);
+		padding: 1.1rem 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		transition: border-color 140ms ease;
+	}
+	.card:hover {
+		border-color: var(--c-dim);
+	}
+	.title {
+		margin: 0;
+		font-size: var(--text-lg);
+	}
+	.title a {
+		text-decoration: none;
+		color: var(--c-bright);
+	}
+	.title a:hover {
+		color: var(--c-accent);
+	}
+	.title a::before {
+		content: "> ";
+		color: var(--c-accent);
+	}
+	.summary {
+		margin: 0;
+		font-size: var(--text-sm);
+		flex-grow: 1;
+	}
+	.stack {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 0.7rem;
+	}
+	.links {
+		display: flex;
+		gap: 1.25rem;
+		font-size: var(--text-sm);
+	}
+</style>

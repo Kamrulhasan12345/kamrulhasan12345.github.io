@@ -1,0 +1,45 @@
+---
+import PostPreview from "@/components/PostPreview.astro";
+import { getAllTags, getPublishedPosts } from "@/data/collections";
+import Base from "@/layouts/Base.astro";
+
+const posts = await getPublishedPosts();
+const tags = await getAllTags();
+---
+
+<Base title="Blog" description="Posts on systems programming, hardware security, and reverse engineering.">
+	<div class="container">
+		<h1>Blog</h1>
+		<p class="cmd">ls ~/blog | sort -r</p>
+		{
+			tags.length > 0 && (
+				<p class="tags">
+					{tags.map(({ tag, count }) => (
+						<a class="chip" href={`/tags/${tag}/`}>
+							{tag} ×{count}
+						</a>
+					))}
+				</p>
+			)
+		}
+		<div class="posts">
+			{posts.map((post) => <PostPreview post={post} />)}
+			{posts.length === 0 && <p>No posts yet. First one is being written.</p>}
+		</div>
+	</div>
+</Base>
+
+<style>
+	.container {
+		padding-block: 2.5rem;
+	}
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 0.75rem;
+		margin-bottom: 1.5rem;
+	}
+	.posts {
+		border-top: 1px dashed var(--c-line);
+	}
+</style>

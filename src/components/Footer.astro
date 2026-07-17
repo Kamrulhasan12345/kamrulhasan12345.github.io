@@ -1,0 +1,43 @@
+---
+import { siteConfig } from "@/site.config";
+
+const year = new Date().getFullYear();
+---
+
+<footer>
+	<div class="container container--wide inner">
+		<span>© {year} {siteConfig.author}</span>
+		<span class="links">
+			<a href="/rss.xml">rss</a>
+			<a href={siteConfig.social.github}>github</a>
+			<span class="note">no trackers, no cookies, no external requests</span>
+		</span>
+	</div>
+</footer>
+
+<style>
+	footer {
+		margin-top: auto;
+		border-top: 1px solid var(--c-line);
+		font-size: var(--text-xs);
+		color: var(--c-dim);
+	}
+	.inner {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem 1.5rem;
+		padding-block: 1.1rem;
+		justify-content: space-between;
+	}
+	.links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem 1.5rem;
+	}
+	a {
+		color: var(--c-dim);
+	}
+	.note::before {
+		content: "// ";
+	}
+</style>
