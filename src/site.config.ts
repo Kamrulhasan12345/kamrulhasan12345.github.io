@@ -1,7 +1,6 @@
 export const siteConfig = {
 	author: "Mohammad Kamrul Hasan",
-	// TODO: set the real domain before deploying (also see astro.config.ts)
-	url: import.meta.env.SITE ?? "https://example.com",
+	url: import.meta.env.SITE ?? "https://kamrulhasan12345.github.io",
 	title: "Mohammad Kamrul Hasan",
 	role: "Systems & hardware security",
 	location: "Dhaka, Bangladesh",

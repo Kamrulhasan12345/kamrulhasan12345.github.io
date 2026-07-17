@@ -1,16 +1,16 @@
 # Graph Report - kamrulhasan12345  (2026-07-17)
 
 ## Corpus Check
-- 49 files · ~10,627 words
+- 49 files · ~10,877 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 157 nodes · 178 edges · 29 communities
+- 155 nodes · 176 edges · 29 communities
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `bd1f2a2b`
+- Built from commit: `594140e7`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -68,8 +68,8 @@ Cohesion: 0.09
 Nodes (23): @astrojs/rss, @astrojs/sitemap, katex, mdast-util-to-string, dependencies, astro, @astrojs/rss, @astrojs/sitemap (+15 more)
 
 ### Community 2 - "@/layouts/Base.astro"
-Cohesion: 0.12
-Nodes (14): @/styles/global.css, @/components/Footer.astro, year, @/components/Header.astro, @/components/Ticker.astro, @/layouts/Base.astro, canonical, socialImage (+6 more)
+Cohesion: 0.13
+Nodes (13): @/styles/global.css, @/components/Footer.astro, year, @/components/Header.astro, @/components/Ticker.astro, @/layouts/Base.astro, canonical, socialImage (+5 more)
 
 ### Community 3 - "package.json"
 Cohesion: 0.12
@@ -80,8 +80,8 @@ Cohesion: 0.18
 Nodes (11): astro/tsconfigs/strict, .astro/types.d.ts, dist, src/**/*, compilerOptions, baseUrl, paths, exclude (+3 more)
 
 ### Community 5 - "astro.config.ts"
-Cohesion: 0.38
-Nodes (4): TODO: set the real domain before deploying; SITE env var overrides for now, KINDS, remarkAdmonitions(), remarkReadingTime()
+Cohesion: 0.47
+Nodes (3): KINDS, remarkAdmonitions(), remarkReadingTime()
 
 ### Community 6 - "kamrulhasan — portfolio & blog"
 Cohesion: 0.29
@@ -123,16 +123,16 @@ Nodes (3): Spend RAM where it thinks, The constraint is the curriculum, zram fir
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `dependencies` connect `dependencies` to `package.json`?**
-  _High betweenness centrality (0.047) - this node is a cross-community bridge._
+  _High betweenness centrality (0.049) - this node is a cross-community bridge._
 - **Why does `@/layouts/Base.astro` connect `@/layouts/Base.astro` to `@/data/collections`, `@/layouts/BlogPost.astro`?**
   _High betweenness centrality (0.040) - this node is a cross-community bridge._
 - **Why does `@/layouts/BlogPost.astro` connect `@/layouts/BlogPost.astro` to `@/data/collections`, `@/layouts/Base.astro`?**
   _High betweenness centrality (0.019) - this node is a cross-community bridge._
-- **What connects `TODO: set the real domain before deploying; SITE env var overrides for now`, `name`, `type` to the rest of the system?**
-  _70 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `name`, `type`, `version` to the rest of the system?**
+  _68 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.08695652173913043 - nodes in this community are weakly interconnected._
 - **Should `@/layouts/Base.astro` be split into smaller, more focused modules?**
-  _Cohesion score 0.12380952380952381 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.13157894736842105 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._

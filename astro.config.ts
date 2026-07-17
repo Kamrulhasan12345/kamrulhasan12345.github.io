@@ -9,8 +9,8 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 import codeTheme from "./src/styles/shiki-dark.json";
 
 export default defineConfig({
-	// TODO: set the real domain before deploying; SITE env var overrides for now
-	site: process.env.SITE ?? "https://example.com",
+	// user GitHub Pages site; SITE env var can override (e.g. a custom domain)
+	site: process.env.SITE ?? "https://kamrulhasan12345.github.io",
 	// "ignore" keeps both /page/ links and /og/x.png endpoints working on any
 	// host, without depending on host-specific trailing-slash redirects.
 	trailingSlash: "ignore",

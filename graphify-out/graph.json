@@ -14,16 +14,6 @@
       "norm_label": "astro.config.ts"
     },
     {
-      "label": "TODO: set the real domain before deploying; SITE env var overrides for now",
-      "file_type": "rationale",
-      "source_file": "astro.config.ts",
-      "source_location": "L12",
-      "_origin": "ast",
-      "id": "astro_config_rationale_12",
-      "community": 5,
-      "norm_label": "todo: set the real domain before deploying; site env var overrides for now"
-    },
-    {
       "label": "package.json",
       "file_type": "code",
       "source_file": "package.json",
@@ -1035,22 +1025,12 @@
       "norm_label": "siteconfig"
     },
     {
-      "label": "TODO: set the real domain before deploying (also see astro.config.ts)",
-      "file_type": "rationale",
-      "source_file": "src/site.config.ts",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "src_site_config_rationale_3",
-      "community": 2,
-      "norm_label": "todo: set the real domain before deploying (also see astro.config.ts)"
-    },
-    {
       "label": "TODO: verify email before publishing",
       "file_type": "rationale",
       "source_file": "src/site.config.ts",
-      "source_location": "L10",
+      "source_location": "L9",
       "_origin": "ast",
-      "id": "src_site_config_rationale_10",
+      "id": "src_site_config_rationale_9",
       "community": 2,
       "norm_label": "todo: verify email before publishing"
     },
@@ -1058,9 +1038,9 @@
       "label": "TODO: verify handles / add real URLs before publishing",
       "file_type": "rationale",
       "source_file": "src/site.config.ts",
-      "source_location": "L13",
+      "source_location": "L12",
       "_origin": "ast",
-      "id": "src_site_config_rationale_13",
+      "id": "src_site_config_rationale_12",
       "community": 2,
       "norm_label": "todo: verify handles / add real urls before publishing"
     },
@@ -1631,16 +1611,6 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "astro.config.ts",
-      "source_location": "L12",
-      "weight": 1.0,
-      "source": "astro_config_rationale_12",
-      "target": "astro_config",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
@@ -2176,9 +2146,9 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "src/site.config.ts",
-      "source_location": "L10",
+      "source_location": "L12",
       "weight": 1.0,
-      "source": "src_site_config_rationale_10",
+      "source": "src_site_config_rationale_12",
       "target": "src_site_config",
       "confidence_score": 1.0
     },
@@ -2186,19 +2156,9 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "src/site.config.ts",
-      "source_location": "L13",
+      "source_location": "L9",
       "weight": 1.0,
-      "source": "src_site_config_rationale_13",
-      "target": "src_site_config",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "src/site.config.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "src_site_config_rationale_3",
+      "source": "src_site_config_rationale_9",
       "target": "src_site_config",
       "confidence_score": 1.0
     },
@@ -3410,5 +3370,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "bd1f2a2bf9a99ce8a469b251278bee0ebd429655"
+  "built_at_commit": "594140e748c76182bc6bb36b0a03333ca1b17779"
 }
