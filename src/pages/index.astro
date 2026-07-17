@@ -7,13 +7,52 @@ import { siteConfig } from "@/site.config";
 
 const featured = (await getFeaturedProjects()).slice(0, 4);
 const latest = (await getPublishedPosts()).slice(0, 3);
+
+const tickerItems = [
+	"SYSTEMS",
+	"HARDWARE SECURITY",
+	"REVERSE ENGINEERING",
+	"BACKEND",
+	"POSTGRESQL",
+	"RUST",
+	"C / ASM",
+	"EMBEDDED",
+	"ML",
+	"PIXEL ART",
+	"CTF: PWN / RE",
+	"ARCH LINUX",
+	"BUET CSE",
+];
 ---
 
 <Base>
+	<div class="ticker" aria-hidden="true">
+		<div class="ticker-track">
+			{
+				[0, 1].map(() => (
+					<div class="ticker-seq">
+						{tickerItems.map((item) => (
+							<>
+								<span>{item}</span>
+								<b>◆</b>
+							</>
+						))}
+					</div>
+				))
+			}
+		</div>
+	</div>
+
 	<div class="container container--wide">
 		<section class="hero">
 			<p class="eyebrow">{siteConfig.role} · {siteConfig.location}</p>
-			<h1>Mohammad Kamrul Hasan</h1>
+			<h1 class="glitch">
+				<span class="glitch-base"
+					>MOHAMMAD<br />KAMRUL <span class="accent">HASAN</span></span
+				>
+				<span class="glitch-layer l1" aria-hidden="true">MOHAMMAD<br />KAMRUL HASAN</span>
+				<span class="glitch-layer l2" aria-hidden="true">MOHAMMAD<br />KAMRUL HASAN</span>
+			</h1>
 			<p class="lead">
 				CSE undergraduate at <strong>BUET</strong>, writing code since grade 5 and
 				drifting steadily down the stack ever since — across systems, security,
@@ -61,14 +100,112 @@ const latest = (await getPublishedPosts()).slice(0, 3);
 </Base>
 
 <style>
+	/* ---- ticker / game strip ---- */
+	.ticker {
+		border-block: 1px solid var(--line-soft);
+		background: var(--bg-raise);
+		overflow: hidden;
+	}
+	.ticker-track {
+		display: flex;
+		width: max-content;
+		animation: marquee 34s linear infinite;
+	}
+	.ticker:hover .ticker-track {
+		animation-play-state: paused;
+	}
+	.ticker-seq {
+		display: flex;
+		align-items: center;
+	}
+	.ticker span {
+		font-family: var(--font-pixel);
+		font-size: 0.62rem;
+		letter-spacing: 0.12em;
+		color: var(--text-faint);
+		padding-block: 0.6rem;
+		white-space: nowrap;
+	}
+	.ticker b {
+		color: var(--accent-muted);
+		font-weight: 400;
+		padding-inline: 0.9rem;
+	}
+	@keyframes marquee {
+		to {
+			transform: translateX(-50%);
+		}
+	}
+
+	/* ---- hero ---- */
 	.hero {
-		padding-block: 4.5rem 3.5rem;
+		padding-block: 4rem 3.5rem;
 		max-width: 46rem;
 	}
+
+	.glitch {
+		position: relative;
+		display: inline-block;
+		font-family: var(--font-pixel);
+		font-weight: 400;
+		font-size: clamp(1.9rem, 1.1rem + 4vw, 3.4rem);
+		line-height: 1.2;
+		letter-spacing: 0.01em;
+		margin: 1rem 0 0;
+		color: var(--heading);
+	}
+	.glitch .accent {
+		color: var(--accent);
+	}
+	.glitch-base {
+		position: relative;
+	}
+	.glitch-layer {
+		position: absolute;
+		inset: 0;
+		opacity: 0;
+		pointer-events: none;
+		white-space: nowrap;
+	}
+	.glitch:hover .l1 {
+		opacity: 0.85;
+		color: var(--glitch-b);
+		clip-path: inset(18% 0 52% 0);
+		animation: gl1 0.5s steps(2) infinite;
+	}
+	.glitch:hover .l2 {
+		opacity: 0.85;
+		color: var(--glitch-a);
+		clip-path: inset(58% 0 12% 0);
+		animation: gl2 0.6s steps(2) infinite reverse;
+	}
+	@keyframes gl1 {
+		0% {
+			transform: translate(-3px, 1px);
+		}
+		50% {
+			transform: translate(3px, -1px);
+		}
+		100% {
+			transform: translate(-2px, 0);
+		}
+	}
+	@keyframes gl2 {
+		0% {
+			transform: translate(3px, -1px);
+		}
+		50% {
+			transform: translate(-3px, 1px);
+		}
+		100% {
+			transform: translate(2px, 0);
+		}
+	}
+
 	.lead {
 		font-size: var(--text-lg);
 		color: var(--text);
-		margin-top: 1rem;
+		margin-top: 1.5rem;
 		max-width: 40rem;
 	}
 	.lead strong {
@@ -156,5 +293,15 @@ const latest = (await getPublishedPosts()).slice(0, 3);
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
 		gap: 1rem;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.ticker-track {
+			animation: none;
+		}
+		.glitch:hover .l1,
+		.glitch:hover .l2 {
+			animation: none;
+		}
 	}
 </style>

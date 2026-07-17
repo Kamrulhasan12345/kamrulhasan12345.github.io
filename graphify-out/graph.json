@@ -1244,104 +1244,194 @@
       "norm_label": "before deploying"
     },
     {
-      "label": "hello-world.md",
+      "label": "hello-world-to-machine-code.md",
       "file_type": "document",
-      "source_file": "src/content/blog/hello-world.md",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_content_blog_hello_world",
+      "id": "src_content_blog_hello_world_to_machine_code",
       "community": 7,
-      "norm_label": "hello-world.md"
+      "norm_label": "hello-world-to-machine-code.md"
     },
     {
-      "label": "The call, in slow motion",
+      "label": "Stage 1: Preprocessing",
       "file_type": "document",
-      "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L16",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L23",
       "_origin": "ast",
-      "id": "src_content_blog_hello_world_the_call_in_slow_motion",
+      "id": "src_content_blog_hello_world_to_machine_code_stage_1_preprocessing",
       "community": 7,
-      "norm_label": "the call, in slow motion"
+      "norm_label": "stage 1: preprocessing"
     },
     {
-      "label": "What the frame looks like",
+      "label": "Stage 2: Compilation to assembly",
       "file_type": "document",
-      "source_file": "src/content/blog/hello-world.md",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
       "source_location": "L32",
       "_origin": "ast",
-      "id": "src_content_blog_hello_world_what_the_frame_looks_like",
+      "id": "src_content_blog_hello_world_to_machine_code_stage_2_compilation_to_assembly",
       "community": 7,
-      "norm_label": "what the frame looks like"
+      "norm_label": "stage 2: compilation to assembly"
     },
     {
-      "label": "The red zone",
+      "label": "Stage 3: Assembly to object code",
       "file_type": "document",
-      "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L68",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L53",
       "_origin": "ast",
-      "id": "src_content_blog_hello_world_the_red_zone",
+      "id": "src_content_blog_hello_world_to_machine_code_stage_3_assembly_to_object_code",
       "community": 7,
-      "norm_label": "the red zone"
+      "norm_label": "stage 3: assembly to object code"
     },
     {
-      "label": "A little arithmetic",
+      "label": "Stage 4: Linking",
       "file_type": "document",
-      "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L80",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L61",
       "_origin": "ast",
-      "id": "src_content_blog_hello_world_a_little_arithmetic",
+      "id": "src_content_blog_hello_world_to_machine_code_stage_4_linking",
       "community": 7,
-      "norm_label": "a little arithmetic"
+      "norm_label": "stage 4: linking"
     },
     {
-      "label": "Where this goes",
+      "label": "Why this matters",
       "file_type": "document",
-      "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L92",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L70",
       "_origin": "ast",
-      "id": "src_content_blog_hello_world_where_this_goes",
+      "id": "src_content_blog_hello_world_to_machine_code_why_this_matters",
       "community": 7,
-      "norm_label": "where this goes"
+      "norm_label": "why this matters"
     },
     {
-      "label": "why-polyglot-ayahbot.md",
+      "label": "lexical-analysis-first-gate.md",
       "file_type": "document",
-      "source_file": "src/content/blog/why-polyglot-ayahbot.md",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_content_blog_why_polyglot_ayahbot",
+      "id": "src_content_blog_lexical_analysis_first_gate",
       "community": 10,
-      "norm_label": "why-polyglot-ayahbot.md"
+      "norm_label": "lexical-analysis-first-gate.md"
     },
     {
-      "label": "The temptation to keep it monolithic",
+      "label": "From characters to tokens",
       "file_type": "document",
-      "source_file": "src/content/blog/why-polyglot-ayahbot.md",
-      "source_location": "L17",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
+      "source_location": "L12",
       "_origin": "ast",
-      "id": "src_content_blog_why_polyglot_ayahbot_the_temptation_to_keep_it_monolithic",
+      "id": "src_content_blog_lexical_analysis_first_gate_from_characters_to_tokens",
       "community": 10,
-      "norm_label": "the temptation to keep it monolithic"
+      "norm_label": "from characters to tokens"
     },
     {
-      "label": "Where the seams actually were",
+      "label": "Regular languages under the hood",
       "file_type": "document",
-      "source_file": "src/content/blog/why-polyglot-ayahbot.md",
-      "source_location": "L29",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
+      "source_location": "L31",
       "_origin": "ast",
-      "id": "src_content_blog_why_polyglot_ayahbot_where_the_seams_actually_were",
+      "id": "src_content_blog_lexical_analysis_first_gate_regular_languages_under_the_hood",
       "community": 10,
-      "norm_label": "where the seams actually were"
+      "norm_label": "regular languages under the hood"
     },
     {
-      "label": "The rule I held myself to",
+      "label": "Maximal munch, and where it bites",
       "file_type": "document",
-      "source_file": "src/content/blog/why-polyglot-ayahbot.md",
-      "source_location": "L55",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
+      "source_location": "L39",
       "_origin": "ast",
-      "id": "src_content_blog_why_polyglot_ayahbot_the_rule_i_held_myself_to",
+      "id": "src_content_blog_lexical_analysis_first_gate_maximal_munch_and_where_it_bites",
       "community": 10,
-      "norm_label": "the rule i held myself to"
+      "norm_label": "maximal munch, and where it bites"
+    },
+    {
+      "label": "Try it yourself",
+      "file_type": "document",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "src_content_blog_lexical_analysis_first_gate_try_it_yourself",
+      "community": 10,
+      "norm_label": "try it yourself"
+    },
+    {
+      "label": "skip-locked-job-queue.md",
+      "file_type": "document",
+      "source_file": "src/content/blog/skip-locked-job-queue.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_content_blog_skip_locked_job_queue",
+      "community": 27,
+      "norm_label": "skip-locked-job-queue.md"
+    },
+    {
+      "label": "The core trick",
+      "file_type": "document",
+      "source_file": "src/content/blog/skip-locked-job-queue.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "src_content_blog_skip_locked_job_queue_the_core_trick",
+      "community": 27,
+      "norm_label": "the core trick"
+    },
+    {
+      "label": "The sharp edges",
+      "file_type": "document",
+      "source_file": "src/content/blog/skip-locked-job-queue.md",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "src_content_blog_skip_locked_job_queue_the_sharp_edges",
+      "community": 27,
+      "norm_label": "the sharp edges"
+    },
+    {
+      "label": "When to graduate",
+      "file_type": "document",
+      "source_file": "src/content/blog/skip-locked-job-queue.md",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "src_content_blog_skip_locked_job_queue_when_to_graduate",
+      "community": 27,
+      "norm_label": "when to graduate"
+    },
+    {
+      "label": "why-i-run-arch-on-6gb.md",
+      "file_type": "document",
+      "source_file": "src/content/blog/why-i-run-arch-on-6gb.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_content_blog_why_i_run_arch_on_6gb",
+      "community": 28,
+      "norm_label": "why-i-run-arch-on-6gb.md"
+    },
+    {
+      "label": "zram first",
+      "file_type": "document",
+      "source_file": "src/content/blog/why-i-run-arch-on-6gb.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "src_content_blog_why_i_run_arch_on_6gb_zram_first",
+      "community": 28,
+      "norm_label": "zram first"
+    },
+    {
+      "label": "Spend RAM where it thinks",
+      "file_type": "document",
+      "source_file": "src/content/blog/why-i-run-arch-on-6gb.md",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "src_content_blog_why_i_run_arch_on_6gb_spend_ram_where_it_thinks",
+      "community": 28,
+      "norm_label": "spend ram where it thinks"
+    },
+    {
+      "label": "The constraint is the curriculum",
+      "file_type": "document",
+      "source_file": "src/content/blog/why-i-run-arch-on-6gb.md",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "src_content_blog_why_i_run_arch_on_6gb_the_constraint_is_the_curriculum",
+      "community": 28,
+      "norm_label": "the constraint is the curriculum"
     },
     {
       "label": "agent-orchestration.md",
@@ -3149,84 +3239,154 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L80",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L23",
       "weight": 1.0,
-      "source": "src_content_blog_hello_world",
-      "target": "src_content_blog_hello_world_a_little_arithmetic",
+      "source": "src_content_blog_hello_world_to_machine_code",
+      "target": "src_content_blog_hello_world_to_machine_code_stage_1_preprocessing",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L16",
-      "weight": 1.0,
-      "source": "src_content_blog_hello_world",
-      "target": "src_content_blog_hello_world_the_call_in_slow_motion",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L68",
-      "weight": 1.0,
-      "source": "src_content_blog_hello_world",
-      "target": "src_content_blog_hello_world_the_red_zone",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/content/blog/hello-world.md",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
       "source_location": "L32",
       "weight": 1.0,
-      "source": "src_content_blog_hello_world",
-      "target": "src_content_blog_hello_world_what_the_frame_looks_like",
+      "source": "src_content_blog_hello_world_to_machine_code",
+      "target": "src_content_blog_hello_world_to_machine_code_stage_2_compilation_to_assembly",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L92",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L53",
       "weight": 1.0,
-      "source": "src_content_blog_hello_world",
-      "target": "src_content_blog_hello_world_where_this_goes",
+      "source": "src_content_blog_hello_world_to_machine_code",
+      "target": "src_content_blog_hello_world_to_machine_code_stage_3_assembly_to_object_code",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/content/blog/why-polyglot-ayahbot.md",
-      "source_location": "L55",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L61",
       "weight": 1.0,
-      "source": "src_content_blog_why_polyglot_ayahbot",
-      "target": "src_content_blog_why_polyglot_ayahbot_the_rule_i_held_myself_to",
+      "source": "src_content_blog_hello_world_to_machine_code",
+      "target": "src_content_blog_hello_world_to_machine_code_stage_4_linking",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/content/blog/why-polyglot-ayahbot.md",
-      "source_location": "L17",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L70",
       "weight": 1.0,
-      "source": "src_content_blog_why_polyglot_ayahbot",
-      "target": "src_content_blog_why_polyglot_ayahbot_the_temptation_to_keep_it_monolithic",
+      "source": "src_content_blog_hello_world_to_machine_code",
+      "target": "src_content_blog_hello_world_to_machine_code_why_this_matters",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/content/blog/why-polyglot-ayahbot.md",
-      "source_location": "L29",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
+      "source_location": "L12",
       "weight": 1.0,
-      "source": "src_content_blog_why_polyglot_ayahbot",
-      "target": "src_content_blog_why_polyglot_ayahbot_where_the_seams_actually_were",
+      "source": "src_content_blog_lexical_analysis_first_gate",
+      "target": "src_content_blog_lexical_analysis_first_gate_from_characters_to_tokens",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "src_content_blog_lexical_analysis_first_gate",
+      "target": "src_content_blog_lexical_analysis_first_gate_maximal_munch_and_where_it_bites",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "src_content_blog_lexical_analysis_first_gate",
+      "target": "src_content_blog_lexical_analysis_first_gate_regular_languages_under_the_hood",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "src_content_blog_lexical_analysis_first_gate",
+      "target": "src_content_blog_lexical_analysis_first_gate_try_it_yourself",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/skip-locked-job-queue.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "src_content_blog_skip_locked_job_queue",
+      "target": "src_content_blog_skip_locked_job_queue_the_core_trick",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/skip-locked-job-queue.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "src_content_blog_skip_locked_job_queue",
+      "target": "src_content_blog_skip_locked_job_queue_the_sharp_edges",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/skip-locked-job-queue.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "src_content_blog_skip_locked_job_queue",
+      "target": "src_content_blog_skip_locked_job_queue_when_to_graduate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/why-i-run-arch-on-6gb.md",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "src_content_blog_why_i_run_arch_on_6gb",
+      "target": "src_content_blog_why_i_run_arch_on_6gb_spend_ram_where_it_thinks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/why-i-run-arch-on-6gb.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "src_content_blog_why_i_run_arch_on_6gb",
+      "target": "src_content_blog_why_i_run_arch_on_6gb_the_constraint_is_the_curriculum",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/why-i-run-arch-on-6gb.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "src_content_blog_why_i_run_arch_on_6gb",
+      "target": "src_content_blog_why_i_run_arch_on_6gb_zram_first",
       "confidence_score": 1.0
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9351c3ca0d4a36ccb67d18d4a01779e5ef3f6534"
+  "built_at_commit": "7dfe3a3151988bad5bfd6845c707c5ae52dc8383"
 }

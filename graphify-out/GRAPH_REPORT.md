@@ -1,16 +1,16 @@
 # Graph Report - kamrulhasan12345  (2026-07-17)
 
 ## Corpus Check
-- 46 files · ~9,086 words
+- 48 files · ~9,494 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 147 nodes · 170 edges · 27 communities
+- 156 nodes · 177 edges · 29 communities
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9351c3ca`
+- Built from commit: `7dfe3a31`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -27,6 +27,8 @@
 - @/layouts/BlogPost.astro
 - why-polyglot-ayahbot.md
 - content.config.ts
+- skip-locked-job-queue.md
+- why-i-run-arch-on-6gb.md
 
 ## God Nodes (most connected - your core abstractions)
 1. `@/layouts/Base.astro` - 16 edges
@@ -55,7 +57,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (27 total, 0 thin omitted)
+## Communities (29 total, 0 thin omitted)
 
 ### Community 0 - "@/data/collections"
 Cohesion: 0.18
@@ -87,7 +89,7 @@ Nodes (6): Adding a project, Before deploying, Develop, kamrulhasan — portfoli
 
 ### Community 7 - "hello-world.md"
 Cohesion: 0.33
-Nodes (5): A little arithmetic, The call, in slow motion, The red zone, What the frame looks like, Where this goes
+Nodes (5): Stage 1: Preprocessing, Stage 2: Compilation to assembly, Stage 3: Assembly to object code, Stage 4: Linking, Why this matters
 
 ### Community 8 - "new-post.mjs"
 Cohesion: 0.40
@@ -98,28 +100,36 @@ Cohesion: 0.29
 Nodes (7): katex/dist/katex.min.css, @/components/FormattedDate.astro, display, iso, @/components/TOC.astro, items, @/layouts/BlogPost.astro
 
 ### Community 10 - "why-polyglot-ayahbot.md"
-Cohesion: 0.50
-Nodes (3): The rule I held myself to, The temptation to keep it monolithic, Where the seams actually were
+Cohesion: 0.40
+Nodes (4): From characters to tokens, Maximal munch, and where it bites, Regular languages under the hood, Try it yourself
 
 ### Community 11 - "content.config.ts"
 Cohesion: 0.50
 Nodes (3): blog, collections, projects
 
+### Community 27 - "skip-locked-job-queue.md"
+Cohesion: 0.50
+Nodes (3): The core trick, The sharp edges, When to graduate
+
+### Community 28 - "why-i-run-arch-on-6gb.md"
+Cohesion: 0.50
+Nodes (3): Spend RAM where it thinks, The constraint is the curriculum, zram first
+
 ## Knowledge Gaps
-- **58 isolated node(s):** `name`, `type`, `version`, `private`, `dev` (+53 more)
+- **65 isolated node(s):** `name`, `type`, `version`, `private`, `dev` (+60 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `dependencies` connect `dependencies` to `package.json`?**
-  _High betweenness centrality (0.054) - this node is a cross-community bridge._
+  _High betweenness centrality (0.048) - this node is a cross-community bridge._
 - **Why does `@/layouts/Base.astro` connect `@/layouts/Base.astro` to `@/data/collections`, `@/layouts/BlogPost.astro`?**
-  _High betweenness centrality (0.041) - this node is a cross-community bridge._
+  _High betweenness centrality (0.037) - this node is a cross-community bridge._
 - **Why does `@/layouts/BlogPost.astro` connect `@/layouts/BlogPost.astro` to `@/data/collections`, `@/layouts/Base.astro`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **What connects `TODO: set the real domain before deploying; SITE env var overrides for now`, `name`, `type` to the rest of the system?**
-  _62 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _69 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.08695652173913043 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
