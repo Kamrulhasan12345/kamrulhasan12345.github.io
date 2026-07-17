@@ -8,9 +8,9 @@ const year = new Date().getFullYear();
 	<div class="container container--wide inner">
 		<span>© {year} {siteConfig.author}</span>
 		<span class="links">
-			<a href="/rss.xml">rss</a>
-			<a href={siteConfig.social.github}>github</a>
-			<span class="note">no trackers, no cookies, no external requests</span>
+			<a href="/rss.xml">RSS</a>
+			<a href={siteConfig.social.github}>GitHub</a>
+			<a href={`mailto:${siteConfig.email}`}>Email</a>
 		</span>
 	</div>
 </footer>
@@ -18,26 +18,23 @@ const year = new Date().getFullYear();
 <style>
 	footer {
 		margin-top: auto;
-		border-top: 1px solid var(--c-line);
-		font-size: var(--text-xs);
-		color: var(--c-dim);
+		border-top: 1px solid var(--line-soft);
+		font-size: var(--text-sm);
+		color: var(--text-faint);
 	}
 	.inner {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.4rem 1.5rem;
-		padding-block: 1.1rem;
+		gap: 0.5rem 1.5rem;
+		padding-block: 1.5rem;
 		justify-content: space-between;
 	}
 	.links {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.4rem 1.5rem;
+		gap: 0.5rem 1.25rem;
 	}
-	a {
-		color: var(--c-dim);
-	}
-	.note::before {
-		content: "// ";
+	.links a {
+		color: var(--text-dim);
 	}
 </style>

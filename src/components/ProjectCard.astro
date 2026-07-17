@@ -6,65 +6,81 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const { title, summary, stack, links } = project.data;
+const { title, summary, year, stack, badge } = project.data;
 ---
 
 <article class="card">
-	<h3 class="title">
-		<a href={`/projects/${project.id}/`}>{title}</a>
-	</h3>
+	<a class="title-link" href={`/projects/${project.id}/`}>
+		<h3 class="title">{title}</h3>
+	</a>
+	<div class="head-meta">
+		{badge && <span class="badge">{badge}</span>}
+		<span class="year meta">{year}</span>
+	</div>
 	<p class="summary">{summary}</p>
 	<div class="stack">
-		{stack.map((item) => <span class="chip">{item}</span>)}
-	</div>
-	<div class="links">
-		{links.repo && <a href={links.repo}>repo ↗</a>}
-		{links.live && <a href={links.live}>live ↗</a>}
-		{links.writeup && <a href={links.writeup}>writeup</a>}
+		{stack.map((item) => <span class="tag">{item}</span>)}
 	</div>
 </article>
 
 <style>
 	.card {
-		border: 1px solid var(--c-line);
-		background: var(--c-bg-raise);
-		padding: 1.1rem 1.25rem;
+		border: 1px solid var(--line);
+		background: var(--bg-card);
+		border-radius: 10px;
+		padding: 1.25rem 1.4rem;
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
-		transition: border-color 140ms ease;
+		gap: 0.6rem;
+		transition:
+			border-color 160ms ease,
+			transform 160ms ease;
 	}
 	.card:hover {
-		border-color: var(--c-dim);
+		border-color: var(--accent-muted);
+		transform: translateY(-2px);
+	}
+	.title-link {
+		text-decoration: none;
+		order: -1;
+	}
+	.title-link:hover {
+		text-decoration: none;
 	}
 	.title {
 		margin: 0;
 		font-size: var(--text-lg);
+		color: var(--heading);
 	}
-	.title a {
-		text-decoration: none;
-		color: var(--c-bright);
+	.title-link:hover .title {
+		color: var(--accent-strong);
 	}
-	.title a:hover {
-		color: var(--c-accent);
+	.head-meta {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+		margin-top: -0.2rem;
 	}
-	.title a::before {
-		content: "> ";
-		color: var(--c-accent);
+	.badge {
+		font-family: var(--font-mono);
+		font-size: var(--text-xs);
+		letter-spacing: 0.04em;
+		color: var(--accent-strong);
+		border: 1px solid var(--accent-muted);
+		border-radius: 999px;
+		padding: 0.05rem 0.55rem;
 	}
 	.summary {
 		margin: 0;
 		font-size: var(--text-sm);
+		color: var(--text-dim);
 		flex-grow: 1;
+		line-height: 1.6;
 	}
 	.stack {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.25rem 0.7rem;
-	}
-	.links {
-		display: flex;
-		gap: 1.25rem;
-		font-size: var(--text-sm);
+		gap: 0.35rem 0.4rem;
 	}
 </style>

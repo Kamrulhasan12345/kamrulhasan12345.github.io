@@ -6,7 +6,7 @@ import remarkMath from "remark-math";
 
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions.mjs";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
-import phosphor from "./src/styles/shiki-phosphor.json";
+import codeTheme from "./src/styles/shiki-dark.json";
 
 export default defineConfig({
 	// TODO: set the real domain before deploying; SITE env var overrides for now
@@ -20,7 +20,7 @@ export default defineConfig({
 		rehypePlugins: [rehypeKatex],
 		shikiConfig: {
 			// @ts-expect-error custom textmate theme JSON satisfies the shape at runtime
-			theme: phosphor,
+			theme: codeTheme,
 			wrap: false,
 		},
 	},

@@ -1,33 +1,29 @@
 ---
 import Base from "@/layouts/Base.astro";
-import { PROMPT } from "@/site.config";
 ---
 
 <Base title="404" description="Page not found.">
-	<div class="container">
-		<p class="line">
-			<span class="prompt">{PROMPT}:~$</span> cd <span id="path">/requested/page</span>
-		</p>
-		<p class="line error">bash: cd: no such file or directory</p>
-		<p class="line"><span class="prompt">{PROMPT}:~$</span> cd <a href="/">~</a><span class="cursor" aria-hidden="true"></span></p>
+	<div class="container box">
+		<p class="code">404</p>
+		<h1>Page not found</h1>
+		<p class="sub">The page you're looking for doesn't exist or has moved.</p>
+		<p><a href="/">← Back home</a></p>
 	</div>
-	<script is:inline>
-		document.getElementById("path").textContent = location.pathname;
-	</script>
 </Base>
 
 <style>
-	.container {
+	.box {
 		padding-block: 6rem;
+		text-align: center;
 	}
-	.line {
-		margin: 0 0 0.4rem;
+	.code {
+		font-family: var(--font-mono);
+		font-size: 3rem;
+		color: var(--accent);
+		margin: 0;
 	}
-	.prompt {
-		color: var(--c-accent);
-		font-weight: 700;
-	}
-	.error {
-		color: var(--c-red);
+	.sub {
+		color: var(--text-dim);
+		margin-bottom: 1.5rem;
 	}
 </style>

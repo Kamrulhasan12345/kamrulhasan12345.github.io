@@ -1,18 +1,22 @@
 ---
 title: "NodeCommerce"
-summary: "E-commerce backend that placed at AI Buildfest. Node.js, built for correctness over checkout theatrics."
-role: "Author"
-stack: ["Node.js", "REST API"]
+summary: "Bangladesh-wide demand forecasting across 64 districts and 495 upazilas — LightGBM quantile regression over a 111-feature set, a Neo4j knowledge graph with Node2Vec embeddings, FAISS similarity search, and an LLM layer, demoed live on a choropleth dashboard."
+year: "2025"
+category: "ml"
+badge: "AI Buildfest placement"
+stack: ["LightGBM", "Neo4j", "Node2Vec", "FAISS", "Python"]
 links: {}
-# TODO: add repo link and Buildfest placement details
 featured: true
-order: 2
+order: 1
 ---
 
-An e-commerce backend built in Node.js, entered into AI Buildfest where it
-placed. <!-- TODO: verify placement (which position, which year) -->
+A demand-forecasting system covering all of Bangladesh — 64 districts and 495
+upazilas. The core is a LightGBM quantile-regression model over a 111-feature
+set, giving prediction intervals rather than point estimates.
 
-Focus areas: order/inventory consistency, a clean REST surface, and keeping the
-dependency tree small enough to audit.
+Around the model sits a Neo4j knowledge graph with Node2Vec embeddings and FAISS
+similarity search, so related regions and products inform each other's forecasts,
+plus an LLM layer for querying the results in natural language. Demoed live with
+a choropleth dashboard at AI Buildfest, where it placed.
 
-<!-- TODO: expand with architecture details -->
+<!-- TODO: add repo/demo links and confirm the exact Buildfest placement -->
