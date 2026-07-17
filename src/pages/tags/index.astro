@@ -8,40 +8,44 @@ const tags = await getAllTags();
 <Base title="Tags" description="All blog post tags.">
 	<div class="container">
 		<h1>Tags</h1>
-		<p class="cmd">grep -c . ~/blog/tags/*</p>
 		<ul>
 			{
 				tags.map(({ tag, count }) => (
 					<li>
-						<a class="chip" href={`/tags/${tag}/`}>
-							{tag}
-						</a>
-						<span class="count">{count} post{count === 1 ? "" : "s"}</span>
+						<a href={`/tags/${tag}/`}>{tag}</a>
+						<span class="count meta">
+							{count} post{count === 1 ? "" : "s"}
+						</span>
 					</li>
 				))
 			}
+			{tags.length === 0 && <p class="empty">No tags yet.</p>}
 		</ul>
 	</div>
 </Base>
 
 <style>
 	.container {
-		padding-block: 2.5rem;
+		padding-block: 3rem;
 	}
 	ul {
 		list-style: none;
-		margin: 0;
+		margin: 1.5rem 0 0;
 		padding: 0;
+		max-width: 26rem;
 	}
 	li {
-		padding: 0.35rem 0;
-		border-bottom: 1px dashed var(--c-line);
+		padding: 0.6rem 0;
+		border-bottom: 1px solid var(--line-soft);
 		display: flex;
 		justify-content: space-between;
-		max-width: 24rem;
+		align-items: baseline;
+		gap: 1rem;
 	}
-	.count {
-		color: var(--c-dim);
-		font-size: var(--text-sm);
+	li a {
+		font-weight: 500;
+	}
+	.empty {
+		color: var(--text-dim);
 	}
 </style>

@@ -1,15 +1,17 @@
 ---
-title: "Pi homelab"
-summary: "A Raspberry Pi homelab: self-hosted services, network experiments, and a place to break things that aren't production."
-role: "Operator"
-stack: ["Raspberry Pi", "Linux", "Self-hosting"]
+title: "Pi Zero homelab"
+summary: "A headless Raspberry Pi Zero 2 W node — the seed of a homelab and the target platform for embedded and on-device ML experiments (NEON int8 GEMM, TFLite quantization)."
+year: "2025"
+category: "hardware"
+stack: ["Raspberry Pi", "Linux", "NEON", "TFLite"]
 links: {}
 featured: false
-order: 6
+order: 11
 ---
 
-A Raspberry Pi homelab that serves two purposes: self-hosting useful services,
-and being the sacrificial environment for experiments that shouldn't happen on
-a daily driver.
+A headless Raspberry Pi Zero 2 W that serves two roles: the seed node of a
+homelab, and the target platform for on-device ML experiments — hand-written
+NEON int8 GEMM kernels and TFLite quantization, where every cycle and byte
+actually matters.
 
-<!-- TODO: list actual services and topology -->
+<!-- TODO: list services / topology as the homelab grows -->

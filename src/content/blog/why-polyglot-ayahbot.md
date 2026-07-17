@@ -1,53 +1,63 @@
 ---
 title: "Why AyahBot v4 went polyglot"
-description: "Rewriting a Qur'an verse bot as several services in different languages — when that's a real architectural win and when it's just résumé-driven complexity."
+description: "Rewriting a Qur'an verse bot as Rust and TypeScript services around a PostgreSQL queue — when a language boundary is a real architectural win and when it's just résumé-driven complexity."
 publishDate: 2026-07-10
-tags: ["architecture", "typescript", "projects"]
+tags: ["architecture", "rust", "postgres"]
 draft: true
 ---
 
 AyahBot's job is small: deliver Qur'an verses with translations, on schedule,
-reliably. Version 4 rebuilt it as a polyglot system — multiple services, more
-than one language. This post is the honest argument for why, including the parts
-where "use the right tool" shades into "use the tool I wanted to practice."
+reliably. Version 4 rebuilt it as a polyglot system — a TypeScript gateway, two
+Rust services, and a PostgreSQL job queue. This is the honest argument for why,
+including the parts where "use the right tool" shades into "use the tool I
+wanted to practice."
 
-> Seed post for the blog pipeline. Kamrul: this is drawn from your v4 work but
-> the specifics below are placeholders — fill in the real component split before
-> flipping `draft: false`.
+> Draft — this is drawn from the real v4 architecture but still being edited.
 
 ## The temptation to keep it monolithic
 
 A single-language service is the correct default. One runtime, one dependency
 tree, one deploy, one mental model. You reach for more only when a boundary in
-the problem is *already* there and the languages fall on either side of it.
+the problem is *already* there and the languages fall naturally on either side.
 
 :::warning
-"Polyglot architecture" is one of the easiest ways to turn a weekend project
-into an operations burden. Every language you add is another toolchain, another
-set of CVEs to track, and another way for the deploy to fail at 2 a.m. Justify
-each one.
+"Polyglot architecture" is one of the easiest ways to turn a side project into
+an operations burden. Every language you add is another toolchain, another set
+of CVEs to track, and another way for the deploy to fail. Justify each one.
 :::
 
 ## Where the seams actually were
 
-<!-- TODO: replace with the real v4 breakdown -->
+The v4 split, and why each piece is where it is:
 
-The split that earned its keep in v4:
+- **Natiq** — a TypeScript gateway on the delivery surface, where the ecosystem
+  for the delivery targets already lives.
+- **Katib** — a Rust gRPC node for the heavier request path, where predictable
+  latency and tight memory behavior matter.
+- **Barid** — a Rust worker draining the job queue.
 
-- **Scheduling and delivery** — the always-on part, latency-tolerant, mostly
-  I/O. TypeScript, because the ecosystem for the delivery targets lives there.
-- **The heavier processing path** — where a JVM's maturity and libraries paid
-  off enough to be worth the second runtime.
+The queue itself is the part I'm happiest with: a plain PostgreSQL table drained
+with `SELECT … FOR UPDATE SKIP LOCKED`.
 
-The rule I held myself to: a new language has to remove more complexity from one
-side of a boundary than the boundary itself adds.
+```sql
+SELECT id, payload
+FROM jobs
+WHERE status = 'pending'
+ORDER BY created_at
+FOR UPDATE SKIP LOCKED
+LIMIT 1;
+```
 
-## What I'd tell past-me
+`SKIP LOCKED` lets many workers pull from the same table without stepping on
+each other — no broker, no extra moving part, just a property of the database I
+already have.
 
-If the only reason a component is in a second language is "I wanted to," collapse
-it back. The polyglot version of AyahBot is better than v3 not because it uses
-more languages, but because the boundaries were already real and the split made
-each side simpler to reason about.
+## The rule I held myself to
+
+A new language has to remove more complexity from one side of a boundary than
+the boundary itself adds. Natiq and the Rust services pass that test because the
+boundaries were real before the rewrite. If the only reason a component were in
+a second language was "I wanted to," it would collapse back into its neighbor.
 
 That's the whole test, and it's worth applying before the first `git init`, not
 after.

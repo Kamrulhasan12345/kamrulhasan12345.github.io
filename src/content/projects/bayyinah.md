@@ -1,14 +1,20 @@
 ---
 title: "Bayyinah"
-summary: "An Islamic study tool built under the Bitcraft label."
-role: "Author"
-stack: ["TypeScript"]
+summary: "A desktop Qur'an study suite: SQLite FTS5 full-text search, collaborative Halaqa study rooms over STOMP/WebRTC, and a semantic recommendation layer built on MiniLM embeddings, FAISS, and LLM summarization."
+year: "2025"
+category: "islamic"
+stack: ["JavaFX", "Spring Boot", "FTS5", "WebRTC", "FAISS"]
 links: {}
-# TODO: verify what Bayyinah actually is, its stack, and add links
 featured: false
-order: 5
+order: 6
 ---
 
-<!-- TODO: describe Bayyinah — purpose, stack, status -->
+A desktop Qur'an study suite combining fast local search with collaborative and
+semantic features:
 
-Part of the Bitcraft family of small, single-purpose tools.
+- **SQLite FTS5** full-text search over the corpus;
+- collaborative **Halaqa study rooms** over STOMP and WebRTC;
+- a semantic recommendation layer on **MiniLM embeddings + FAISS**, with LLM
+  summarization on top.
+
+<!-- TODO: add repo link -->

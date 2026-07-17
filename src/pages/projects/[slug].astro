@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { title, summary, role, stack, links } = project.data;
+const { title, summary, year, category, stack, badge, links } = project.data;
 const { Content } = await render(project);
 ---
 
@@ -20,26 +20,42 @@ const { Content } = await render(project);
 	<div class="container">
 		<article>
 			<header>
-				<p class="cmd">cat ~/projects/{project.id}.md</p>
+				<a class="back" href="/projects/">← All projects</a>
 				<h1>{title}</h1>
 				<p class="summary">{summary}</p>
 				<dl class="facts">
-					<dt>role</dt>
-					<dd>{role}</dd>
-					<dt>stack</dt>
-					<dd class="stack">
-						{stack.map((item) => <span class="chip">{item}</span>)}
-					</dd>
+					<div>
+						<dt>Year</dt>
+						<dd>{year}</dd>
+					</div>
+					<div>
+						<dt>Area</dt>
+						<dd>{category}</dd>
+					</div>
+					{
+						badge && (
+							<div>
+								<dt>Status</dt>
+								<dd>{badge}</dd>
+							</div>
+						)
+					}
+					<div class="stack-row">
+						<dt>Stack</dt>
+						<dd class="stack">
+							{stack.map((item) => <span class="tag">{item}</span>)}
+						</dd>
+					</div>
 					{
 						(links.repo || links.live || links.writeup) && (
-							<>
-								<dt>links</dt>
+							<div class="links-row">
+								<dt>Links</dt>
 								<dd class="links">
-									{links.repo && <a href={links.repo}>repo ↗</a>}
-									{links.live && <a href={links.live}>live ↗</a>}
-									{links.writeup && <a href={links.writeup}>writeup</a>}
+									{links.repo && <a href={links.repo}>Repo ↗</a>}
+									{links.live && <a href={links.live}>Live ↗</a>}
+									{links.writeup && <a href={links.writeup}>Writeup</a>}
 								</dd>
-							</>
+							</div>
 						)
 					}
 				</dl>
@@ -47,46 +63,62 @@ const { Content } = await render(project);
 			<div class="prose">
 				<Content />
 			</div>
-			<p class="back"><a href="/projects/">← all projects</a></p>
 		</article>
 	</div>
 </Base>
 
 <style>
 	.container {
-		padding-block: 2.5rem;
+		padding-block: 3rem;
+	}
+	.back {
+		font-family: var(--font-mono);
+		font-size: var(--text-sm);
+		color: var(--text-dim);
+		text-decoration: none;
+		display: inline-block;
+		margin-bottom: 1.5rem;
+	}
+	.back:hover {
+		color: var(--accent-strong);
+		text-decoration: none;
 	}
 	.summary {
-		color: var(--c-dim);
-		margin-top: 0.25rem;
+		color: var(--text-dim);
+		font-size: var(--text-lg);
+		margin-top: 0.5rem;
 	}
 	.facts {
 		display: grid;
-		grid-template-columns: max-content 1fr;
-		gap: 0.35rem 1.5rem;
-		margin: 1.5rem 0 2.5rem;
-		padding: 1rem 1.25rem;
-		border: 1px solid var(--c-line);
-		background: var(--c-bg-raise);
+		gap: 0.85rem;
+		margin: 2rem 0 2.5rem;
+		padding: 1.25rem 1.4rem;
+		border: 1px solid var(--line);
+		border-radius: 10px;
+		background: var(--bg-card);
 		font-size: var(--text-sm);
 	}
-	dt {
-		color: var(--c-dim);
+	.facts > div {
+		display: grid;
+		grid-template-columns: 5rem 1fr;
+		gap: 1rem;
+		align-items: baseline;
 	}
-	dt::after {
-		content: ":";
+	dt {
+		font-family: var(--font-mono);
+		font-size: var(--text-xs);
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--text-faint);
 	}
 	dd {
 		margin: 0;
+		color: var(--text);
 	}
 	.stack,
 	.links {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.25rem 0.9rem;
-	}
-	.back {
-		margin-top: 3rem;
-		font-size: var(--text-sm);
+		gap: 0.35rem 0.5rem;
 	}
 </style>

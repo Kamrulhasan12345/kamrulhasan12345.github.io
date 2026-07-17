@@ -1,8 +1,8 @@
 # kamrulhasan — portfolio & blog
 
 Personal site for Mohammad Kamrul Hasan. Astro, hand-built, zero client
-framework, self-hosted fonts, no external requests at runtime. Phosphor-green
-CRT aesthetic.
+framework, self-hosted fonts (Inter + JetBrains Mono), no external requests at
+runtime. Calm dark, restrained aesthetic.
 
 ## Develop
 
@@ -39,7 +39,7 @@ publish, set `draft: false` (or remove the line).
 
 ### What the Markdown pipeline gives you
 
-- Syntax highlighting via a custom phosphor Shiki theme (`src/styles/shiki-phosphor.json`), tuned for C / asm
+- Syntax highlighting via a custom calm-dark Shiki theme (`src/styles/shiki-dark.json`), tuned for C / asm
 - Math with KaTeX: `$inline$` and `$$display$$`
 - Admonitions: `:::note`, `:::tip`, `:::warning` … `:::`
 - GFM footnotes and tables

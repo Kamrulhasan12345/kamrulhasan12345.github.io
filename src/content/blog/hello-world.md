@@ -10,10 +10,8 @@ Before you can smash a stack you have to be able to read one. This post walks a
 single function call on x86-64 System V and names every byte the CPU touches, so
 that a `gdb` backtrace stops being magic.
 
-> This is a seed post written to exercise the blog pipeline — code blocks, math,
-> admonitions, footnotes, and the table of contents. Kamrul: edit or delete
-> before publishing. It's marked `draft: true` so it won't ship until you flip
-> that flag.
+> Draft — still being edited. Marked `draft: true`, so it won't ship until that
+> flag is flipped.
 
 ## The call, in slow motion
 

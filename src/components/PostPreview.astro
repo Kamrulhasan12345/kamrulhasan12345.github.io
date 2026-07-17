@@ -10,58 +10,56 @@ const { post } = Astro.props;
 ---
 
 <article class="preview">
-	<div class="meta">
-		<FormattedDate date={post.data.publishDate} />
-		{post.data.draft && <span class="draft">[draft]</span>}
-	</div>
-	<h3 class="title">
-		<a href={`/blog/${post.id}/`}>{post.data.title}</a>
-	</h3>
-	<p class="desc">{post.data.description}</p>
-	{
-		post.data.tags.length > 0 && (
-			<div class="tags">
-				{post.data.tags.map((tag) => (
-					<a class="chip" href={`/tags/${tag}/`}>
-						{tag}
-					</a>
-				))}
-			</div>
-		)
-	}
+	<a class="link" href={`/blog/${post.id}/`}>
+		<div class="row">
+			<h3 class="title">{post.data.title}</h3>
+			<span class="date meta">
+				<FormattedDate date={post.data.publishDate} />
+				{post.data.draft && <span class="draft">draft</span>}
+			</span>
+		</div>
+		<p class="desc">{post.data.description}</p>
+	</a>
 </article>
 
 <style>
 	.preview {
-		padding: 1.1rem 0;
-		border-bottom: 1px dashed var(--c-line);
+		border-bottom: 1px solid var(--line-soft);
 	}
-	.meta {
-		font-size: var(--text-xs);
-		color: var(--c-dim);
+	.link {
+		display: block;
+		padding: 1.25rem 0;
+		text-decoration: none;
+		color: inherit;
 	}
-	.draft {
-		color: var(--c-amber);
-		margin-left: 0.5rem;
+	.link:hover {
+		text-decoration: none;
+	}
+	.row {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 1rem;
+		flex-wrap: wrap;
 	}
 	.title {
-		margin: 0.2rem 0 0.3rem;
+		margin: 0;
 		font-size: var(--text-lg);
+		color: var(--heading);
 	}
-	.title a {
-		text-decoration: none;
-		color: var(--c-bright);
+	.link:hover .title {
+		color: var(--accent-strong);
 	}
-	.title a:hover {
-		color: var(--c-accent);
+	.date {
+		flex-shrink: 0;
+	}
+	.draft {
+		color: #e0b775;
+		margin-left: 0.5rem;
 	}
 	.desc {
-		margin: 0 0 0.4rem;
+		margin: 0.4rem 0 0;
 		font-size: var(--text-sm);
-	}
-	.tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.25rem 0.75rem;
+		color: var(--text-dim);
 	}
 </style>
