@@ -2,9 +2,9 @@
 
 Personal site for Mohammad Kamrul Hasan. Astro, hand-built, zero client
 framework, self-hosted fonts (Silkscreen + Inter + JetBrains Mono), no external
-requests at runtime. Pixel-modernist design system on a calm dark base: pixel
-display type, notched `pxbox` cards, hard offset shadows, numbered section
-heads, square mono chips, amber secondary accent.
+requests at runtime. Pixel-modernist design system on a blue-black base: pixel
+display type, phosphor-green primary accent, notched `pxbox` cards, hard offset
+shadows, numbered section heads, square mono chips, amber secondary accent.
 
 ## Develop
 

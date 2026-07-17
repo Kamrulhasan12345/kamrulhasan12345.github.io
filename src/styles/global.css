@@ -64,28 +64,29 @@
 /* ------------------------------------------------------------------ */
 
 :root {
-	/* calm dark surface */
-	--bg: #101418;
-	--bg-raise: #171c21;
-	--bg-card: #14191e;
-	--line: #262c34;
-	--line-soft: #1e242b;
+	/* deep blue-black surface, slightly green-tinted lines */
+	--bg: #090c0f;
+	--bg-raise: #10151a;
+	--bg-card: #0d1216;
+	--line: #222a25;
+	--line-soft: #1a211c;
 
-	/* text */
-	--text: #ced3d9;
-	--text-dim: #949ba3;
-	--text-faint: #6b727a;
-	--heading: #eef1f4;
+	/* ink scale — cool paper-white with a green cast */
+	--text: #cfd6cf;
+	--text-dim: #8a958f;
+	--text-faint: #5d6861;
+	--heading: #e8ede8;
 
-	/* cool primary accent + warm secondary (badges, venues, highlights) */
-	--accent: #8ab4d8;
-	--accent-strong: #a7c8e6;
-	--accent-muted: #38475a;
-	--amber: #e0b775;
-	--amber-muted: rgba(224, 183, 117, 0.35);
+	/* phosphor primary accent + amber secondary (badges, venues, highlights) */
+	--accent: #6ee86e;
+	--accent-strong: #93f293;
+	--accent-muted: #2e5c34;
+	--glow: rgba(110, 232, 110, 0.28);
+	--amber: #f2b035;
+	--amber-muted: rgba(242, 176, 53, 0.35);
 
 	/* hard pixel shadow color */
-	--px-shadow: rgba(56, 71, 90, 0.55);
+	--px-shadow: rgba(46, 92, 52, 0.5);
 
 	/* pixel corner notch size */
 	--px: 4px;
@@ -104,9 +105,9 @@
 		"JetBrains Mono", ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
 	--font-pixel: "Silkscreen", "JetBrains Mono", monospace;
 
-	/* secondary accent used only by the pixel glitch */
-	--glitch-a: #8ab4d8;
-	--glitch-b: #d98fa6;
+	/* glitch layers: phosphor + magenta, as on the reference site */
+	--glitch-a: #6ee86e;
+	--glitch-b: #e86ec4;
 
 	/* layout */
 	--w-prose: 42rem;
@@ -125,7 +126,7 @@
 
 html {
 	color-scheme: dark;
-	scrollbar-color: var(--line) var(--bg);
+	scrollbar-color: var(--accent-muted) var(--bg);
 }
 
 body {
@@ -143,8 +144,8 @@ body {
 }
 
 ::selection {
-	background: var(--accent-muted);
-	color: var(--heading);
+	background: var(--accent);
+	color: var(--bg);
 }
 
 :focus-visible {
@@ -277,9 +278,9 @@ video {
 		box-shadow 140ms ease;
 }
 a.tag:hover {
-	color: var(--accent-strong);
+	color: var(--accent);
 	border-color: var(--accent-muted);
-	background: rgba(138, 180, 216, 0.06);
+	background: rgba(110, 232, 110, 0.06);
 	transform: translate(-1px, -1px);
 	box-shadow: 3px 3px 0 var(--px-shadow);
 	text-decoration: none;
@@ -326,12 +327,12 @@ a.tag:hover {
 }
 .btn-primary {
 	background: var(--accent);
-	color: #10151a;
+	color: var(--bg);
 	box-shadow: var(--px) var(--px) 0 var(--accent-muted);
 }
 .btn-primary:hover {
 	background: var(--accent-strong);
-	color: #10151a;
+	color: var(--bg);
 	transform: translate(-2px, -2px);
 	box-shadow: 6px 6px 0 var(--accent-muted);
 }
@@ -523,10 +524,10 @@ a.tag:hover {
 	margin-bottom: 0.4rem;
 }
 .admonition--warning {
-	border-left-color: #d8a657;
+	border-left-color: var(--amber);
 }
 .admonition--warning .admonition-label {
-	color: #e0b775;
+	color: var(--amber);
 }
 .admonition--tip {
 	border-left-color: #89b482;

@@ -844,13 +844,23 @@
       "norm_label": "latest"
     },
     {
+      "label": "tickerItems",
+      "file_type": "code",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "src_pages_index_tickeritems",
+      "community": 0,
+      "norm_label": "tickeritems"
+    },
+    {
       "label": "[...slug].png.ts",
       "file_type": "code",
       "source_file": "src/pages/og/[...slug].png.ts",
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_pages_og_slug_png",
-      "community": 0,
+      "community": 2,
       "norm_label": "[...slug].png.ts"
     },
     {
@@ -860,7 +870,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_pages_og_slug_png_getstaticpaths",
-      "community": 0,
+      "community": 2,
       "norm_label": "getstaticpaths()"
     },
     {
@@ -870,7 +880,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "src_pages_og_slug_png_colors",
-      "community": 0,
+      "community": 2,
       "norm_label": "colors"
     },
     {
@@ -880,7 +890,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "src_pages_og_slug_png_get",
-      "community": 0,
+      "community": 2,
       "norm_label": "get()"
     },
     {
@@ -920,7 +930,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_pages_rss_xml",
-      "community": 2,
+      "community": 0,
       "norm_label": "rss.xml.ts"
     },
     {
@@ -930,7 +940,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_pages_rss_xml_get",
-      "community": 2,
+      "community": 0,
       "norm_label": "get()"
     },
     {
@@ -2929,6 +2939,16 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "src_pages_index",
+      "target": "src_pages_index_tickeritems",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -3388,5 +3408,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "7dfe3a3151988bad5bfd6845c707c5ae52dc8383"
+  "built_at_commit": "c22288c953e27fbba4863df7e30155d55307b6e6"
 }

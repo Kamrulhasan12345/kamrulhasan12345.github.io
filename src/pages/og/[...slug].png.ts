@@ -17,14 +17,14 @@ export async function getStaticPaths() {
 }
 
 const colors = {
-	bg: "#101418",
-	card: "#14191e",
-	line: "#262c34",
-	text: "#ced3d9",
-	heading: "#eef1f4",
-	dim: "#949ba3",
-	accent: "#8ab4d8",
-	amber: "#e0b775",
+	bg: "#090c0f",
+	card: "#0d1216",
+	line: "#222a25",
+	text: "#cfd6cf",
+	heading: "#e8ede8",
+	dim: "#8a958f",
+	accent: "#6ee86e",
+	amber: "#f2b035",
 };
 
 export async function GET({ props }: APIContext) {
