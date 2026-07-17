@@ -52,13 +52,14 @@ const { post } = Astro.props;
 		color: var(--heading);
 	}
 	.link:hover .title {
-		color: var(--accent-strong);
+		color: var(--accent);
+		text-shadow: 0 0 14px var(--glow);
 	}
 	.date {
 		flex-shrink: 0;
 	}
 	.draft {
-		color: #e0b775;
+		color: var(--amber);
 		margin-left: 0.5rem;
 	}
 	.desc {

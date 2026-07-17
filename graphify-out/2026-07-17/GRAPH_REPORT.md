@@ -1,16 +1,16 @@
 # Graph Report - kamrulhasan12345  (2026-07-17)
 
 ## Corpus Check
-- 48 files · ~9,494 words
+- 48 files · ~10,481 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 156 nodes · 177 edges · 29 communities
+- 157 nodes · 178 edges · 29 communities
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7dfe3a31`
+- Built from commit: `c22288c9`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -43,12 +43,12 @@
 10. `kamrulhasan — portfolio & blog` - 5 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `GET()` --calls--> `getPublishedPosts()`  [EXTRACTED]
-  src/pages/rss.xml.ts → src/data/collections.ts
-- `getStaticPaths()` --calls--> `getPublishedPosts()`  [EXTRACTED]
-  src/pages/blog/[slug].astro → src/data/collections.ts
 - `getStaticPaths()` --calls--> `getPublishedPosts()`  [EXTRACTED]
   src/pages/og/[...slug].png.ts → src/data/collections.ts
+- `getStaticPaths()` --calls--> `getPublishedPosts()`  [EXTRACTED]
+  src/pages/blog/[slug].astro → src/data/collections.ts
+- `GET()` --calls--> `getPublishedPosts()`  [EXTRACTED]
+  src/pages/rss.xml.ts → src/data/collections.ts
 - `getStaticPaths()` --calls--> `getAllProjects()`  [EXTRACTED]
   src/pages/projects/[slug].astro → src/data/collections.ts
 - `getStaticPaths()` --calls--> `getPublishedPosts()`  [EXTRACTED]
@@ -60,7 +60,7 @@
 ## Communities (29 total, 0 thin omitted)
 
 ### Community 0 - "@/data/collections"
-Cohesion: 0.18
+Cohesion: 0.19
 Nodes (14): @/components/PostPreview.astro, @/components/ProjectCard.astro, @/data/collections, getAllProjects(), getAllTags(), getFeaturedProjects(), getPublishedPosts(), getStaticPaths() (+6 more)
 
 ### Community 1 - "dependencies"
@@ -68,8 +68,8 @@ Cohesion: 0.09
 Nodes (23): @astrojs/rss, @astrojs/sitemap, katex, mdast-util-to-string, dependencies, astro, @astrojs/rss, @astrojs/sitemap (+15 more)
 
 ### Community 2 - "@/layouts/Base.astro"
-Cohesion: 0.15
-Nodes (12): @/styles/global.css, @/components/Footer.astro, year, @/components/Header.astro, @/layouts/Base.astro, canonical, socialImage, GET() (+4 more)
+Cohesion: 0.13
+Nodes (13): @/styles/global.css, @/components/Footer.astro, year, @/components/Header.astro, @/layouts/Base.astro, canonical, socialImage, colors (+5 more)
 
 ### Community 3 - "package.json"
 Cohesion: 0.12
@@ -116,21 +116,23 @@ Cohesion: 0.50
 Nodes (3): Spend RAM where it thinks, The constraint is the curriculum, zram first
 
 ## Knowledge Gaps
-- **65 isolated node(s):** `name`, `type`, `version`, `private`, `dev` (+60 more)
+- **66 isolated node(s):** `name`, `type`, `version`, `private`, `dev` (+61 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `dependencies` connect `dependencies` to `package.json`?**
-  _High betweenness centrality (0.048) - this node is a cross-community bridge._
+  _High betweenness centrality (0.047) - this node is a cross-community bridge._
 - **Why does `@/layouts/Base.astro` connect `@/layouts/Base.astro` to `@/data/collections`, `@/layouts/BlogPost.astro`?**
   _High betweenness centrality (0.037) - this node is a cross-community bridge._
 - **Why does `@/layouts/BlogPost.astro` connect `@/layouts/BlogPost.astro` to `@/data/collections`, `@/layouts/Base.astro`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **What connects `TODO: set the real domain before deploying; SITE env var overrides for now`, `name`, `type` to the rest of the system?**
-  _69 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _70 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.08695652173913043 - nodes in this community are weakly interconnected._
+- **Should `@/layouts/Base.astro` be split into smaller, more focused modules?**
+  _Cohesion score 0.13157894736842105 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
