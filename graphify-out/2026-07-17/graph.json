@@ -503,7 +503,7 @@
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "id": "src_components_formatteddate",
-      "community": 0,
+      "community": 9,
       "norm_label": "@/components/formatteddate.astro"
     },
     {
@@ -513,8 +513,18 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_components_formatteddate_iso",
-      "community": 0,
+      "community": 9,
       "norm_label": "iso"
+    },
+    {
+      "label": "display",
+      "file_type": "code",
+      "source_file": "src/components/FormattedDate.astro",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "src_components_formatteddate_display",
+      "community": 9,
+      "norm_label": "display"
     },
     {
       "label": "@/components/Header.astro",
@@ -634,7 +644,7 @@
       "label": "collections",
       "file_type": "code",
       "source_file": "src/content.config.ts",
-      "source_location": "L35",
+      "source_location": "L37",
       "_origin": "ast",
       "id": "src_content_config_collections",
       "community": 11,
@@ -810,7 +820,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_pages_index",
-      "community": 2,
+      "community": 0,
       "norm_label": "index.astro"
     },
     {
@@ -820,7 +830,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_pages_index_featured",
-      "community": 2,
+      "community": 0,
       "norm_label": "featured"
     },
     {
@@ -830,7 +840,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_pages_index_latest",
-      "community": 2,
+      "community": 0,
       "norm_label": "latest"
     },
     {
@@ -867,7 +877,7 @@
       "label": "GET()",
       "file_type": "code",
       "source_file": "src/pages/og/[...slug].png.ts",
-      "source_location": "L30",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "src_pages_og_slug_png_get",
       "community": 0,
@@ -910,7 +920,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_pages_rss_xml",
-      "community": 0,
+      "community": 2,
       "norm_label": "rss.xml.ts"
     },
     {
@@ -920,7 +930,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_pages_rss_xml_get",
-      "community": 0,
+      "community": 2,
       "norm_label": "get()"
     },
     {
@@ -950,7 +960,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_pages_tags_index",
-      "community": 0,
+      "community": 2,
       "norm_label": "index.astro"
     },
     {
@@ -1017,9 +1027,9 @@
       "label": "TODO: set the real domain before deploying (also see astro.config.ts)",
       "file_type": "rationale",
       "source_file": "src/site.config.ts",
-      "source_location": "L5",
+      "source_location": "L3",
       "_origin": "ast",
-      "id": "src_site_config_rationale_5",
+      "id": "src_site_config_rationale_3",
       "community": 2,
       "norm_label": "todo: set the real domain before deploying (also see astro.config.ts)"
     },
@@ -1034,14 +1044,14 @@
       "norm_label": "todo: verify email before publishing"
     },
     {
-      "label": "TODO: verify handles \u2014 placeholders until confirmed",
+      "label": "TODO: verify handles / add real URLs before publishing",
       "file_type": "rationale",
       "source_file": "src/site.config.ts",
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_site_config_rationale_13",
       "community": 2,
-      "norm_label": "todo: verify handles \u2014 placeholders until confirmed"
+      "norm_label": "todo: verify handles / add real urls before publishing"
     },
     {
       "label": "tsconfig.json",
@@ -1247,7 +1257,7 @@
       "label": "The call, in slow motion",
       "file_type": "document",
       "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L18",
+      "source_location": "L16",
       "_origin": "ast",
       "id": "src_content_blog_hello_world_the_call_in_slow_motion",
       "community": 7,
@@ -1257,7 +1267,7 @@
       "label": "What the frame looks like",
       "file_type": "document",
       "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L34",
+      "source_location": "L32",
       "_origin": "ast",
       "id": "src_content_blog_hello_world_what_the_frame_looks_like",
       "community": 7,
@@ -1267,7 +1277,7 @@
       "label": "The red zone",
       "file_type": "document",
       "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L70",
+      "source_location": "L68",
       "_origin": "ast",
       "id": "src_content_blog_hello_world_the_red_zone",
       "community": 7,
@@ -1277,7 +1287,7 @@
       "label": "A little arithmetic",
       "file_type": "document",
       "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L82",
+      "source_location": "L80",
       "_origin": "ast",
       "id": "src_content_blog_hello_world_a_little_arithmetic",
       "community": 7,
@@ -1287,7 +1297,7 @@
       "label": "Where this goes",
       "file_type": "document",
       "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L94",
+      "source_location": "L92",
       "_origin": "ast",
       "id": "src_content_blog_hello_world_where_this_goes",
       "community": 7,
@@ -1307,7 +1317,7 @@
       "label": "The temptation to keep it monolithic",
       "file_type": "document",
       "source_file": "src/content/blog/why-polyglot-ayahbot.md",
-      "source_location": "L18",
+      "source_location": "L17",
       "_origin": "ast",
       "id": "src_content_blog_why_polyglot_ayahbot_the_temptation_to_keep_it_monolithic",
       "community": 10,
@@ -1317,21 +1327,31 @@
       "label": "Where the seams actually were",
       "file_type": "document",
       "source_file": "src/content/blog/why-polyglot-ayahbot.md",
-      "source_location": "L31",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "src_content_blog_why_polyglot_ayahbot_where_the_seams_actually_were",
       "community": 10,
       "norm_label": "where the seams actually were"
     },
     {
-      "label": "What I'd tell past-me",
+      "label": "The rule I held myself to",
       "file_type": "document",
       "source_file": "src/content/blog/why-polyglot-ayahbot.md",
-      "source_location": "L45",
+      "source_location": "L55",
       "_origin": "ast",
-      "id": "src_content_blog_why_polyglot_ayahbot_what_i_d_tell_past_me",
+      "id": "src_content_blog_why_polyglot_ayahbot_the_rule_i_held_myself_to",
       "community": 10,
-      "norm_label": "what i'd tell past-me"
+      "norm_label": "the rule i held myself to"
+    },
+    {
+      "label": "agent-orchestration.md",
+      "file_type": "document",
+      "source_file": "src/content/projects/agent-orchestration.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_content_projects_agent_orchestration",
+      "community": 18,
+      "norm_label": "agent-orchestration.md"
     },
     {
       "label": "ayahbot.md",
@@ -1344,16 +1364,6 @@
       "norm_label": "ayahbot.md"
     },
     {
-      "label": "TODO: add repo link",
-      "file_type": "document",
-      "source_file": "src/content/projects/ayahbot.md",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "src_content_projects_ayahbot_todo_add_repo_link",
-      "community": 12,
-      "norm_label": "todo: add repo link"
-    },
-    {
       "label": "bayyinah.md",
       "file_type": "document",
       "source_file": "src/content/projects/bayyinah.md",
@@ -1364,14 +1374,64 @@
       "norm_label": "bayyinah.md"
     },
     {
-      "label": "TODO: verify what Bayyinah actually is, its stack, and add links",
+      "label": "competitive-programming.md",
       "file_type": "document",
-      "source_file": "src/content/projects/bayyinah.md",
-      "source_location": "L7",
+      "source_file": "src/content/projects/competitive-programming.md",
+      "source_location": "L1",
       "_origin": "ast",
-      "id": "src_content_projects_bayyinah_todo_verify_what_bayyinah_actually_is_its_stack_and_add_links",
-      "community": 13,
-      "norm_label": "todo: verify what bayyinah actually is, its stack, and add links"
+      "id": "src_content_projects_competitive_programming",
+      "community": 19,
+      "norm_label": "competitive-programming.md"
+    },
+    {
+      "label": "compiler-articles.md",
+      "file_type": "document",
+      "source_file": "src/content/projects/compiler-articles.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_content_projects_compiler_articles",
+      "community": 20,
+      "norm_label": "compiler-articles.md"
+    },
+    {
+      "label": "ctf-track.md",
+      "file_type": "document",
+      "source_file": "src/content/projects/ctf-track.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_content_projects_ctf_track",
+      "community": 21,
+      "norm_label": "ctf-track.md"
+    },
+    {
+      "label": "eventcast.md",
+      "file_type": "document",
+      "source_file": "src/content/projects/eventcast.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_content_projects_eventcast",
+      "community": 22,
+      "norm_label": "eventcast.md"
+    },
+    {
+      "label": "hardware-crypto-device.md",
+      "file_type": "document",
+      "source_file": "src/content/projects/hardware-crypto-device.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_content_projects_hardware_crypto_device",
+      "community": 23,
+      "norm_label": "hardware-crypto-device.md"
+    },
+    {
+      "label": "haunted-stadium.md",
+      "file_type": "document",
+      "source_file": "src/content/projects/haunted-stadium.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_content_projects_haunted_stadium",
+      "community": 24,
+      "norm_label": "haunted-stadium.md"
     },
     {
       "label": "homelab.md",
@@ -1384,6 +1444,16 @@
       "norm_label": "homelab.md"
     },
     {
+      "label": "ielts-app.md",
+      "file_type": "document",
+      "source_file": "src/content/projects/ielts-app.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_content_projects_ielts_app",
+      "community": 25,
+      "norm_label": "ielts-app.md"
+    },
+    {
       "label": "ilham.md",
       "file_type": "document",
       "source_file": "src/content/projects/ilham.md",
@@ -1392,16 +1462,6 @@
       "id": "src_content_projects_ilham",
       "community": 14,
       "norm_label": "ilham.md"
-    },
-    {
-      "label": "TODO: add repo link and correct stack",
-      "file_type": "document",
-      "source_file": "src/content/projects/ilham.md",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "src_content_projects_ilham_todo_add_repo_link_and_correct_stack",
-      "community": 14,
-      "norm_label": "todo: add repo link and correct stack"
     },
     {
       "label": "nodecommerce.md",
@@ -1414,24 +1474,14 @@
       "norm_label": "nodecommerce.md"
     },
     {
-      "label": "TODO: add repo link and Buildfest placement details",
+      "label": "version3-woocommerce.md",
       "file_type": "document",
-      "source_file": "src/content/projects/nodecommerce.md",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "src_content_projects_nodecommerce_todo_add_repo_link_and_buildfest_placement_details",
-      "community": 15,
-      "norm_label": "todo: add repo link and buildfest placement details"
-    },
-    {
-      "label": "secure-element.md",
-      "file_type": "document",
-      "source_file": "src/content/projects/secure-element.md",
+      "source_file": "src/content/projects/version3-woocommerce.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_content_projects_secure_element",
-      "community": 18,
-      "norm_label": "secure-element.md"
+      "id": "src_content_projects_version3_woocommerce",
+      "community": 26,
+      "norm_label": "version3-woocommerce.md"
     }
   ],
   "links": [
@@ -1971,17 +2021,6 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/pages/404.astro",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "src_pages_404",
-      "target": "src_site_config",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "src/pages/about.astro",
       "source_location": "L3",
       "weight": 1.0,
@@ -2056,10 +2095,20 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "src/site.config.ts",
-      "source_location": "L5",
+      "source_location": "L3",
       "weight": 1.0,
-      "source": "src_site_config_rationale_5",
+      "source": "src_site_config_rationale_3",
       "target": "src_site_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/FormattedDate.astro",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_components_formatteddate",
+      "target": "src_components_formatteddate_display",
       "confidence_score": 1.0
     },
     {
@@ -2233,7 +2282,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/content.config.ts",
-      "source_location": "L35",
+      "source_location": "L37",
       "weight": 1.0,
       "source": "src_content_config",
       "target": "src_content_config_collections",
@@ -2814,7 +2863,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/pages/og/[...slug].png.ts",
-      "source_location": "L30",
+      "source_location": "L29",
       "weight": 1.0,
       "source": "src_pages_og_slug_png",
       "target": "src_pages_og_slug_png_get",
@@ -3101,7 +3150,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L82",
+      "source_location": "L80",
       "weight": 1.0,
       "source": "src_content_blog_hello_world",
       "target": "src_content_blog_hello_world_a_little_arithmetic",
@@ -3111,7 +3160,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L18",
+      "source_location": "L16",
       "weight": 1.0,
       "source": "src_content_blog_hello_world",
       "target": "src_content_blog_hello_world_the_call_in_slow_motion",
@@ -3121,7 +3170,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L70",
+      "source_location": "L68",
       "weight": 1.0,
       "source": "src_content_blog_hello_world",
       "target": "src_content_blog_hello_world_the_red_zone",
@@ -3131,7 +3180,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L34",
+      "source_location": "L32",
       "weight": 1.0,
       "source": "src_content_blog_hello_world",
       "target": "src_content_blog_hello_world_what_the_frame_looks_like",
@@ -3141,7 +3190,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/content/blog/hello-world.md",
-      "source_location": "L94",
+      "source_location": "L92",
       "weight": 1.0,
       "source": "src_content_blog_hello_world",
       "target": "src_content_blog_hello_world_where_this_goes",
@@ -3151,7 +3200,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/content/blog/why-polyglot-ayahbot.md",
-      "source_location": "L18",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "src_content_blog_why_polyglot_ayahbot",
+      "target": "src_content_blog_why_polyglot_ayahbot_the_rule_i_held_myself_to",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/why-polyglot-ayahbot.md",
+      "source_location": "L17",
       "weight": 1.0,
       "source": "src_content_blog_why_polyglot_ayahbot",
       "target": "src_content_blog_why_polyglot_ayahbot_the_temptation_to_keep_it_monolithic",
@@ -3161,63 +3220,13 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/content/blog/why-polyglot-ayahbot.md",
-      "source_location": "L45",
-      "weight": 1.0,
-      "source": "src_content_blog_why_polyglot_ayahbot",
-      "target": "src_content_blog_why_polyglot_ayahbot_what_i_d_tell_past_me",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/content/blog/why-polyglot-ayahbot.md",
-      "source_location": "L31",
+      "source_location": "L29",
       "weight": 1.0,
       "source": "src_content_blog_why_polyglot_ayahbot",
       "target": "src_content_blog_why_polyglot_ayahbot_where_the_seams_actually_were",
       "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/content/projects/ayahbot.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "src_content_projects_ayahbot",
-      "target": "src_content_projects_ayahbot_todo_add_repo_link",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/content/projects/bayyinah.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "src_content_projects_bayyinah",
-      "target": "src_content_projects_bayyinah_todo_verify_what_bayyinah_actually_is_its_stack_and_add_links",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/content/projects/ilham.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "src_content_projects_ilham",
-      "target": "src_content_projects_ilham_todo_add_repo_link_and_correct_stack",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/content/projects/nodecommerce.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "src_content_projects_nodecommerce",
-      "target": "src_content_projects_nodecommerce_todo_add_repo_link_and_buildfest_placement_details",
-      "confidence_score": 1.0
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "2dd956dac379105de3066e5d991e5120dda0271a"
+  "built_at_commit": "9351c3ca0d4a36ccb67d18d4a01779e5ef3f6534"
 }
