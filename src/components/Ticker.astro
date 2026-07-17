@@ -1,0 +1,77 @@
+---
+const items = [
+	"SYSTEMS",
+	"HARDWARE SECURITY",
+	"REVERSE ENGINEERING",
+	"BACKEND",
+	"POSTGRESQL",
+	"RUST",
+	"C / ASM",
+	"EMBEDDED",
+	"ML",
+	"PIXEL ART",
+	"CTF: PWN / RE",
+	"ARCH LINUX",
+	"BUET CSE",
+];
+---
+
+<div class="ticker" aria-hidden="true">
+	<div class="ticker-track">
+		{
+			[0, 1].map(() => (
+				<div class="ticker-seq">
+					{items.map((item) => (
+						<>
+							<span>{item}</span>
+							<b>◆</b>
+						</>
+					))}
+				</div>
+			))
+		}
+	</div>
+</div>
+
+<style>
+	.ticker {
+		border-bottom: 1px solid var(--line-soft);
+		background: var(--bg-raise);
+		overflow: hidden;
+	}
+	.ticker-track {
+		display: flex;
+		width: max-content;
+		animation: marquee 34s linear infinite;
+	}
+	.ticker:hover .ticker-track {
+		animation-play-state: paused;
+	}
+	.ticker-seq {
+		display: flex;
+		align-items: center;
+	}
+	.ticker span {
+		font-family: var(--font-pixel);
+		font-size: 0.62rem;
+		letter-spacing: 0.12em;
+		color: var(--text-faint);
+		padding-block: 0.6rem;
+		white-space: nowrap;
+	}
+	.ticker b {
+		color: var(--accent-muted);
+		font-weight: 400;
+		padding-inline: 0.9rem;
+	}
+	@keyframes marquee {
+		to {
+			transform: translateX(-50%);
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.ticker-track {
+			animation: none;
+		}
+	}
+</style>

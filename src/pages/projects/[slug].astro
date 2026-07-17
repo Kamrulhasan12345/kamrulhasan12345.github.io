@@ -23,7 +23,7 @@ const { Content } = await render(project);
 				<a class="back" href="/projects/">← All projects</a>
 				<h1>{title}</h1>
 				<p class="summary">{summary}</p>
-				<dl class="facts">
+				<dl class="facts pxbox">
 					<div>
 						<dt>Year</dt>
 						<dd>{year}</dd>
@@ -93,9 +93,6 @@ const { Content } = await render(project);
 		gap: 0.85rem;
 		margin: 2rem 0 2.5rem;
 		padding: 1.25rem 1.4rem;
-		border: 1px solid var(--line);
-		border-radius: 10px;
-		background: var(--bg-card);
 		font-size: var(--text-sm);
 	}
 	.facts > div {

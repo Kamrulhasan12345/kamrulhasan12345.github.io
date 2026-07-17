@@ -144,16 +144,6 @@
     "ast_hash": "61a7e3046a4890e4abbe1aa299accd74",
     "semantic_hash": ""
   },
-  "src/content/blog/hello-world.md": {
-    "mtime": 1784281580.832045,
-    "ast_hash": "1f4e100f8fbcda7ce2a6b21e51030bcc",
-    "semantic_hash": ""
-  },
-  "src/content/blog/why-polyglot-ayahbot.md": {
-    "mtime": 1784281122.9478755,
-    "ast_hash": "25d7a1943cb0feeed59406e9a246e697",
-    "semantic_hash": ""
-  },
   "src/content/projects/ayahbot.md": {
     "mtime": 1784280960.199595,
     "ast_hash": "cc8b092e6bd8aaf1872a5b286b8e4830",
@@ -242,6 +232,26 @@
   "src/content/projects/version3-woocommerce.md": {
     "mtime": 1784280999.334069,
     "ast_hash": "0db66a9ee2fe4ae7879a1bd1531041bf",
+    "semantic_hash": ""
+  },
+  "src/content/blog/hello-world-to-machine-code.md": {
+    "mtime": 1784281835.3692484,
+    "ast_hash": "e8cc3421fd17901f7ea20d9e77850b07",
+    "semantic_hash": ""
+  },
+  "src/content/blog/lexical-analysis-first-gate.md": {
+    "mtime": 1784281851.156951,
+    "ast_hash": "13c45d8a0de012653ab91ddf4a60394b",
+    "semantic_hash": ""
+  },
+  "src/content/blog/skip-locked-job-queue.md": {
+    "mtime": 1784281877.3551185,
+    "ast_hash": "d5858b97d1f27810fc039409d7d7267a",
+    "semantic_hash": ""
+  },
+  "src/content/blog/why-i-run-arch-on-6gb.md": {
+    "mtime": 1784281892.155779,
+    "ast_hash": "b510b0d03ab6e035b25d6a587f10698b",
     "semantic_hash": ""
   }
 }

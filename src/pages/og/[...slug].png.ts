@@ -17,21 +17,23 @@ export async function getStaticPaths() {
 }
 
 const colors = {
-	bg: "#15181c",
-	card: "#191d21",
-	line: "#2a2f36",
+	bg: "#101418",
+	card: "#14191e",
+	line: "#262c34",
 	text: "#ced3d9",
 	heading: "#eef1f4",
 	dim: "#949ba3",
 	accent: "#8ab4d8",
+	amber: "#e0b775",
 };
 
 export async function GET({ props }: APIContext) {
 	const { title, tags } = props as { title: string; tags: string[] };
 
-	const [regular, semibold] = await Promise.all([
+	const [regular, semibold, pixel] = await Promise.all([
 		readFile("src/assets/fonts/Inter-Regular.woff"),
 		readFile("src/assets/fonts/Inter-SemiBold.woff"),
+		readFile("src/assets/fonts/Silkscreen-Regular.woff"),
 	]);
 
 	const svg = await satori(
@@ -80,11 +82,10 @@ export async function GET({ props }: APIContext) {
 						props: {
 							style: {
 								display: "flex",
-								fontSize: title.length > 60 ? "50px" : "62px",
-								fontWeight: 600,
+								fontFamily: "Silkscreen",
+								fontSize: title.length > 60 ? "40px" : "50px",
 								color: colors.heading,
-								lineHeight: 1.2,
-								letterSpacing: "-0.02em",
+								lineHeight: 1.35,
 							},
 							children: title,
 						},
@@ -102,10 +103,10 @@ export async function GET({ props }: APIContext) {
 								{
 									type: "div",
 									props: {
-										style: { display: "flex", gap: "14px", color: colors.accent },
+										style: { display: "flex", gap: "14px", color: colors.amber },
 										children: tags.slice(0, 4).map((tag) => ({
 											type: "span",
-											props: { children: `#${tag}` },
+											props: { children: `[${tag}]` },
 										})),
 									},
 								},
@@ -128,6 +129,7 @@ export async function GET({ props }: APIContext) {
 			fonts: [
 				{ name: "Inter", data: regular, weight: 400, style: "normal" },
 				{ name: "Inter", data: semibold, weight: 600, style: "normal" },
+				{ name: "Silkscreen", data: pixel, weight: 400, style: "normal" },
 			],
 		},
 	);
