@@ -1,16 +1,16 @@
 ---
-import { siteConfig } from "@/site.config";
-
+import { profile } from "@/data/resume";
 const year = new Date().getFullYear();
 ---
 
 <footer>
-	<div class="container container--wide inner">
-		<span>© {year} {siteConfig.author}</span>
-		<span class="links">
+	<div class="container row">
+		<span class="mono muted">© {year} {profile.name} · {profile.location}</span>
+		<span class="cluster mono">
+			<a href={profile.github}>GitHub</a>
+			<a href={profile.linkedin}>LinkedIn</a>
 			<a href="/rss.xml">RSS</a>
-			<a href={siteConfig.social.github}>GitHub</a>
-			<a href={`mailto:${siteConfig.email}`}>Email</a>
+			<a href="/design/">Design system</a>
 		</span>
 	</div>
 </footer>
@@ -18,24 +18,17 @@ const year = new Date().getFullYear();
 <style>
 	footer {
 		margin-top: auto;
-		border-top: 1px dashed var(--line);
-		font-family: var(--font-mono);
-		font-size: var(--text-xs);
-		color: var(--text-faint);
+		padding-block: var(--space-8);
+		border-top: var(--border);
+		background: var(--color-bg-sunken);
 	}
-	.inner {
+	.row {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.5rem 1.5rem;
-		padding-block: 1.5rem;
 		justify-content: space-between;
+		gap: var(--space-4);
 	}
-	.links {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem 1.25rem;
-	}
-	.links a {
-		color: var(--text-dim);
+	.cluster {
+		--cluster-gap: var(--space-6);
 	}
 </style>

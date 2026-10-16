@@ -1,89 +1,103 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import PixelCard from "@/components/PixelCard.astro";
+import Tag from "@/components/Tag.astro";
+import type { Project } from "@/data/resume";
 
 interface Props {
-	project: CollectionEntry<"projects">;
+	project: Project;
+	detailed?: boolean;
 }
-
-const { project } = Astro.props;
-const { title, summary, year, stack, badge } = project.data;
+const { project: p, detailed = false } = Astro.props;
+// text the /projects search box matches against
+const haystack = [p.name, p.title, p.summary, p.context, ...p.points, ...p.stack].join(" ").toLowerCase();
 ---
 
-<article class="card pxbox">
-	<a class="title-link" href={`/projects/${project.id}/`}>
-		<h3 class="title">{title}</h3>
-	</a>
-	<div class="head-meta">
-		{badge && <span class="badge">{badge}</span>}
-		<span class="year meta">{year}</span>
+<PixelCard as="li" interactive>
+	<div class="card" data-project data-categories={p.categories.join("|")} data-search={haystack}>
+		<div class="head">
+			<span class="label">{p.categories.join(" · ")}</span>
+			<span class="mono muted">{p.year}</span>
+		</div>
+		<h3>
+			{p.link ? <a href={p.link}>{p.name}</a> : p.name}
+			{p.status && <Tag tone="highlight">{p.status}</Tag>}
+		</h3>
+		<p class="title">{p.title}</p>
+		<p class="summary">{p.summary}</p>
+		{
+			detailed && p.points.length > 0 && (
+				<ul class="points">
+					{p.points.map((pt) => (
+						<li>{pt}</li>
+					))}
+				</ul>
+			)
+		}
+		<div class="cluster tags">
+			{p.context && <Tag tone="highlight">{p.context}</Tag>}
+			{p.stack.map((s) => <Tag>{s}</Tag>)}
+		</div>
+		<p class="foot mono">
+			{p.link ? <a href={p.link}>Source code ↗</a> : <span class="muted">Source not public yet</span>}
+		</p>
 	</div>
-	<p class="summary">{summary}</p>
-	<div class="stack">
-		{stack.map((item) => <span class="tag">{item}</span>)}
-	</div>
-</article>
+</PixelCard>
 
 <style>
 	.card {
-		padding: 1.25rem 1.4rem;
 		display: flex;
 		flex-direction: column;
-		gap: 0.6rem;
-		transition:
-			border-color 160ms ease,
-			transform 160ms ease,
-			box-shadow 160ms ease;
+		gap: var(--space-3);
+		height: 100%;
 	}
-	.card:hover {
-		border-color: var(--accent-muted);
-		transform: translate(-3px, -3px);
-		box-shadow: 5px 5px 0 var(--px-shadow);
+	.head {
+		display: flex;
+		justify-content: space-between;
+		gap: var(--space-4);
 	}
-	.title-link {
-		text-decoration: none;
-		order: -1;
-	}
-	.title-link:hover {
-		text-decoration: none;
-	}
-	.title {
-		margin: 0;
+	h3 {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--space-3);
 		font-family: var(--font-pixel);
 		font-weight: 400;
-		font-size: 0.92rem;
-		line-height: 1.45;
-		letter-spacing: 0.02em;
-		color: var(--heading);
+		font-size: var(--step-1);
+		letter-spacing: var(--tracking-pixel);
 	}
-	.title-link:hover .title {
-		color: var(--accent);
-		text-shadow: 0 0 14px var(--glow);
+	h3 a {
+		color: var(--color-text-strong);
 	}
-	.head-meta {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-		flex-wrap: wrap;
-		margin-top: -0.2rem;
+	h3 a:hover {
+		color: var(--color-accent);
 	}
-	.badge {
-		font-family: var(--font-pixel);
-		font-size: 0.6rem;
-		letter-spacing: 0.08em;
-		color: var(--amber);
-		border: 1px solid var(--amber-muted);
-		padding: 0.15rem 0.55rem;
+	.title {
+		font-family: var(--font-mono);
+		font-size: var(--step--1);
+		color: var(--color-accent);
 	}
 	.summary {
-		margin: 0;
-		font-size: var(--text-sm);
-		color: var(--text-dim);
-		flex-grow: 1;
-		line-height: 1.6;
+		color: var(--color-text);
 	}
-	.stack {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.35rem 0.4rem;
+	.points {
+		margin: 0;
+		padding-left: var(--space-4);
+		font-size: 0.95rem;
+		color: var(--color-text-muted);
+	}
+	.points li + li {
+		margin-top: var(--space-2);
+	}
+	.points li::marker {
+		content: "› ";
+		color: var(--color-accent-dim);
+	}
+	.tags {
+		margin-top: var(--space-1);
+	}
+	.foot {
+		margin-top: auto;
+		padding-top: var(--space-3);
+		border-top: 1px dashed var(--color-border);
 	}
 </style>

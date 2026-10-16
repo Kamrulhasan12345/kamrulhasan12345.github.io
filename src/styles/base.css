@@ -1,0 +1,270 @@
+/* =====================================================================
+   Base: fonts, reset, element defaults, layout primitives, prose.
+   Reads tokens only. Component styles live inside each component.
+   ===================================================================== */
+
+@font-face {
+	font-family: "Silkscreen";
+	src: url("../assets/fonts/Silkscreen-Regular.woff2") format("woff2");
+	font-weight: 400;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Silkscreen";
+	src: url("../assets/fonts/Silkscreen-Bold.woff2") format("woff2");
+	font-weight: 700;
+	font-display: swap;
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	src: url("../assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+	font-weight: 400;
+	font-display: swap;
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	src: url("../assets/fonts/JetBrainsMono-Bold.woff2") format("woff2");
+	font-weight: 700;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Inter";
+	src: url("../assets/fonts/Inter-Regular.woff2") format("woff2");
+	font-weight: 400;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Inter";
+	src: url("../assets/fonts/Inter-SemiBold.woff2") format("woff2");
+	font-weight: 600;
+	font-display: swap;
+}
+
+/* ---------- reset ---------- */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+html {
+	color-scheme: dark;
+	scrollbar-color: var(--color-accent-shadow) var(--color-bg);
+	-webkit-text-size-adjust: 100%;
+}
+body {
+	margin: 0;
+	min-height: 100dvh;
+	display: flex;
+	flex-direction: column;
+	background: var(--color-bg);
+	color: var(--color-text);
+	font: var(--step-0) / var(--leading-normal) var(--font-sans);
+	-webkit-font-smoothing: antialiased;
+}
+/* CRT scanlines — faint enough to read through, off for reduced-motion fans too */
+body::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	z-index: 50;
+	background: repeating-linear-gradient(0deg, rgb(0 0 0 / 0.18) 0 1px, transparent 1px 3px);
+	mix-blend-mode: multiply;
+}
+ul[role="list"],
+ol[role="list"] {
+	list-style: none;
+}
+img,
+svg {
+	max-width: 100%;
+	display: block;
+}
+::selection {
+	background: var(--color-accent);
+	color: var(--color-on-accent);
+}
+:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 3px;
+}
+
+/* ---------- elements ---------- */
+h1,
+h2,
+h3 {
+	margin: 0;
+	color: var(--color-text-strong);
+	line-height: var(--leading-tight);
+}
+h1,
+h2 {
+	font-family: var(--font-pixel);
+	font-weight: 400;
+	letter-spacing: var(--tracking-pixel);
+	text-transform: uppercase;
+}
+h1 {
+	font-size: var(--step-3);
+}
+h2 {
+	font-size: var(--step-2);
+}
+h3 {
+	font-size: var(--step-1);
+	font-weight: 600;
+}
+p {
+	margin: 0;
+}
+a {
+	color: var(--color-accent);
+	text-decoration: none;
+}
+a:hover {
+	color: var(--color-accent-strong);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+code,
+kbd,
+pre {
+	font-family: var(--font-mono);
+}
+
+/* ---------- layout primitives ---------- */
+.container {
+	width: 100%;
+	max-width: var(--w-page);
+	margin-inline: auto;
+	padding-inline: var(--gutter);
+}
+.container--prose {
+	max-width: calc(var(--w-prose) + 2 * var(--gutter));
+}
+.stack > * + * {
+	margin-top: var(--stack-gap, var(--space-4));
+}
+.cluster {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--cluster-gap, var(--space-2));
+	align-items: center;
+}
+.label {
+	font-family: var(--font-pixel);
+	font-size: var(--step--2);
+	letter-spacing: var(--tracking-label);
+	text-transform: uppercase;
+	color: var(--color-text-faint);
+}
+.mono {
+	font-family: var(--font-mono);
+	font-size: var(--step--1);
+}
+.muted {
+	color: var(--color-text-muted);
+}
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+/* ---------- prose (markdown output) ---------- */
+.prose {
+	font-size: 1.05rem;
+	color: var(--color-text);
+}
+.prose > * + * {
+	margin-top: 1.1em;
+}
+.prose h2 {
+	margin-top: 2.2em;
+	font-size: var(--step-1);
+	color: var(--color-accent);
+}
+.prose h2::before {
+	content: "## ";
+	color: var(--color-text-faint);
+}
+.prose h3 {
+	margin-top: 1.8em;
+}
+.prose a {
+	text-decoration: underline;
+	text-decoration-color: var(--color-accent-dim);
+	text-underline-offset: 3px;
+}
+.prose strong {
+	color: var(--color-text-strong);
+}
+.prose ul,
+.prose ol {
+	padding-left: 1.4em;
+}
+.prose li::marker {
+	color: var(--color-accent-dim);
+}
+.prose :not(pre) > code {
+	font-size: 0.88em;
+	padding: 0.1em 0.35em;
+	background: var(--color-surface-raised);
+	border: var(--border);
+	color: var(--color-accent-strong);
+}
+.prose pre {
+	padding: var(--space-4);
+	overflow-x: auto;
+	font-size: var(--step--1);
+	line-height: 1.6;
+	border: var(--border);
+	background: var(--color-bg-sunken) !important;
+	box-shadow: var(--shadow-px-1);
+}
+.prose blockquote {
+	margin-inline: 0;
+	padding: var(--space-2) var(--space-4);
+	border-left: var(--px) solid var(--color-highlight);
+	background: var(--color-surface);
+	color: var(--color-text-muted);
+}
+.prose hr {
+	border: 0;
+	height: 1px;
+	background: var(--border-dashed);
+	margin-block: 2.5em;
+}
+.prose table {
+	display: block;
+	overflow-x: auto;
+	border-collapse: collapse;
+	font-size: var(--step--1);
+}
+.prose th,
+.prose td {
+	padding: var(--space-2) var(--space-3);
+	border: var(--border);
+	text-align: left;
+}
+.prose th {
+	font-family: var(--font-mono);
+	color: var(--color-text-strong);
+	background: var(--color-surface);
+}
+.prose img {
+	border: var(--border);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}

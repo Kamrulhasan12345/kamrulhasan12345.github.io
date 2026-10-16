@@ -1,27 +1,56 @@
 ---
 import { render } from "astro:content";
-import { getPublishedPosts } from "@/data/collections";
-import BlogPost from "@/layouts/BlogPost.astro";
+import Tag from "@/components/Tag.astro";
+import { getPosts } from "@/content.config";
+import Base from "@/layouts/Base.astro";
 
 export async function getStaticPaths() {
-	const posts = await getPublishedPosts();
-	return posts.map((post, i) => ({
-		params: { slug: post.id },
-		// posts are newest-first: "prev" = older post, "next" = newer post
-		props: { post, prev: posts[i + 1], next: posts[i - 1] },
-	}));
+	const posts = await getPosts();
+	return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
 }
 
-const { post, prev, next } = Astro.props;
-const { Content, headings, remarkPluginFrontmatter } = await render(post);
+const { post } = Astro.props;
+const { Content } = await render(post);
+const date = post.data.publishDate.toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" });
+const words = post.body?.split(/\s+/).length ?? 0;
+const minutes = Math.max(1, Math.round(words / 220));
 ---
 
-<BlogPost
-	post={post}
-	headings={headings}
-	minutesRead={remarkPluginFrontmatter.minutesRead}
-	prev={prev}
-	next={next}
->
-	<Content />
-</BlogPost>
+<Base title={post.data.title} description={post.data.description}>
+	<article class="container container--prose">
+		<header class="post-head stack">
+			<a class="mono back" href="/blog/">← cd ../blog</a>
+			<h1 class="title">{post.data.title}</h1>
+			<p class="mono muted">
+				<time datetime={post.data.publishDate.toISOString()}>{date}</time> · {minutes} min read
+			</p>
+			<div class="cluster">
+				{post.data.tags.map((t) => <Tag>#{t}</Tag>)}
+			</div>
+		</header>
+		<div class="prose">
+			<Content />
+		</div>
+		<p class="end label">— end of transmission —</p>
+	</article>
+</Base>
+
+<style>
+	.post-head {
+		padding-block: var(--space-12) var(--space-8);
+		margin-bottom: var(--space-8);
+		border-bottom: var(--border);
+	}
+	.back {
+		color: var(--color-text-muted);
+	}
+	.title {
+		font-size: var(--step-3);
+		line-height: 1.2;
+		text-transform: none;
+	}
+	.end {
+		margin-top: var(--space-16);
+		text-align: center;
+	}
+</style>

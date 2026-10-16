@@ -1,5 +1,5 @@
 import { glob } from "astro/loaders";
-import { defineCollection, z } from "astro:content";
+import { defineCollection, getCollection, z } from "astro:content";
 
 const blog = defineCollection({
 	loader: glob({ base: "./src/content/blog", pattern: "**/*.md" }),
@@ -13,25 +13,10 @@ const blog = defineCollection({
 	}),
 });
 
-const projects = defineCollection({
-	loader: glob({ base: "./src/content/projects", pattern: "**/*.md" }),
-	schema: z.object({
-		title: z.string(),
-		summary: z.string().max(320),
-		year: z.string(),
-		category: z.enum(["systems", "backend", "ml", "hardware", "islamic", "games"]),
-		stack: z.array(z.string()),
-		badge: z.string().optional(),
-		links: z
-			.object({
-				repo: z.string().url().optional(),
-				live: z.string().url().optional(),
-				writeup: z.string().optional(),
-			})
-			.default({}),
-		featured: z.boolean().default(false),
-		order: z.number().default(99),
-	}),
-});
+export const collections = { blog };
 
-export const collections = { blog, projects };
+// newest first, drafts hidden
+export async function getPosts() {
+	const posts = await getCollection("blog", ({ data }) => !data.draft);
+	return posts.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+}

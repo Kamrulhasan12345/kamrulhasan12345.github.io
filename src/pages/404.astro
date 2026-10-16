@@ -1,35 +1,27 @@
 ---
+import Button from "@/components/Button.astro";
 import Base from "@/layouts/Base.astro";
 ---
 
-<Base title="404" description="Page not found.">
-	<div class="container box">
-		<p class="code" aria-hidden="true">404</p>
-		<h1>PAGE NOT FOUND</h1>
-		<p class="sub">The page you're looking for doesn't exist or has moved.</p>
-		<p><a class="btn btn-ghost" href="/">← BACK HOME</a></p>
+<Base title="404">
+	<div class="container container--prose wrap stack">
+		<p class="label">Error 0x194</p>
+		<h1>Game over</h1>
+		<p class="muted">This page doesn't exist. Continue?</p>
+		<div class="cluster" style="--cluster-gap: var(--space-4)">
+			<Button href="/">Yes</Button>
+			<Button href="/blog/" variant="ghost">Read the blog</Button>
+		</div>
 	</div>
 </Base>
 
 <style>
-	.box {
-		padding-block: 6rem;
-		text-align: center;
-	}
-	.code {
-		font-family: var(--font-pixel);
-		font-size: clamp(3.5rem, 10vw, 6rem);
-		line-height: 1;
-		color: transparent;
-		-webkit-text-stroke: 1px var(--accent-muted);
-		margin: 0 0 0.5rem;
-		user-select: none;
+	.wrap {
+		--stack-gap: var(--space-6);
+		padding-block: var(--space-24);
 	}
 	h1 {
-		font-size: var(--text-xl);
-	}
-	.sub {
-		color: var(--text-dim);
-		margin-bottom: 2rem;
+		font-size: var(--step-4);
+		color: var(--color-accent);
 	}
 </style>

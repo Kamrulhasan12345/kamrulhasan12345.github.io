@@ -1,58 +1,67 @@
 ---
-import PostPreview from "@/components/PostPreview.astro";
-import { getAllTags, getPublishedPosts } from "@/data/collections";
+import SectionHead from "@/components/SectionHead.astro";
+import Tag from "@/components/Tag.astro";
+import { getPosts } from "@/content.config";
 import Base from "@/layouts/Base.astro";
 
-const posts = await getPublishedPosts();
-const tags = await getAllTags();
+const posts = await getPosts();
+const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "2-digit" });
 ---
 
-<Base title="Blog" description="Writing on systems programming, hardware security, compilers, and things learned the hard way.">
-	<div class="container">
-		<header class="page-head">
-			<h1>BLOG</h1>
-			<p class="sub">
-				Systems programming, hardware security, compilers, and things learned the
-				hard way.
-			</p>
+<Base title="Writing" description="Notes on systems, compilers, and running things on small hardware.">
+	<div class="container container--prose">
+		<header class="page-head stack">
+			<p class="label">/blog</p>
+			<h1>Writing</h1>
+			<p class="muted">Notes on systems, compilers, and running things on small hardware.</p>
 		</header>
-		{
-			tags.length > 0 && (
-				<p class="tags">
-					{tags.map(({ tag, count }) => (
-						<a class="tag" href={`/tags/${tag}/`}>
-							{tag} · {count}
-						</a>
-					))}
-				</p>
-			)
-		}
-		<div class="posts">
-			{posts.map((post) => <PostPreview post={post} />)}
-			{posts.length === 0 && <p class="empty">No posts published yet.</p>}
-		</div>
+		<SectionHead index={posts.length} title="Posts" more={{ href: "/rss.xml", label: "rss" }} />
+		<ul class="posts" role="list">
+			{
+				posts.map((p) => (
+					<li class="stack" style="--stack-gap: var(--space-2)">
+						<time class="mono muted" datetime={p.data.publishDate.toISOString()}>
+							{fmt(p.data.publishDate)}
+						</time>
+						<h2 class="post-title">
+							<a href={`/blog/${p.id}/`}>{p.data.title}</a>
+						</h2>
+						<p class="muted">{p.data.description}</p>
+						<div class="cluster">
+							{p.data.tags.map((t) => (
+								<Tag>#{t}</Tag>
+							))}
+						</div>
+					</li>
+				))
+			}
+		</ul>
 	</div>
 </Base>
 
 <style>
-	.container {
-		padding-block: 3rem;
-	}
 	.page-head {
-		margin-bottom: 1.5rem;
+		padding-block: var(--space-12);
 	}
-	.sub {
-		color: var(--text-dim);
-		margin-top: 0.5rem;
+	.posts {
+		margin: 0;
+		padding: 0;
 	}
-	.tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.4rem;
-		margin-bottom: 1rem;
+	.posts li {
+		padding-block: var(--space-6);
+		border-bottom: 1px dashed var(--color-border);
 	}
-	.empty {
-		color: var(--text-dim);
-		padding: 2rem 0;
+	.post-title {
+		font-family: var(--font-sans);
+		font-weight: 600;
+		font-size: var(--step-1);
+		text-transform: none;
+		letter-spacing: 0;
+	}
+	.post-title a {
+		color: var(--color-text-strong);
+	}
+	.post-title a:hover {
+		color: var(--color-accent);
 	}
 </style>
