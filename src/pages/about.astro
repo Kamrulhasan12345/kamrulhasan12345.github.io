@@ -46,15 +46,17 @@ import Base from "@/layouts/Base.astro";
 		{
 			research.map((r) => (
 				<>
-					<h3>{r.link ? <a href={r.link}>{r.title}</a> : r.title}</h3>
-					<p>
-						{r.authors.map((a, i) => (
-							<>
-								{a === "M. K. Hasan" ? <strong>{a}</strong> : a}
-								{i < r.authors.length - 1 && ", "}
-							</>
-						))}
-					</p>
+					<h3>{"link" in r && r.link ? <a href={r.link}>{r.title}</a> : r.title}</h3>
+					{r.authors.length > 0 && (
+						<p>
+							{r.authors.map((a, i) => (
+								<>
+									{a === "M. K. Hasan" ? <strong>{a}</strong> : a}
+									{i < r.authors.length - 1 && ", "}
+								</>
+							))}
+						</p>
+					)}
 					<p>
 						<em>{r.venue}</em>. {r.kind}. My role: {r.role.toLowerCase()}.
 					</p>

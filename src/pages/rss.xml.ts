@@ -6,7 +6,7 @@ export async function GET(context: APIContext) {
 	const posts = await getPosts();
 	return rss({
 		title: "Mohammad Kamrul Hasan",
-		description: "Writing on AI engineering, embedded systems, and compilers.",
+		description: "Write-ups on reverse engineering, security and systems, some in Bangla.",
 		site: context.site!,
 		trailingSlash: true,
 		items: posts.map((post) => ({

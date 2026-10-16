@@ -80,7 +80,7 @@ const person = {
 								<time class="muted" datetime={p.data.publishDate.toISOString()}>
 									{fmt(p.data.publishDate)}
 								</time>
-								<a href={`/blog/${p.id}/`}>{p.data.title}</a>
+								<a href={`/blog/${p.id}/`} lang={p.data.lang}>{p.data.title}</a>
 							</li>
 						))}
 					</ul>

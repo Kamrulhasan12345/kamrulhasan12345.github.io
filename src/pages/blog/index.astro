@@ -6,10 +6,10 @@ const posts = await getPosts();
 const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "2-digit" });
 ---
 
-<Base title="Writing" description="Notes on systems, compilers, and running things on small hardware.">
+<Base title="Writing" description="Write-ups on reverse engineering, security and systems, some in Bangla.">
 	<div class="container">
 		<h1>Writing</h1>
-		<p class="muted">Notes on systems, compilers, and running things on small hardware.{posts.length > 0 && <> <a href="/rss.xml">RSS</a>.</>}</p>
+		<p class="muted">Write-ups on reverse engineering, security and systems, some in Bangla.{posts.length > 0 && <> <a href="/rss.xml">RSS</a>.</>}</p>
 		{posts.length === 0 && <p>Nothing published yet. Meanwhile, the <a href="/projects/">projects</a> have the details.</p>}
 		<ul class="entries">
 			{
@@ -19,7 +19,7 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month:
 							{fmt(p.data.publishDate)}
 						</time>
 						<div>
-							<a href={`/blog/${p.id}/`}>{p.data.title}</a>
+							<a href={`/blog/${p.id}/`} lang={p.data.lang}>{p.data.title}</a>
 							<p class="muted small">{p.data.description}</p>
 						</div>
 					</li>

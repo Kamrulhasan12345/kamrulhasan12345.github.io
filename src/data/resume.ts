@@ -19,7 +19,7 @@ export const profile = {
 export const about = {
 	text: [
 		"Most of my work sits where machine learning meets the hardware it runs on. I've made llama.cpp run 2.2–2.6× faster on Android phones, built a medical triage app whose AI works without internet, and benchmarked vision models for production search.",
-		"Right now I'm working toward my own LLM inference engine, and writing drivers for the ESP32-S3.",
+		"Right now I'm working toward my own LLM inference engine, and writing drivers for the ESP32-S3. I've been programming since grade 5.",
 	],
 	focus: [
 		{
@@ -89,6 +89,14 @@ export const research = [
 		detail: "Turned 3 years of wearable data from 100 rickshaw pullers into heat-risk visuals that low-literacy workers can read. BUET × UC San Diego. I transcribed the interviews behind the qualitative analysis.",
 		role: "Co-author",
 		link: "https://doi.org/10.1145/3830727.3834827",
+	},
+	{
+		title: "ML-guided search for magnetic-material compounds",
+		kind: "Ongoing research",
+		authors: [],
+		venue: "BUET Physics, supervised by Prof. A.K.M. Akther Hossain",
+		detail: "Early stage, started 2026.",
+		role: "Undergraduate researcher",
 	},
 ];
 

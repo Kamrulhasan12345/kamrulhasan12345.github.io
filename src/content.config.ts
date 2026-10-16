@@ -10,6 +10,8 @@ const blog = defineCollection({
 		updatedDate: z.coerce.date().optional(),
 		tags: z.array(z.string()).default([]),
 		draft: z.boolean().default(false),
+		// set for posts not written in English, e.g. "bn"
+		lang: z.string().optional(),
 	}),
 });
 
