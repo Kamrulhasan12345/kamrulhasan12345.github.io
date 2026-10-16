@@ -3,10 +3,15 @@
 Research done 2026-10-16 for the portfolio redesign. Primary reference: **[carloslorenzo.dev](https://carloslorenzo.dev)**.
 Scope: ~115 live sites across 10 families + Dribbble (11 searches, ~200 thumbnails, 19 shots opened). All captured in a real browser at 1440×900.
 
+## Start here: pick your design system
+
+**[Identity Picker](https://claude.ai/artifact/8i9zPaVb7mFBHw8sD5iGVQ)** — 15 categories, 109 options, each with 1–2 real-site screenshots (129 references total), a live preview of the homepage that re-skins as you pick, closest-reference matching, and **Save picks** (stored with the artifact so Claude can read them back and build from them). Source in `picker/`, method in `06-taxonomy.md`.
+
 ## Read in this order
 
 | File | What it gives you | When to open it |
 |---|---|---|
+| [06-taxonomy.md](06-taxonomy.md) | All 15 categories × options with the best example sites, and how they were classified (Amos vision + text, hand-reviewed) | Picking a direction without the picker |
 | [03-principles.md](03-principles.md) | 10 taste rules, anti-patterns, **3 directions** (datasheet / editor / lab notebook), pre-merge checklist | Before any UI decision |
 | [01-carloslorenzo-teardown.md](01-carloslorenzo-teardown.md) | Full teardown: real tokens, skeleton, every component with CSS recipe, mapping to `src/data/resume.ts` | Building the page skeleton |
 | [05-patterns.md](05-patterns.md) | ~45 patterns with source, where it goes, how to build, tier 1–3 | Building a specific component |
