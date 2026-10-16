@@ -1,34 +1,56 @@
 ---
-import { categories, projects } from "@/data/resume";
+import { projects } from "@/data/resume";
 import Base from "@/layouts/Base.astro";
 
-// newest first, then featured first within a year
-const sorted = [...projects].sort(
-	(a, b) => b.year.slice(0, 4).localeCompare(a.year.slice(0, 4)) || Number(!!b.featured) - Number(!!a.featured),
-);
-// each project listed once, under its first area
-const groups = categories.map((c) => ({ area: c, items: sorted.filter((p) => p.categories[0] === c) })).filter((g) => g.items.length);
+// newest first
+const sorted = [...projects].sort((a, b) => b.year.slice(0, 4).localeCompare(a.year.slice(0, 4)));
+const featured = sorted.filter((p) => p.featured);
+const rest = sorted.filter((p) => !p.featured);
 ---
 
-<Base title="Projects" description={`All ${projects.length} projects: AI/ML, embedded systems, backends and apps.`}>
+<Base title="Projects" description={`${projects.length} projects in on-device AI, ML systems and backends, with the numbers behind them.`}>
 	<div class="container">
 		<h1>Projects</h1>
-		<p class="muted">Everything I've built, grouped by area, newest first.</p>
-		{
-			groups.map((g) => (
-				<>
-					<h2>{g.area}</h2>
-					<ul class="entries">
-						{g.items.map((p) => (
-							<li>
-								{p.link ? <a href={p.link}>{p.name}</a> : <span class="u">{p.name}</span>}: {p.title}. {p.summary}
-								{p.context && <> {p.context}.</>} <span class="muted">Built with {p.stack.join(", ")}. {p.year}.</span>
-							</li>
-						))}
-					</ul>
-				</>
-			))
-		}
+		<p class="muted">The four I'd show first, then everything else, newest first.</p>
+
+		<h2>Featured</h2>
+		<ul class="entries featured">
+			{
+				featured.map((p) => (
+					<li>
+						<h3>
+							{p.link ? <a href={p.link}>{p.name}</a> : p.name}: {p.title}
+						</h3>
+						<p class="muted small">
+							{p.year}
+							{p.context && <> · {p.context}</>}
+						</p>
+						<ul>
+							<li>{p.summary}</li>
+							{p.points.map((pt) => (
+								<li>{pt}</li>
+							))}
+						</ul>
+						<p class="muted small">Built with {p.stack.join(", ")}.</p>
+					</li>
+				))
+			}
+		</ul>
+
+		<h2>More</h2>
+		<ul class="entries">
+			{
+				rest.map((p) => (
+					<li>
+						<strong>{p.link ? <a href={p.link}>{p.name}</a> : p.name}</strong>
+						{p.status && <span class="status">{p.status.toLowerCase()}</span>}: {p.title}. {p.summary}{" "}
+						<span class="muted">
+							{p.stack.join(", ")}. {p.year}.
+						</span>
+					</li>
+				))
+			}
+		</ul>
 	</div>
 </Base>
 
@@ -36,9 +58,21 @@ const groups = categories.map((c) => ({ area: c, items: sorted.filter((p) => p.c
 	h1 {
 		margin-bottom: 0.5rem;
 	}
-	.u {
-		text-decoration: underline;
-		text-decoration-thickness: 1px;
-		text-underline-offset: 3px;
+	.featured > li + li {
+		margin-top: 2rem;
+	}
+	h3 a {
+		color: inherit;
+	}
+	.featured ul {
+		margin-block: 0.4em;
+	}
+	.status {
+		margin-left: 0.4em;
+		padding: 0 0.35em;
+		font-size: 0.75rem;
+		border: 1px solid var(--text-muted);
+		color: var(--text-muted);
+		white-space: nowrap;
 	}
 </style>

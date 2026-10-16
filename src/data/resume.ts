@@ -4,14 +4,16 @@ const gh = (repo: string) => `https://github.com/Kamrulhasan12345/${repo}`;
 
 export const profile = {
 	name: "Mohammad Kamrul Hasan",
-	role: "AI Engineering · Embedded Systems",
+	role: "AI Engineer · On-Device Inference · Backend",
 	location: "Dhaka, Bangladesh",
 	email: "kamrulhasan59246@gmail.com",
 	github: "https://github.com/Kamrulhasan12345",
 	linkedin: "https://linkedin.com/in/kamrulhasan12345",
 	orcid: "https://orcid.org/0009-0005-3843-6832",
-	status: "Backend Developer Intern at Version3.ai",
-	intro: "I'm a Computer Science undergraduate at BUET. I make AI models run fast on small hardware, like phones, single-board computers and microcontrollers, and I build the backends around them.",
+	availability: "Open to internships and research roles",
+	timezone: "UTC+6",
+	intro: "I make AI models run fast on small hardware, like phones, single-board computers and microcontrollers, and I build the backends around them.",
+	proof: "Made llama.cpp decode 2.2–2.6× faster with up to 3.3× less energy on Android phones.",
 };
 
 export const about = {
@@ -34,7 +36,6 @@ export const about = {
 		},
 	],
 	now: [
-		"Backend Developer Intern at Version3.ai",
 		"Writing an SH1106 OLED driver for ESP32-S3",
 		"Working toward my own LLM inference engine",
 	],
@@ -48,9 +49,10 @@ export const experience = [
 		when: "Jun 2026 — Present",
 		points: [
 			"Own the multi-tenant database platform end to end, keeping every store's data strictly isolated (NestJS, MongoDB, RabbitMQ).",
-			"Built the WooCommerce and Shopify integrations, so stores connect securely in one click.",
+			"Built the WooCommerce and Shopify integrations, so stores connect securely in one click (OAuth PKCE, signed requests, encrypted secrets, a retry-safe job queue).",
+			"Fixed a bug that made WooCommerce permanently delete a store's API keys on connect, caused by the server returning the wrong HTTP status.",
 			"Picked the image model for visual product search by benchmarking 4 models on 132K product images; the winner finds the right product first try 67% of the time.",
-			"Showed vector compression in Qdrant costs almost no accuracy, so search can run on cheap CPU servers.",
+			"Showed vector compression in Qdrant costs almost no accuracy (median −0.4 pts), so search can run on cheap CPU servers.",
 		],
 		stack: ["NestJS", "MongoDB", "RabbitMQ", "Qdrant", "SigLIP2"],
 	},
@@ -59,7 +61,7 @@ export const experience = [
 		org: "Edulytics",
 		when: "Dec 2025 — Mar 2026",
 		points: [
-			"Shipped several core user flows for a React Native MVP on tight sprints.",
+			"Shipped several core user flows for a React Native MVP on tight sprints, ramping up quickly on a large existing codebase.",
 			"Worked through feature branches and pull requests with a remote team.",
 		],
 		stack: ["React Native", "TypeScript"],
@@ -70,7 +72,10 @@ export const education = [
 	{
 		school: "Bangladesh University of Engineering and Technology (BUET)",
 		degree: "B.Sc. in Computer Science and Engineering",
-		when: "2025 — Present",
+		when: "2025 — 2028 (expected)",
+		gradYear: 2028,
+		grade: "CGPA 3.77/4.00",
+		note: "Ranked 79th nationwide in the BUET admission merit list",
 		location: "Dhaka, Bangladesh",
 	},
 ];
@@ -181,21 +186,6 @@ export const projects: Project[] = [
 		featured: true,
 	},
 	{
-		slug: "embedded-re",
-		name: "Embedded & Reverse Engineering",
-		title: "Drivers, profiling, binaries",
-		year: "2025–26",
-		categories: ["Embedded & Systems"],
-		summary: "Writing my own OLED display driver for the ESP32-S3, and analyzing x86 binaries.",
-		points: [
-			"SH1106 OLED driver for ESP32-S3 on ESP-IDF, ported from SH1107 reference code.",
-			"Profiled in-order Cortex-A53/A55 inference on a Raspberry Pi Zero 2 W and Android.",
-			"Static and dynamic analysis of x86 binaries with Ghidra; pwn/RE CTFs.",
-		],
-		stack: ["ESP32-S3", "ESP-IDF", "C", "x86 Assembly", "Ghidra"],
-		featured: true,
-	},
-	{
 		slug: "nodecommerce",
 		name: "NodeCommerce",
 		title: "Demand forecasting and supply matching for Bangladesh",
@@ -209,6 +199,7 @@ export const projects: Project[] = [
 		],
 		stack: ["Python", "FastAPI", "LightGBM", "SHAP", "Neo4j", "PostgreSQL", "Redis"],
 		link: gh("nodecommerce-backend"),
+		featured: true,
 	},
 	{
 		slug: "bayyinah-ai",

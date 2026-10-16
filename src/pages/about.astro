@@ -1,15 +1,19 @@
 ---
-import { about, education, profile, skills } from "@/data/resume";
+import { about, education, experience, profile, profiles, research, skills } from "@/data/resume";
 import Base from "@/layouts/Base.astro";
 ---
 
-<Base title="About" description={`About ${profile.name}: ${profile.role}.`}>
+<Base title="About" description={`About ${profile.name}, ${profile.role}: experience, research, education, skills and contact.`}>
 	<div class="container">
 		<h1>About</h1>
-		<p class="lead">{profile.intro}</p>
+		<p class="muted small jump">
+			<a href="#experience">Experience</a> · <a href="#research">Research</a> · <a href="#education">Education</a> ·
+			<a href="#skills">Skills</a> · <a href="#contact">Contact</a>
+		</p>
+		<p>{profile.intro}</p>
 		{about.text.map((t) => <p>{t}</p>)}
 
-		<h2>Focus</h2>
+		<h3>Focus</h3>
 		<ul class="entries">
 			{
 				about.focus.map((f) => (
@@ -20,18 +24,60 @@ import Base from "@/layouts/Base.astro";
 			}
 		</ul>
 
-		<h2>Education</h2>
+		<h2 id="experience">Experience</h2>
+		{
+			experience.map((e) => (
+				<>
+					<h3>
+						{e.role}, {e.org} <span class="muted when">· {e.when}</span>
+					</h3>
+					{e.orgNote && <p class="muted">{e.orgNote}</p>}
+					<ul class="points">
+						{e.points.map((pt) => (
+							<li>{pt}</li>
+						))}
+					</ul>
+					<p class="muted small">Stack: {e.stack.join(", ")}.</p>
+				</>
+			))
+		}
+
+		<h2 id="research">Research</h2>
+		{
+			research.map((r) => (
+				<>
+					<h3>{r.link ? <a href={r.link}>{r.title}</a> : r.title}</h3>
+					<p>
+						{r.authors.map((a, i) => (
+							<>
+								{a === "M. K. Hasan" ? <strong>{a}</strong> : a}
+								{i < r.authors.length - 1 && ", "}
+							</>
+						))}
+					</p>
+					<p>
+						<em>{r.venue}</em>. {r.kind}. My role: {r.role.toLowerCase()}.
+					</p>
+					<p class="muted">{r.detail}</p>
+				</>
+			))
+		}
+		<p class="muted small">Also on <a href={profile.orcid}>ORCID</a>.</p>
+
+		<h2 id="education">Education</h2>
 		<ul class="entries">
 			{
 				education.map((ed) => (
 					<li>
 						<strong>{ed.degree}</strong>, {ed.school}. <span class="muted">{ed.location}, {ed.when}.</span>
+						<br />
+						{ed.grade}. {ed.note}.
 					</li>
 				))
 			}
 		</ul>
 
-		<h2>Skills</h2>
+		<h2 id="skills">Skills</h2>
 		<ul class="entries">
 			{
 				skills.map((s) => (
@@ -42,15 +88,47 @@ import Base from "@/layouts/Base.astro";
 			}
 		</ul>
 
-		<p class="next">See also: <a href="/experience/">experience</a>, <a href="/research/">research</a>, <a href="/contact/">contact</a>.</p>
+		<h2 id="contact">Contact</h2>
+		<p>
+			{profile.availability}, and anything that runs on small hardware. Email is the fastest way to reach me:
+			<a href={`mailto:${profile.email}`}>{profile.email}</a>.
+		</p>
+		<p class="muted">{profile.location} ({profile.timezone}). Résumé: <a href="/resume.pdf">PDF</a>.</p>
+		<ul class="entries">
+			{
+				profiles.flatMap((g) =>
+					g.links.map((l) => (
+						<li>
+							<a href={l.url}>{l.name}</a>: <span class="muted">{l.handle}</span>
+						</li>
+					)),
+				)
+			}
+		</ul>
 	</div>
 </Base>
 
 <style>
-	.lead {
-		margin-top: 1rem;
+	.jump {
+		margin-block: 0.3rem 1.5rem;
 	}
-	.next {
-		margin-top: 3rem;
+	h3 {
+		margin-top: 1.6rem;
+		margin-bottom: 0.4rem;
+	}
+	h3 a {
+		color: inherit;
+	}
+	.when {
+		font-weight: 400;
+	}
+	.points {
+		margin-bottom: 0.6em;
+	}
+	.points li + li {
+		margin-top: 0.3em;
+	}
+	h2 {
+		scroll-margin-top: 1rem;
 	}
 </style>

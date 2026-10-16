@@ -8,6 +8,12 @@ export default defineConfig({
 	site: process.env.SITE ?? "https://kamrulhasan12345.github.io",
 	trailingSlash: "ignore",
 	integrations: [sitemap()],
+	// these pages were folded into /about/
+	redirects: {
+		"/experience": "/about/#experience",
+		"/research": "/about/#research",
+		"/contact": "/about/#contact",
+	},
 	// no image processing on this site, so skip the sharp dependency
 	image: { service: passthroughImageService() },
 	markdown: {

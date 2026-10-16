@@ -1,35 +1,69 @@
 ---
 import { getPosts } from "@/content.config";
-import { about, profile, projects } from "@/data/resume";
+import { about, education, experience, profile, profiles, projects } from "@/data/resume";
 import Base from "@/layouts/Base.astro";
 
 const featured = projects.filter((p) => p.featured);
 const posts = (await getPosts()).slice(0, 3);
 const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "2-digit" });
+const school = education[0];
+
+const person = {
+	"@context": "https://schema.org",
+	"@type": "ProfilePage",
+	mainEntity: {
+		"@type": "Person",
+		name: profile.name,
+		jobTitle: profile.role,
+		description: `${profile.intro} ${profile.proof}`,
+		email: `mailto:${profile.email}`,
+		address: { "@type": "PostalAddress", addressLocality: "Dhaka", addressCountry: "BD" },
+		alumniOf: { "@type": "CollegeOrUniversity", name: school.school },
+		sameAs: profiles.flatMap((g) => g.links.map((l) => l.url)),
+	},
+};
 ---
 
 <Base>
+	<script is:inline type="application/ld+json" set:html={JSON.stringify(person)} />
 	<div class="container">
-		<p>
-			Find me on <a href={profile.github}>GitHub</a>, <a href={profile.linkedin}>LinkedIn</a>,
-			<a href={profile.orcid}>ORCID</a>, and <a href={`mailto:${profile.email}`}>email</a>.
-		</p>
+		<section class="hero" aria-label="Introduction">
+			<p class="role">{profile.role}</p>
+			<p>{profile.intro} {profile.proof}</p>
+			<p class="muted">B.Sc. CSE, BUET · class of {school.gradYear} · {school.grade}</p>
+			<p class="muted">{profile.availability} · {profile.location} ({profile.timezone})</p>
+			<p class="links">
+				<a href={`mailto:${profile.email}`}>{profile.email}</a> · <a href={profile.github}>GitHub</a> ·
+				<a href={profile.linkedin}>LinkedIn</a> · <a href="/resume.pdf">Résumé (PDF)</a>
+			</p>
+		</section>
 
-		<p class="lead">{profile.intro}</p>
-		<p>{about.text[0]} <a href="/about/">More about me →</a></p>
-
-		<h2>Now</h2>
-		<ul>
-			{about.now.map((n) => <li>{n}</li>)}
+		<h2>Experience</h2>
+		<ul class="entries">
+			{
+				experience.map((e) => (
+					<li>
+						<strong>{e.role}</strong>, {e.org} <span class="muted">· {e.when}</span>
+						<br />
+						{e.points[0]}
+					</li>
+				))
+			}
 		</ul>
+		<p><a href="/about/#experience">Full experience and research →</a></p>
 
 		<h2>Projects</h2>
-		<ul class="entries">
+		<ul class="entries projects">
 			{
 				featured.map((p) => (
 					<li>
-						{p.link ? <a href={p.link}>{p.name}</a> : <span class="u">{p.name}</span>}: {p.title}. {p.summary}{" "}
-						<span class="muted">{p.year}.</span>
+						<strong>{p.link ? <a href={p.link}>{p.name}</a> : p.name}</strong>: {p.title}. <span class="muted">{p.year}.</span>
+						<ul>
+							<li>{p.summary}</li>
+							{p.points.slice(0, 1).map((pt) => (
+								<li>{pt}</li>
+							))}
+						</ul>
 					</li>
 				))
 			}
@@ -57,23 +91,30 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month:
 			)
 		}
 
-		<h2>Elsewhere on this site</h2>
-		<ul class="entries">
-			<li><a href="/experience/">Experience</a>: where I've worked and what I did there.</li>
-			<li><a href="/research/">Research</a>: publications.</li>
-			<li><a href="/contact/">Contact</a>: email and every profile I keep.</li>
+		<h2>Now</h2>
+		<ul>
+			{about.now.map((n) => <li>{n}</li>)}
 		</ul>
 	</div>
 </Base>
 
 <style>
-	.lead {
-		margin-top: 1.5rem;
+	.hero {
+		margin-top: 0.5rem;
 	}
-	.u {
-		text-decoration: underline;
-		text-decoration-thickness: 1px;
-		text-underline-offset: 3px;
+	.role {
+		text-wrap: balance;
+		font-weight: 700;
+		color: var(--text-strong);
+	}
+	.links {
+		margin-top: 1rem;
+	}
+	.projects > li + li {
+		margin-top: 1.2em;
+	}
+	.projects ul {
+		margin-top: 0.3em;
 	}
 	.post {
 		display: grid;

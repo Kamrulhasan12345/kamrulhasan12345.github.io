@@ -1,10 +1,13 @@
 # kamrulhasan — portfolio & blog
 
 Personal site for Mohammad Kamrul Hasan. Astro, hand-built, zero client
-framework, self-hosted fonts (Silkscreen + Inter + JetBrains Mono), no external
-requests at runtime. Pixel-modernist design system on a blue-black base: pixel
-display type, phosphor-green primary accent, notched `pxbox` cards, hard offset
-shadows, numbered section heads, square mono chips, amber secondary accent.
+JavaScript, one self-hosted typeface (JetBrains Mono, Latin subset), no external
+requests at runtime. Plain one-column layout that follows the system theme,
+with the old phosphor green as the only accent. All facts live in
+`src/data/resume.ts`.
+
+`public/resume.pdf` is built from the private master résumé with
+`scripts/web-resume.sh` (drops the phone number; needs `tectonic`).
 
 ## Develop
 

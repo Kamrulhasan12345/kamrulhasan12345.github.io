@@ -9,7 +9,8 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month:
 <Base title="Writing" description="Notes on systems, compilers, and running things on small hardware.">
 	<div class="container">
 		<h1>Writing</h1>
-		<p class="muted">Notes on systems, compilers, and running things on small hardware. <a href="/rss.xml">RSS</a>.</p>
+		<p class="muted">Notes on systems, compilers, and running things on small hardware.{posts.length > 0 && <> <a href="/rss.xml">RSS</a>.</>}</p>
+		{posts.length === 0 && <p>Nothing published yet. Meanwhile, the <a href="/projects/">projects</a> have the details.</p>}
 		<ul class="entries">
 			{
 				posts.map((p) => (

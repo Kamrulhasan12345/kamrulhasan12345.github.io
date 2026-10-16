@@ -1,15 +1,14 @@
 ---
+import { getPosts } from "@/content.config";
 import { profile } from "@/data/resume";
 
+// the name links home; Writing appears once there is something to read
+const hasPosts = (await getPosts()).length > 0;
 const links = [
-	{ href: "/", label: "Home" },
-	{ href: "/about/", label: "About" },
-	{ href: "/experience/", label: "Experience" },
-	{ href: "/research/", label: "Research" },
 	{ href: "/projects/", label: "Projects" },
-	{ href: "/blog/", label: "Writing" },
-	{ href: "/contact/", label: "Contact" },
-	{ href: "/resume.pdf", label: "Résumé" },
+	...(hasPosts ? [{ href: "/blog/", label: "Writing" }] : []),
+	{ href: "/about/", label: "About" },
+	{ href: "/resume.pdf", label: "Résumé (PDF)" },
 ];
 const path = Astro.url.pathname;
 const Name = path === "/" ? "h1" : "p";
@@ -27,7 +26,7 @@ const Name = path === "/" ? "h1" : "p";
 		<nav aria-label="Main">
 			{
 				links.map((l) => (
-					<a href={l.href} aria-current={l.href === "/" ? (path === "/" ? "page" : undefined) : path.startsWith(l.href) ? "page" : undefined}>
+					<a href={l.href} aria-current={path.startsWith(l.href) ? "page" : undefined}>
 						{l.label}
 					</a>
 				))
@@ -61,7 +60,7 @@ const Name = path === "/" ? "h1" : "p";
 		flex-wrap: wrap;
 	}
 	nav a {
-		padding-inline: 0.75rem;
+		padding: 0.2rem 0.75rem;
 		font-size: 0.85rem;
 		color: var(--accent);
 		text-decoration: none;

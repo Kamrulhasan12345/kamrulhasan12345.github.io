@@ -1,6 +1,7 @@
 ---
 import { render } from "astro:content";
 import { getPosts } from "@/content.config";
+import { profile } from "@/data/resume";
 import Base from "@/layouts/Base.astro";
 
 export async function getStaticPaths() {
@@ -15,7 +16,7 @@ const words = post.body?.split(/\s+/).length ?? 0;
 const minutes = Math.max(1, Math.round(words / 220));
 ---
 
-<Base title={post.data.title} description={post.data.description}>
+<Base title={post.data.title} description={post.data.description} ogType="article">
 	<article class="container">
 		<h1>{post.data.title}</h1>
 		<p class="muted small">
@@ -24,7 +25,11 @@ const minutes = Math.max(1, Math.round(words / 220));
 		<div class="prose">
 			<Content />
 		</div>
-		<p class="back"><a href="/blog/">← All writing</a></p>
+		<p class="back muted">
+			Written by {profile.name}, {profile.role}. See my <a href="/projects/">projects</a> or email
+			<a href={`mailto:${profile.email}`}>{profile.email}</a>.
+		</p>
+		<p><a href="/blog/">← All writing</a></p>
 	</article>
 </Base>
 
