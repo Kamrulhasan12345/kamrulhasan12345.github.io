@@ -20,8 +20,8 @@
     "semantic_hash": ""
   },
   "src/components/Header.astro": {
-    "mtime": 1792155050.6381574,
-    "ast_hash": "8f9e6ee208621cbe2cac020b95627849",
+    "mtime": 1792161533.7843785,
+    "ast_hash": "e72411071aac58f3f61766fb42bffc78",
     "semantic_hash": ""
   },
   "src/content.config.ts": {
@@ -50,8 +50,8 @@
     "semantic_hash": ""
   },
   "src/pages/index.astro": {
-    "mtime": 1792155084.1628737,
-    "ast_hash": "73a521c9a8665c1829ea0f7c77dcd11c",
+    "mtime": 1792161326.4817195,
+    "ast_hash": "da757a6167b366058e2dde46214dabad",
     "semantic_hash": ""
   },
   "src/pages/rss.xml.ts": {
@@ -122,6 +122,26 @@
   "public/resume.pdf": {
     "mtime": 1792154974.6915474,
     "ast_hash": "f5f47bb55c785a5afe6e31a37f650c1d",
+    "semantic_hash": ""
+  },
+  "src/pages/about.astro": {
+    "mtime": 1792161325.566699,
+    "ast_hash": "bdb0a41e91928ae412aba71e4e808c7d",
+    "semantic_hash": ""
+  },
+  "src/pages/contact.astro": {
+    "mtime": 1792161326.2387142,
+    "ast_hash": "55188340dca60675a2a72bd98031947b",
+    "semantic_hash": ""
+  },
+  "src/pages/experience.astro": {
+    "mtime": 1792161325.793704,
+    "ast_hash": "6698b71076e824e2c82d11fdae463de3",
+    "semantic_hash": ""
+  },
+  "src/pages/research.astro": {
+    "mtime": 1792161325.957708,
+    "ast_hash": "4b6ce9ccfd711d3b9844ede163795c7b",
     "semantic_hash": ""
   }
 }

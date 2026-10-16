@@ -1,0 +1,56 @@
+---
+import { about, education, profile, skills } from "@/data/resume";
+import Base from "@/layouts/Base.astro";
+---
+
+<Base title="About" description={`About ${profile.name}: ${profile.role}.`}>
+	<div class="container">
+		<h1>About</h1>
+		<p class="lead">{profile.intro}</p>
+		{about.text.map((t) => <p>{t}</p>)}
+
+		<h2>Focus</h2>
+		<ul class="entries">
+			{
+				about.focus.map((f) => (
+					<li>
+						<strong>{f.title}:</strong> {f.text}
+					</li>
+				))
+			}
+		</ul>
+
+		<h2>Education</h2>
+		<ul class="entries">
+			{
+				education.map((ed) => (
+					<li>
+						<strong>{ed.degree}</strong>, {ed.school}. <span class="muted">{ed.location}, {ed.when}.</span>
+					</li>
+				))
+			}
+		</ul>
+
+		<h2>Skills</h2>
+		<ul class="entries">
+			{
+				skills.map((s) => (
+					<li>
+						<strong>{s.group}:</strong> {s.items.join(", ")}.
+					</li>
+				))
+			}
+		</ul>
+
+		<p class="next">See also: <a href="/experience/">experience</a>, <a href="/research/">research</a>, <a href="/contact/">contact</a>.</p>
+	</div>
+</Base>
+
+<style>
+	.lead {
+		margin-top: 1rem;
+	}
+	.next {
+		margin-top: 3rem;
+	}
+</style>

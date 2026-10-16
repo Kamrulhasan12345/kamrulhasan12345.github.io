@@ -11,5 +11,9 @@
   "9": "@/layouts/BlogPost.astro",
   "10": "why-polyglot-ayahbot.md",
   "11": "content.config.ts",
-  "12": "ayahbot.md"
+  "12": "ayahbot.md",
+  "13": "index.astro",
+  "14": "projects.astro",
+  "15": "@/components/Footer.astro",
+  "16": "@/components/Header.astro"
 }

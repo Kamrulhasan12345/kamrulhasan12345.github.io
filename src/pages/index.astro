@@ -1,10 +1,10 @@
 ---
 import { getPosts } from "@/content.config";
-import { about, education, experience, profile, projects, research, skills } from "@/data/resume";
+import { about, profile, projects } from "@/data/resume";
 import Base from "@/layouts/Base.astro";
 
 const featured = projects.filter((p) => p.featured);
-const posts = (await getPosts()).slice(0, 5);
+const posts = (await getPosts()).slice(0, 3);
 const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "2-digit" });
 ---
 
@@ -16,34 +16,11 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month:
 		</p>
 
 		<p class="lead">{profile.intro}</p>
-		{about.text.map((t) => <p>{t}</p>)}
+		<p>{about.text[0]} <a href="/about/">More about me →</a></p>
 
 		<h2>Now</h2>
 		<ul>
 			{about.now.map((n) => <li>{n}</li>)}
-		</ul>
-
-		<h2>Experience</h2>
-		<ul class="entries">
-			{
-				experience.map((e) => (
-					<li>
-						<strong>{e.role}</strong>, {e.org} <span class="muted">({e.when})</span>
-						<ul class="points">
-							{e.points.map((pt) => (
-								<li>{pt}</li>
-							))}
-						</ul>
-					</li>
-				))
-			}
-			{
-				education.map((ed) => (
-					<li>
-						<strong>{ed.degree}</strong>, {ed.school} <span class="muted">({ed.when})</span>
-					</li>
-				))
-			}
 		</ul>
 
 		<h2>Projects</h2>
@@ -59,25 +36,6 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month:
 		</ul>
 		<p><a href="/projects/">All {projects.length} projects →</a></p>
 
-		<h2>Publications</h2>
-		<ul class="entries">
-			{
-				research.map((r) => (
-					<li>
-						{r.link ? <a href={r.link}>{r.title}</a> : r.title}.{" "}
-						{r.authors.map((a, i) => (
-							<>
-								{a === "M. K. Hasan" ? <strong>{a}</strong> : a}
-								{i < r.authors.length - 1 && ", "}
-							</>
-						))}
-						. <em>{r.venue}</em>.
-						<span class="muted">{r.detail}</span>
-					</li>
-				))
-			}
-		</ul>
-
 		{
 			posts.length > 0 && (
 				<>
@@ -92,40 +50,25 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month:
 							</li>
 						))}
 					</ul>
+					<p>
+						<a href="/blog/">All posts →</a>
+					</p>
 				</>
 			)
 		}
 
-		<h2>Skills</h2>
+		<h2>Elsewhere on this site</h2>
 		<ul class="entries">
-			{
-				skills.map((s) => (
-					<li>
-						<strong>{s.group}:</strong> {s.items.join(", ")}.
-					</li>
-				))
-			}
+			<li><a href="/experience/">Experience</a>: where I've worked and what I did there.</li>
+			<li><a href="/research/">Research</a>: publications.</li>
+			<li><a href="/contact/">Contact</a>: email and every profile I keep.</li>
 		</ul>
-
-		<h2>Contact</h2>
-		<p>
-			Open to internships, research and anything that runs on small hardware. Email is fastest:
-			<a href={`mailto:${profile.email}`}>{profile.email}</a>. I'm in {profile.location} (UTC+6). My résumé is
-			<a href="/resume.pdf">here (PDF)</a>.
-		</p>
 	</div>
 </Base>
 
 <style>
 	.lead {
 		margin-top: 1.5rem;
-	}
-	.points {
-		margin-top: 0.3em;
-		color: var(--text-muted);
-	}
-	.points li + li {
-		margin-top: 0.2em;
 	}
 	.u {
 		text-decoration: underline;

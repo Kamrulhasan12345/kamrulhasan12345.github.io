@@ -301,7 +301,7 @@
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "id": "src_components_footer",
-      "community": 2,
+      "community": 15,
       "norm_label": "@/components/footer.astro"
     },
     {
@@ -311,7 +311,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_components_footer_year",
-      "community": 2,
+      "community": 15,
       "norm_label": "year"
     },
     {
@@ -333,7 +333,7 @@
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "id": "src_components_header",
-      "community": 2,
+      "community": 16,
       "norm_label": "@/components/header.astro"
     },
     {
@@ -343,7 +343,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_components_header_links",
-      "community": 2,
+      "community": 16,
       "norm_label": "links"
     },
     {
@@ -404,7 +404,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_data_resume_profile",
-      "community": 2,
+      "community": 13,
       "norm_label": "profile"
     },
     {
@@ -414,7 +414,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_data_resume_about",
-      "community": 6,
+      "community": 13,
       "norm_label": "about"
     },
     {
@@ -494,7 +494,7 @@
       "source_location": "L134",
       "_origin": "ast",
       "id": "src_data_resume_projects",
-      "community": 6,
+      "community": 13,
       "norm_label": "projects"
     },
     {
@@ -547,6 +547,16 @@
       "id": "src_pages_404",
       "community": 2,
       "norm_label": "404.astro"
+    },
+    {
+      "label": "about.astro",
+      "file_type": "code",
+      "source_file": "src/pages/about.astro",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_about",
+      "community": 2,
+      "norm_label": "about.astro"
     },
     {
       "label": "[slug].astro",
@@ -605,7 +615,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_pages_blog_index",
-      "community": 2,
+      "community": 0,
       "norm_label": "index.astro"
     },
     {
@@ -615,8 +625,28 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_pages_blog_index_fmt",
-      "community": 2,
+      "community": 0,
       "norm_label": "fmt()"
+    },
+    {
+      "label": "contact.astro",
+      "file_type": "code",
+      "source_file": "src/pages/contact.astro",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_contact",
+      "community": 2,
+      "norm_label": "contact.astro"
+    },
+    {
+      "label": "experience.astro",
+      "file_type": "code",
+      "source_file": "src/pages/experience.astro",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_experience",
+      "community": 2,
+      "norm_label": "experience.astro"
     },
     {
       "label": "index.astro",
@@ -625,7 +655,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_pages_index",
-      "community": 6,
+      "community": 13,
       "norm_label": "index.astro"
     },
     {
@@ -635,7 +665,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_pages_index_featured",
-      "community": 6,
+      "community": 13,
       "norm_label": "featured"
     },
     {
@@ -645,7 +675,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_pages_index_posts",
-      "community": 6,
+      "community": 13,
       "norm_label": "posts"
     },
     {
@@ -655,7 +685,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_pages_index_fmt",
-      "community": 6,
+      "community": 13,
       "norm_label": "fmt()"
     },
     {
@@ -665,7 +695,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_pages_projects",
-      "community": 2,
+      "community": 14,
       "norm_label": "projects.astro"
     },
     {
@@ -675,7 +705,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_pages_projects_sorted",
-      "community": 2,
+      "community": 14,
       "norm_label": "sorted"
     },
     {
@@ -685,8 +715,18 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_pages_projects_groups",
-      "community": 2,
+      "community": 14,
       "norm_label": "groups"
+    },
+    {
+      "label": "research.astro",
+      "file_type": "code",
+      "source_file": "src/pages/research.astro",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_research",
+      "community": 2,
+      "norm_label": "research.astro"
     },
     {
       "label": "rss.xml.ts",
@@ -1525,6 +1565,30 @@
     },
     {
       "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/about.astro",
+      "source": "src_pages_about",
+      "target": "src_data_resume",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/contact.astro",
+      "source": "src_pages_contact",
+      "target": "src_data_resume",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/experience.astro",
+      "source": "src_pages_experience",
+      "target": "src_data_resume",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/pages/index.astro",
@@ -1539,6 +1603,14 @@
       "confidence": "EXTRACTED",
       "source_file": "src/pages/projects.astro",
       "source": "src_pages_projects",
+      "target": "src_data_resume",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/research.astro",
+      "source": "src_pages_research",
       "target": "src_data_resume",
       "confidence_score": 1.0
     },
@@ -1716,51 +1788,7 @@
       "source_location": "L3",
       "weight": 1.0,
       "source": "src_pages_index",
-      "target": "src_data_resume_experience",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/index.astro",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "src_pages_index",
-      "target": "src_data_resume_education",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/index.astro",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "src_pages_index",
-      "target": "src_data_resume_research",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/index.astro",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "src_pages_index",
       "target": "src_data_resume_projects",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/index.astro",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "src_pages_index",
-      "target": "src_data_resume_skills",
       "confidence_score": 1.0
     },
     {
@@ -1794,6 +1822,17 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/pages/about.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_about",
+      "target": "src_layouts_base",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/pages/blog/index.astro",
       "source_location": "L3",
       "weight": 1.0,
@@ -1816,6 +1855,28 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/pages/contact.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_contact",
+      "target": "src_layouts_base",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/experience.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_experience",
+      "target": "src_layouts_base",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/pages/index.astro",
       "source_location": "L4",
       "weight": 1.0,
@@ -1831,6 +1892,17 @@
       "source_location": "L3",
       "weight": 1.0,
       "source": "src_pages_projects",
+      "target": "src_layouts_base",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/research.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_research",
       "target": "src_layouts_base",
       "confidence_score": 1.0
     },
@@ -2279,5 +2351,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "eeaa3240f84d7f943c7c2b79b05ed31ec1d89e7d"
+  "built_at_commit": "487c01b1ec98eb18d494097f8a5790407694e273"
 }

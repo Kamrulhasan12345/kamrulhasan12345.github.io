@@ -11,21 +11,5 @@
   "9": "@/layouts/BlogPost.astro",
   "10": "why-polyglot-ayahbot.md",
   "11": "content.config.ts",
-  "12": "ayahbot.md",
-  "13": "bayyinah.md",
-  "14": "ilham.md",
-  "15": "nodecommerce.md",
-  "16": "astro",
-  "17": "homelab.md",
-  "18": "secure-element.md",
-  "19": "competitive-programming.md",
-  "20": "compiler-articles.md",
-  "21": "ctf-track.md",
-  "22": "eventcast.md",
-  "23": "hardware-crypto-device.md",
-  "24": "haunted-stadium.md",
-  "25": "ielts-app.md",
-  "26": "version3-woocommerce.md",
-  "27": "skip-locked-job-queue.md",
-  "28": "why-i-run-arch-on-6gb.md"
+  "12": "ayahbot.md"
 }

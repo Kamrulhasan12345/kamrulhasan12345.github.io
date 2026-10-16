@@ -1,16 +1,16 @@
 # Graph Report - plain-redesign  (2026-10-16)
 
 ## Corpus Check
-- 21 files · ~6,110 words
+- 25 files · ~6,424 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 108 nodes · 117 edges · 13 communities
+- 112 nodes · 121 edges · 17 communities (14 shown, 3 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `eeaa3240`
+- Built from commit: `487c01b1`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -27,10 +27,14 @@
 - why-polyglot-ayahbot.md
 - content.config.ts
 - ayahbot.md
+- index.astro
+- projects.astro
+- @/components/Footer.astro
+- @/components/Header.astro
 
 ## God Nodes (most connected - your core abstractions)
-1. `@/data/resume` - 17 edges
-2. `@/layouts/Base.astro` - 11 edges
+1. `@/data/resume` - 21 edges
+2. `@/layouts/Base.astro` - 15 edges
 3. `@/content.config` - 7 edges
 4. `scripts` - 6 edges
 5. `getPosts()` - 5 edges
@@ -49,10 +53,10 @@
 ## Import Cycles
 - None detected.
 
-## Communities (13 total, 0 thin omitted)
+## Communities (17 total, 3 thin omitted)
 
 ### Community 0 - "@/data/collections"
-Cohesion: 0.25
+Cohesion: 0.21
 Nodes (8): @/content.config, blog, collections, getPosts(), date, getStaticPaths(), minutes, GET()
 
 ### Community 1 - "dependencies"
@@ -60,8 +64,8 @@ Cohesion: 0.29
 Nodes (7): astro, @astrojs/rss, @astrojs/sitemap, dependencies, astro, @astrojs/rss, @astrojs/sitemap
 
 ### Community 2 - "@/layouts/Base.astro"
-Cohesion: 0.14
-Nodes (10): @/styles/base.css, @/styles/tokens.css, @/components/Footer.astro, year, @/components/Header.astro, links, profile, @/layouts/Base.astro (+2 more)
+Cohesion: 0.25
+Nodes (3): @/styles/base.css, @/styles/tokens.css, @/layouts/Base.astro
 
 ### Community 3 - "package.json"
 Cohesion: 0.12
@@ -72,8 +76,8 @@ Cohesion: 0.18
 Nodes (11): compilerOptions, baseUrl, paths, exclude, extends, include, @/*, astro/tsconfigs/strict (+3 more)
 
 ### Community 6 - "kamrulhasan — portfolio & blog"
-Cohesion: 0.17
-Nodes (13): @/data/resume, about, categories, Category, education, experience, profiles, Project (+5 more)
+Cohesion: 0.20
+Nodes (9): @/data/resume, categories, Category, education, experience, profiles, Project, research (+1 more)
 
 ### Community 7 - "hello-world.md"
 Cohesion: 0.29
@@ -99,22 +103,25 @@ Nodes (3): The core trick, The sharp edges, When to graduate
 Cohesion: 0.50
 Nodes (3): Spend RAM where it thinks, The constraint is the curriculum, zram first
 
+### Community 13 - "index.astro"
+Cohesion: 0.29
+Nodes (5): about, profile, projects, featured, posts
+
 ## Knowledge Gaps
-- **58 isolated node(s):** `name`, `type`, `version`, `private`, `dev` (+53 more)
+- **62 isolated node(s):** `name`, `type`, `version`, `private`, `dev` (+57 more)
   These have ≤1 connection - possible missing edges or undocumented components.
+- **3 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `@/layouts/Base.astro` connect `@/layouts/Base.astro` to `@/data/collections`, `kamrulhasan — portfolio & blog`?**
-  _High betweenness centrality (0.057) - this node is a cross-community bridge._
-- **Why does `@/data/resume` connect `kamrulhasan — portfolio & blog` to `@/layouts/Base.astro`?**
-  _High betweenness centrality (0.052) - this node is a cross-community bridge._
-- **Why does `@/content.config` connect `@/data/collections` to `@/layouts/Base.astro`, `kamrulhasan — portfolio & blog`?**
-  _High betweenness centrality (0.031) - this node is a cross-community bridge._
+- **Why does `@/data/resume` connect `kamrulhasan — portfolio & blog` to `@/layouts/Base.astro`, `index.astro`, `projects.astro`, `@/components/Footer.astro`, `@/components/Header.astro`?**
+  _High betweenness centrality (0.073) - this node is a cross-community bridge._
+- **Why does `@/layouts/Base.astro` connect `@/layouts/Base.astro` to `@/data/collections`, `kamrulhasan — portfolio & blog`, `index.astro`, `projects.astro`, `@/components/Footer.astro`, `@/components/Header.astro`?**
+  _High betweenness centrality (0.069) - this node is a cross-community bridge._
+- **Why does `@/content.config` connect `@/data/collections` to `index.astro`?**
+  _High betweenness centrality (0.028) - this node is a cross-community bridge._
 - **What connects `name`, `type`, `version` to the rest of the system?**
-  _58 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `@/layouts/Base.astro` be split into smaller, more focused modules?**
-  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
+  _62 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._

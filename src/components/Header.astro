@@ -3,8 +3,12 @@ import { profile } from "@/data/resume";
 
 const links = [
 	{ href: "/", label: "Home" },
+	{ href: "/about/", label: "About" },
+	{ href: "/experience/", label: "Experience" },
+	{ href: "/research/", label: "Research" },
 	{ href: "/projects/", label: "Projects" },
 	{ href: "/blog/", label: "Writing" },
+	{ href: "/contact/", label: "Contact" },
 	{ href: "/resume.pdf", label: "Résumé" },
 ];
 const path = Astro.url.pathname;
@@ -70,5 +74,10 @@ const Name = path === "/" ? "h1" : "p";
 	nav a:hover,
 	nav a[aria-current="page"] {
 		text-decoration: underline;
+	}
+	@media (max-width: 34rem) {
+		.logo {
+			display: none;
+		}
 	}
 </style>
