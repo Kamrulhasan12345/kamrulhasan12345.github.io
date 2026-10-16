@@ -25,7 +25,8 @@ draft: true
 
 ## Making the numbers trustworthy
 
-- Thermal cooldowns, randomized run order, energy and CPU-counter logging, 209 tests.
+- Thermal cooldowns, randomized run order, energy and CPU-counter logging, 209 test assertions.
+- Device: Helio G81 (2× Cortex-A75 + 6× Cortex-A55), Qwen2 1B Q4_0. One phone; say so.
 - Tools: simpleperf, Perfetto.
 
 ## What I'd do next

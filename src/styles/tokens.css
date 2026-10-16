@@ -15,7 +15,7 @@
 	--line: #e3e3e3;
 	--code-bg: #f4f4f2;
 
-	--font: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+	--font: "JetBrains Mono", "Noto Sans Bengali", ui-monospace, Menlo, Consolas, monospace;
 	--size: 15px;
 	--leading: 1.725;
 	--measure: 45rem;

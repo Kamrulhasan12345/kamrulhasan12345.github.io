@@ -15,6 +15,15 @@
 	font-weight: 700;
 	font-display: swap;
 }
+/* Bengali posts: JetBrains Mono has no Bengali, so these characters fall through
+   to this face. unicode-range keeps English-only pages from downloading it. */
+@font-face {
+	font-family: "Noto Sans Bengali";
+	src: url("../assets/fonts/NotoSansBengali-Variable.woff2") format("woff2");
+	font-weight: 400 700;
+	font-display: swap;
+	unicode-range: U+0980-09FF, U+200C-200D, U+0964-0965, U+25CC;
+}
 
 *,
 *::before,

@@ -42,8 +42,7 @@ const rest = sorted.filter((p) => !p.featured);
 			{
 				rest.map((p) => (
 					<li>
-						<strong>{p.link ? <a href={p.link}>{p.name}</a> : p.name}</strong>
-						{p.status && <span class="status">{p.status.toLowerCase()}</span>}: {p.title}. {p.summary}{" "}
+						<strong>{p.link ? <a href={p.link}>{p.name}</a> : p.name}</strong>{p.status && <span class="status">{p.status.toLowerCase()}</span>}: {p.title}. {p.summary}{" "}
 						<span class="muted">
 							{p.stack.join(", ")}. {p.year}.
 						</span>

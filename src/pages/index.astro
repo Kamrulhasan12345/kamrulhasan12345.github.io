@@ -14,7 +14,8 @@ const person = {
 	mainEntity: {
 		"@type": "Person",
 		name: profile.name,
-		jobTitle: profile.role,
+		jobTitle: experience[0].role,
+		worksFor: { "@type": "Organization", name: experience[0].org },
 		description: `${profile.intro} ${profile.proof}`,
 		email: `mailto:${profile.email}`,
 		address: { "@type": "PostalAddress", addressLocality: "Dhaka", addressCountry: "BD" },
@@ -28,9 +29,8 @@ const person = {
 	<script is:inline type="application/ld+json" set:html={JSON.stringify(person)} />
 	<div class="container">
 		<section class="hero" aria-label="Introduction">
-			<p class="role">{profile.role}</p>
+			<p class="role">{profile.role} · class of {school.gradYear} · {school.grade}</p>
 			<p>{profile.intro} {profile.proof}</p>
-			<p class="muted">B.Sc. CSE, BUET · class of {school.gradYear} · {school.grade}</p>
 			<p class="muted">{profile.availability} · {profile.location} ({profile.timezone})</p>
 			<p class="links">
 				<a href={`mailto:${profile.email}`}>{profile.email}</a> · <a href={profile.github}>GitHub</a> ·
