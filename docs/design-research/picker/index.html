@@ -2,7 +2,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Barlow+Condensed:wght@600;800&family=Fredoka:wght@400;600&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;600&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Silkscreen&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Barlow:wght@400;600&family=Barlow+Condensed:wght@600;700&family=Fredoka:wght@400;600&family=Geist:wght@400;600;700&family=Geist+Mono:wght@400;600&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;600&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&family=Silkscreen&family=Source+Code+Pro:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
 <style>
 /* Layout: three columns — category index | option board | live preview + brief. Stacks on phones. */
 :root{
@@ -151,8 +151,8 @@ dialog::backdrop{background:rgba(0,0,0,.6)}
 .pv .sh.rule_label::before,.pv .sh.rule_label::after{content:"";height:1px;background:var(--p-line)}
 .pv .sh.numbered{font:600 13px var(--p-body)}.pv .sh.numbered::before{content:attr(data-n) "  ";font-family:var(--p-mono);color:var(--p-acc)}
 .pv .sh.micro_caps{font:10.5px var(--p-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--p-dim)}
-.pv .sh.big_serif{font:400 26px/1.1 "Newsreader",Georgia,serif;letter-spacing:-.01em}
-.pv .sh.big_sans{font:800 24px/1.05 "Archivo",system-ui,sans-serif;letter-spacing:-.02em}
+.pv .sh.big_serif{font:400 26px/1.1 var(--p-serif);letter-spacing:-.01em}
+.pv .sh.big_sans{font:var(--p-dw) 24px/1.05 var(--p-display);letter-spacing:var(--p-dls);text-transform:var(--p-dtt)}
 .pv .sh.figure_captions{font:10.5px var(--p-mono);letter-spacing:.08em;text-transform:uppercase;border-top:1px solid var(--p-fg);padding-top:4px}
 .pv .sh.figure_captions::before{content:"FIG. " attr(data-n) " — ";color:var(--p-acc)}
 .pv .sh.plain_bold{font:700 14px var(--p-body)}
@@ -240,8 +240,8 @@ dialog::backdrop{background:rgba(0,0,0,.6)}
     </div>
     <div class="presets" aria-label="Start from a preset">
       <span class="label">Start from</span>
-      <button class="chipbtn" data-preset="datasheet">Datasheet</button>
-      <button class="chipbtn" data-preset="editor">Editor</button>
+      <button class="chipbtn" data-preset="datasheet">Datasheet (default)</button>
+      <button class="chipbtn" data-preset="index">Minimal index</button>
       <button class="chipbtn" data-preset="lab">Lab notebook</button>
       <button class="chipbtn ghost" data-preset="clear">Clear all</button>
     </div>
@@ -303,16 +303,17 @@ const LABEL = {
 const lab = (cat, o) => (cat === "imagery" && o === "illustration") ? "Illustrations" : (LABEL[o] || o);
 
 /* ---------- suggestions + presets (from the research: docs/design-research/03-principles.md) ---------- */
-const SUGGEST = {concept:["datasheet","editor"],surface:["ink_dark","paper"],accent:["single_signal","category_pastels"],type:["mono_plus_sans"],scale:["micro"],layout:["gutter_rail","narrow_column"],density:["dense"],hero:["interactive_artifact","product_visual","kv_spec"],nav:["top_minimal","tabs_boxed"],listing:["spec_table","tree_log","dated_list"],headings:["figure_captions","rule_label"],texture:["dot_grain","ticks_marks","boxes_borders"],imagery:["pixel_art","diagrams"],motion:["single_hero_anim"],voice:["austere_technical","warm_personal"]};
+const SUGGEST = {concept:["datasheet","lab_notebook"],surface:["paper","ink_dark"],accent:["single_signal","monochrome"],type:["mono_plus_sans","serif_plus_mono"],scale:["micro","moderate"],layout:["narrow_column","sidebar_sticky"],density:["balanced","dense"],hero:["kv_spec","product_visual","interactive_artifact"],nav:["top_minimal"],listing:["spec_table","dated_list"],headings:["figure_captions","micro_caps"],texture:["flat","dot_grain"],imagery:["diagrams","pixel_art"],motion:["single_hero_anim"],voice:["austere_technical","warm_personal"]};
 const PRESETS = {
- datasheet:{concept:"datasheet",surface:"paper",accent:"single_signal",type:"mono_plus_sans",scale:"micro",layout:"narrow_column",density:"dense",hero:"kv_spec",nav:"tabs_boxed",listing:["spec_table","dated_list"],headings:"figure_captions",texture:["grid_lines","ticks_marks","boxes_borders"],imagery:["diagrams","pixel_art"],motion:"single_hero_anim",voice:"austere_technical"},
- editor:{concept:"editor",surface:"ink_dark",accent:"category_pastels",type:"mono_plus_sans",scale:"micro",layout:"gutter_rail",density:"balanced",hero:"interactive_artifact",nav:"top_minimal",listing:["tree_log","dated_list"],headings:"rule_label",texture:["dot_grain"],imagery:["pixel_art"],motion:"single_hero_anim",voice:"warm_personal"},
+ // default: a quiet datasheet — spec tables and figure captions, no grid/ticks/offset-box extras
+ datasheet:{concept:"datasheet",surface:"paper",accent:"single_signal",type:"mono_plus_sans",scale:"micro",layout:"narrow_column",density:"balanced",hero:"kv_spec",nav:"top_minimal",listing:["spec_table","dated_list"],headings:"figure_captions",texture:["flat"],imagery:["diagrams"],motion:"single_hero_anim",voice:"austere_technical"},
+ index:{concept:"garden_index",surface:"white",accent:"monochrome",type:"grotesk_swiss",scale:"micro",layout:"multi_column_index",density:"balanced",hero:"text_intro",nav:"inline_links",listing:["dated_list","year_table"],headings:"micro_caps",texture:["flat"],imagery:["no_images"],motion:"hover_only",voice:"warm_personal"},
  lab:{concept:"lab_notebook",surface:"paper",accent:"single_signal",type:"serif_plus_mono",scale:"moderate",layout:"narrow_column",density:"dense",hero:"product_visual",nav:"top_minimal",listing:["year_table","spec_table"],headings:"micro_caps",texture:["flat"],imagery:["diagrams"],motion:"interactive_figures",voice:"scholarly"},
 };
 
 /* ---------- state ---------- */
 let DATA = null, CATS = [], SITES = {}, cur = 0, picks = {};
-const STORE_KEY = "identity-picker-v1";
+const STORE_KEY = "identity-picker-v2";
 try { picks = JSON.parse(localStorage.getItem(STORE_KEY) || "{}") || {}; } catch { picks = {}; }
 const isMulti = c => c.kind === "multi";
 const picked = (c, o) => isMulti(c) ? (picks[c.id] || []).includes(o) : picks[c.id] === o;
@@ -413,15 +414,16 @@ function accentFor(a, dark){
     bold_brand:dark?["#ff5a1f","#ffd23f"]:["#ff4d00","#111111"], imagery_color:dark?["#9fb4ff","#ffb38a"]:["#3355cc","#cc6633"]})[a] || (dark?["#f5a524","#5fd97f"]:["#c2410c","#1f9d55"]);
 }
 const TYPE = {
- all_mono:{d:'"JetBrains Mono",monospace',b:'"JetBrains Mono",monospace',m:'"JetBrains Mono",monospace',dw:700},
- mono_plus_sans:{d:'"IBM Plex Sans",sans-serif',b:'"IBM Plex Sans",sans-serif',m:'"IBM Plex Mono",monospace',dw:600},
- serif_plus_mono:{d:'"Newsreader",Georgia,serif',b:'"Newsreader",Georgia,serif',m:'"IBM Plex Mono",monospace',dw:400},
- serif_editorial:{d:'"Newsreader",Georgia,serif',b:'"Newsreader",Georgia,serif',m:'"Newsreader",Georgia,serif',dw:400},
- grotesk_swiss:{d:'"Archivo",sans-serif',b:'"Archivo",sans-serif',m:'"Archivo",sans-serif',dw:800,ls:"-.03em"},
- condensed_display:{d:'"Barlow Condensed",sans-serif',b:'"Archivo",sans-serif',m:'"IBM Plex Mono",monospace',dw:800,tt:"uppercase"},
- pixel_bitmap:{d:'"Silkscreen",monospace',b:'"JetBrains Mono",monospace',m:'"JetBrains Mono",monospace',dw:400},
- rounded_playful:{d:'"Fredoka",sans-serif',b:'"Fredoka",sans-serif',m:'"JetBrains Mono",monospace',dw:600},
- system_plain:{d:'"Times New Roman",Times,serif',b:'"Times New Roman",Times,serif',m:'monospace',dw:700},
+ // each system is one designed family (sans/mono/serif siblings), so faces always match; s = serif used by "big serif" headings
+ all_mono:{d:'"JetBrains Mono",monospace',b:'"JetBrains Mono",monospace',m:'"JetBrains Mono",monospace',s:'"JetBrains Mono",monospace',dw:700},
+ mono_plus_sans:{d:'"Geist",system-ui,sans-serif',b:'"Geist",system-ui,sans-serif',m:'"Geist Mono",ui-monospace,monospace',s:'"Geist",system-ui,sans-serif',dw:600,ls:"-.02em"},
+ serif_plus_mono:{d:'"Source Serif 4",Georgia,serif',b:'"Source Serif 4",Georgia,serif',m:'"Source Code Pro",ui-monospace,monospace',s:'"Source Serif 4",Georgia,serif',dw:600},
+ serif_editorial:{d:'"Source Serif 4",Georgia,serif',b:'"Source Serif 4",Georgia,serif',m:'"Source Serif 4",Georgia,serif',s:'"Source Serif 4",Georgia,serif',dw:400},
+ grotesk_swiss:{d:'"Archivo",system-ui,sans-serif',b:'"Archivo",system-ui,sans-serif',m:'"Archivo",system-ui,sans-serif',s:'"Archivo",system-ui,sans-serif',dw:800,ls:"-.03em"},
+ condensed_display:{d:'"Barlow Condensed",sans-serif',b:'"Barlow",sans-serif',m:'"Barlow",sans-serif',s:'"Barlow Condensed",sans-serif',dw:700,tt:"uppercase"},
+ pixel_bitmap:{d:'"Silkscreen",monospace',b:'"Geist Mono",ui-monospace,monospace',m:'"Geist Mono",ui-monospace,monospace',s:'"Geist Mono",ui-monospace,monospace',dw:400},
+ rounded_playful:{d:'"Fredoka",sans-serif',b:'"Fredoka",sans-serif',m:'"Fredoka",sans-serif',s:'"Fredoka",sans-serif',dw:600},
+ system_plain:{d:'"Times New Roman",Times,serif',b:'"Times New Roman",Times,serif',m:'monospace',s:'"Times New Roman",Times,serif',dw:700},
 };
 const VOICE = {
  austere_technical:["AI engineering · embedded systems.","LLM inference on phones, single-board computers and microcontrollers. Backends around them."],
@@ -441,15 +443,15 @@ const EXP = [{r:"Backend Developer Intern",o:"Version3.ai",w:"Jun 2026 — now",
              {r:"Software Engineering Intern",o:"Edulytics",w:"Dec 2025 — Mar 2026",p:["Core flows for a React Native MVP"]}];
 
 function pv(){
-  const P = k => picks[k] ?? (PRESETS.editor[k]);   // fall back to a sensible default per category
-  const arr = k => [].concat(picks[k] ?? PRESETS.editor[k]);
+  const P = k => picks[k] ?? (PRESETS.datasheet[k]);   // undecided categories fall back to the quiet datasheet default
+  const arr = k => [].concat(picks[k] ?? PRESETS.datasheet[k]);
   const surface = P("surface"), dark = DARK.has(surface), S = SURF[surface] || SURF.ink_dark;
   const [acc, acc2] = accentFor(P("accent"), dark), T = TYPE[P("type")] || TYPE.mono_plus_sans;
   const scale = P("scale"), dens = P("density"), layout = P("layout"), concept = P("concept"), hero = P("hero");
   const heads = P("headings"), list = arr("listing"), tex = arr("texture"), imgs = arr("imagery"), voice = VOICE[P("voice")] || VOICE.austere_technical;
   const el = $("#pv");
   const vars = {"--p-bg":S.bg,"--p-fg":S.fg,"--p-dim":S.dim,"--p-line":S.line,"--p-raised":S.raised,"--p-acc":acc,"--p-acc2":acc2,
-    "--p-display":T.d,"--p-body":T.b,"--p-mono":T.m,"--p-dw":T.dw,"--p-dls":T.ls||"-.01em","--p-dtt":T.tt||"none",
+    "--p-display":T.d,"--p-body":T.b,"--p-mono":T.m,"--p-serif":T.s||T.d,"--p-dw":T.dw,"--p-dls":T.ls||"-.01em","--p-dtt":T.tt||"none",
     "--p-h1": scale==="micro" ? "18px" : scale==="display" ? (T.tt?"60px":"46px") : "28px",
     "--p-rad": concept==="datasheet"||tex.includes("boxes_borders") ? "0px" : "6px",
     "--gap": dens==="airy" ? "24px" : dens==="dense" ? "9px" : "15px"};
@@ -479,10 +481,10 @@ function pv(){
   /* nav */
   const navLinks = ["work","writing","about","contact"];
   const navs = {
-    top_minimal:`<div class="navbar"><span class="mono tiny">${concept==="editor"?"~/kamrul":concept==="terminal"?"kamrul@buet:~$":"mkh"}</span><div class="nav">${navLinks.map((l,i)=>i?`<span>${l}</span>`:`<b>${l}</b>`).join("")}</div></div>`,
+    top_minimal:`<div class="navbar"><span class="mono tiny">${concept==="editor"?"~/kamrul":concept==="terminal"?"kamrul@buet:~$":"kamrul"}</span><div class="nav">${navLinks.map((l,i)=>i?`<span>${l}</span>`:`<b>${l}</b>`).join("")}</div></div>`,
     top_full:`<div class="navbar"><b>Kamrul</b><div class="nav">${navLinks.map(l=>`<span>${l}</span>`).join("")}<span class="btn solid">Résumé</span></div></div>`,
     sidebar:`<div class="nav" style="flex-direction:column;gap:4px">${navLinks.map((l,i)=>i?`<span>${l}</span>`:`<b>› ${l}</b>`).join("")}</div>`,
-    tabs_boxed:`<div class="navbar"><span class="tiny">MKH-12345 · REV 2026.10</span><div class="tabs">${["Office","Work","Notes"].map(l=>`<span>${l}</span>`).join("")}</div></div>`,
+    tabs_boxed:`<div class="navbar"><span class="tiny">Mohammad Kamrul Hasan</span><div class="tabs">${["Office","Work","Notes"].map(l=>`<span>${l}</span>`).join("")}</div></div>`,
     toc_leaders:`<div class="toc">${["Work","Writing","About","Contact"].map((l,i)=>`<div><span>${l}</span><i></i><span>${["I","II","III","IV"][i]}</span></div>`).join("")}</div>`,
     icon_labels:`<div class="iconnav">${[["work","inference · drivers"],["writing","notes · benchmarks"],["about","cv · contact"]].map(([a,b])=>`<div><s></s><span>${a}</span><small>${b}</small></div>`).join("")}</div>`,
     command_terminal:`<div class="cmdk"><span>Search or jump to…</span><span>⌘K</span></div>`,
@@ -493,7 +495,7 @@ function pv(){
   const kv = `<dl class="kv"><dt>Role:</dt><dd>AI Eng · Embedded</dd><dt>Now:</dt><dd>Version3.ai</dd><dt>Study:</dt><dd>CSE @ BUET</dd><dt>Focus:</dt><dd>on-device LLMs</dd><dt>Base:</dt><dd>Dhaka, BD</dd></dl>`;
   const bench = `<div class="bars" aria-label="Decode speed, tokens per second">${[["littletai",1,"2.6×",1],["llama.cpp",.38,"1.0×",0]].map(([a,w,v,h])=>`<div class="bar ${h?"hi":""}"><span>${a}</span><i style="width:${w*100}%"></i><span>${v}</span></div>`).join("")}<span class="tiny">decode tok/s · Android big.LITTLE · higher is better</span></div>`;
   const oled = `<div class="win"><span class="t">${concept==="datasheet"?"FIG. 1 — sh1106 display":"sh1106.c"}</span><canvas id="oled" width="128" height="64" aria-label="128 by 64 pixel OLED animation"></canvas></div>`;
-  const nameBlock = `<div class="tiny">${concept==="lab_notebook"?"OCT 2026 · DHAKA":concept==="editor"?"~/portfolio":concept==="datasheet"?"MKH-12345 · AI / EMBEDDED ENGINEER · REV 2026.10":"Mohammad Kamrul Hasan"}</div><h1>${esc(hero==="statement_type"||P("voice")==="bold_loud"?voice[0]:concept==="datasheet"?"Mohammad Kamrul Hasan":"Mohammad Kamrul Hasan")}</h1><p class="lede">${esc(voice[1])}</p>`;
+  const nameBlock = `<div class="tiny">${concept==="lab_notebook"?"OCT 2026 · DHAKA":concept==="editor"?"~/portfolio":concept==="datasheet"?"AI engineering · Embedded systems · Dhaka":"Mohammad Kamrul Hasan"}</div><h1>${esc(hero==="statement_type"||P("voice")==="bold_loud"?voice[0]:concept==="datasheet"?"Mohammad Kamrul Hasan":"Mohammad Kamrul Hasan")}</h1><p class="lede">${esc(voice[1])}</p>`;
   const heroes = {
     text_intro: nameBlock,
     kv_spec: nameBlock + kv,
@@ -541,7 +543,7 @@ function pv(){
   else body = `${nav}${secHero}${secWork}${secExp}`;
 
   /* concept chrome */
-  const url = {editor:"kamrul.c — ~/portfolio",terminal:"tty1",os_desktop:"Finder — kamrul",datasheet:"MKH-12345.pdf",lab_notebook:"notebook / 2026",manual_book:"Manual, rev 2026"}[concept] || "kamrulhasan12345.github.io";
+  const url = {editor:"kamrul.c — ~/portfolio",terminal:"tty1",os_desktop:"Finder — kamrul",lab_notebook:"notebook / 2026",manual_book:"Manual, rev 2026"}[concept] || "kamrulhasan12345.github.io";
   const chrome = concept==="os_desktop"
     ? `<div class="chrome"><i></i><i></i><i></i><span class="url">${url}</span><span style="margin-left:auto">${new Date().toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"})}</span></div>`
     : `<div class="chrome"><i></i><i></i><i></i><span class="url">${url}</span></div>`;
