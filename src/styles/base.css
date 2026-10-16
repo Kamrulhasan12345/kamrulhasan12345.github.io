@@ -17,11 +17,21 @@
 }
 /* Bengali posts: JetBrains Mono has no Bengali, so these characters fall through
    to this face. unicode-range keeps English-only pages from downloading it. */
+/* size-adjust: Hind's Bengali renders small next to the mono at the same font-size */
 @font-face {
-	font-family: "Noto Sans Bengali";
-	src: url("../assets/fonts/NotoSansBengali-Variable.woff2") format("woff2");
-	font-weight: 400 700;
+	font-family: "Hind Siliguri";
+	src: url("../assets/fonts/HindSiliguri-Regular.woff2") format("woff2");
+	font-weight: 400;
 	font-display: swap;
+	size-adjust: 112%;
+	unicode-range: U+0980-09FF, U+200C-200D, U+0964-0965, U+25CC;
+}
+@font-face {
+	font-family: "Hind Siliguri";
+	src: url("../assets/fonts/HindSiliguri-Bold.woff2") format("woff2");
+	font-weight: 700;
+	font-display: swap;
+	size-adjust: 112%;
 	unicode-range: U+0980-09FF, U+200C-200D, U+0964-0965, U+25CC;
 }
 
