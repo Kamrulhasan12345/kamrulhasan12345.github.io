@@ -1,6 +1,5 @@
 ---
 import { render } from "astro:content";
-import Tag from "@/components/Tag.astro";
 import { getPosts } from "@/content.config";
 import Base from "@/layouts/Base.astro";
 
@@ -17,40 +16,26 @@ const minutes = Math.max(1, Math.round(words / 220));
 ---
 
 <Base title={post.data.title} description={post.data.description}>
-	<article class="container container--prose">
-		<header class="post-head stack">
-			<a class="mono back" href="/blog/">← cd ../blog</a>
-			<h1 class="title">{post.data.title}</h1>
-			<p class="mono muted">
-				<time datetime={post.data.publishDate.toISOString()}>{date}</time> · {minutes} min read
-			</p>
-			<div class="cluster">
-				{post.data.tags.map((t) => <Tag>#{t}</Tag>)}
-			</div>
-		</header>
+	<article class="container">
+		<h1>{post.data.title}</h1>
+		<p class="muted small">
+			<time datetime={post.data.publishDate.toISOString()}>{date}</time> · {minutes} min read · {post.data.tags.join(", ")}
+		</p>
 		<div class="prose">
 			<Content />
 		</div>
-		<p class="end label">— end of transmission —</p>
+		<p class="back"><a href="/blog/">← All writing</a></p>
 	</article>
 </Base>
 
 <style>
-	.post-head {
-		padding-block: var(--space-12) var(--space-8);
-		margin-bottom: var(--space-8);
-		border-bottom: var(--border);
+	h1 {
+		margin-bottom: 0.3rem;
+	}
+	.prose {
+		margin-top: 2rem;
 	}
 	.back {
-		color: var(--color-text-muted);
-	}
-	.title {
-		font-size: var(--step-3);
-		line-height: 1.2;
-		text-transform: none;
-	}
-	.end {
-		margin-top: var(--space-16);
-		text-align: center;
+		margin-top: 3rem;
 	}
 </style>

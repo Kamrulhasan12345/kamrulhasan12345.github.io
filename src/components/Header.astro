@@ -1,89 +1,74 @@
 ---
+import { profile } from "@/data/resume";
+
 const links = [
-	{ href: "/#about", label: "About" },
-	{ href: "/#experience", label: "Experience" },
-	{ href: "/#research", label: "Publications" },
+	{ href: "/", label: "Home" },
 	{ href: "/projects/", label: "Projects" },
-	{ href: "/#skills", label: "Skills" },
 	{ href: "/blog/", label: "Writing" },
-	{ href: "/#contact", label: "Contact" },
+	{ href: "/resume.pdf", label: "Résumé" },
 ];
 const path = Astro.url.pathname;
+const Name = path === "/" ? "h1" : "p";
 ---
 
 <header class="container">
-	<a class="logo" href="/" aria-label="Home">
-		<span class="prompt">&gt;</span>MKH<span class="cursor" aria-hidden="true">_</span>
+	<a class="logo" href="/" aria-hidden="true" tabindex="-1">
+		<!-- the old ">_" pixel mark -->
+		<svg viewBox="0 0 16 16" width="44" height="44" shape-rendering="crispEdges">
+			<path fill="currentColor" d="M2 4h2v2H2zM4 6h2v2H4zM6 8h2v2H6zM4 10h2v2H4zM2 12h2v2H2zM9 12h5v2H9z"></path>
+		</svg>
 	</a>
-	<nav aria-label="Main">
-		{
-			links.map((l) => (
-				<a href={l.href} aria-current={!l.href.includes("#") && path.startsWith(l.href) ? "page" : undefined}>
-					{l.label}
-				</a>
-			))
-		}
-		<a class="cv" href="/resume.pdf">Resume ↓</a>
-	</nav>
+	<div>
+		<Name class="name"><a href="/">{profile.name}</a></Name>
+		<nav aria-label="Main">
+			{
+				links.map((l) => (
+					<a href={l.href} aria-current={l.href === "/" ? (path === "/" ? "page" : undefined) : path.startsWith(l.href) ? "page" : undefined}>
+						{l.label}
+					</a>
+				))
+			}
+		</nav>
+	</div>
 </header>
 
 <style>
 	header {
 		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
 		align-items: center;
-		gap: var(--space-4) var(--space-8);
-		padding-block: var(--space-6);
-		border-bottom: var(--border);
+		gap: 1rem;
+		padding-block: 3.5rem 2rem;
 	}
 	.logo {
-		font-family: var(--font-pixel);
-		font-size: var(--step-1);
-		color: var(--color-text-strong);
+		color: var(--accent);
+	}
+	.name {
+		margin: 0;
+		font-size: 1.6rem;
+		font-weight: 700;
+		line-height: 1.3;
+	}
+	.name a {
+		color: var(--text);
 		text-decoration: none;
-	}
-	.prompt {
-		color: var(--color-accent);
-		margin-right: var(--space-2);
-	}
-	.cursor {
-		color: var(--color-accent);
-		animation: blink 1.1s steps(1, end) infinite;
-	}
-	@keyframes blink {
-		50% {
-			opacity: 0;
-		}
 	}
 	nav {
 		display: flex;
 		flex-wrap: wrap;
-		align-items: center;
-		gap: var(--space-2) var(--space-6);
 	}
 	nav a {
-		font-family: var(--font-mono);
-		font-size: var(--step--1);
-		color: var(--color-text-muted);
+		padding-inline: 0.75rem;
+		font-size: 0.85rem;
+		color: var(--accent);
+		text-decoration: none;
+		border-left: 1px dotted var(--text-muted);
+	}
+	nav a:first-child {
+		padding-left: 0;
+		border-left: 0;
 	}
 	nav a:hover,
 	nav a[aria-current="page"] {
-		color: var(--color-accent);
-		text-decoration: none;
-	}
-	nav a[aria-current="page"]::before {
-		content: "[";
-	}
-	nav a[aria-current="page"]::after {
-		content: "]";
-	}
-	.cv {
-		padding: var(--space-1) var(--space-3);
-		border: 1px solid var(--color-accent-dim);
-		color: var(--color-accent);
-	}
-	.cv:hover {
-		box-shadow: var(--shadow-px-1);
+		text-decoration: underline;
 	}
 </style>

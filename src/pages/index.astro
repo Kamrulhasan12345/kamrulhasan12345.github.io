@@ -1,543 +1,146 @@
 ---
-import Button from "@/components/Button.astro";
-import PixelCard from "@/components/PixelCard.astro";
-import ProjectCard from "@/components/ProjectCard.astro";
-import SectionHead from "@/components/SectionHead.astro";
-import Tag from "@/components/Tag.astro";
 import { getPosts } from "@/content.config";
-import { about, education, experience, profile, profiles, projects, research, skills } from "@/data/resume";
+import { about, education, experience, profile, projects, research, skills } from "@/data/resume";
 import Base from "@/layouts/Base.astro";
 
 const featured = projects.filter((p) => p.featured);
-const posts = (await getPosts()).slice(0, 3);
+const posts = (await getPosts()).slice(0, 5);
 const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "2-digit" });
 ---
 
 <Base>
 	<div class="container">
-		<!-- hero -->
-		<section class="hero stack">
-			<p class="status mono"><span class="dot" aria-hidden="true"></span>{profile.status}</p>
-			<h1 class="name">{profile.name}</h1>
-			<p class="role">{profile.role}</p>
-			<p class="intro">{profile.intro}</p>
-			<div class="cluster cta">
-				<Button href="/projects/">See projects</Button>
-				<Button href="/resume.pdf" variant="ghost">Download resume</Button>
-				<Button href="#contact" variant="ghost">Contact</Button>
-			</div>
-			<p class="socials mono">
-				<a href={profile.github}>GitHub</a>
-				<a href={profile.linkedin}>LinkedIn</a>
-				<a href={profile.orcid}>ORCID</a>
-				<a href={`mailto:${profile.email}`}>Email</a>
-				<span class="muted">· {profile.location}</span>
-			</p>
-		</section>
+		<p>
+			Find me on <a href={profile.github}>GitHub</a>, <a href={profile.linkedin}>LinkedIn</a>,
+			<a href={profile.orcid}>ORCID</a>, and <a href={`mailto:${profile.email}`}>email</a>.
+		</p>
 
-		<!-- about -->
-		<section class="section" aria-labelledby="about">
-			<SectionHead index={1} title="About" id="about" />
-			<div class="about">
-				<div class="stack about-text">
-					{about.text.map((t) => <p>{t}</p>)}
-				</div>
-				<PixelCard>
-					<div class="stack" style="--stack-gap: var(--space-3)">
-						<p class="label hl">Currently</p>
-						<ul class="now">
-							{about.now.map((n) => <li>{n}</li>)}
-						</ul>
-					</div>
-				</PixelCard>
-			</div>
-			<ul class="focus" role="list">
-				{
-					about.focus.map((f) => (
-						<PixelCard as="li">
-							<div class="stack" style="--stack-gap: var(--space-2)">
-								<h3 class="focus-title">{f.title}</h3>
-								<p class="muted">{f.text}</p>
-							</div>
-						</PixelCard>
-					))
-				}
-			</ul>
-		</section>
+		<p class="lead">{profile.intro}</p>
+		{about.text.map((t) => <p>{t}</p>)}
 
-		<!-- experience -->
-		<section class="section" aria-labelledby="experience">
-			<SectionHead index={2} title="Experience" id="experience" />
-			<ol class="timeline" role="list">
-				{
-					experience.map((e) => (
-						<li>
-							<span class="node" aria-hidden="true" />
-							<div class="stack" style="--stack-gap: var(--space-2)">
-								<p class="mono muted">{e.when}</p>
-								<h3>
-									{e.role} <span class="org">@ {e.org}</span>
-								</h3>
-								{e.orgNote && <p class="muted small">{e.orgNote}</p>}
-								<ul class="points">
-									{e.points.map((pt) => (
-										<li>{pt}</li>
-									))}
-								</ul>
-								<div class="cluster">
-									{e.stack.map((s) => (
-										<Tag>{s}</Tag>
-									))}
-								</div>
-							</div>
-						</li>
-					))
-				}
-			</ol>
-		</section>
+		<h2>Now</h2>
+		<ul>
+			{about.now.map((n) => <li>{n}</li>)}
+		</ul>
 
-		<!-- education -->
-		<section class="section" aria-labelledby="education">
-			<SectionHead index={3} title="Education" id="education" />
+		<h2>Experience</h2>
+		<ul class="entries">
 			{
-				education.map((ed) => (
-					<PixelCard>
-						<div class="edu">
-							<div class="stack" style="--stack-gap: var(--space-1)">
-								<h3>{ed.school}</h3>
-								<p class="muted">{ed.degree}</p>
-							</div>
-							<p class="mono muted edu-meta">
-								{ed.when}
-								<br />
-								{ed.location}
-							</p>
-						</div>
-					</PixelCard>
+				experience.map((e) => (
+					<li>
+						<strong>{e.role}</strong>, {e.org} <span class="muted">({e.when})</span>
+						<ul class="points">
+							{e.points.map((pt) => (
+								<li>{pt}</li>
+							))}
+						</ul>
+					</li>
 				))
 			}
-		</section>
+			{
+				education.map((ed) => (
+					<li>
+						<strong>{ed.degree}</strong>, {ed.school} <span class="muted">({ed.when})</span>
+					</li>
+				))
+			}
+		</ul>
 
-		<!-- publications -->
-		<section class="section" aria-labelledby="research">
-			<SectionHead index={4} title="Publications" id="research" more={{ href: profile.orcid, label: "orcid" }} />
-			<ol class="pubs" role="list">
-				{
-					research.map((r) => (
-						<PixelCard as="li">
-							<div class="stack" style="--stack-gap: var(--space-3)">
-								<div class="cluster">
-									<Tag tone="highlight">{r.kind}</Tag>
-									<span class="mono muted small">{r.venue}</span>
-								</div>
-								<h3 class="research-title">{r.link ? <a href={r.link}>{r.title}</a> : r.title}</h3>
-								<p class="authors small">
-									{r.authors.map((a, i) => (
-										<>
-											{a === "M. K. Hasan" ? <strong>{a}</strong> : a}
-											{i < r.authors.length - 1 && ", "}
-										</>
-									))}
-								</p>
-								<p class="muted">{r.detail}</p>
-								<p class="mono small">
-									{r.role}
-									{r.link && (
-										<>
-											{" · "}
-											<a href={r.link}>DOI ↗</a>
-										</>
-									)}
-								</p>
-							</div>
-						</PixelCard>
-					))
-				}
-			</ol>
-		</section>
+		<h2>Projects</h2>
+		<ul class="entries">
+			{
+				featured.map((p) => (
+					<li>
+						{p.link ? <a href={p.link}>{p.name}</a> : <span class="u">{p.name}</span>}: {p.title}. {p.summary}{" "}
+						<span class="muted">{p.year}.</span>
+					</li>
+				))
+			}
+		</ul>
+		<p><a href="/projects/">All {projects.length} projects →</a></p>
 
-		<!-- projects -->
-		<section class="section" aria-labelledby="projects">
-			<SectionHead
-				index={5}
-				title="Featured projects"
-				id="projects"
-				more={{ href: "/projects/", label: `all ${projects.length} projects` }}
-			/>
-			<ul class="grid" role="list">
-				{featured.map((p) => <ProjectCard project={p} />)}
-			</ul>
-			<div class="more-row">
-				<Button href="/projects/" variant="ghost">Browse all {projects.length} projects →</Button>
-			</div>
-		</section>
+		<h2>Publications</h2>
+		<ul class="entries">
+			{
+				research.map((r) => (
+					<li>
+						{r.link ? <a href={r.link}>{r.title}</a> : r.title}.{" "}
+						{r.authors.map((a, i) => (
+							<>
+								{a === "M. K. Hasan" ? <strong>{a}</strong> : a}
+								{i < r.authors.length - 1 && ", "}
+							</>
+						))}
+						. <em>{r.venue}</em>.
+						<span class="muted">{r.detail}</span>
+					</li>
+				))
+			}
+		</ul>
 
-		<!-- skills -->
-		<section class="section" aria-labelledby="skills">
-			<SectionHead index={6} title="Skills" id="skills" />
-			<dl class="skills">
-				{
-					skills.map((s) => (
-						<div class="skill-row">
-							<dt class="label">{s.group}</dt>
-							<dd class="cluster">
-								{s.items.map((i) => (
-									<Tag>{i}</Tag>
-								))}
-							</dd>
-						</div>
-					))
-				}
-			</dl>
-		</section>
-
-		<!-- writing -->
 		{
 			posts.length > 0 && (
-				<section class="section" aria-labelledby="writing">
-					<SectionHead index={7} title="Writing" id="writing" more={{ href: "/blog/", label: "all posts" }} />
-					<ul class="posts" role="list">
+				<>
+					<h2>Writing</h2>
+					<ul class="entries">
 						{posts.map((p) => (
-							<li>
-								<time class="mono muted" datetime={p.data.publishDate.toISOString()}>
+							<li class="post">
+								<time class="muted" datetime={p.data.publishDate.toISOString()}>
 									{fmt(p.data.publishDate)}
 								</time>
 								<a href={`/blog/${p.id}/`}>{p.data.title}</a>
 							</li>
 						))}
 					</ul>
-				</section>
+				</>
 			)
 		}
 
-		<!-- profiles -->
-		<section class="section" aria-labelledby="profiles">
-			<SectionHead index={8} title="Profiles" id="profiles" />
-			<ul class="profiles" role="list">
-				{
-					profiles.map((g) => (
-						<PixelCard as="li">
-							<div class="stack" style="--stack-gap: var(--space-3)">
-								<p class="label hl">{g.group}</p>
-								<ul class="profile-links" role="list">
-									{g.links.map((l) => (
-										<li>
-											<a href={l.url}>{l.name} ↗</a>
-											<span class="mono muted small">{l.handle}</span>
-										</li>
-									))}
-								</ul>
-							</div>
-						</PixelCard>
-					))
-				}
-			</ul>
-		</section>
+		<h2>Skills</h2>
+		<ul class="entries">
+			{
+				skills.map((s) => (
+					<li>
+						<strong>{s.group}:</strong> {s.items.join(", ")}.
+					</li>
+				))
+			}
+		</ul>
 
-		<!-- contact -->
-		<section class="section" aria-labelledby="contact">
-			<SectionHead index={9} title="Contact" id="contact" />
-			<PixelCard>
-				<div class="contact">
-					<div class="stack" style="--stack-gap: var(--space-3)">
-						<p class="contact-lead">Let's talk.</p>
-						<p class="muted">
-							Open to conversations about internships, research and anything that runs on small hardware.
-							Email is the fastest way to reach me.
-						</p>
-						<p class="mono">
-							<a href={`mailto:${profile.email}`}>{profile.email}</a>
-						</p>
-					</div>
-					<ul class="contact-links" role="list">
-						<li><span class="label">Email</span><a href={`mailto:${profile.email}`}>{profile.email}</a></li>
-						<li><span class="label">Location</span><span>{profile.location} (UTC+6)</span></li>
-						<li><span class="label">Resume</span><a href="/resume.pdf">resume.pdf ↓</a></li>
-					</ul>
-				</div>
-			</PixelCard>
-		</section>
+		<h2>Contact</h2>
+		<p>
+			Open to internships, research and anything that runs on small hardware. Email is fastest:
+			<a href={`mailto:${profile.email}`}>{profile.email}</a>. I'm in {profile.location} (UTC+6). My résumé is
+			<a href="/resume.pdf">here (PDF)</a>.
+		</p>
 	</div>
 </Base>
 
 <style>
-	.small {
-		font-size: var(--step--1);
-	}
-	.hl {
-		color: var(--color-highlight);
-	}
-
-	/* hero */
-	.hero {
-		--stack-gap: var(--space-4);
-		padding-block: var(--space-16) var(--space-8);
-		max-width: 46rem;
-	}
-	.status {
-		display: inline-flex;
-		align-items: center;
-		gap: var(--space-2);
-		width: fit-content;
-		padding: var(--space-1) var(--space-3);
-		border: var(--border);
-		color: var(--color-text-muted);
-	}
-	.dot {
-		width: var(--space-2);
-		height: var(--space-2);
-		background: var(--color-accent);
-		box-shadow: var(--glow-accent);
-	}
-	.name {
-		font-size: var(--step-4);
-		line-height: 1.1;
-	}
-	.role {
-		font-family: var(--font-pixel);
-		font-size: var(--step-1);
-		color: var(--color-accent);
-		letter-spacing: var(--tracking-pixel);
-		text-transform: uppercase;
-	}
-	.intro {
-		font-size: var(--step-1);
-		color: var(--color-text-muted);
-	}
-	.cta {
-		--cluster-gap: var(--space-4);
-		padding-top: var(--space-2);
-	}
-	.socials {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-2) var(--space-6);
-	}
-
-	.section {
-		margin-top: var(--space-24);
-		scroll-margin-top: var(--space-8);
-	}
-
-	/* about */
-	.about {
-		display: grid;
-		grid-template-columns: 3fr 2fr;
-		gap: var(--space-8);
-		align-items: start;
-	}
-	.about-text {
-		font-size: 1.05rem;
-	}
-	.now {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-	.now li {
-		padding-block: var(--space-1);
-	}
-	.now li::before {
-		content: "● ";
-		color: var(--color-accent);
-	}
-	.focus {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: var(--space-6);
-		margin: var(--space-8) 0 0;
-		padding: 0;
-	}
-	.focus-title {
-		font-family: var(--font-pixel);
-		font-weight: 400;
-		font-size: var(--step-0);
-		letter-spacing: var(--tracking-pixel);
-		text-transform: uppercase;
-		color: var(--color-accent);
-	}
-
-	/* experience timeline */
-	.timeline {
-		margin: 0;
-		padding: 0;
-		border-left: 2px solid var(--color-border);
-	}
-	.timeline > li {
-		position: relative;
-		padding: 0 0 var(--space-12) var(--space-8);
-	}
-	.timeline > li:last-child {
-		padding-bottom: 0;
-	}
-	.node {
-		position: absolute;
-		left: calc(-1 * var(--space-2) - 1px);
-		top: 0.35em;
-		width: var(--space-4);
-		height: var(--space-4);
-		background: var(--color-bg);
-		border: 2px solid var(--color-accent);
-	}
-	.timeline > li:first-child .node {
-		background: var(--color-accent);
-	}
-	.org {
-		color: var(--color-accent);
-		font-weight: 400;
+	.lead {
+		margin-top: 1.5rem;
 	}
 	.points {
-		margin: 0;
-		padding-left: var(--space-4);
-		color: var(--color-text-muted);
+		margin-top: 0.3em;
+		color: var(--text-muted);
 	}
 	.points li + li {
-		margin-top: var(--space-2);
+		margin-top: 0.2em;
 	}
-	.points li::marker {
-		content: "› ";
-		color: var(--color-accent-dim);
+	.u {
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 3px;
 	}
-
-	/* education */
-	.edu {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		gap: var(--space-4);
-	}
-	.edu-meta {
-		text-align: right;
-	}
-
-	/* publications */
-	.pubs {
+	.post {
 		display: grid;
-		gap: var(--space-6);
-		margin: 0;
-		padding: 0;
+		grid-template-columns: 8.5rem 1fr;
+		gap: 1rem;
 	}
-	.authors {
-		color: var(--color-text-muted);
-	}
-	.authors strong {
-		color: var(--color-text-strong);
-	}
-
-	/* profiles */
-	.profiles {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
-		gap: var(--space-6);
-		margin: 0;
-		padding: 0;
-	}
-	.profile-links li {
-		display: grid;
-		padding-block: var(--space-1);
-	}
-	.research-title {
-		line-height: 1.4;
-	}
-	.research-title a {
-		color: var(--color-text-strong);
-	}
-	.research-title a:hover {
-		color: var(--color-accent);
-	}
-
-	/* projects */
-	.grid {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: var(--space-6);
-		margin: 0;
-		padding: 0;
-	}
-	.more-row {
-		margin-top: var(--space-8);
-		text-align: center;
-	}
-
-	/* skills */
-	.skills {
-		margin: 0;
-	}
-	.skill-row {
-		display: grid;
-		grid-template-columns: 12rem 1fr;
-		gap: var(--space-4);
-		padding-block: var(--space-4);
-		border-bottom: 1px dashed var(--color-border);
-	}
-	.skill-row dt {
-		padding-top: 0.35em;
-		color: var(--color-text-muted);
-	}
-	.skill-row dd {
-		margin: 0;
-	}
-
-	/* writing */
-	.posts {
-		margin: 0;
-		padding: 0;
-	}
-	.posts li {
-		display: grid;
-		grid-template-columns: 8rem 1fr;
-		gap: var(--space-6);
-		padding-block: var(--space-4);
-		border-bottom: 1px dashed var(--color-border);
-	}
-	.posts a {
-		color: var(--color-text-strong);
-	}
-	.posts a:hover {
-		color: var(--color-accent);
-	}
-
-	/* contact */
-	.contact {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: var(--space-12);
-	}
-	.contact-lead {
-		font-family: var(--font-pixel);
-		font-size: var(--step-2);
-		color: var(--color-accent);
-		text-transform: uppercase;
-	}
-	.contact-links {
-		margin: 0;
-		padding: 0;
-	}
-	.contact-links li {
-		display: grid;
-		grid-template-columns: 6rem 1fr;
-		gap: var(--space-4);
-		align-items: baseline;
-		padding-block: var(--space-3);
-		border-bottom: 1px dashed var(--color-border);
-		font-family: var(--font-mono);
-		font-size: var(--step--1);
-	}
-
-	@media (max-width: 52rem) {
-		.about,
-		.focus,
-		.grid,
-		.contact {
+	@media (max-width: 34rem) {
+		.post {
 			grid-template-columns: 1fr;
-		}
-		.skill-row,
-		.posts li {
-			grid-template-columns: 1fr;
-			gap: var(--space-2);
-		}
-		.edu-meta {
-			text-align: left;
+			gap: 0;
 		}
 	}
 </style>

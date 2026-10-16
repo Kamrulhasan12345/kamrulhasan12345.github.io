@@ -3,32 +3,21 @@ import { profile } from "@/data/resume";
 const year = new Date().getFullYear();
 ---
 
-<footer>
-	<div class="container row">
-		<span class="mono muted">© {year} {profile.name} · {profile.location}</span>
-		<span class="cluster mono">
-			<a href={profile.github}>GitHub</a>
-			<a href={profile.linkedin}>LinkedIn</a>
-			<a href="/rss.xml">RSS</a>
-			<a href="/design/">Design system</a>
-		</span>
-	</div>
+<footer class="container muted small">
+	<span>© {year} {profile.name}</span>
+	<span>
+		<a href={profile.github}>GitHub</a> · <a href={profile.linkedin}>LinkedIn</a> · <a href={profile.orcid}>ORCID</a> ·
+		<a href="/rss.xml">RSS</a>
+	</span>
 </footer>
 
 <style>
 	footer {
-		margin-top: auto;
-		padding-block: var(--space-8);
-		border-top: var(--border);
-		background: var(--color-bg-sunken);
-	}
-	.row {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
-		gap: var(--space-4);
-	}
-	.cluster {
-		--cluster-gap: var(--space-6);
+		gap: 0.5rem 1.5rem;
+		margin-top: auto;
+		padding-block: 2rem 3rem;
 	}
 </style>

@@ -1,5 +1,4 @@
 ---
-import ProjectCard from "@/components/ProjectCard.astro";
 import { categories, projects } from "@/data/resume";
 import Base from "@/layouts/Base.astro";
 
@@ -7,175 +6,39 @@ import Base from "@/layouts/Base.astro";
 const sorted = [...projects].sort(
 	(a, b) => b.year.slice(0, 4).localeCompare(a.year.slice(0, 4)) || Number(!!b.featured) - Number(!!a.featured),
 );
-const counts = Object.fromEntries(categories.map((c) => [c, projects.filter((p) => p.categories.includes(c)).length]));
+// each project listed once, under its first area
+const groups = categories.map((c) => ({ area: c, items: sorted.filter((p) => p.categories[0] === c) })).filter((g) => g.items.length);
 ---
 
 <Base title="Projects" description={`All ${projects.length} projects: AI/ML, embedded systems, backends and apps.`}>
 	<div class="container">
-		<header class="page-head stack">
-			<p class="label">/projects</p>
-			<h1>Projects</h1>
-			<p class="muted lead">
-				Everything I've built, from on-device AI and embedded experiments to backends and apps. Search by name or
-				technology, or filter by area.
-			</p>
-		</header>
-
-		<div class="controls">
-			<label class="search">
-				<span class="sr-only">Search projects</span>
-				<span class="prompt mono" aria-hidden="true">&gt;</span>
-				<input id="q" type="search" placeholder="search: llama.cpp, ESP32, PostgreSQL…" autocomplete="off" />
-			</label>
-			<div class="filters" role="group" aria-label="Filter by area">
-				<button type="button" class="chip" data-cat="" aria-pressed="true">All <span>{projects.length}</span></button>
-				{
-					categories.map((c) => (
-						<button type="button" class="chip" data-cat={c} aria-pressed="false">
-							{c} <span>{counts[c]}</span>
-						</button>
-					))
-				}
-			</div>
-			<p class="count mono muted" id="count" aria-live="polite">Showing {projects.length} projects</p>
-		</div>
-
-		<ul class="grid" role="list" id="grid">
-			{sorted.map((p) => <ProjectCard project={p} detailed />)}
-		</ul>
-		<p class="empty muted" id="empty" hidden>No projects match. Try a different word or clear the filter.</p>
+		<h1>Projects</h1>
+		<p class="muted">Everything I've built, grouped by area, newest first.</p>
+		{
+			groups.map((g) => (
+				<>
+					<h2>{g.area}</h2>
+					<ul class="entries">
+						{g.items.map((p) => (
+							<li>
+								{p.link ? <a href={p.link}>{p.name}</a> : <span class="u">{p.name}</span>}: {p.title}. {p.summary}
+								{p.context && <> {p.context}.</>} <span class="muted">Built with {p.stack.join(", ")}. {p.year}.</span>
+							</li>
+						))}
+					</ul>
+				</>
+			))
+		}
 	</div>
 </Base>
 
-<script>
-	const q = document.querySelector<HTMLInputElement>("#q")!;
-	const chips = [...document.querySelectorAll<HTMLButtonElement>(".chip")];
-	const cards = [...document.querySelectorAll<HTMLElement>("[data-project]")];
-	const count = document.querySelector("#count")!;
-	const empty = document.querySelector<HTMLElement>("#empty")!;
-
-	const params = new URLSearchParams(location.search);
-	let cat = params.get("area") ?? "";
-	q.value = params.get("q") ?? "";
-
-	function apply() {
-		const terms = q.value.toLowerCase().split(/\s+/).filter(Boolean);
-		let shown = 0;
-		for (const card of cards) {
-			const inCat = !cat || card.dataset.categories!.split("|").includes(cat);
-			const hit = terms.every((t) => card.dataset.search!.includes(t));
-			const visible = inCat && hit;
-			// hide the <li> wrapper, not just the inner card
-			card.closest("li")!.hidden = !visible;
-			if (visible) shown++;
-		}
-		for (const c of chips) c.setAttribute("aria-pressed", String(c.dataset.cat === cat));
-		count.textContent = `Showing ${shown} of ${cards.length} projects`;
-		empty.hidden = shown > 0;
-
-		// keep the URL shareable: /projects/?area=Backend&q=rust
-		const next = new URLSearchParams();
-		if (cat) next.set("area", cat);
-		if (q.value.trim()) next.set("q", q.value.trim());
-		history.replaceState(null, "", next.size ? `?${next}` : location.pathname);
-	}
-
-	q.addEventListener("input", apply);
-	for (const c of chips)
-		c.addEventListener("click", () => {
-			cat = c.dataset.cat ?? "";
-			apply();
-		});
-	apply();
-</script>
-
 <style>
-	.page-head {
-		padding-block: var(--space-12) var(--space-8);
+	h1 {
+		margin-bottom: 0.5rem;
 	}
-	.lead {
-		max-width: 44rem;
-	}
-	.controls {
-		display: grid;
-		gap: var(--space-4);
-		margin-bottom: var(--space-8);
-		padding-bottom: var(--space-6);
-		border-bottom: var(--border);
-	}
-	.search {
-		display: flex;
-		align-items: center;
-		gap: var(--space-3);
-		padding: var(--space-3) var(--space-4);
-		background: var(--color-bg-sunken);
-		border: var(--border-strong);
-	}
-	.search:focus-within {
-		border-color: var(--color-accent-dim);
-		box-shadow: var(--shadow-px-1);
-	}
-	.prompt {
-		color: var(--color-accent);
-	}
-	input {
-		flex: 1;
-		min-width: 0;
-		background: none;
-		border: 0;
-		outline: 0;
-		color: var(--color-text-strong);
-		font: var(--step-0) var(--font-mono);
-	}
-	input::placeholder {
-		color: var(--color-text-faint);
-	}
-	.filters {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-2);
-	}
-	.chip {
-		padding: var(--space-2) var(--space-4);
-		font-family: var(--font-mono);
-		font-size: var(--step--1);
-		color: var(--color-text-muted);
-		background: none;
-		border: var(--border-strong);
-		cursor: pointer;
-		transition:
-			transform var(--dur-fast) var(--ease-step),
-			box-shadow var(--dur-fast) var(--ease-step);
-	}
-	.chip span {
-		margin-left: var(--space-1);
-		color: var(--color-text-faint);
-	}
-	.chip:hover {
-		color: var(--color-accent);
-		border-color: var(--color-accent-dim);
-	}
-	.chip[aria-pressed="true"] {
-		background: var(--color-accent);
-		border-color: var(--color-accent);
-		color: var(--color-on-accent);
-		box-shadow: var(--shadow-px-1);
-	}
-	.chip[aria-pressed="true"] span {
-		color: var(--color-accent-shadow);
-	}
-	.grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
-		gap: var(--space-6);
-		margin: 0;
-		padding: 0;
-	}
-	.grid > :global(li[hidden]) {
-		display: none;
-	}
-	.empty {
-		padding-block: var(--space-12);
-		text-align: center;
+	.u {
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 3px;
 	}
 </style>

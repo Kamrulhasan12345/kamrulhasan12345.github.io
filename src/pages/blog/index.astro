@@ -1,6 +1,4 @@
 ---
-import SectionHead from "@/components/SectionHead.astro";
-import Tag from "@/components/Tag.astro";
 import { getPosts } from "@/content.config";
 import Base from "@/layouts/Base.astro";
 
@@ -9,28 +7,19 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month:
 ---
 
 <Base title="Writing" description="Notes on systems, compilers, and running things on small hardware.">
-	<div class="container container--prose">
-		<header class="page-head stack">
-			<p class="label">/blog</p>
-			<h1>Writing</h1>
-			<p class="muted">Notes on systems, compilers, and running things on small hardware.</p>
-		</header>
-		<SectionHead index={posts.length} title="Posts" more={{ href: "/rss.xml", label: "rss" }} />
-		<ul class="posts" role="list">
+	<div class="container">
+		<h1>Writing</h1>
+		<p class="muted">Notes on systems, compilers, and running things on small hardware. <a href="/rss.xml">RSS</a>.</p>
+		<ul class="entries">
 			{
 				posts.map((p) => (
-					<li class="stack" style="--stack-gap: var(--space-2)">
-						<time class="mono muted" datetime={p.data.publishDate.toISOString()}>
+					<li>
+						<time class="muted" datetime={p.data.publishDate.toISOString()}>
 							{fmt(p.data.publishDate)}
 						</time>
-						<h2 class="post-title">
+						<div>
 							<a href={`/blog/${p.id}/`}>{p.data.title}</a>
-						</h2>
-						<p class="muted">{p.data.description}</p>
-						<div class="cluster">
-							{p.data.tags.map((t) => (
-								<Tag>#{t}</Tag>
-							))}
+							<p class="muted small">{p.data.description}</p>
 						</div>
 					</li>
 				))
@@ -40,28 +29,24 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month:
 </Base>
 
 <style>
-	.page-head {
-		padding-block: var(--space-12);
+	h1 {
+		margin-bottom: 0.5rem;
 	}
-	.posts {
-		margin: 0;
-		padding: 0;
+	.entries {
+		margin-top: 2rem;
 	}
-	.posts li {
-		padding-block: var(--space-6);
-		border-bottom: 1px dashed var(--color-border);
+	li {
+		display: grid;
+		grid-template-columns: 8.5rem 1fr;
+		gap: 1rem;
 	}
-	.post-title {
-		font-family: var(--font-sans);
-		font-weight: 600;
-		font-size: var(--step-1);
-		text-transform: none;
-		letter-spacing: 0;
+	li + li {
+		margin-top: 1.2em !important;
 	}
-	.post-title a {
-		color: var(--color-text-strong);
-	}
-	.post-title a:hover {
-		color: var(--color-accent);
+	@media (max-width: 34rem) {
+		li {
+			grid-template-columns: 1fr;
+			gap: 0;
+		}
 	}
 </style>

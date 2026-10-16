@@ -19,7 +19,8 @@ const pageTitle = title ? `${title} · ${profile.name}` : profile.name;
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="theme-color" content="#0b0f12" />
+		<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#0b0f12" media="(prefers-color-scheme: dark)" />
 		<title>{pageTitle}</title>
 		<meta name="description" content={description} />
 		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
@@ -42,17 +43,17 @@ const pageTitle = title ? `${title} · ${profile.name}` : profile.name;
 <style>
 	.skip {
 		position: absolute;
-		left: var(--space-4);
-		top: calc(-1 * var(--space-12));
-		z-index: 60;
-		padding: var(--space-2) var(--space-4);
-		background: var(--color-accent);
-		color: var(--color-on-accent);
+		left: 1rem;
+		top: -3rem;
+		z-index: 10;
+		padding: 0.3rem 0.8rem;
+		background: var(--accent);
+		color: var(--bg);
 	}
 	.skip:focus {
-		top: var(--space-4);
+		top: 1rem;
 	}
 	main {
-		padding-bottom: var(--space-24);
+		padding-bottom: 4rem;
 	}
 </style>

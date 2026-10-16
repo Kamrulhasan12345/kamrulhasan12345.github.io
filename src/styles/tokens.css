@@ -1,107 +1,35 @@
 /* =====================================================================
-   Design tokens — "phosphor terminal"
-   Three layers. Components only read the semantic + component layers.
-     1. primitives  raw palette, never used directly in components
-     2. semantic    what a color/size *means* (surface, text, accent…)
-     3. scales      type, space, border, shadow, motion
-   Everything sits on a 4px grid (--px), the size of one "pixel".
+   Tokens — plain. One column, one typeface, one accent.
+   Modelled on mehdikhan.dev (Hugo "Cactus"), with the old phosphor green.
+   Follows the visitor's system theme:
+     dark  = the old ink background with the exact old accent #74eb74
+     light = white, with the same green darkened to stay readable (4.8:1)
    ===================================================================== */
 
 :root {
-	/* ---------- 1. primitives ---------- */
-	--ink-950: #07090b;
-	--ink-900: #0b0f12;
-	--ink-850: #10161a;
-	--ink-800: #151d22;
-	--ink-700: #22302b;
-	--ink-600: #34443d;
-	--ink-400: #6f7d76;
-	--ink-300: #98a49d;
-	--ink-200: #c4cdc6;
-	--ink-100: #e6ece6;
+	--bg: #ffffff;
+	--text: #383838; /* 11.7:1 */
+	--text-strong: #111111;
+	--text-muted: #666666; /* 5.7:1 */
+	--accent: #258325; /* old green, darkened for white: 4.8:1 */
+	--line: #e3e3e3;
+	--code-bg: #f4f4f2;
 
-	--phosphor-300: #a6f5a6;
-	--phosphor-400: #74eb74;
-	--phosphor-600: #3fa647;
-	--phosphor-800: #1f4a26;
-	--phosphor-900: #12291a;
+	--font: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+	--size: 15px;
+	--leading: 1.725;
+	--measure: 45rem;
+	--gutter: clamp(1rem, 5vw, 2rem);
+}
 
-	--amber-400: #f4b740;
-	--amber-800: #4a3612;
-
-	--magenta-400: #e872c6;
-
-	/* ---------- 2. semantic ---------- */
-	--color-bg: var(--ink-900);
-	--color-bg-sunken: var(--ink-950);
-	--color-surface: var(--ink-850);
-	--color-surface-raised: var(--ink-800);
-	--color-border: var(--ink-700);
-	--color-border-strong: var(--ink-600);
-
-	--color-text: var(--ink-200);
-	--color-text-strong: var(--ink-100);
-	--color-text-muted: var(--ink-300); /* 7.9:1 on bg */
-	--color-text-faint: var(--ink-400); /* 4.6:1 on bg, labels only */
-
-	--color-accent: var(--phosphor-400);
-	--color-accent-strong: var(--phosphor-300);
-	--color-accent-dim: var(--phosphor-600);
-	--color-accent-shadow: var(--phosphor-800);
-	--color-accent-wash: var(--phosphor-900);
-	--color-on-accent: var(--ink-950);
-
-	--color-highlight: var(--amber-400); /* secondary: venues, "now", scores */
-	--color-highlight-wash: var(--amber-800);
-	--color-glitch: var(--magenta-400);
-
-	--glow-accent: 0 0 18px rgb(116 235 116 / 0.35);
-
-	/* ---------- 3. scales ---------- */
-	--px: 4px;
-
-	--font-pixel: "Silkscreen", "JetBrains Mono", monospace;
-	--font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
-	--font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-
-	/* type: ~1.25 ratio, fluid at the top end */
-	--step--2: 0.7rem;
-	--step--1: 0.82rem;
-	--step-0: 1rem;
-	--step-1: 1.2rem;
-	--step-2: clamp(1.3rem, 1.1rem + 0.9vw, 1.6rem);
-	--step-3: clamp(1.7rem, 1.2rem + 2.2vw, 2.6rem);
-	--step-4: clamp(2.1rem, 1.2rem + 4vw, 3.8rem);
-
-	--leading-tight: 1.2;
-	--leading-normal: 1.65;
-	--tracking-pixel: 0.04em;
-	--tracking-label: 0.12em;
-
-	/* space: multiples of the 4px pixel */
-	--space-1: calc(var(--px) * 1); /*  4 */
-	--space-2: calc(var(--px) * 2); /*  8 */
-	--space-3: calc(var(--px) * 3); /* 12 */
-	--space-4: calc(var(--px) * 4); /* 16 */
-	--space-6: calc(var(--px) * 6); /* 24 */
-	--space-8: calc(var(--px) * 8); /* 32 */
-	--space-12: calc(var(--px) * 12); /* 48 */
-	--space-16: calc(var(--px) * 16); /* 64 */
-	--space-24: calc(var(--px) * 24); /* 96 */
-
-	--border: 1px solid var(--color-border);
-	--border-strong: 1px solid var(--color-border-strong);
-	--border-dashed: repeating-linear-gradient(90deg, var(--color-border-strong) 0 6px, transparent 6px 12px);
-
-	/* hard, offset, no-blur shadows: the only kind a pixel can cast */
-	--shadow-px-1: var(--px) var(--px) 0 var(--color-accent-shadow);
-	--shadow-px-2: calc(var(--px) * 2) calc(var(--px) * 2) 0 var(--color-accent-shadow);
-
-	--dur-fast: 100ms;
-	--dur-base: 160ms;
-	--ease-step: steps(3, end);
-
-	--w-prose: 44rem;
-	--w-page: 68rem;
-	--gutter: clamp(1rem, 4vw, 2rem);
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #0b0f12;
+		--text: #c4cdc6; /* 11.8:1 */
+		--text-strong: #e6ece6;
+		--text-muted: #98a49d; /* 7.5:1 */
+		--accent: #74eb74; /* the old accent, unchanged: 12.7:1 */
+		--line: #22302b;
+		--code-bg: #10161a;
+	}
 }
