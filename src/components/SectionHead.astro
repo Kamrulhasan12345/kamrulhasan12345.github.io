@@ -1,18 +1,17 @@
 ---
-// "01 TITLE ----------- more →"
+// Datasheet section head: "2  EXPERIENCE ··········· more →" in micro caps on a heavy rule.
+// The number is the section's real position on the page, like a datasheet chapter.
 interface Props {
-	index: number;
+	n: number;
 	title: string;
 	id?: string;
 	more?: { href: string; label: string };
 }
-const { index, title, id, more } = Astro.props;
+const { n, title, id, more } = Astro.props;
 ---
 
 <div class="sec-head">
-	<span class="idx" aria-hidden="true">{String(index).padStart(2, "0")}</span>
-	<h2 id={id}>{title}</h2>
-	<span class="rule" aria-hidden="true"></span>
+	<h2 id={id} class="label"><span class="n num">{n}</span>{title}</h2>
 	{more && <a class="more mono" href={more.href}>{more.label} →</a>}
 </div>
 
@@ -20,22 +19,26 @@ const { index, title, id, more } = Astro.props;
 	.sec-head {
 		display: flex;
 		align-items: baseline;
+		justify-content: space-between;
 		gap: var(--space-4);
-		margin-bottom: var(--space-8);
+		padding-top: var(--space-2);
+		margin-bottom: var(--space-6);
+		border-top: var(--rule);
+		scroll-margin-top: var(--space-8);
 	}
-	.idx {
-		font-family: var(--font-pixel);
-		font-size: var(--step--1);
-		color: var(--color-accent);
+	h2 {
+		color: var(--color-text-strong);
 	}
-	.rule {
-		flex: 1;
-		height: 1px;
-		align-self: center;
-		background: var(--border-dashed);
+	.n {
+		display: inline-block;
+		min-width: 2.2em;
+		color: var(--color-text-faint);
 	}
 	.more {
 		color: var(--color-text-muted);
 		white-space: nowrap;
+		font-size: var(--step--2);
+		letter-spacing: var(--tracking-label);
+		text-transform: uppercase;
 	}
 </style>

@@ -1,35 +1,35 @@
 /* =====================================================================
-   Design tokens — "phosphor terminal"
+   Design tokens — "datasheet"
+   Picked in the Identity Picker (docs/design-research, 16 Oct 2026):
+   datasheet concept · ink-dark surface · category pastels · pixel + mono
+   type · moderate scale · bento card grid · flat · one live element.
    Three layers. Components only read the semantic + component layers.
      1. primitives  raw palette, never used directly in components
-     2. semantic    what a color/size *means* (surface, text, accent…)
-     3. scales      type, space, border, shadow, motion
-   Everything sits on a 4px grid (--px), the size of one "pixel".
+     2. semantic    what a color/size *means* (surface, text, category…)
+     3. scales      type, space, border, motion
+   Spacing sits on a 4px grid (--px).
    ===================================================================== */
 
 :root {
 	/* ---------- 1. primitives ---------- */
-	--ink-950: #07090b;
-	--ink-900: #0b0f12;
-	--ink-850: #10161a;
-	--ink-800: #151d22;
-	--ink-700: #22302b;
-	--ink-600: #34443d;
-	--ink-400: #6f7d76;
-	--ink-300: #98a49d;
-	--ink-200: #c4cdc6;
-	--ink-100: #e6ece6;
+	/* blue-black ink; neutrals lean toward the surface hue */
+	--ink-950: #090b10;
+	--ink-900: #0e1117;
+	--ink-850: #12161e;
+	--ink-800: #171c26;
+	--ink-700: #232836;
+	--ink-600: #323949;
+	--ink-400: #7f889c;
+	--ink-300: #9aa2b4;
+	--ink-200: #c9ced9;
+	--ink-100: #e8ebf1;
 
-	--phosphor-300: #a6f5a6;
-	--phosphor-400: #74eb74;
-	--phosphor-600: #3fa647;
-	--phosphor-800: #1f4a26;
-	--phosphor-900: #12291a;
-
-	--amber-400: #f4b740;
-	--amber-800: #4a3612;
-
-	--magenta-400: #e872c6;
+	/* category pastels: one lightness (L 0.81), so color reads as *kind*, never as importance */
+	--pastel-violet: oklch(0.81 0.11 300);
+	--pastel-green: oklch(0.81 0.12 152);
+	--pastel-amber: oklch(0.81 0.11 78);
+	--pastel-cyan: oklch(0.81 0.1 215);
+	--pastel-coral: oklch(0.81 0.1 25);
 
 	/* ---------- 2. semantic ---------- */
 	--color-bg: var(--ink-900);
@@ -41,44 +41,39 @@
 
 	--color-text: var(--ink-200);
 	--color-text-strong: var(--ink-100);
-	--color-text-muted: var(--ink-300); /* 7.9:1 on bg */
-	--color-text-faint: var(--ink-400); /* 4.6:1 on bg, labels only */
+	--color-text-muted: var(--ink-300); /* 7.4:1 on bg */
+	--color-text-faint: var(--ink-400); /* 5.3:1 on bg, 4.8:1 on raised cards; labels only */
 
-	--color-accent: var(--phosphor-400);
-	--color-accent-strong: var(--phosphor-300);
-	--color-accent-dim: var(--phosphor-600);
-	--color-accent-shadow: var(--phosphor-800);
-	--color-accent-wash: var(--phosphor-900);
+	/* one category color per kind of work; everything else stays neutral */
+	--cat-ml: var(--pastel-violet);
+	--cat-embedded: var(--pastel-green);
+	--cat-backend: var(--pastel-amber);
+	--cat-apps: var(--pastel-cyan);
+	--cat-research: var(--pastel-coral);
+
+	--color-accent: var(--cat-ml); /* AI engineering is the lead, so it leads the page */
 	--color-on-accent: var(--ink-950);
-
-	--color-highlight: var(--amber-400); /* secondary: venues, "now", scores */
-	--color-highlight-wash: var(--amber-800);
-	--color-glitch: var(--magenta-400);
-
-	--glow-accent: 0 0 18px rgb(116 235 116 / 0.35);
 
 	/* ---------- 3. scales ---------- */
 	--px: 4px;
 
-	--font-pixel: "Silkscreen", "JetBrains Mono", monospace;
-	--font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
-	--font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+	--font-pixel: "Silkscreen", "Geist Mono", monospace;
+	--font-mono: "Geist Mono", ui-monospace, Menlo, Consolas, monospace;
 
-	/* type: ~1.25 ratio, fluid at the top end */
+	/* type: moderate scale, ~1.25 ratio; only the name gets the top step */
 	--step--2: 0.7rem;
-	--step--1: 0.82rem;
-	--step-0: 1rem;
-	--step-1: 1.2rem;
-	--step-2: clamp(1.3rem, 1.1rem + 0.9vw, 1.6rem);
-	--step-3: clamp(1.7rem, 1.2rem + 2.2vw, 2.6rem);
-	--step-4: clamp(2.1rem, 1.2rem + 4vw, 3.8rem);
+	--step--1: 0.8rem;
+	--step-0: 0.94rem;
+	--step-1: 1.1rem;
+	--step-2: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+	--step-3: clamp(1.7rem, 1.25rem + 1.9vw, 2.5rem);
 
-	--leading-tight: 1.2;
+	--leading-tight: 1.15;
 	--leading-normal: 1.65;
 	--tracking-pixel: 0.04em;
-	--tracking-label: 0.12em;
+	--tracking-label: 0.14em;
 
-	/* space: multiples of the 4px pixel */
+	/* space: multiples of the 4px grid */
 	--space-1: calc(var(--px) * 1); /*  4 */
 	--space-2: calc(var(--px) * 2); /*  8 */
 	--space-3: calc(var(--px) * 3); /* 12 */
@@ -89,19 +84,15 @@
 	--space-16: calc(var(--px) * 16); /* 64 */
 	--space-24: calc(var(--px) * 24); /* 96 */
 
+	/* flat: hairlines only, square corners, no shadows or glows */
 	--border: 1px solid var(--color-border);
 	--border-strong: 1px solid var(--color-border-strong);
-	--border-dashed: repeating-linear-gradient(90deg, var(--color-border-strong) 0 6px, transparent 6px 12px);
-
-	/* hard, offset, no-blur shadows: the only kind a pixel can cast */
-	--shadow-px-1: var(--px) var(--px) 0 var(--color-accent-shadow);
-	--shadow-px-2: calc(var(--px) * 2) calc(var(--px) * 2) 0 var(--color-accent-shadow);
+	--rule: 2px solid var(--color-text-strong); /* datasheet section rule */
 
 	--dur-fast: 100ms;
 	--dur-base: 160ms;
-	--ease-step: steps(3, end);
 
 	--w-prose: 44rem;
-	--w-page: 68rem;
+	--w-page: 72rem;
 	--gutter: clamp(1rem, 4vw, 2rem);
 }

@@ -11,46 +11,62 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const date = post.data.publishDate.toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" });
+const date = post.data.publishDate.toISOString().slice(0, 10);
 const words = post.body?.split(/\s+/).length ?? 0;
 const minutes = Math.max(1, Math.round(words / 220));
 ---
 
 <Base title={post.data.title} description={post.data.description}>
 	<article class="container container--prose">
-		<header class="post-head stack">
-			<a class="mono back" href="/blog/">← cd ../blog</a>
+		<header class="post-head">
+			<a class="mono back" href="/blog/">← All writing</a>
 			<h1 class="title">{post.data.title}</h1>
-			<p class="mono muted">
-				<time datetime={post.data.publishDate.toISOString()}>{date}</time> · {minutes} min read
-			</p>
-			<div class="cluster">
-				{post.data.tags.map((t) => <Tag>#{t}</Tag>)}
-			</div>
+			<dl class="meta mono">
+				<dt>Published</dt>
+				<dd class="num"><time datetime={post.data.publishDate.toISOString()}>{date}</time></dd>
+				<dt>Reading</dt>
+				<dd class="num">{minutes} min</dd>
+				<dt>Tags</dt>
+				<dd class="cluster">{post.data.tags.map((t) => <Tag>{t}</Tag>)}</dd>
+			</dl>
 		</header>
 		<div class="prose">
 			<Content />
 		</div>
-		<p class="end label">— end of transmission —</p>
 	</article>
 </Base>
 
 <style>
 	.post-head {
-		padding-block: var(--space-12) var(--space-8);
+		display: grid;
+		gap: var(--space-4);
+		padding-block: var(--space-8);
 		margin-bottom: var(--space-8);
-		border-bottom: var(--border);
 	}
 	.back {
 		color: var(--color-text-muted);
 	}
 	.title {
-		font-size: var(--step-3);
-		line-height: 1.2;
+		font-family: var(--font-mono);
+		font-weight: 600;
+		font-size: var(--step-2);
+		letter-spacing: -0.01em;
 		text-transform: none;
+		line-height: 1.25;
 	}
-	.end {
-		margin-top: var(--space-16);
-		text-align: center;
+	.meta {
+		display: grid;
+		grid-template-columns: 6rem 1fr;
+		margin: 0;
+		border-top: var(--rule);
+	}
+	.meta dt,
+	.meta dd {
+		margin: 0;
+		padding-block: var(--space-2);
+		border-bottom: var(--border);
+	}
+	.meta dt {
+		color: var(--color-text-faint);
 	}
 </style>

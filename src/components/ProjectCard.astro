@@ -1,6 +1,8 @@
 ---
-import PixelCard from "@/components/PixelCard.astro";
+import Card from "@/components/Card.astro";
+import PixelIcon from "@/components/PixelIcon.astro";
 import Tag from "@/components/Tag.astro";
+import { categoryStyle } from "@/data/categories";
 import type { Project } from "@/data/resume";
 
 interface Props {
@@ -8,22 +10,24 @@ interface Props {
 	detailed?: boolean;
 }
 const { project: p, detailed = false } = Astro.props;
+const lead = categoryStyle[p.categories[0]];
+const stack = detailed ? p.stack : p.stack.slice(0, 4);
 // text the /projects search box matches against
 const haystack = [p.name, p.title, p.summary, p.context, ...p.points, ...p.stack].join(" ").toLowerCase();
 ---
 
-<PixelCard as="li" interactive>
-	<div class="card" data-project data-categories={p.categories.join("|")} data-search={haystack}>
+<Card as="li" interactive>
+	<article class="proj" data-project data-categories={p.categories.join("|")} data-search={haystack}>
 		<div class="head">
-			<span class="label">{p.categories.join(" · ")}</span>
-			<span class="mono muted">{p.year}</span>
+			<span class="glyph" style={`color: ${lead.color}`}><PixelIcon glyph={lead.glyph} /></span>
+			<div class="cluster">
+				{p.categories.map((c) => <Tag color={categoryStyle[c].color}>{categoryStyle[c].short}</Tag>)}
+				{p.status && <Tag>{p.status}</Tag>}
+			</div>
 		</div>
-		<h3>
-			{p.link ? <a href={p.link}>{p.name}</a> : p.name}
-			{p.status && <Tag tone="highlight">{p.status}</Tag>}
-		</h3>
+		<h3>{p.link ? <a href={p.link}>{p.name}</a> : p.name}</h3>
 		<p class="title">{p.title}</p>
-		<p class="summary">{p.summary}</p>
+		<p class="summary muted">{p.summary}</p>
 		{
 			detailed && p.points.length > 0 && (
 				<ul class="points">
@@ -33,18 +37,27 @@ const haystack = [p.name, p.title, p.summary, p.context, ...p.points, ...p.stack
 				</ul>
 			)
 		}
-		<div class="cluster tags">
-			{p.context && <Tag tone="highlight">{p.context}</Tag>}
-			{p.stack.map((s) => <Tag>{s}</Tag>)}
-		</div>
-		<p class="foot mono">
-			{p.link ? <a href={p.link}>Source code ↗</a> : <span class="muted">Source not public yet</span>}
-		</p>
-	</div>
-</PixelCard>
+		<dl class="spec mono">
+			<dt>Year</dt>
+			<dd class="num">{p.year}</dd>
+			{
+				p.context && (
+					<>
+						<dt>Context</dt>
+						<dd>{p.context}</dd>
+					</>
+				)
+			}
+			<dt>Stack</dt>
+			<dd>{stack.join(" · ")}{!detailed && p.stack.length > stack.length && ` +${p.stack.length - stack.length}`}</dd>
+			<dt>Source</dt>
+			<dd>{p.link ? <a href={p.link}>GitHub ↗</a> : <span class="muted">not public yet</span>}</dd>
+		</dl>
+	</article>
+</Card>
 
 <style>
-	.card {
+	.proj {
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-3);
@@ -53,51 +66,58 @@ const haystack = [p.name, p.title, p.summary, p.context, ...p.points, ...p.stack
 	.head {
 		display: flex;
 		justify-content: space-between;
+		align-items: flex-start;
 		gap: var(--space-4);
 	}
+	.head .cluster {
+		justify-content: flex-end;
+	}
 	h3 {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: var(--space-3);
 		font-family: var(--font-pixel);
 		font-weight: 400;
 		font-size: var(--step-1);
 		letter-spacing: var(--tracking-pixel);
 	}
 	h3 a {
-		color: var(--color-text-strong);
+		text-decoration: none;
 	}
 	h3 a:hover {
-		color: var(--color-accent);
+		text-decoration: underline;
 	}
 	.title {
-		font-family: var(--font-mono);
-		font-size: var(--step--1);
-		color: var(--color-accent);
-	}
-	.summary {
-		color: var(--color-text);
+		color: var(--color-text-strong);
 	}
 	.points {
 		margin: 0;
 		padding-left: var(--space-4);
-		font-size: 0.95rem;
 		color: var(--color-text-muted);
+		font-size: var(--step--1);
 	}
 	.points li + li {
 		margin-top: var(--space-2);
 	}
 	.points li::marker {
-		content: "› ";
-		color: var(--color-accent-dim);
+		content: "– ";
+		color: var(--color-text-faint);
 	}
-	.tags {
-		margin-top: var(--space-1);
-	}
-	.foot {
-		margin-top: auto;
+	.spec {
+		display: grid;
+		grid-template-columns: 5.5rem 1fr;
+		margin: auto 0 0;
 		padding-top: var(--space-3);
-		border-top: 1px dashed var(--color-border);
+		border-top: var(--border);
+		font-size: var(--step--1);
+	}
+	.spec dt,
+	.spec dd {
+		margin: 0;
+		padding-block: var(--space-1);
+	}
+	.spec dt {
+		color: var(--color-text-faint);
+	}
+	.spec dd {
+		color: var(--color-text);
+		min-width: 0;
 	}
 </style>

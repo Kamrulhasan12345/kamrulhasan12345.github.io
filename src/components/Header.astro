@@ -1,89 +1,98 @@
 ---
-const links = [
-	{ href: "/#about", label: "About" },
-	{ href: "/#experience", label: "Experience" },
-	{ href: "/#research", label: "Publications" },
+import { profile } from "@/data/resume";
+
+const tabs = [
+	{ href: "/", label: "Index" },
 	{ href: "/projects/", label: "Projects" },
-	{ href: "/#skills", label: "Skills" },
 	{ href: "/blog/", label: "Writing" },
-	{ href: "/#contact", label: "Contact" },
 ];
 const path = Astro.url.pathname;
+const isCurrent = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
+// datasheet revision = build month
+const rev = new Date().toISOString().slice(0, 7);
 ---
 
 <header class="container">
-	<a class="logo" href="/" aria-label="Home">
-		<span class="prompt">&gt;</span>MKH<span class="cursor" aria-hidden="true">_</span>
-	</a>
-	<nav aria-label="Main">
-		{
-			links.map((l) => (
-				<a href={l.href} aria-current={!l.href.includes("#") && path.startsWith(l.href) ? "page" : undefined}>
-					{l.label}
-				</a>
-			))
-		}
-		<a class="cv" href="/resume.pdf">Resume ↓</a>
-	</nav>
+	<div class="sheet mono" aria-hidden="true">
+		<span>{profile.name}</span>
+		<span>Engineer datasheet</span>
+		<span class="num">Rev. {rev}</span>
+	</div>
+	<div class="bar">
+		<a class="brand" href="/">kamrul</a>
+		<nav aria-label="Main" class="tabs">
+			{
+				tabs.map((t) => (
+					<a href={t.href} aria-current={isCurrent(t.href) ? "page" : undefined}>
+						{t.label}
+					</a>
+				))
+			}
+			<a href="/resume.pdf">Résumé ↓</a>
+		</nav>
+	</div>
 </header>
 
 <style>
 	header {
+		padding-top: var(--space-6);
+	}
+	.sheet {
+		display: grid;
+		grid-template-columns: 1fr auto auto;
+		border: 1px solid var(--color-text-strong);
+		font-size: var(--step--2);
+		color: var(--color-text-strong);
+	}
+	.sheet span {
+		padding: var(--space-1) var(--space-3);
+	}
+	.sheet span + span {
+		border-left: 1px solid var(--color-text-strong);
+	}
+	.bar {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
 		align-items: center;
-		gap: var(--space-4) var(--space-8);
-		padding-block: var(--space-6);
-		border-bottom: var(--border);
+		gap: var(--space-4);
+		padding-block: var(--space-6) var(--space-4);
 	}
-	.logo {
-		font-family: var(--font-pixel);
-		font-size: var(--step-1);
-		color: var(--color-text-strong);
+	.brand {
+		font-weight: 600;
 		text-decoration: none;
+		color: var(--color-text-strong);
 	}
-	.prompt {
-		color: var(--color-accent);
-		margin-right: var(--space-2);
-	}
-	.cursor {
-		color: var(--color-accent);
-		animation: blink 1.1s steps(1, end) infinite;
-	}
-	@keyframes blink {
-		50% {
-			opacity: 0;
-		}
-	}
-	nav {
+	.tabs {
 		display: flex;
 		flex-wrap: wrap;
-		align-items: center;
-		gap: var(--space-2) var(--space-6);
+		gap: var(--space-1);
 	}
-	nav a {
-		font-family: var(--font-mono);
-		font-size: var(--step--1);
-		color: var(--color-text-muted);
-	}
-	nav a:hover,
-	nav a[aria-current="page"] {
-		color: var(--color-accent);
-		text-decoration: none;
-	}
-	nav a[aria-current="page"]::before {
-		content: "[";
-	}
-	nav a[aria-current="page"]::after {
-		content: "]";
-	}
-	.cv {
+	.tabs a {
 		padding: var(--space-1) var(--space-3);
-		border: 1px solid var(--color-accent-dim);
-		color: var(--color-accent);
+		font-size: var(--step--1);
+		text-decoration: none;
+		color: var(--color-text-muted);
+		border: var(--border-strong);
+		transition:
+			color var(--dur-fast),
+			border-color var(--dur-fast);
 	}
-	.cv:hover {
-		box-shadow: var(--shadow-px-1);
+	.tabs a:hover {
+		color: var(--color-text-strong);
+		border-color: var(--color-text-strong);
+	}
+	.tabs a[aria-current="page"] {
+		background: var(--color-text-strong);
+		border-color: var(--color-text-strong);
+		color: var(--color-bg);
+	}
+	@media (max-width: 36rem) {
+		.sheet {
+			grid-template-columns: 1fr auto;
+		}
+		.sheet span:nth-child(2) {
+			display: none;
+		}
 	}
 </style>

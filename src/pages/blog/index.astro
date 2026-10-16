@@ -5,32 +5,33 @@ import { getPosts } from "@/content.config";
 import Base from "@/layouts/Base.astro";
 
 const posts = await getPosts();
-const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "2-digit" });
+const iso = (d: Date) => d.toISOString().slice(0, 10);
 ---
 
 <Base title="Writing" description="Notes on systems, compilers, and running things on small hardware.">
 	<div class="container container--prose">
-		<header class="page-head stack">
-			<p class="label">/blog</p>
+		<header class="page-head">
 			<h1>Writing</h1>
 			<p class="muted">Notes on systems, compilers, and running things on small hardware.</p>
 		</header>
-		<SectionHead index={posts.length} title="Posts" more={{ href: "/rss.xml", label: "rss" }} />
+		<SectionHead n={1} title={`Posts · ${posts.length}`} more={{ href: "/rss.xml", label: "rss" }} />
 		<ul class="posts" role="list">
 			{
 				posts.map((p) => (
-					<li class="stack" style="--stack-gap: var(--space-2)">
-						<time class="mono muted" datetime={p.data.publishDate.toISOString()}>
-							{fmt(p.data.publishDate)}
+					<li>
+						<time class="mono muted num" datetime={p.data.publishDate.toISOString()}>
+							{iso(p.data.publishDate)}
 						</time>
-						<h2 class="post-title">
-							<a href={`/blog/${p.id}/`}>{p.data.title}</a>
-						</h2>
-						<p class="muted">{p.data.description}</p>
-						<div class="cluster">
-							{p.data.tags.map((t) => (
-								<Tag>#{t}</Tag>
-							))}
+						<div class="body">
+							<h2>
+								<a href={`/blog/${p.id}/`}>{p.data.title}</a>
+							</h2>
+							<p class="muted">{p.data.description}</p>
+							<div class="cluster">
+								{p.data.tags.map((t) => (
+									<Tag>{t}</Tag>
+								))}
+							</div>
 						</div>
 					</li>
 				))
@@ -41,27 +42,38 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month:
 
 <style>
 	.page-head {
-		padding-block: var(--space-12);
+		display: grid;
+		gap: var(--space-4);
+		padding-block: var(--space-8) var(--space-12);
 	}
 	.posts {
 		margin: 0;
 		padding: 0;
 	}
 	.posts li {
+		display: grid;
+		grid-template-columns: 7.5rem 1fr;
+		gap: var(--space-4);
 		padding-block: var(--space-6);
-		border-bottom: 1px dashed var(--color-border);
+		border-bottom: var(--border);
 	}
-	.post-title {
-		font-family: var(--font-sans);
-		font-weight: 600;
-		font-size: var(--step-1);
-		text-transform: none;
-		letter-spacing: 0;
+	.posts li:first-child {
+		padding-top: 0;
 	}
-	.post-title a {
-		color: var(--color-text-strong);
+	.body {
+		display: grid;
+		gap: var(--space-2);
 	}
-	.post-title a:hover {
-		color: var(--color-accent);
+	h2 a {
+		text-decoration: none;
+	}
+	h2 a:hover {
+		text-decoration: underline;
+	}
+	@media (max-width: 36rem) {
+		.posts li {
+			grid-template-columns: 1fr;
+			gap: var(--space-2);
+		}
 	}
 </style>

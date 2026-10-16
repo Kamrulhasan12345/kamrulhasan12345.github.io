@@ -1,0 +1,272 @@
+{
+  "astro.config.ts": {
+    "mtime": 1784300702.6672142,
+    "ast_hash": "251ed6c3ca4a1de797e076e0d13dc5d5",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1784300568.317508,
+    "ast_hash": "0f39602d6f7dd8ce3a849d61c32a8eba",
+    "semantic_hash": ""
+  },
+  "scripts/new-post.mjs": {
+    "mtime": 1784300568.3190854,
+    "ast_hash": "4d3e7a7d2fd1398b05829d8c77498f97",
+    "semantic_hash": ""
+  },
+  "src/components/Footer.astro": {
+    "mtime": 1784300568.4025097,
+    "ast_hash": "3210908c30f3e541022e7b0e1c56fd75",
+    "semantic_hash": ""
+  },
+  "src/components/FormattedDate.astro": {
+    "mtime": 1784300568.3345084,
+    "ast_hash": "cc35926b379326dab359f102a7c861cc",
+    "semantic_hash": ""
+  },
+  "src/components/Header.astro": {
+    "mtime": 1784300568.42651,
+    "ast_hash": "65bbd5df2b46959300eaba5619e7acbc",
+    "semantic_hash": ""
+  },
+  "src/components/PostPreview.astro": {
+    "mtime": 1784300568.42651,
+    "ast_hash": "f756705b9f2c63076880553530a7a467",
+    "semantic_hash": ""
+  },
+  "src/components/ProjectCard.astro": {
+    "mtime": 1784300568.42651,
+    "ast_hash": "2424ae965085675459aee47d974a809f",
+    "semantic_hash": ""
+  },
+  "src/components/TOC.astro": {
+    "mtime": 1784300568.3345084,
+    "ast_hash": "82d975ab6d7a6395f8e186220cf2b358",
+    "semantic_hash": ""
+  },
+  "src/content.config.ts": {
+    "mtime": 1784300568.3355083,
+    "ast_hash": "ecb711cac187393196eb3df44328d633",
+    "semantic_hash": ""
+  },
+  "src/data/collections.ts": {
+    "mtime": 1784300568.323386,
+    "ast_hash": "c17a129b54e2b9abe1f374b96cc6f9ba",
+    "semantic_hash": ""
+  },
+  "src/layouts/Base.astro": {
+    "mtime": 1784300568.4025097,
+    "ast_hash": "2ca5f8198f559889280b386bc7002eec",
+    "semantic_hash": ""
+  },
+  "src/layouts/BlogPost.astro": {
+    "mtime": 1784300568.42651,
+    "ast_hash": "07a3c4838044d42a299b3ab310b280b6",
+    "semantic_hash": ""
+  },
+  "src/pages/404.astro": {
+    "mtime": 1784300568.4035096,
+    "ast_hash": "a40bcabe3d2b6f7a2e02b40df7149f8d",
+    "semantic_hash": ""
+  },
+  "src/pages/about.astro": {
+    "mtime": 1784300568.4035096,
+    "ast_hash": "706bada9a2d89705c07a850213a89475",
+    "semantic_hash": ""
+  },
+  "src/pages/blog/[slug].astro": {
+    "mtime": 1784300568.323885,
+    "ast_hash": "ecc9f62d9f7a591461f209d27c978aa4",
+    "semantic_hash": ""
+  },
+  "src/pages/blog/index.astro": {
+    "mtime": 1784300568.4035096,
+    "ast_hash": "8b39d1318de224342f359ceff4a35bbc",
+    "semantic_hash": ""
+  },
+  "src/pages/index.astro": {
+    "mtime": 1784300568.42651,
+    "ast_hash": "69e895247b5c9a32a8fb0fc626f4994d",
+    "semantic_hash": ""
+  },
+  "src/pages/og/[...slug].png.ts": {
+    "mtime": 1784300568.42651,
+    "ast_hash": "ed148668cad5a4b18c9cd83ae949ce81",
+    "semantic_hash": ""
+  },
+  "src/pages/projects/[slug].astro": {
+    "mtime": 1784300568.4035096,
+    "ast_hash": "a26890a3207850856c7fd5499656f83d",
+    "semantic_hash": ""
+  },
+  "src/pages/projects/index.astro": {
+    "mtime": 1784300568.4035096,
+    "ast_hash": "6a356404d7d2227e6e1048a4bc1bc2de",
+    "semantic_hash": ""
+  },
+  "src/pages/rss.xml.ts": {
+    "mtime": 1784300568.3241615,
+    "ast_hash": "61804197d2861f8a9914956acf8baa2f",
+    "semantic_hash": ""
+  },
+  "src/pages/tags/[tag].astro": {
+    "mtime": 1784300568.4035096,
+    "ast_hash": "0a53bb491eec0757758ee3d0055b25c1",
+    "semantic_hash": ""
+  },
+  "src/pages/tags/index.astro": {
+    "mtime": 1784300568.4045098,
+    "ast_hash": "21ed404059e2d7cea55c2aa6f9a4bad7",
+    "semantic_hash": ""
+  },
+  "src/plugins/remark-admonitions.mjs": {
+    "mtime": 1784300568.3244586,
+    "ast_hash": "0e2371970f3ef3163196efde4555fe2d",
+    "semantic_hash": ""
+  },
+  "src/plugins/remark-reading-time.mjs": {
+    "mtime": 1784300568.3244586,
+    "ast_hash": "124582dd7f2c8a039c0076cbd0bcc4ad",
+    "semantic_hash": ""
+  },
+  "src/site.config.ts": {
+    "mtime": 1784300723.4176385,
+    "ast_hash": "c683d3925f12fd9cf3d3dde2333d3fdf",
+    "semantic_hash": ""
+  },
+  "tsconfig.json": {
+    "mtime": 1784300568.3246763,
+    "ast_hash": "4a22d0d7928a277e0f30cf12bd1f6e10",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1784300568.42451,
+    "ast_hash": "ecb2e83e580e5be62bbe31f8a6221d3b",
+    "semantic_hash": ""
+  },
+  "src/content/projects/ayahbot.md": {
+    "mtime": 1784300568.3355083,
+    "ast_hash": "cc8b092e6bd8aaf1872a5b286b8e4830",
+    "semantic_hash": ""
+  },
+  "src/content/projects/bayyinah.md": {
+    "mtime": 1784300568.3355083,
+    "ast_hash": "35f13eb69e5bf1220c131123d249acd4",
+    "semantic_hash": ""
+  },
+  "src/content/projects/homelab.md": {
+    "mtime": 1784300568.3355083,
+    "ast_hash": "ac697fac7f70adb7bded765567c54238",
+    "semantic_hash": ""
+  },
+  "src/content/projects/ilham.md": {
+    "mtime": 1784300568.3365083,
+    "ast_hash": "9acbf8e8521ccab7ac151444aeaa8178",
+    "semantic_hash": ""
+  },
+  "src/content/projects/nodecommerce.md": {
+    "mtime": 1784300568.3365083,
+    "ast_hash": "d09e7b07c67b4b51adb73212802935d2",
+    "semantic_hash": ""
+  },
+  "public/favicon.svg": {
+    "mtime": 1784300568.3335083,
+    "ast_hash": "5bce7d2713629e12da429e683f0e4a1b",
+    "semantic_hash": ""
+  },
+  "src/styles/shiki-dark.json": {
+    "mtime": 1784300568.42651,
+    "ast_hash": "228c030f1c8288769ffa112871eb8476",
+    "semantic_hash": ""
+  },
+  "src/assets/fonts/Inter-OFL.txt": {
+    "mtime": 1784300568.3335083,
+    "ast_hash": "2eeb2b3ada55f38ae966db32bcb1f92a",
+    "semantic_hash": ""
+  },
+  "src/assets/fonts/JetBrainsMono-OFL.txt": {
+    "mtime": 1784300568.3345084,
+    "ast_hash": "43dc1a748ef82aa746d6a645d52578a9",
+    "semantic_hash": ""
+  },
+  "src/content/projects/agent-orchestration.md": {
+    "mtime": 1784300568.3355083,
+    "ast_hash": "a9864be243b8be81f4f0585b6b93c9d4",
+    "semantic_hash": ""
+  },
+  "src/content/projects/competitive-programming.md": {
+    "mtime": 1784300568.3355083,
+    "ast_hash": "4f3c08fcef01cf7bfbc359bfdde6ffd6",
+    "semantic_hash": ""
+  },
+  "src/content/projects/compiler-articles.md": {
+    "mtime": 1784300568.3355083,
+    "ast_hash": "6ec334995fe371fd28a37bb30d702f03",
+    "semantic_hash": ""
+  },
+  "src/content/projects/ctf-track.md": {
+    "mtime": 1784300568.3355083,
+    "ast_hash": "e7e7e43e95235704871b1beebee7e5b5",
+    "semantic_hash": ""
+  },
+  "src/content/projects/eventcast.md": {
+    "mtime": 1784300568.3355083,
+    "ast_hash": "184bd5c0a3fe22c9a0a77243a320345d",
+    "semantic_hash": ""
+  },
+  "src/content/projects/hardware-crypto-device.md": {
+    "mtime": 1784300568.3355083,
+    "ast_hash": "d9b3a785d530fb6d5aeaf447b7540cd3",
+    "semantic_hash": ""
+  },
+  "src/content/projects/haunted-stadium.md": {
+    "mtime": 1784300568.3355083,
+    "ast_hash": "a92d90d1f13228d98896dfd779cc866c",
+    "semantic_hash": ""
+  },
+  "src/content/projects/ielts-app.md": {
+    "mtime": 1784300568.3365083,
+    "ast_hash": "c905af15179ccf194e00f37c76e2e59d",
+    "semantic_hash": ""
+  },
+  "src/content/projects/version3-woocommerce.md": {
+    "mtime": 1784300568.3365083,
+    "ast_hash": "0db66a9ee2fe4ae7879a1bd1531041bf",
+    "semantic_hash": ""
+  },
+  "src/content/blog/hello-world-to-machine-code.md": {
+    "mtime": 1784300568.3576963,
+    "ast_hash": "e8cc3421fd17901f7ea20d9e77850b07",
+    "semantic_hash": ""
+  },
+  "src/content/blog/lexical-analysis-first-gate.md": {
+    "mtime": 1784300568.3576963,
+    "ast_hash": "13c45d8a0de012653ab91ddf4a60394b",
+    "semantic_hash": ""
+  },
+  "src/content/blog/skip-locked-job-queue.md": {
+    "mtime": 1784300568.3576963,
+    "ast_hash": "d5858b97d1f27810fc039409d7d7267a",
+    "semantic_hash": ""
+  },
+  "src/content/blog/why-i-run-arch-on-6gb.md": {
+    "mtime": 1784300568.3576963,
+    "ast_hash": "b510b0d03ab6e035b25d6a587f10698b",
+    "semantic_hash": ""
+  },
+  "src/assets/fonts/Silkscreen-OFL.txt": {
+    "mtime": 1784300568.3785093,
+    "ast_hash": "c536d28092da27f387372bc371c5fe19",
+    "semantic_hash": ""
+  },
+  "src/components/Ticker.astro": {
+    "mtime": 1784300568.4025097,
+    "ast_hash": "79c040f5dd3fe9024d70dc8f6aaa52d6",
+    "semantic_hash": ""
+  },
+  ".github/workflows/deploy.yml": {
+    "mtime": 1784303682.2137341,
+    "ast_hash": "cbfdaef19de9c7a4096b63a76ef752c7",
+    "semantic_hash": ""
+  }
+}

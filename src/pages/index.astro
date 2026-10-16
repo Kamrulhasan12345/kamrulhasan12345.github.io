@@ -1,6 +1,9 @@
 ---
 import Button from "@/components/Button.astro";
-import PixelCard from "@/components/PixelCard.astro";
+import Card from "@/components/Card.astro";
+import Oled from "@/components/Oled.astro";
+import PixelIcon from "@/components/PixelIcon.astro";
+import type { Glyph } from "@/components/PixelIcon.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
 import SectionHead from "@/components/SectionHead.astro";
 import Tag from "@/components/Tag.astro";
@@ -9,253 +12,249 @@ import { about, education, experience, profile, profiles, projects, research, sk
 import Base from "@/layouts/Base.astro";
 
 const featured = projects.filter((p) => p.featured);
-const posts = (await getPosts()).slice(0, 3);
-const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "2-digit" });
+const posts = (await getPosts()).slice(0, 4);
+const iso = (d: Date) => d.toISOString().slice(0, 10);
+
+// the three focus areas map onto the category colors + glyphs used everywhere else
+const focusStyle: Record<string, { glyph: Glyph; color: string }> = {
+	"AI Engineering": { glyph: "ml", color: "var(--cat-ml)" },
+	"Embedded Systems": { glyph: "embedded", color: "var(--cat-embedded)" },
+	Backend: { glyph: "backend", color: "var(--cat-backend)" },
+};
 ---
 
 <Base>
 	<div class="container">
-		<!-- hero -->
-		<section class="hero stack">
-			<p class="status mono"><span class="dot" aria-hidden="true"></span>{profile.status}</p>
-			<h1 class="name">{profile.name}</h1>
-			<p class="role">{profile.role}</p>
-			<p class="intro">{profile.intro}</p>
-			<div class="cluster cta">
-				<Button href="/projects/">See projects</Button>
-				<Button href="/resume.pdf" variant="ghost">Download resume</Button>
-				<Button href="#contact" variant="ghost">Contact</Button>
-			</div>
-			<p class="socials mono">
-				<a href={profile.github}>GitHub</a>
-				<a href={profile.linkedin}>LinkedIn</a>
-				<a href={profile.orcid}>ORCID</a>
-				<a href={`mailto:${profile.email}`}>Email</a>
-				<span class="muted">· {profile.location}</span>
-			</p>
+		<!-- hero: identity + the one live element -->
+		<section class="bento hero" aria-label="Introduction">
+			<Card class="span-7 intro">
+				<p class="kick label"><span class="dot" aria-hidden="true"></span>{profile.status}</p>
+				<h1>{profile.name}</h1>
+				<p class="role">{profile.role}</p>
+				<p class="lede muted">{profile.intro}</p>
+				<div class="cluster cta">
+					<Button href="/projects/">Projects</Button>
+					<Button href="/resume.pdf" variant="ghost">Résumé (PDF)</Button>
+					<Button href="#contact" variant="ghost">Contact</Button>
+				</div>
+			</Card>
+			<Card class="span-5 fig-card">
+				<Oled />
+			</Card>
 		</section>
 
-		<!-- about -->
-		<section class="section" aria-labelledby="about">
-			<SectionHead index={1} title="About" id="about" />
-			<div class="about">
-				<div class="stack about-text">
+		<!-- 1 overview -->
+		<section class="section" aria-labelledby="overview">
+			<SectionHead n={1} title="Overview" id="overview" />
+			<div class="bento">
+				<Card class="span-7 stack prose-ish">
 					{about.text.map((t) => <p>{t}</p>)}
-				</div>
-				<PixelCard>
-					<div class="stack" style="--stack-gap: var(--space-3)">
-						<p class="label hl">Currently</p>
-						<ul class="now">
-							{about.now.map((n) => <li>{n}</li>)}
-						</ul>
-					</div>
-				</PixelCard>
-			</div>
-			<ul class="focus" role="list">
+				</Card>
+				<Card class="span-5">
+					<p class="label card-title">Currently</p>
+					<ul class="now" role="list">
+						{about.now.map((n) => <li>{n}</li>)}
+					</ul>
+				</Card>
 				{
-					about.focus.map((f) => (
-						<PixelCard as="li">
-							<div class="stack" style="--stack-gap: var(--space-2)">
-								<h3 class="focus-title">{f.title}</h3>
-								<p class="muted">{f.text}</p>
-							</div>
-						</PixelCard>
-					))
+					about.focus.map((f) => {
+						const s = focusStyle[f.title] ?? { glyph: "ml", color: "var(--color-text-strong)" };
+						return (
+							<Card class="span-4 focus" style={`--c: ${s.color}`}>
+								<span class="focus-glyph">
+									<PixelIcon glyph={s.glyph} />
+								</span>
+								<h3>{f.title}</h3>
+								<p class="muted small">{f.text}</p>
+							</Card>
+						);
+					})
 				}
+			</div>
+		</section>
+
+		<!-- 2 selected work -->
+		<section class="section" aria-labelledby="work">
+			<SectionHead n={2} title="Selected work" id="work" more={{ href: "/projects/", label: `all ${projects.length}` }} />
+			<ul class="bento work" role="list">
+				{featured.map((p) => <ProjectCard project={p} />)}
 			</ul>
 		</section>
 
-		<!-- experience -->
+		<!-- 3 experience + education -->
 		<section class="section" aria-labelledby="experience">
-			<SectionHead index={2} title="Experience" id="experience" />
-			<ol class="timeline" role="list">
-				{
-					experience.map((e) => (
-						<li>
-							<span class="node" aria-hidden="true" />
+			<SectionHead n={3} title="Experience" id="experience" />
+			<div class="bento">
+				<Card class="span-8">
+					<ol class="log" role="list">
+						{
+							experience.map((e, i) => (
+								<li>
+									<div class="log-head">
+										<span class="ref">{i === 0 ? "* HEAD" : `* HEAD~${i}`}</span>
+										<h3>
+											{e.role} <span class="org">@ {e.org}</span>
+										</h3>
+										<span class="when mono num">{e.when}</span>
+									</div>
+									{e.orgNote && <p class="muted small note">{e.orgNote}</p>}
+									<ul class="tree" role="list">
+										{e.points.map((pt) => (
+											<li>{pt}</li>
+										))}
+									</ul>
+									<div class="cluster stack-tags">
+										{e.stack.map((s) => (
+											<Tag>{s}</Tag>
+										))}
+									</div>
+								</li>
+							))
+						}
+					</ol>
+				</Card>
+				<Card class="span-4">
+					<p class="label card-title">Education</p>
+					{
+						education.map((ed) => (
 							<div class="stack" style="--stack-gap: var(--space-2)">
-								<p class="mono muted">{e.when}</p>
-								<h3>
-									{e.role} <span class="org">@ {e.org}</span>
-								</h3>
-								{e.orgNote && <p class="muted small">{e.orgNote}</p>}
-								<ul class="points">
-									{e.points.map((pt) => (
-										<li>{pt}</li>
-									))}
-								</ul>
-								<div class="cluster">
-									{e.stack.map((s) => (
-										<Tag>{s}</Tag>
-									))}
-								</div>
-							</div>
-						</li>
-					))
-				}
-			</ol>
-		</section>
-
-		<!-- education -->
-		<section class="section" aria-labelledby="education">
-			<SectionHead index={3} title="Education" id="education" />
-			{
-				education.map((ed) => (
-					<PixelCard>
-						<div class="edu">
-							<div class="stack" style="--stack-gap: var(--space-1)">
 								<h3>{ed.school}</h3>
-								<p class="muted">{ed.degree}</p>
+								<p class="muted small">{ed.degree}</p>
+								<dl class="spec mono">
+									<dt>Years</dt>
+									<dd class="num">{ed.when}</dd>
+									<dt>Place</dt>
+									<dd>{ed.location}</dd>
+								</dl>
 							</div>
-							<p class="mono muted edu-meta">
-								{ed.when}
-								<br />
-								{ed.location}
-							</p>
-						</div>
-					</PixelCard>
-				))
-			}
+						))
+					}
+				</Card>
+			</div>
 		</section>
 
-		<!-- publications -->
+		<!-- 4 publications -->
 		<section class="section" aria-labelledby="research">
-			<SectionHead index={4} title="Publications" id="research" more={{ href: profile.orcid, label: "orcid" }} />
-			<ol class="pubs" role="list">
+			<SectionHead n={4} title="Publications" id="research" more={{ href: profile.orcid, label: "orcid" }} />
+			<ol class="bento" role="list">
 				{
 					research.map((r) => (
-						<PixelCard as="li">
+						<Card as="li" class="span-12 pub">
+							<span class="pub-glyph" aria-hidden="true">
+								<PixelIcon glyph="research" size={36} />
+							</span>
 							<div class="stack" style="--stack-gap: var(--space-3)">
-								<div class="cluster">
-									<Tag tone="highlight">{r.kind}</Tag>
-									<span class="mono muted small">{r.venue}</span>
-								</div>
-								<h3 class="research-title">{r.link ? <a href={r.link}>{r.title}</a> : r.title}</h3>
-								<p class="authors small">
+								<h3 class="pub-title">{r.link ? <a href={r.link}>{r.title}</a> : r.title}</h3>
+								<p class="small muted">
 									{r.authors.map((a, i) => (
 										<>
-											{a === "M. K. Hasan" ? <strong>{a}</strong> : a}
+											{a === "M. K. Hasan" ? <strong class="me">{a}</strong> : a}
 											{i < r.authors.length - 1 && ", "}
 										</>
 									))}
 								</p>
 								<p class="muted">{r.detail}</p>
-								<p class="mono small">
-									{r.role}
+								<dl class="spec mono">
+									<dt>Type</dt>
+									<dd>{r.kind}</dd>
+									<dt>Venue</dt>
+									<dd>{r.venue}</dd>
+									<dt>Role</dt>
+									<dd>{r.role}</dd>
 									{r.link && (
 										<>
-											{" · "}
-											<a href={r.link}>DOI ↗</a>
+											<dt>DOI</dt>
+											<dd>
+												<a href={r.link}>{r.link.replace("https://doi.org/", "")} ↗</a>
+											</dd>
 										</>
 									)}
-								</p>
+								</dl>
 							</div>
-						</PixelCard>
+						</Card>
 					))
 				}
 			</ol>
 		</section>
 
-		<!-- projects -->
-		<section class="section" aria-labelledby="projects">
-			<SectionHead
-				index={5}
-				title="Featured projects"
-				id="projects"
-				more={{ href: "/projects/", label: `all ${projects.length} projects` }}
-			/>
-			<ul class="grid" role="list">
-				{featured.map((p) => <ProjectCard project={p} />)}
-			</ul>
-			<div class="more-row">
-				<Button href="/projects/" variant="ghost">Browse all {projects.length} projects →</Button>
-			</div>
-		</section>
-
-		<!-- skills -->
+		<!-- 5 skills -->
 		<section class="section" aria-labelledby="skills">
-			<SectionHead index={6} title="Skills" id="skills" />
-			<dl class="skills">
-				{
-					skills.map((s) => (
-						<div class="skill-row">
-							<dt class="label">{s.group}</dt>
-							<dd class="cluster">
-								{s.items.map((i) => (
-									<Tag>{i}</Tag>
-								))}
-							</dd>
-						</div>
-					))
-				}
-			</dl>
+			<SectionHead n={5} title="Skills" id="skills" />
+			<Card>
+				<dl class="skills">
+					{
+						skills.map((s) => (
+							<div class="skill-row">
+								<dt class="label">{s.group}</dt>
+								<dd class="cluster">
+									{s.items.map((i) => (
+										<Tag>{i}</Tag>
+									))}
+								</dd>
+							</div>
+						))
+					}
+				</dl>
+			</Card>
 		</section>
 
-		<!-- writing -->
+		<!-- 6 writing -->
 		{
 			posts.length > 0 && (
 				<section class="section" aria-labelledby="writing">
-					<SectionHead index={7} title="Writing" id="writing" more={{ href: "/blog/", label: "all posts" }} />
-					<ul class="posts" role="list">
-						{posts.map((p) => (
-							<li>
-								<time class="mono muted" datetime={p.data.publishDate.toISOString()}>
-									{fmt(p.data.publishDate)}
-								</time>
-								<a href={`/blog/${p.id}/`}>{p.data.title}</a>
-							</li>
-						))}
-					</ul>
+					<SectionHead n={6} title="Writing" id="writing" more={{ href: "/blog/", label: "all posts" }} />
+					<Card>
+						<ul class="posts" role="list">
+							{posts.map((p) => (
+								<li>
+									<time class="mono muted num" datetime={p.data.publishDate.toISOString()}>
+										{iso(p.data.publishDate)}
+									</time>
+									<a href={`/blog/${p.id}/`}>{p.data.title}</a>
+								</li>
+							))}
+						</ul>
+					</Card>
 				</section>
 			)
 		}
 
-		<!-- profiles -->
-		<section class="section" aria-labelledby="profiles">
-			<SectionHead index={8} title="Profiles" id="profiles" />
-			<ul class="profiles" role="list">
-				{
-					profiles.map((g) => (
-						<PixelCard as="li">
-							<div class="stack" style="--stack-gap: var(--space-3)">
-								<p class="label hl">{g.group}</p>
-								<ul class="profile-links" role="list">
-									{g.links.map((l) => (
-										<li>
-											<a href={l.url}>{l.name} ↗</a>
-											<span class="mono muted small">{l.handle}</span>
-										</li>
-									))}
-								</ul>
-							</div>
-						</PixelCard>
-					))
-				}
-			</ul>
-		</section>
-
-		<!-- contact -->
+		<!-- 7 profiles + contact -->
 		<section class="section" aria-labelledby="contact">
-			<SectionHead index={9} title="Contact" id="contact" />
-			<PixelCard>
-				<div class="contact">
-					<div class="stack" style="--stack-gap: var(--space-3)">
-						<p class="contact-lead">Let's talk.</p>
-						<p class="muted">
-							Open to conversations about internships, research and anything that runs on small hardware.
-							Email is the fastest way to reach me.
-						</p>
-						<p class="mono">
-							<a href={`mailto:${profile.email}`}>{profile.email}</a>
-						</p>
-					</div>
-					<ul class="contact-links" role="list">
-						<li><span class="label">Email</span><a href={`mailto:${profile.email}`}>{profile.email}</a></li>
-						<li><span class="label">Location</span><span>{profile.location} (UTC+6)</span></li>
-						<li><span class="label">Resume</span><a href="/resume.pdf">resume.pdf ↓</a></li>
-					</ul>
-				</div>
-			</PixelCard>
+			<SectionHead n={posts.length > 0 ? 7 : 6} title="Contact" id="contact" />
+			<div class="bento">
+				<Card class="span-5 stack contact" style="--stack-gap: var(--space-4)">
+					<p class="lede">
+						Open to internships, research and anything that runs on small hardware. Email is the fastest way to
+						reach me.
+					</p>
+					<dl class="spec mono">
+						<dt>Email</dt>
+						<dd><a href={`mailto:${profile.email}`}>{profile.email}</a></dd>
+						<dt>Location</dt>
+						<dd>{profile.location} (UTC+6)</dd>
+						<dt>Résumé</dt>
+						<dd><a href="/resume.pdf">resume.pdf ↓</a></dd>
+					</dl>
+				</Card>
+				<Card class="span-7">
+					<p class="label card-title">Profiles</p>
+					<dl class="spec mono profiles">
+						{
+							profiles.flatMap((g) =>
+								g.links.map((l) => (
+									<>
+										<dt>{l.name}</dt>
+										<dd>
+											<a href={l.url}>{l.handle} ↗</a> <span class="muted">· {g.group}</span>
+										</dd>
+									</>
+								)),
+							)
+						}
+					</dl>
+				</Card>
+			</div>
 		</section>
 	</div>
 </Base>
@@ -264,199 +263,214 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month:
 	.small {
 		font-size: var(--step--1);
 	}
-	.hl {
-		color: var(--color-highlight);
+	.section {
+		margin-top: var(--space-16);
+	}
+
+	/* bento: a 12-column grid of flat cards */
+	.bento {
+		display: grid;
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+		gap: var(--space-3);
+		margin: 0;
+		padding: 0;
+	}
+	.bento > :global(*) {
+		grid-column: span 12;
+	}
+	.bento > :global(.span-4) {
+		grid-column: span 4;
+	}
+	.bento > :global(.span-5) {
+		grid-column: span 5;
+	}
+	.bento > :global(.span-7) {
+		grid-column: span 7;
+	}
+	.bento > :global(.span-8) {
+		grid-column: span 8;
+	}
+	.work > :global(li) {
+		grid-column: span 6;
+	}
+	:global(.card-title) {
+		margin-bottom: var(--space-4);
 	}
 
 	/* hero */
 	.hero {
-		--stack-gap: var(--space-4);
-		padding-block: var(--space-16) var(--space-8);
-		max-width: 46rem;
+		margin-top: var(--space-6);
 	}
-	.status {
-		display: inline-flex;
+	:global(.intro) {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+		justify-content: center;
+	}
+	:global(.fig-card) {
+		display: grid;
+		align-content: center;
+	}
+	:global(.contact) .spec {
+		margin-top: var(--space-2);
+	}
+	.profiles {
+		grid-template-columns: 8rem 1fr;
+	}
+	.kick {
+		display: flex;
 		align-items: center;
 		gap: var(--space-2);
-		width: fit-content;
-		padding: var(--space-1) var(--space-3);
-		border: var(--border);
-		color: var(--color-text-muted);
+		color: var(--color-accent);
 	}
 	.dot {
-		width: var(--space-2);
-		height: var(--space-2);
-		background: var(--color-accent);
-		box-shadow: var(--glow-accent);
-	}
-	.name {
-		font-size: var(--step-4);
-		line-height: 1.1;
+		width: 6px;
+		height: 6px;
+		background: var(--cat-embedded);
 	}
 	.role {
-		font-family: var(--font-pixel);
-		font-size: var(--step-1);
-		color: var(--color-accent);
-		letter-spacing: var(--tracking-pixel);
-		text-transform: uppercase;
+		color: var(--color-text-strong);
 	}
-	.intro {
-		font-size: var(--step-1);
-		color: var(--color-text-muted);
+	.lede {
+		max-width: 52ch;
 	}
 	.cta {
-		--cluster-gap: var(--space-4);
+		--cluster-gap: var(--space-2);
 		padding-top: var(--space-2);
 	}
-	.socials {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-2) var(--space-6);
-	}
 
-	.section {
-		margin-top: var(--space-24);
-		scroll-margin-top: var(--space-8);
-	}
-
-	/* about */
-	.about {
-		display: grid;
-		grid-template-columns: 3fr 2fr;
-		gap: var(--space-8);
-		align-items: start;
-	}
-	.about-text {
-		font-size: 1.05rem;
+	/* overview */
+	:global(.prose-ish) {
+		--stack-gap: var(--space-4);
 	}
 	.now {
 		margin: 0;
 		padding: 0;
-		list-style: none;
+		display: grid;
+		gap: var(--space-2);
 	}
 	.now li {
-		padding-block: var(--space-1);
+		display: grid;
+		grid-template-columns: 1.2em 1fr;
 	}
 	.now li::before {
-		content: "● ";
-		color: var(--color-accent);
-	}
-	.focus {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: var(--space-6);
-		margin: var(--space-8) 0 0;
-		padding: 0;
-	}
-	.focus-title {
-		font-family: var(--font-pixel);
-		font-weight: 400;
-		font-size: var(--step-0);
-		letter-spacing: var(--tracking-pixel);
-		text-transform: uppercase;
-		color: var(--color-accent);
-	}
-
-	/* experience timeline */
-	.timeline {
-		margin: 0;
-		padding: 0;
-		border-left: 2px solid var(--color-border);
-	}
-	.timeline > li {
-		position: relative;
-		padding: 0 0 var(--space-12) var(--space-8);
-	}
-	.timeline > li:last-child {
-		padding-bottom: 0;
-	}
-	.node {
-		position: absolute;
-		left: calc(-1 * var(--space-2) - 1px);
-		top: 0.35em;
-		width: var(--space-4);
-		height: var(--space-4);
-		background: var(--color-bg);
-		border: 2px solid var(--color-accent);
-	}
-	.timeline > li:first-child .node {
+		content: "";
+		width: 6px;
+		height: 6px;
+		margin-top: 0.6em;
 		background: var(--color-accent);
 	}
-	.org {
-		color: var(--color-accent);
+	:global(.focus) {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+	}
+	.focus-glyph {
+		color: var(--c);
+	}
+	:global(.focus) h3 {
+		color: var(--c);
+		font-family: var(--font-pixel);
 		font-weight: 400;
-	}
-	.points {
-		margin: 0;
-		padding-left: var(--space-4);
-		color: var(--color-text-muted);
-	}
-	.points li + li {
-		margin-top: var(--space-2);
-	}
-	.points li::marker {
-		content: "› ";
-		color: var(--color-accent-dim);
+		letter-spacing: var(--tracking-pixel);
+		text-transform: uppercase;
 	}
 
-	/* education */
-	.edu {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		gap: var(--space-4);
+	/* experience: git log */
+	.log {
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: var(--space-8);
 	}
-	.edu-meta {
-		text-align: right;
+	.log-head {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		align-items: baseline;
+		gap: var(--space-3);
+	}
+	.ref {
+		font-size: var(--step--1);
+		color: var(--color-accent);
+		white-space: nowrap;
+	}
+	.org {
+		font-weight: 400;
+		color: var(--color-text-muted);
+	}
+	.when {
+		color: var(--color-text-faint);
+		white-space: nowrap;
+	}
+	.note {
+		margin: var(--space-1) 0 0;
+	}
+	.tree {
+		margin: var(--space-3) 0 0;
+		padding: 0;
+		color: var(--color-text-muted);
+		font-size: var(--step--1);
+	}
+	.tree li {
+		position: relative;
+		padding: 0 0 var(--space-2) 2.2em;
+	}
+	.tree li::before {
+		content: "├─";
+		position: absolute;
+		left: 0;
+		color: var(--color-text-faint);
+	}
+	.tree li:last-child::before {
+		content: "└─";
+	}
+	.stack-tags {
+		margin-top: var(--space-2);
+		padding-left: 2.2em;
+	}
+
+	/* shared spec table (datasheet key/value) */
+	.spec {
+		display: grid;
+		grid-template-columns: 6rem 1fr;
+		margin: 0;
+		font-size: var(--step--1);
+	}
+	.spec dt,
+	.spec dd {
+		margin: 0;
+		padding-block: var(--space-1);
+		border-bottom: var(--border);
+	}
+	.spec dt {
+		color: var(--color-text-faint);
+	}
+	.spec dd {
+		min-width: 0;
+		overflow-wrap: anywhere;
 	}
 
 	/* publications */
-	.pubs {
+	:global(.pub) {
 		display: grid;
+		grid-template-columns: auto 1fr;
 		gap: var(--space-6);
-		margin: 0;
-		padding: 0;
 	}
-	.authors {
-		color: var(--color-text-muted);
+	.pub-glyph {
+		color: var(--cat-research);
 	}
-	.authors strong {
+	.pub-title {
+		font-size: var(--step-1);
+		line-height: 1.35;
+	}
+	.pub-title a {
+		text-decoration: none;
+	}
+	.pub-title a:hover {
+		text-decoration: underline;
+	}
+	.me {
 		color: var(--color-text-strong);
-	}
-
-	/* profiles */
-	.profiles {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
-		gap: var(--space-6);
-		margin: 0;
-		padding: 0;
-	}
-	.profile-links li {
-		display: grid;
-		padding-block: var(--space-1);
-	}
-	.research-title {
-		line-height: 1.4;
-	}
-	.research-title a {
-		color: var(--color-text-strong);
-	}
-	.research-title a:hover {
-		color: var(--color-accent);
-	}
-
-	/* projects */
-	.grid {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: var(--space-6);
-		margin: 0;
-		padding: 0;
-	}
-	.more-row {
-		margin-top: var(--space-8);
-		text-align: center;
 	}
 
 	/* skills */
@@ -465,14 +479,20 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month:
 	}
 	.skill-row {
 		display: grid;
-		grid-template-columns: 12rem 1fr;
+		grid-template-columns: 13rem 1fr;
 		gap: var(--space-4);
-		padding-block: var(--space-4);
-		border-bottom: 1px dashed var(--color-border);
+		padding-block: var(--space-3);
+		border-bottom: var(--border);
+	}
+	.skill-row:first-child {
+		padding-top: 0;
+	}
+	.skill-row:last-child {
+		border-bottom: 0;
+		padding-bottom: 0;
 	}
 	.skill-row dt {
 		padding-top: 0.35em;
-		color: var(--color-text-muted);
 	}
 	.skill-row dd {
 		margin: 0;
@@ -485,59 +505,42 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month:
 	}
 	.posts li {
 		display: grid;
-		grid-template-columns: 8rem 1fr;
-		gap: var(--space-6);
-		padding-block: var(--space-4);
-		border-bottom: 1px dashed var(--color-border);
-	}
-	.posts a {
-		color: var(--color-text-strong);
-	}
-	.posts a:hover {
-		color: var(--color-accent);
-	}
-
-	/* contact */
-	.contact {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: var(--space-12);
-	}
-	.contact-lead {
-		font-family: var(--font-pixel);
-		font-size: var(--step-2);
-		color: var(--color-accent);
-		text-transform: uppercase;
-	}
-	.contact-links {
-		margin: 0;
-		padding: 0;
-	}
-	.contact-links li {
-		display: grid;
-		grid-template-columns: 6rem 1fr;
+		grid-template-columns: 7.5rem 1fr;
 		gap: var(--space-4);
-		align-items: baseline;
 		padding-block: var(--space-3);
-		border-bottom: 1px dashed var(--color-border);
-		font-family: var(--font-mono);
-		font-size: var(--step--1);
+		border-bottom: var(--border);
+	}
+	.posts li:first-child {
+		padding-top: 0;
+	}
+	.posts li:last-child {
+		border-bottom: 0;
+		padding-bottom: 0;
 	}
 
-	@media (max-width: 52rem) {
-		.about,
-		.focus,
-		.grid,
-		.contact {
-			grid-template-columns: 1fr;
+	@media (max-width: 56rem) {
+		.bento > :global(.span-4),
+		.bento > :global(.span-5),
+		.bento > :global(.span-7),
+		.bento > :global(.span-8),
+		.work > :global(li) {
+			grid-column: span 12;
+		}
+		.log-head {
+			grid-template-columns: auto 1fr;
+		}
+		.when {
+			grid-column: 2;
 		}
 		.skill-row,
 		.posts li {
 			grid-template-columns: 1fr;
 			gap: var(--space-2);
 		}
-		.edu-meta {
-			text-align: left;
+	}
+	@media (max-width: 30rem) {
+		:global(.pub) {
+			grid-template-columns: 1fr;
 		}
 	}
 </style>

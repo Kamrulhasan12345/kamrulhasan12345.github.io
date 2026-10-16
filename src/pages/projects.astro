@@ -1,5 +1,8 @@
 ---
+import PixelIcon from "@/components/PixelIcon.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
+import SectionHead from "@/components/SectionHead.astro";
+import { categoryStyle } from "@/data/categories";
 import { categories, projects } from "@/data/resume";
 import Base from "@/layouts/Base.astro";
 
@@ -12,32 +15,35 @@ const counts = Object.fromEntries(categories.map((c) => [c, projects.filter((p) 
 
 <Base title="Projects" description={`All ${projects.length} projects: AI/ML, embedded systems, backends and apps.`}>
 	<div class="container">
-		<header class="page-head stack">
-			<p class="label">/projects</p>
+		<header class="page-head">
 			<h1>Projects</h1>
 			<p class="muted lead">
-				Everything I've built, from on-device AI and embedded experiments to backends and apps. Search by name or
+				Everything I've built, from on-device AI and embedded work to backends and apps. Search by name or
 				technology, or filter by area.
 			</p>
 		</header>
 
+		<SectionHead n={1} title={`Index · ${projects.length} entries`} />
 		<div class="controls">
 			<label class="search">
 				<span class="sr-only">Search projects</span>
-				<span class="prompt mono" aria-hidden="true">&gt;</span>
-				<input id="q" type="search" placeholder="search: llama.cpp, ESP32, PostgreSQL…" autocomplete="off" />
+				<span class="mono muted" aria-hidden="true">search</span>
+				<input id="q" type="search" placeholder="llama.cpp, ESP32, PostgreSQL…" autocomplete="off" />
 			</label>
 			<div class="filters" role="group" aria-label="Filter by area">
-				<button type="button" class="chip" data-cat="" aria-pressed="true">All <span>{projects.length}</span></button>
+				<button type="button" class="chip" data-cat="" aria-pressed="true">All <span class="num">{projects.length}</span></button>
 				{
 					categories.map((c) => (
-						<button type="button" class="chip" data-cat={c} aria-pressed="false">
-							{c} <span>{counts[c]}</span>
+						<button type="button" class="chip" data-cat={c} aria-pressed="false" style={`--c: ${categoryStyle[c].color}`}>
+							<span class="glyph">
+								<PixelIcon glyph={categoryStyle[c].glyph} size={12} />
+							</span>
+							{c} <span class="num">{counts[c]}</span>
 						</button>
 					))
 				}
 			</div>
-			<p class="count mono muted" id="count" aria-live="polite">Showing {projects.length} projects</p>
+			<p class="count mono muted num" id="count" aria-live="polite">Showing {projects.length} projects</p>
 		</div>
 
 		<ul class="grid" role="list" id="grid">
@@ -91,32 +97,28 @@ const counts = Object.fromEntries(categories.map((c) => [c, projects.filter((p) 
 
 <style>
 	.page-head {
-		padding-block: var(--space-12) var(--space-8);
+		display: grid;
+		gap: var(--space-4);
+		padding-block: var(--space-8) var(--space-12);
 	}
 	.lead {
-		max-width: 44rem;
+		max-width: 56ch;
 	}
 	.controls {
 		display: grid;
-		gap: var(--space-4);
-		margin-bottom: var(--space-8);
-		padding-bottom: var(--space-6);
-		border-bottom: var(--border);
+		gap: var(--space-3);
+		margin-bottom: var(--space-6);
 	}
 	.search {
 		display: flex;
 		align-items: center;
 		gap: var(--space-3);
-		padding: var(--space-3) var(--space-4);
+		padding: var(--space-2) var(--space-3);
 		background: var(--color-bg-sunken);
 		border: var(--border-strong);
 	}
 	.search:focus-within {
-		border-color: var(--color-accent-dim);
-		box-shadow: var(--shadow-px-1);
-	}
-	.prompt {
-		color: var(--color-accent);
+		border-color: var(--color-text-strong);
 	}
 	input {
 		flex: 1;
@@ -133,41 +135,46 @@ const counts = Object.fromEntries(categories.map((c) => [c, projects.filter((p) 
 	.filters {
 		display: flex;
 		flex-wrap: wrap;
-		gap: var(--space-2);
+		gap: var(--space-1);
 	}
 	.chip {
-		padding: var(--space-2) var(--space-4);
-		font-family: var(--font-mono);
-		font-size: var(--step--1);
+		--c: var(--color-text-strong);
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-2);
+		padding: var(--space-1) var(--space-3);
+		font: var(--step--1) var(--font-mono);
 		color: var(--color-text-muted);
 		background: none;
 		border: var(--border-strong);
 		cursor: pointer;
 		transition:
-			transform var(--dur-fast) var(--ease-step),
-			box-shadow var(--dur-fast) var(--ease-step);
+			color var(--dur-fast),
+			border-color var(--dur-fast);
 	}
-	.chip span {
-		margin-left: var(--space-1);
+	.chip .glyph {
+		color: var(--c);
+	}
+	.chip span.num {
 		color: var(--color-text-faint);
 	}
 	.chip:hover {
-		color: var(--color-accent);
-		border-color: var(--color-accent-dim);
+		color: var(--color-text-strong);
+		border-color: var(--c);
 	}
 	.chip[aria-pressed="true"] {
-		background: var(--color-accent);
-		border-color: var(--color-accent);
-		color: var(--color-on-accent);
-		box-shadow: var(--shadow-px-1);
+		color: var(--color-bg);
+		background: var(--c);
+		border-color: var(--c);
 	}
-	.chip[aria-pressed="true"] span {
-		color: var(--color-accent-shadow);
+	.chip[aria-pressed="true"] .glyph,
+	.chip[aria-pressed="true"] span.num {
+		color: var(--color-bg);
 	}
 	.grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
-		gap: var(--space-6);
+		grid-template-columns: repeat(auto-fill, minmax(min(100%, 21rem), 1fr));
+		gap: var(--space-3);
 		margin: 0;
 		padding: 0;
 	}

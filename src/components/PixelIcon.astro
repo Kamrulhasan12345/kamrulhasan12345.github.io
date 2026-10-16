@@ -1,0 +1,114 @@
+---
+// 1-bit 12×12 glyphs, one per kind of work. Drawn from the bitmaps below, so they stay
+// crisp at any integer scale and take the category color through currentColor.
+export type Glyph = "ml" | "embedded" | "backend" | "apps" | "research";
+
+interface Props {
+	glyph: Glyph;
+	size?: number; // rendered px; keep a multiple of 12
+	label?: string;
+}
+const { glyph, size = 24, label } = Astro.props;
+
+// prettier-ignore
+const BITMAPS: Record<Glyph, string[]> = {
+	// a weight matrix in brackets
+	ml: [
+		"##........##",
+		"#..........#",
+		"#.##.##.##.#",
+		"#.##.##.##.#",
+		"#..........#",
+		"#.##.##.##.#",
+		"#.##.##.##.#",
+		"#..........#",
+		"#.##.##.##.#",
+		"#.##.##.##.#",
+		"#..........#",
+		"##........##",
+	],
+	// chip with pins
+	embedded: [
+		"..#.#..#.#..",
+		"............",
+		"#.########.#",
+		"..#......#..",
+		"#.#.####.#.#",
+		"..#.#..#.#..",
+		"#.#.#..#.#.#",
+		"..#.####.#..",
+		"#.#......#.#",
+		"..########..",
+		"............",
+		"..#.#..#.#..",
+	],
+	// rack of servers
+	backend: [
+		"############",
+		"#..........#",
+		"#.##....#..#",
+		"############",
+		"#..........#",
+		"#.##....#..#",
+		"############",
+		"#..........#",
+		"#.##....#..#",
+		"############",
+		"............",
+		"....####....",
+	],
+	// phone
+	apps: [
+		"...######...",
+		"..#......#..",
+		"..#.####.#..",
+		"..#.#..#.#..",
+		"..#.#..#.#..",
+		"..#.#..#.#..",
+		"..#.#..#.#..",
+		"..#.####.#..",
+		"..#......#..",
+		"..#..##..#..",
+		"..#......#..",
+		"...######...",
+	],
+	// paper with a figure
+	research: [
+		"..#######...",
+		"..#.....##..",
+		"..#.....###.",
+		"..#.###...#.",
+		"..#.......#.",
+		"..#.#####.#.",
+		"..#.#...#.#.",
+		"..#.#.#.#.#.",
+		"..#.#####.#.",
+		"..#.......#.",
+		"..#.####..#.",
+		"..#########.",
+	],
+};
+const cells = BITMAPS[glyph].flatMap((row, y) => [...row].map((c, x) => (c === "#" ? { x, y } : null))).filter(Boolean) as {
+	x: number;
+	y: number;
+}[];
+---
+
+<svg
+	class="pixel-icon"
+	width={size}
+	height={size}
+	viewBox="0 0 12 12"
+	shape-rendering="crispEdges"
+	role={label ? "img" : undefined}
+	aria-label={label}
+	aria-hidden={label ? undefined : "true"}
+>
+	{cells.map((c) => <rect x={c.x} y={c.y} width="1" height="1" fill="currentColor" />)}
+</svg>
+
+<style>
+	.pixel-icon {
+		flex: 0 0 auto;
+	}
+</style>

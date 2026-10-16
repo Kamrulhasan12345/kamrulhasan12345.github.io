@@ -9,6 +9,7 @@ const year = new Date().getFullYear();
 		<span class="cluster mono">
 			<a href={profile.github}>GitHub</a>
 			<a href={profile.linkedin}>LinkedIn</a>
+			<a href={profile.orcid}>ORCID</a>
 			<a href="/rss.xml">RSS</a>
 			<a href="/design/">Design system</a>
 		</span>
@@ -18,9 +19,8 @@ const year = new Date().getFullYear();
 <style>
 	footer {
 		margin-top: auto;
-		padding-block: var(--space-8);
+		padding-block: var(--space-6);
 		border-top: var(--border);
-		background: var(--color-bg-sunken);
 	}
 	.row {
 		display: flex;
@@ -29,6 +29,9 @@ const year = new Date().getFullYear();
 		gap: var(--space-4);
 	}
 	.cluster {
-		--cluster-gap: var(--space-6);
+		--cluster-gap: var(--space-4);
+	}
+	a {
+		color: var(--color-text-muted);
 	}
 </style>

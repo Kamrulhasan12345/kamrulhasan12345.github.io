@@ -1,58 +1,62 @@
 ---
 // Living style guide: renders the real tokens and components, so it can't drift from the site.
 import Button from "@/components/Button.astro";
-import PixelCard from "@/components/PixelCard.astro";
+import Card from "@/components/Card.astro";
+import PixelIcon from "@/components/PixelIcon.astro";
+import type { Glyph } from "@/components/PixelIcon.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
-import { projects } from "@/data/resume";
 import SectionHead from "@/components/SectionHead.astro";
 import Tag from "@/components/Tag.astro";
+import { projects } from "@/data/resume";
 import Base from "@/layouts/Base.astro";
 
-const colors = [
+const neutrals = [
 	["--color-bg", "page background"],
-	["--color-bg-sunken", "ticker, footer, code"],
+	["--color-bg-sunken", "inputs, code, the OLED bezel"],
 	["--color-surface", "cards"],
 	["--color-surface-raised", "card hover"],
 	["--color-border", "hairlines"],
+	["--color-border-strong", "tabs, buttons"],
+	["--color-text-strong", "headings, rules, active tab"],
 	["--color-text", "body text"],
 	["--color-text-muted", "secondary text"],
 	["--color-text-faint", "labels only"],
-	["--color-accent", "phosphor: links, primary"],
-	["--color-accent-dim", "accent borders"],
-	["--color-accent-shadow", "pixel shadows"],
-	["--color-highlight", "amber: scores, venues"],
 ];
-
+const cats: [string, Glyph, string][] = [
+	["--cat-ml", "ml", "AI / ML · also the page accent"],
+	["--cat-embedded", "embedded", "Embedded & systems · the OLED"],
+	["--cat-backend", "backend", "Backend"],
+	["--cat-apps", "apps", "Apps"],
+	["--cat-research", "research", "Publications"],
+];
 const type = [
-	["--step-4", "font-pixel", "Display"],
-	["--step-3", "font-pixel", "Heading 1"],
-	["--step-2", "font-pixel", "Heading 2"],
-	["--step-1", "font-sans", "Heading 3 / lead"],
-	["--step-0", "font-sans", "Body text that people actually read."],
-	["--step--1", "font-mono", "meta · dates · nav"],
-	["--step--2", "font-pixel", "LABEL"],
+	["--step-3", "font-pixel", "Name / page title", "uppercase"],
+	["--step-2", "font-mono", "Post title", "none"],
+	["--step-1", "font-mono", "Card title and lead", "none"],
+	["--step-0", "font-mono", "Body text that people actually read.", "none"],
+	["--step--1", "font-mono", "meta · dates · spec tables", "none"],
+	["--step--2", "font-mono", "Micro-caps label", "uppercase"],
 ];
-
 const space = ["--space-1", "--space-2", "--space-3", "--space-4", "--space-6", "--space-8", "--space-12", "--space-16", "--space-24"];
 ---
 
 <Base title="Design system" description="Tokens and components behind this site.">
 	<div class="container">
-		<header class="page-head stack">
-			<p class="label">/design</p>
+		<header class="page-head">
 			<h1>Design system</h1>
 			<p class="muted lead">
-				"Phosphor terminal": a CRT-green accent, amber for scores, pixel type for headings and readable sans for
-				prose. Everything snaps to a 4px pixel. Tokens live in <code>src/styles/tokens.css</code>; components
-				read semantic tokens only.
+				"Datasheet": the site reads like a component datasheet for a person. Ink-dark surface, flat hairline
+				cards on a 12-column grid, Silkscreen for the name and titles, Geist Mono for everything else, and one
+				pastel per kind of work. Tokens live in <code>src/styles/tokens.css</code>; components read semantic
+				tokens only. Chosen in the Identity Picker (see <code>docs/design-research</code>).
 			</p>
 		</header>
 
 		<section class="block">
-			<SectionHead index={1} title="Color" />
+			<SectionHead n={1} title="Neutrals" />
 			<ul class="swatches" role="list">
 				{
-					colors.map(([token, use]) => (
+					neutrals.map(([token, use]) => (
 						<li>
 							<span class="chip" style={`background: var(${token})`} />
 							<code>{token}</code>
@@ -64,15 +68,16 @@ const space = ["--space-1", "--space-2", "--space-3", "--space-4", "--space-6", 
 		</section>
 
 		<section class="block">
-			<SectionHead index={2} title="Type" />
-			<ul class="types" role="list">
+			<SectionHead n={2} title="Category colors + glyphs" />
+			<ul class="swatches" role="list">
 				{
-					type.map(([step, font, sample]) => (
-						<li>
-							<code class="small muted">
-								{step} / {font}
-							</code>
-							<span style={`font-size: var(${step}); font-family: var(--${font}); line-height: 1.2`}>{sample}</span>
+					cats.map(([token, glyph, use]) => (
+						<li style={`--c: var(${token})`}>
+							<span class="chip cat">
+								<PixelIcon glyph={glyph} size={36} />
+							</span>
+							<code>{token}</code>
+							<span class="muted small">{use}</span>
 						</li>
 					))
 				}
@@ -80,7 +85,25 @@ const space = ["--space-1", "--space-2", "--space-3", "--space-4", "--space-6", 
 		</section>
 
 		<section class="block">
-			<SectionHead index={3} title="Space" />
+			<SectionHead n={3} title="Type" />
+			<ul class="types" role="list">
+				{
+					type.map(([step, font, sample, tt]) => (
+						<li>
+							<code class="small muted">
+								{step} / {font}
+							</code>
+							<span style={`font-size: var(${step}); font-family: var(--${font}); line-height: 1.2; text-transform: ${tt}`}>
+								{sample}
+							</span>
+						</li>
+					))
+				}
+			</ul>
+		</section>
+
+		<section class="block">
+			<SectionHead n={4} title="Space · 4px grid" />
 			<ul class="spaces" role="list">
 				{
 					space.map((s) => (
@@ -94,48 +117,49 @@ const space = ["--space-1", "--space-2", "--space-3", "--space-4", "--space-6", 
 		</section>
 
 		<section class="block">
-			<SectionHead index={4} title="Components" more={{ href: "#", label: "src/components" }} />
+			<SectionHead n={5} title="Components" more={{ href: "#", label: "src/components" }} />
 			<div class="demo-grid">
-				<PixelCard>
-					<div class="stack">
-						<p class="label">Button</p>
-						<div class="cluster" style="--cluster-gap: var(--space-4)">
-							<Button href="#">Primary</Button>
-							<Button href="#" variant="ghost">Ghost</Button>
-						</div>
+				<Card>
+					<p class="label demo-title">Button</p>
+					<div class="cluster">
+						<Button href="#">Primary</Button>
+						<Button href="#" variant="ghost">Ghost</Button>
 					</div>
-				</PixelCard>
-				<PixelCard>
-					<div class="stack">
-						<p class="label">Tag</p>
-						<div class="cluster">
-							<Tag>llama.cpp</Tag>
-							<Tag>ESP32-S3</Tag>
-							<Tag tone="highlight">UbiComp 2026</Tag>
-						</div>
+				</Card>
+				<Card>
+					<p class="label demo-title">Tag</p>
+					<div class="cluster">
+						<Tag>llama.cpp</Tag>
+						<Tag>ESP32-S3</Tag>
+						<Tag color="var(--cat-ml)">ML</Tag>
+						<Tag color="var(--cat-embedded)">Embedded</Tag>
 					</div>
-				</PixelCard>
-				<PixelCard interactive>
-					<div class="stack">
-						<p class="label">PixelCard (interactive)</p>
-						<p class="muted">Notched 1px corners via clip-path. Hover to see the accent ring.</p>
-					</div>
-				</PixelCard>
+				</Card>
+				<Card interactive>
+					<p class="label demo-title">Card (interactive)</p>
+					<p class="muted">Flat and square with a hairline border. Hover raises the surface one step.</p>
+				</Card>
+				<Card>
+					<p class="label demo-title">Section head</p>
+					<SectionHead n={7} title="Example section" more={{ href: "#", label: "more" }} />
+				</Card>
 			</div>
-			<p class="label demo-label">ProjectCard (built on PixelCard + Tag)</p>
-			<ul class="demo-grid">
+			<p class="label demo-label">ProjectCard (Card + PixelIcon + Tag + spec table)</p>
+			<ul class="demo-grid" role="list">
 				<ProjectCard project={projects[0]} />
 			</ul>
 		</section>
 
 		<section class="block">
-			<SectionHead index={5} title="Rules" />
+			<SectionHead n={6} title="Rules" />
 			<ol class="rules">
-				<li>Pixel font for headings and labels only. Never for paragraphs.</li>
-				<li>One accent per element. Green means interactive; amber means a number or a venue.</li>
-				<li>Shadows are hard and offset by whole pixels. No blur, except the accent glow on the name.</li>
-				<li>Motion uses <code>steps()</code>, and everything stops under <code>prefers-reduced-motion</code>.</li>
-				<li>Faint text is for labels; anything people must read uses muted or stronger (≥ 4.5:1).</li>
+				<li>Silkscreen for the name, page titles and project names only. Everything people read is Geist Mono.</li>
+				<li>Color means the kind of work. AI/ML violet, embedded green, backend amber, apps cyan, research coral. Nothing else is colored.</li>
+				<li>Flat: hairline borders, square corners, no shadows, glows or textures.</li>
+				<li>Sections are numbered by their real position, in micro caps on a heavy rule, like datasheet chapters.</li>
+				<li>Facts go in spec tables (key, value), taken from <code>src/data/resume.ts</code>. Never invent a number.</li>
+				<li>One live element per page: the OLED. It pauses off-screen and is a still frame under <code>prefers-reduced-motion</code>.</li>
+				<li>Faint text is for labels; anything people must read uses muted or stronger (≥ 4.5:1 on cards).</li>
 			</ol>
 		</section>
 	</div>
@@ -143,10 +167,12 @@ const space = ["--space-1", "--space-2", "--space-3", "--space-4", "--space-6", 
 
 <style>
 	.page-head {
-		padding-block: var(--space-12);
+		display: grid;
+		gap: var(--space-4);
+		padding-block: var(--space-8) var(--space-12);
 	}
 	.lead {
-		max-width: 44rem;
+		max-width: 60ch;
 	}
 	.block {
 		margin-top: var(--space-16);
@@ -161,8 +187,8 @@ const space = ["--space-1", "--space-2", "--space-3", "--space-4", "--space-6", 
 	}
 	.swatches {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
-		gap: var(--space-6);
+		grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+		gap: var(--space-6) var(--space-4);
 	}
 	.swatches li {
 		display: grid;
@@ -171,8 +197,14 @@ const space = ["--space-1", "--space-2", "--space-3", "--space-4", "--space-6", 
 	.chip {
 		height: var(--space-16);
 		border: var(--border);
-		box-shadow: var(--shadow-px-1);
 		margin-bottom: var(--space-2);
+	}
+	.chip.cat {
+		display: grid;
+		place-items: center;
+		color: var(--c);
+		background: var(--color-surface);
+		border-color: color-mix(in oklab, var(--c) 45%, transparent);
 	}
 	.types li,
 	.spaces li {
@@ -181,16 +213,19 @@ const space = ["--space-1", "--space-2", "--space-3", "--space-4", "--space-6", 
 		align-items: center;
 		gap: var(--space-6);
 		padding-block: var(--space-3);
-		border-bottom: 1px dashed var(--color-border);
+		border-bottom: var(--border);
 	}
 	.bar {
 		height: var(--space-3);
-		background: var(--color-accent);
+		background: var(--color-text-strong);
 	}
 	.demo-grid {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: var(--space-6);
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: var(--space-3);
+	}
+	.demo-title {
+		margin-bottom: var(--space-4);
 	}
 	.demo-label {
 		margin: var(--space-8) 0 var(--space-4);
@@ -203,8 +238,7 @@ const space = ["--space-1", "--space-2", "--space-3", "--space-4", "--space-6", 
 		margin-top: var(--space-2);
 	}
 	.rules li::marker {
-		font-family: var(--font-pixel);
-		color: var(--color-accent);
+		color: var(--color-text-faint);
 	}
 	@media (max-width: 52rem) {
 		.demo-grid {

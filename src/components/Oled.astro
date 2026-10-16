@@ -1,0 +1,152 @@
+---
+// FIG. 0 — a 128×64 1-bit canvas behaving like the SH1106 OLED I'm writing a driver for.
+// The page's one live element: it cycles three screens, pauses off-screen, and is a still
+// frame under prefers-reduced-motion.
+---
+
+<figure class="oled">
+	<div class="screen">
+		<canvas
+			width="128"
+			height="64"
+			role="img"
+			aria-label="Animated 128 by 64 pixel display cycling three screens: my name; llama.cpp decode 2.6 times faster on Android; SH1106 driver for ESP32-S3, in progress."
+		></canvas>
+	</div>
+	<figcaption class="label">
+		<span class="fig num">Fig. 0</span>SH1106 OLED · 128×64 · the display I'm writing a driver for
+	</figcaption>
+</figure>
+
+<script>
+	const W = 128;
+	const H = 64;
+
+	for (const canvas of document.querySelectorAll<HTMLCanvasElement>(".oled canvas")) {
+		const ctx = canvas.getContext("2d")!;
+		const lit = getComputedStyle(canvas).color;
+		const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+		// text → 1-bit: draw Silkscreen at its native 8px size, keep pixels above half coverage
+		const scratch = document.createElement("canvas");
+		scratch.width = W;
+		scratch.height = 10;
+		const sctx = scratch.getContext("2d", { willReadFrequently: true })!;
+		const text = (s: string, x: number, y: number) => {
+			sctx.clearRect(0, 0, W, 10);
+			sctx.font = "8px Silkscreen";
+			sctx.textBaseline = "top";
+			sctx.fillStyle = "#fff";
+			sctx.fillText(s, 0, 1);
+			const px = sctx.getImageData(0, 0, W, 10).data;
+			for (let i = 0; i < W * 10; i++) if (px[i * 4 + 3] > 128) ctx.fillRect(x + (i % W), y + Math.floor(i / W), 1, 1);
+		};
+
+		const screens: ((t: number) => void)[] = [
+			// 1: identity + a scope trace
+			(t) => {
+				text("KAMRUL HASAN", 2, 2);
+				text("AI / EMBEDDED", 2, 12);
+				for (let x = 0; x < W; x++) {
+					const y = Math.round(44 + Math.sin((x + t * 1.4) / 7) * 9 * Math.cos((x - t * 0.5) / 29));
+					ctx.fillRect(x, y, 1, 1);
+				}
+			},
+			// 2: the LITTLETai result, bars growing in
+			(t) => {
+				text("LLAMA.CPP / ANDROID", 2, 2);
+				text("DECODE TOK/S", 2, 12);
+				const grow = Math.min(1, t / 40);
+				ctx.fillRect(2, 30, Math.round(120 * grow), 7);
+				ctx.fillRect(2, 44, Math.round(46 * grow), 7);
+				text("2.6X", 98, 52);
+				text("1.0X", 52, 43);
+			},
+			// 3: the driver in progress, a scrolling pixel ticker
+			(t) => {
+				text("SH1106 DRIVER", 2, 2);
+				text("ESP32-S3 / WIP", 2, 12);
+				for (let x = 0; x < W; x += 4) {
+					const on = ((x + Math.floor(t)) >> 2) % 5 !== 0;
+					if (on) ctx.fillRect((x + Math.floor(t)) % W, 40, 3, 3);
+				}
+				ctx.fillRect(0, 56, W, 1);
+				for (let x = 0; x < W; x += 8) ctx.fillRect(x, 57, 1, 2);
+			},
+		];
+
+		let screen = 0;
+		let t = 0;
+		let running = false;
+		let raf = 0;
+		let last = 0;
+		const draw = () => {
+			ctx.fillStyle = "#020304";
+			ctx.fillRect(0, 0, W, H);
+			ctx.fillStyle = lit;
+			screens[screen](t);
+		};
+		const frame = (now: number) => {
+			if (!running) return;
+			if (now - last > 33) {
+				// ~30 fps is plenty for a 1-bit panel
+				last = now;
+				t += 1;
+				if (t > 110) {
+					t = 0;
+					screen = (screen + 1) % screens.length;
+				}
+				draw();
+			}
+			raf = requestAnimationFrame(frame);
+		};
+		const setRunning = (on: boolean) => {
+			if (still || on === running) return;
+			running = on;
+			if (on) raf = requestAnimationFrame(frame);
+			else cancelAnimationFrame(raf);
+		};
+
+		let inView = false;
+		document.fonts.load("8px Silkscreen").finally(() => {
+			draw();
+			new IntersectionObserver(([e]) => {
+				inView = e.isIntersecting;
+				setRunning(inView && !document.hidden);
+			}).observe(canvas);
+			document.addEventListener("visibilitychange", () => setRunning(inView && !document.hidden));
+		});
+	}
+</script>
+
+<style>
+	.oled {
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+	}
+	.screen {
+		padding: var(--space-3);
+		background: var(--color-bg-sunken);
+		border: var(--border);
+	}
+	canvas {
+		display: block;
+		width: 100%;
+		aspect-ratio: 2 / 1;
+		image-rendering: pixelated;
+		background: #020304;
+		color: var(--cat-embedded);
+	}
+	figcaption {
+		text-transform: none;
+		letter-spacing: 0.02em;
+	}
+	.fig {
+		margin-right: var(--space-3);
+		color: var(--color-text-strong);
+		text-transform: uppercase;
+		letter-spacing: var(--tracking-label);
+	}
+</style>
