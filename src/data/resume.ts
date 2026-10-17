@@ -14,13 +14,13 @@ export const profile = {
 	orcid: "https://orcid.org/0009-0005-3843-6832",
 	availability: "Open to internships and research roles",
 	timezone: "UTC+6",
-	intro: "I'm a backend developer intern at Version3.ai, where I build store integrations and benchmark image-search models. On my own I profile and speed up LLM inference on cheap Android phones.",
-	proof: "LITTLETai made llama.cpp decode 2.2–2.6× faster with 2.6–3.3× less energy per token on a mid-range phone, without root.",
+	intro: "I speed up language models on cheap phones, and I build backends as an intern at Version3.ai.",
+	proof: "My latest project, LITTLETai, makes llama.cpp generate text up to 2.6× faster on a budget Android phone, using up to 3.3× less energy.",
 };
 
 export const about = {
 	text: [
-		"I'm a Computer Science undergraduate at BUET and a backend developer intern at Version3.ai. At work I build backend services and store integrations, and I benchmark image-retrieval models for visual product search.",
+		"At Version3.ai I work on backend services and store integrations, and I've tested image models for visual product search.",
 		"On my own I like finding out where software wastes time. LITTLETai started when I counted the instructions llama.cpp burns while its threads wait on each other. I also enjoy database design and reading binaries. I've been programming since grade 5.",
 	],
 	focus: [
@@ -30,14 +30,14 @@ export const about = {
 		},
 		{
 			title: "ML systems",
-			text: "Retrieval benchmarks and vector-search quantization at Version3.ai; LLM inference performance on Arm phones in LITTLETai.",
+			text: "Image-search benchmarks at Version3.ai; LLM inference speed on Arm phones in LITTLETai.",
 		},
 		{
 			title: "Low-level",
 			text: "Reverse engineering (see the crackme write-ups) and CPU profiling with simpleperf and Perfetto. Learning embedded on the ESP32-S3.",
 		},
 	],
-	now: ["Writing an SH1106 OLED driver for the ESP32-S3", "Working toward my own small LLM inference engine"],
+	now: ["Building a small LLM inference engine of my own (early stage)", "Writing an OLED display driver for the ESP32-S3"],
 };
 
 export const experience = [
@@ -46,14 +46,13 @@ export const experience = [
 		org: "Version3.ai",
 		orgNote: "Conversational-commerce AI for online stores",
 		when: "Jun 2026 — Present",
+		// site version stays general; the detailed bullets go only in résumés sent directly
 		points: [
-			"Built the multi-tenant product database service in NestJS, MongoDB and RabbitMQ: schema design, tenant provisioning and strict per-store data isolation.",
-			"Designed the WooCommerce and Shopify store integrations: OAuth 2.0 PKCE, HMAC-signed requests, AES-256-GCM secret storage, a durable dispatch queue, and idempotent webhook handling.",
-			"Root-caused a production bug where the OAuth callback returned 201 instead of 200, which made WooCommerce permanently delete each store's newly issued API keys.",
-			"Benchmarked SigLIP2, Marqo and fashion-tuned CLIP models for visual product search on Products-10K (9,691 SKUs, 132K images) using Recall@k, MRR and nDCG@10 with bootstrap CIs; the chosen model reached Recall@1 0.672.",
-			"Showed Qdrant int8 and binary quantization cost a median 0.004 Recall@1, and that 4 single-thread workers give 2.2× the CPU throughput of one 4-thread worker, so search can be served on CPU-only machines.",
+			"Work on the backend services behind the store product catalogue.",
+			"Built the WooCommerce and Shopify store integrations.",
+			"Benchmarked image models and vector-search settings for visual product search.",
 		],
-		stack: ["NestJS", "MongoDB", "RabbitMQ", "Qdrant", "SigLIP2", "OAuth 2.0"],
+		stack: ["NestJS", "MongoDB", "RabbitMQ", "Qdrant", "OAuth 2.0"],
 	},
 	{
 		role: "Software Engineering Intern",
@@ -69,7 +68,6 @@ export const education = [
 		school: "Bangladesh University of Engineering and Technology (BUET)",
 		degree: "B.Sc. in Computer Science and Engineering",
 		when: "2025 — 2028 (expected)",
-		gradYear: 2028,
 		grade: "CGPA 3.77/4.00",
 		note: "Ranked 79th in the national BUET admission merit list",
 		location: "Dhaka, Bangladesh",
@@ -146,11 +144,11 @@ export const projects: Project[] = [
 	{
 		slug: "littletai",
 		name: "LITTLETai",
-		title: "Core-aware thread presets for llama.cpp on Android",
+		title: "Faster, lower-energy llama.cpp on Android phones",
 		year: "2026",
 		categories: ["AI / ML", "Embedded & Systems"],
 		context: "Submitted to the Arm Create: AI Optimization Challenge",
-		summary: "2.2–2.6× faster decode and 2.6–3.3× less energy per token than llama.cpp's defaults, on a Helio G81 phone running Qwen2 1B Q4_0.",
+		summary: "Picks CPU cores and thread counts so llama.cpp decodes 2.2–2.6× faster with 2.6–3.3× less energy per token than its defaults (Helio G81 phone, Qwen2 1B Q4_0).",
 		points: [
 			"Profiled decode with simpleperf: the default 8 threads retired up to 5× more instructions per token, spin-waiting at thread barriers.",
 			"Wrote a POSIX shell launcher that picks cores and thread counts from the CPU topology (2× Cortex-A75 + 6× Cortex-A55), no root needed.",
@@ -168,10 +166,10 @@ export const projects: Project[] = [
 		year: "2026",
 		categories: ["Backend"],
 		context: "Database course project, team of 2",
-		summary: "An ETL loaded 14,941 hadiths, 139,766 chain positions and 20,957 narrators, resolving 99.6% of narrators.",
+		summary: "Database and ETL for 14,941 hadiths and 20,957 narrators, with 99.6% of narrators matched.",
 		points: [
-			"Schema with an ISA user hierarchy, weak entities, triggers and an audit log.",
 			"Each hadith's chain strength is computed in SQL from the weakest link in its chain.",
+			"Schema with an ISA user hierarchy, weak entities, triggers and an audit log.",
 			"The reference corpus is locked with REVOKE after loading, so the application cannot modify it.",
 		],
 		stack: ["PostgreSQL", "PL/pgSQL", "Node.js", "Express", "TypeScript"],

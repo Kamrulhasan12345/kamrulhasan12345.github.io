@@ -29,7 +29,7 @@ const person = {
 	<script is:inline type="application/ld+json" set:html={JSON.stringify(person)} />
 	<div class="container">
 		<section class="hero" aria-label="Introduction">
-			<p class="role">{profile.role} · class of {school.gradYear} · {school.grade}</p>
+			<p class="role">{profile.role}</p>
 			<p>{profile.intro} {profile.proof}</p>
 			<p class="muted">{profile.availability} · {profile.location} ({profile.timezone})</p>
 			<p class="links">
@@ -37,6 +37,11 @@ const person = {
 				<a href={profile.linkedin}>LinkedIn</a> · <a href="/resume.pdf">Résumé (PDF)</a>
 			</p>
 		</section>
+
+		<h2>Now</h2>
+		<ul>
+			{about.now.map((n) => <li>{n}</li>)}
+		</ul>
 
 		<h2>Experience</h2>
 		<ul class="entries">
@@ -91,10 +96,6 @@ const person = {
 			)
 		}
 
-		<h2>Now</h2>
-		<ul>
-			{about.now.map((n) => <li>{n}</li>)}
-		</ul>
 	</div>
 </Base>
 
