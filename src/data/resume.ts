@@ -33,7 +33,7 @@ export const about = {
 		},
 		{
 			title: "Low-level",
-			text: "Reverse engineering (see the crackme write-ups) and CPU profiling with simpleperf and Perfetto. Embedded work on ESP32 and STM32, including running AI models on them.",
+			text: "Reverse engineering (see the crackme write-ups) and CPU profiling with simpleperf and Perfetto. Embedded work on the ESP32, including running AI models on it.",
 		},
 	],
 	now: ["Building a small LLM inference engine of my own (early stage)", "Working on an AI inference engine for the ESP32"],
@@ -291,6 +291,6 @@ export const skills = [
 	{ group: "Languages", items: ["C", "C++", "Python", "TypeScript", "JavaScript", "Java", "SQL", "POSIX shell"] },
 	{ group: "ML & inference", items: ["llama.cpp", "PyTorch", "TensorFlow Lite", "Keras", "Hugging Face Transformers", "sentence-transformers", "FAISS", "Qdrant", "LightGBM", "Ultralytics YOLO", "OpenCV"] },
 	{ group: "Backend & data", items: ["NestJS", "FastAPI", "Spring Boot", "Express", "ElysiaJS", "WebSockets", "WebRTC", "OAuth 2.0", "PostgreSQL", "MongoDB", "RabbitMQ", "SQLite", "Supabase"] },
-	{ group: "Embedded", items: ["ESP32", "STM32"] },
+	{ group: "Embedded", items: ["ESP32"] },
 	{ group: "Tools", items: ["Linux", "Git", "GitHub Actions", "simpleperf", "Perfetto", "adb", "IDA", "Ghidra"] },
 ];
