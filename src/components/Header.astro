@@ -2,13 +2,13 @@
 import { getPosts } from "@/content.config";
 import { profile } from "@/data/resume";
 
-// the name links home; Writing appears once there is something to read
+// the name links home; Blog appears once there is something to read
 const hasPosts = (await getPosts()).length > 0;
 const links = [
 	{ href: "/about/", label: "About" },
 	{ href: "/projects/", label: "Projects" },
-	...(hasPosts ? [{ href: "/blog/", label: "Writing" }] : []),
-	{ href: "/resume.pdf", label: "Resume (PDF)" },
+	...(hasPosts ? [{ href: "/blog/", label: "Blog" }] : []),
+	{ href: "/resume.pdf", label: "Resume" },
 ];
 const path = Astro.url.pathname;
 const Name = path === "/" ? "h1" : "p";
