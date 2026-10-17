@@ -14,7 +14,7 @@ export const profile = {
 	orcid: "https://orcid.org/0009-0005-3843-6832",
 	availability: "Open to internships and research roles",
 	timezone: "UTC+6",
-	intro: "I speed up language models on cheap phones, and I build backends as an intern at Version3.ai.",
+	intro: "I speed up language models on edge devices, and I build backends as an intern at Version3.ai.",
 	proof: "My latest project, LITTLETai, makes llama.cpp generate text up to 2.6× faster on a budget Android phone, using up to 3.3× less energy.",
 };
 
@@ -58,7 +58,7 @@ export const experience = [
 		role: "Software Engineering Intern",
 		org: "Edulytics",
 		when: "Dec 2025 — Mar 2026",
-		points: ["Built core user flows for an education MVP in React Native and TypeScript with a remote team, shipping on sprint deadlines."],
+		points: ["Built the mobile app MVP in React Native, and worked on their web app."],
 		stack: ["React Native", "TypeScript"],
 	},
 ];
