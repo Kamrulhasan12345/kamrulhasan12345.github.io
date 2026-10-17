@@ -7,8 +7,8 @@ out=$(cd "$(dirname "$0")/.." && pwd)/public
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
 
-# drop "+880 … \sep" from the contact line
-sed 's/+880[0-9 ]* \\sep//' "$src" >"$tmp/resume.tex"
+# drop "+880 … \sep"; delete the whole line when that's all it holds, since a blank line is a paragraph break
+sed -e '/^[[:space:]]*+880[0-9 ]* \\sep[[:space:]]*$/d' -e 's/+880[0-9 ]* \\sep//' "$src" >"$tmp/resume.tex"
 grep -q '+880' "$tmp/resume.tex" && { echo "phone number still present" >&2; exit 1; }
 "${TECTONIC:-tectonic}" -o "$tmp" "$tmp/resume.tex"
 
