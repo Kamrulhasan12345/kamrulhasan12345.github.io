@@ -60,8 +60,11 @@ const Name = path === "/" ? "h1" : "p";
 		flex-wrap: wrap;
 	}
 	nav a {
-		padding: 0.2rem 0.75rem;
+		/* line-height 1 keeps the dotted separator to text height */
+		margin-block: 0.45rem;
+		padding: 0 0.75rem;
 		font-size: 0.85rem;
+		line-height: 1;
 		color: var(--accent);
 		text-decoration: none;
 		border-left: 1px dotted var(--text-muted);
