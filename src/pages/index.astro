@@ -1,4 +1,5 @@
 ---
+import Icon from "@/components/Icon.astro";
 import { getPosts } from "@/content.config";
 import { about, education, experience, profile, profiles, projects } from "@/data/resume";
 import Base from "@/layouts/Base.astro";
@@ -33,8 +34,11 @@ const person = {
 			<p>{profile.intro} {profile.proof}</p>
 			<p class="muted">{profile.availability} · {profile.location} ({profile.timezone})</p>
 			<p class="links">
-				<a href={`mailto:${profile.email}`}>{profile.email}</a> · <a href={profile.github}>GitHub</a> ·
-				<a href={profile.linkedin}>LinkedIn</a> · <a href="/resume.pdf">Résumé (PDF)</a>
+				Find me on <a href={profile.github} aria-label="GitHub" title="GitHub"><Icon name="github" /></a>,
+				<a href={profile.linkedin} aria-label="LinkedIn" title="LinkedIn"><Icon name="linkedin" /></a>,
+				<a href={profile.orcid} aria-label="ORCID" title="ORCID"><Icon name="orcid" /></a> and
+				<a href={`mailto:${profile.email}`} aria-label={`Email ${profile.email}`} title={profile.email}><Icon name="mail" /></a>.
+				Or grab the <a href="/resume.pdf">résumé (PDF)</a>.
 			</p>
 		</section>
 
