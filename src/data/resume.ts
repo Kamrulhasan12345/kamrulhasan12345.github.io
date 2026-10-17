@@ -20,7 +20,6 @@ export const profile = {
 
 export const about = {
 	text: [
-		"At Version3.ai I work on backend services and store integrations, and I've tested image models for visual product search.",
 		"On my own I like finding out where software wastes time. LITTLETai started when I counted the instructions llama.cpp burns while its threads wait on each other. I also enjoy database design and reading binaries. I've been programming since grade 5.",
 	],
 	focus: [
@@ -48,8 +47,7 @@ export const experience = [
 		when: "Jun 2026 — Present",
 		// site version stays general; the detailed bullets go only in résumés sent directly
 		points: [
-			"Building backend services and store integrations for a conversational-commerce product.",
-			"Built the WooCommerce and Shopify store integrations.",
+			"Building backend services and the WooCommerce and Shopify store integrations.",
 			"Benchmarked image models and vector-search settings for visual product search.",
 		],
 		stack: ["NestJS", "MongoDB", "RabbitMQ", "Qdrant"],
@@ -114,10 +112,10 @@ export const profiles = [
 			{ name: "Kaggle", handle: "Kamrulhasan12345", url: "https://www.kaggle.com/Kamrulhasan12345" },
 		],
 	},
-	{
-		group: "Competitive programming",
-		links: [{ name: "Codeforces", handle: "Kamrulhasan12345", url: "https://codeforces.com/profile/Kamrulhasan12345" }],
-	},
+	// {
+	// 	group: "Competitive programming",
+	// 	links: [{ name: "Codeforces", handle: "Kamrulhasan12345", url: "https://codeforces.com/profile/Kamrulhasan12345" }],
+	// },
 ];
 
 export const categories = ["AI / ML", "Embedded & Systems", "Backend", "Apps"] as const;
@@ -148,7 +146,7 @@ export const projects: Project[] = [
 		year: "2026",
 		categories: ["AI / ML", "Embedded & Systems"],
 		context: "Submitted to the Arm Create: AI Optimization Challenge",
-		summary: "Picks CPU cores and thread counts so llama.cpp decodes 2.2–2.6× faster with 2.6–3.3× less energy per token than its defaults (Helio G81 phone, Qwen2 1B Q4_0).",
+		summary: "2.2–2.6× faster decode and 2.6–3.3× less energy per token than llama.cpp's defaults, on a budget phone (Helio G81, Qwen2 1B Q4_0).",
 		points: [
 			"Profiled decode with simpleperf: the default 8 threads retired up to 5× more instructions per token, spin-waiting at thread barriers.",
 			"Wrote a POSIX shell launcher that picks cores and thread counts from the CPU topology (2× Cortex-A75 + 6× Cortex-A55), no root needed.",
@@ -169,7 +167,7 @@ export const projects: Project[] = [
 		summary: "Database and ETL for 14,941 hadiths and 20,957 narrators, with 99.6% of narrators matched.",
 		points: [
 			"Each hadith's chain strength is computed in SQL from the weakest link in its chain.",
-			"Schema with an ISA user hierarchy, weak entities, triggers and an audit log.",
+			"Schema with user subtypes, triggers and an audit log.",
 			"The reference corpus is locked with REVOKE after loading, so the application cannot modify it.",
 		],
 		stack: ["PostgreSQL", "Node.js", "Express", "TypeScript"],
@@ -236,7 +234,7 @@ export const projects: Project[] = [
 		title: "Verse recommendation API",
 		year: "2026",
 		categories: ["AI / ML", "Backend"],
-		summary: "FAISS semantic search with re-ranking for relevance and variety; optional LLM reflections via Groq, falling back to the Hugging Face Inference API, with a 1-hour cache. Deployed on Hugging Face Spaces.",
+		summary: "FAISS semantic search with re-ranking for relevance and variety; optional LLM-written reflections. Deployed on Hugging Face Spaces.",
 		points: [],
 		stack: ["Python", "FastAPI", "sentence-transformers", "FAISS"],
 		link: gh("bayyinah-ai"),
@@ -295,5 +293,6 @@ export const skills = [
 	{ group: "Languages", items: ["C", "C++", "Python", "TypeScript", "JavaScript", "Java", "SQL", "POSIX shell"] },
 	{ group: "ML & inference", items: ["llama.cpp", "PyTorch", "TensorFlow Lite", "Keras", "Hugging Face Transformers", "sentence-transformers", "FAISS", "Qdrant", "LightGBM", "Ultralytics YOLO", "OpenCV"] },
 	{ group: "Backend & data", items: ["NestJS", "FastAPI", "Spring Boot", "Express", "ElysiaJS", "WebSockets", "WebRTC", "OAuth 2.0", "PostgreSQL", "MongoDB", "RabbitMQ", "SQLite", "Supabase"] },
-	{ group: "Tools", items: ["Linux", "Git", "GitHub Actions", "simpleperf", "Perfetto", "adb", "ESP32", "STM32", "IDA", "Ghidra"] },
+	{ group: "Embedded", items: ["ESP32", "STM32"] },
+	{ group: "Tools", items: ["Linux", "Git", "GitHub Actions", "simpleperf", "Perfetto", "adb", "IDA", "Ghidra"] },
 ];
