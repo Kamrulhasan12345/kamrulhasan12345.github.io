@@ -52,7 +52,7 @@ export const experience = [
 			"Built the WooCommerce and Shopify store integrations.",
 			"Benchmarked image models and vector-search settings for visual product search.",
 		],
-		stack: ["NestJS", "MongoDB", "RabbitMQ", "Qdrant", "OAuth 2.0"],
+		stack: ["NestJS", "MongoDB", "RabbitMQ", "Qdrant"],
 	},
 	{
 		role: "Software Engineering Intern",
@@ -172,7 +172,7 @@ export const projects: Project[] = [
 			"Schema with an ISA user hierarchy, weak entities, triggers and an audit log.",
 			"The reference corpus is locked with REVOKE after loading, so the application cannot modify it.",
 		],
-		stack: ["PostgreSQL", "PL/pgSQL", "Node.js", "Express", "TypeScript"],
+		stack: ["PostgreSQL", "Node.js", "Express", "TypeScript"],
 		link: gh("ilham"),
 		featured: true,
 	},
@@ -202,7 +202,7 @@ export const projects: Project[] = [
 		points: [
 			"Group sessions use WebRTC audio with STOMP signaling on a Spring Boot server; bookmarks sync when back online.",
 		],
-		stack: ["Java", "JavaFX", "Spring Boot", "WebRTC", "SQLite FTS5", "PostgreSQL"],
+		stack: ["Java", "JavaFX", "Spring Boot", "WebRTC", "SQLite", "PostgreSQL"],
 		link: gh("bayyinah"),
 		featured: true,
 	},
@@ -227,7 +227,7 @@ export const projects: Project[] = [
 		context: "Internship take-home task",
 		summary: "Fine-tuned YOLOv8n at 1280 px on VisDrone merged into two classes: 0.728 mAP@0.5 on validation. Added SAHI tiled inference and ByteTrack tracking.",
 		points: [],
-		stack: ["Python", "YOLO", "SAHI", "ByteTrack"],
+		stack: ["Python", "Ultralytics YOLOv8", "SAHI"],
 		link: gh("dronecam"),
 	},
 	{
@@ -274,7 +274,7 @@ export const projects: Project[] = [
 		status: "In progress",
 		summary: "Clients refresh their JWT over the open socket before a grace deadline, so live connections aren't dropped.",
 		points: [],
-		stack: ["Bun", "ElysiaJS", "PostgreSQL", "Drizzle", "WebSockets"],
+		stack: ["Bun", "ElysiaJS", "PostgreSQL", "Drizzle ORM"],
 		link: gh("bondhupath-backend"),
 	},
 	{
@@ -292,8 +292,8 @@ export const projects: Project[] = [
 
 // Only skills a project or job above actually uses.
 export const skills = [
-	{ group: "Languages", items: ["C", "C++", "Python", "TypeScript", "JavaScript", "Java", "SQL (PostgreSQL, PL/pgSQL)", "POSIX shell"] },
-	{ group: "ML & inference", items: ["llama.cpp", "GGUF quantization", "PyTorch", "TensorFlow Lite", "Hugging Face Transformers", "sentence-transformers", "SigLIP / CLIP", "FAISS", "Qdrant", "LightGBM", "YOLO"] },
-	{ group: "Backend & data", items: ["NestJS", "FastAPI", "Spring Boot", "Express", "REST", "WebSockets", "WebRTC", "OAuth 2.0", "JWT", "PostgreSQL", "MongoDB", "Redis", "RabbitMQ", "SQLite"] },
-	{ group: "Tools", items: ["Linux", "Docker", "Git", "GitHub Actions", "simpleperf", "Perfetto", "adb", "IDA", "Ghidra"] },
+	{ group: "Languages", items: ["C", "C++", "Python", "TypeScript", "JavaScript", "Java", "SQL", "POSIX shell"] },
+	{ group: "ML & inference", items: ["llama.cpp", "PyTorch", "TensorFlow Lite", "Keras", "Hugging Face Transformers", "sentence-transformers", "FAISS", "Qdrant", "LightGBM", "Ultralytics YOLO", "OpenCV"] },
+	{ group: "Backend & data", items: ["NestJS", "FastAPI", "Spring Boot", "Express", "ElysiaJS", "WebSockets", "WebRTC", "OAuth 2.0", "PostgreSQL", "MongoDB", "RabbitMQ", "SQLite", "Supabase"] },
+	{ group: "Tools", items: ["Linux", "Git", "GitHub Actions", "simpleperf", "Perfetto", "adb", "IDA", "Ghidra"] },
 ];
