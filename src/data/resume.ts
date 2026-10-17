@@ -14,7 +14,7 @@ export const profile = {
 	orcid: "https://orcid.org/0009-0005-3843-6832",
 	availability: "Open to internships and research roles",
 	timezone: "UTC+6",
-	intro: "I run AI models on small hardware, from ESP32 and STM32 microcontrollers to phones, and I build backends as an intern at Version3.ai.",
+	intro: "I run AI models on small hardware, from microcontrollers to phones, and I build backends as an intern at Version3.ai.",
 	proof: "My latest project, LITTLETai, makes llama.cpp generate text up to 2.6× faster on a budget Android phone, using up to 3.3× less energy.",
 };
 
@@ -37,7 +37,7 @@ export const about = {
 			text: "Reverse engineering (see the crackme write-ups) and CPU profiling with simpleperf and Perfetto. Embedded work on ESP32 and STM32, including running AI models on them.",
 		},
 	],
-	now: ["Building a small LLM inference engine of my own (early stage)", "Writing an OLED display driver for the ESP32-S3"],
+	now: ["Building a small LLM inference engine of my own (early stage)", "Working on an AI inference engine for the ESP32"],
 };
 
 export const experience = [
@@ -84,14 +84,14 @@ export const research = [
 		role: "Co-author",
 		link: "https://doi.org/10.1145/3830727.3834827",
 	},
-	{
+	/*{
 		title: "ML-guided search for magnetic-material compounds",
 		kind: "Ongoing research",
 		authors: [],
 		venue: "BUET Physics, supervised by Prof. A.K.M. Akther Hossain",
 		detail: "Early stage, started 2026.",
 		role: "Undergraduate researcher",
-	},
+	},*/
 ];
 
 // Only verified accounts (name matches on the profile). Add more as { name, handle, url }.
