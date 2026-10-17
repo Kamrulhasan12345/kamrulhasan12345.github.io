@@ -78,7 +78,7 @@ export const research = [
 		kind: "Conference paper",
 		authors: ["M. Rahaman", "S. S. Rahman", "M. S. M. Noor", "K. S. S. Siddiquee", "M. K. Hasan", "et al."],
 		venue: "UbiComp/ISWC 2026, ISWC Notes & Briefs · ACM",
-		detail: "Turned 3 years of wearable data from 100 rickshaw pullers into heat-risk visuals that low-literacy workers can read. BUET × UC San Diego. I'm 5th of 11 authors; I transcribed the interviews behind the qualitative analysis.",
+		detail: "Follow-up to a 3-year wearable study of 100 rickshaw pullers: turns its data into heat-risk visuals that low-literacy workers can read. BUET × UC San Diego. I transcribed the interviews behind the qualitative analysis.",
 		role: "Co-author",
 		link: "https://doi.org/10.1145/3830727.3834827",
 	},

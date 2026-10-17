@@ -5,9 +5,9 @@ import { profile } from "@/data/resume";
 // the name links home; Writing appears once there is something to read
 const hasPosts = (await getPosts()).length > 0;
 const links = [
+	{ href: "/about/", label: "About" },
 	{ href: "/projects/", label: "Projects" },
 	...(hasPosts ? [{ href: "/blog/", label: "Writing" }] : []),
-	{ href: "/about/", label: "About" },
 	{ href: "/resume.pdf", label: "Résumé (PDF)" },
 ];
 const path = Astro.url.pathname;
