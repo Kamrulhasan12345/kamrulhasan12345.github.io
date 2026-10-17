@@ -38,11 +38,6 @@ const person = {
 			</p>
 		</section>
 
-		<h2>Now</h2>
-		<ul>
-			{about.now.map((n) => <li>{n}</li>)}
-		</ul>
-
 		<h2>Experience</h2>
 		<ul class="entries">
 			{
@@ -63,17 +58,18 @@ const person = {
 				featured.map((p) => (
 					<li>
 						<strong>{p.link ? <a href={p.link}>{p.name}</a> : p.name}</strong>: {p.title}. <span class="muted">{p.year}.</span>
-						<ul>
-							<li>{p.summary}</li>
-							{p.points.slice(0, 1).map((pt) => (
-								<li>{pt}</li>
-							))}
-						</ul>
+						<br />
+						{p.summary}
 					</li>
 				))
 			}
 		</ul>
 		<p><a href="/projects/">All {projects.length} projects →</a></p>
+
+		<h2>Now</h2>
+		<ul>
+			{about.now.map((n) => <li>{n}</li>)}
+		</ul>
 
 		{
 			posts.length > 0 && (
@@ -113,9 +109,6 @@ const person = {
 	}
 	.projects > li + li {
 		margin-top: 1.2em;
-	}
-	.projects ul {
-		margin-top: 0.3em;
 	}
 	.post {
 		display: grid;
