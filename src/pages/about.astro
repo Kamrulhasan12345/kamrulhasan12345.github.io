@@ -1,340 +1,136 @@
 ---
+import { about, education, experience, profile, profiles, research, skills } from "@/data/resume";
 import Base from "@/layouts/Base.astro";
-import { siteConfig } from "@/site.config";
-
-const experience = [
-	{
-		role: "Backend Developer Intern",
-		org: "Version3.ai",
-		when: "2026 — Present",
-		desc: "Architecting and building a production WordPress/WooCommerce integration from the ground up — a durable dispatch queue that sidesteps WP-Cron's reliability limits, an OAuth 2.0 PKCE authentication flow, per-tenant HMAC-signed webhooks, and full architecture documentation with locked design decisions.",
-		stack: ["PHP", "WooCommerce", "OAuth PKCE", "MySQL"],
-	},
-	{
-		role: "Research Intern",
-		org: "Mahzabeen Lab, NSU",
-		when: "2026 — Present",
-		desc: "Contributing to a Bangla multimodal NLP dataset on meme-based misogyny detection — gap analysis across existing datasets, a literature review spanning ~40 papers, and design of the collection pipeline: deduplication, annotation schema, and chain-of-thought annotation strategy.",
-		stack: ["NLP", "Dataset design", "Annotation", "Lit review"],
-	},
-	{
-		role: "Mobile & Web Developer Intern",
-		org: "Edulytics",
-		when: "2025",
-		desc: "Built the majority of an IELTS preparation app MVP, shipping core user-facing features end to end across mobile and web.",
-		stack: ["React Native", "Next.js", "TypeScript"],
-	},
-];
-
-const research = [
-	{
-		venue: "UBICOMP/ISWC '26 · SUBMITTED",
-		title: "Qualitative study on rickshaw pullers",
-		desc: "Contributed field interviews and transcription to a qualitative research paper on the working lives of rickshaw pullers in Dhaka.",
-	},
-	{
-		venue: "EMNLP TRACK · IN PROGRESS",
-		title: "Bangla multimodal meme misogyny dataset",
-		desc: "At Mahzabeen Lab (NSU): gap analysis of existing Bangla datasets, a literature review spanning ~40 papers, and design of the collection architecture — dedup pipeline, annotation schema, and chain-of-thought annotation strategy.",
-	},
-	{
-		venue: "SELF-DIRECTED",
-		title: "Hardware security roadmap",
-		desc: "A long-arc program from nand2tetris CPU construction through binary exploitation, kernel internals, and hardware attack surfaces — culminating in fault-injection and power-analysis attacks against my own ESP32-S3 device.",
-	},
-];
-
-const skills = [
-	{
-		heading: "LOW-LEVEL",
-		items: [
-			"C / C++",
-			"x86-64 assembly",
-			"Rust",
-			"Binary exploitation",
-			"Reverse engineering",
-			"Embedded (ESP32, RPi)",
-		],
-	},
-	{
-		heading: "BACKEND & DATA",
-		items: [
-			"PostgreSQL / Oracle",
-			"TypeScript / Node.js",
-			"PHP / WordPress",
-			"gRPC & job queues",
-			"Spring Boot / JavaFX",
-			"OAuth 2.0 / PKCE",
-		],
-	},
-	{
-		heading: "ML & ENVIRONMENT",
-		items: [
-			"LightGBM / embeddings / FAISS",
-			"Neo4j / knowledge graphs",
-			"Arch Linux (daily driver)",
-			"Neovim / tmux / Podman",
-			"Unity3D & pixel art",
-			"CSES / CP · CTF pwn/RE",
-		],
-	},
-];
 ---
 
-<Base
-	title="About"
-	description="Mohammad Kamrul Hasan — CSE undergraduate at BUET, systems and hardware security."
->
+<Base title="About" description={`About ${profile.name}, ${profile.role}: experience, research, education, skills and contact.`}>
 	<div class="container">
-		<header class="page-head">
-			<h1>ABOUT</h1>
-			<p class="lead">
-				I'm Mohammad Kamrul Hasan — a CSE undergraduate at <strong>BUET</strong>,
-				writing code since grade 5. The interest arc has been steady: general
-				programming, then C, then assembly, and now the thing that pulls hardest —
-				<strong>hardware security and reverse engineering</strong>. I do pwn and RE
-				CTFs, and worked through CS:APP, Hacker's Delight, The Art of Exploitation,
-				and the Dragon Book on my own schedule. Arch Linux, Neovim, and a preference
-				for tools I can read top to bottom.
-			</p>
-		</header>
+		<h1>About</h1>
+		<p class="muted small jump">
+			<a href="#experience">Experience</a> · <a href="#research">Research</a> · <a href="#education">Education</a> ·
+			<a href="#skills">Skills</a> · <a href="#contact">Contact</a>
+		</p>
+		<p>{profile.intro}</p>
+		{about.text.map((t) => <p>{t}</p>)}
 
-		<section>
-			<div class="sec-head">
-				<span class="idx">01</span>
-				<h2>EXPERIENCE</h2>
-			</div>
-			<div class="xp-list">
-				{
-					experience.map((x) => (
-						<div class="xp">
-							<div class="xp-top">
-								<h3>
-									{x.role} · <span class="org">{x.org}</span>
-								</h3>
-								<span class="meta when">{x.when}</span>
-							</div>
-							<p>{x.desc}</p>
-							<div class="chips">
-								{x.stack.map((s) => (
-									<span class="tag">{s}</span>
-								))}
-							</div>
-						</div>
-					))
-				}
-			</div>
-		</section>
+		<h2 id="focus">Focus</h2>
+		<ul class="entries">
+			{
+				about.focus.map((f) => (
+					<li>
+						<strong>{f.title}:</strong> {f.text}
+					</li>
+				))
+			}
+		</ul>
 
-		<section>
-			<div class="sec-head">
-				<span class="idx">02</span>
-				<h2>RESEARCH</h2>
-			</div>
-			<div class="res-list">
-				{
-					research.map((r) => (
-						<div class="res pxbox">
-							<span class="venue">{r.venue}</span>
-							<h3>{r.title}</h3>
-							<p>{r.desc}</p>
-						</div>
-					))
-				}
-			</div>
-		</section>
+		<h2 id="experience">Experience</h2>
+		{
+			experience.map((e) => (
+				<>
+					<h3>
+						{e.role}, {e.org} <span class="muted when">· {e.when}</span>
+					</h3>
+					{e.orgNote && <p class="muted">{e.orgNote}</p>}
+					<ul class="points">
+						{e.points.map((pt) => (
+							<li>{pt}</li>
+						))}
+					</ul>
+					<p class="muted small">Stack: {e.stack.join(", ")}.</p>
+				</>
+			))
+		}
 
-		<section>
-			<div class="sec-head">
-				<span class="idx">03</span>
-				<h2>TOOLKIT</h2>
-			</div>
-			<div class="skills">
-				{
-					skills.map((col) => (
-						<div class="skill-col pxbox">
-							<h3>{col.heading}</h3>
-							<ul>
-								{col.items.map((i) => (
-									<li>{i}</li>
-								))}
-							</ul>
-						</div>
-					))
-				}
-			</div>
-		</section>
+		<h2 id="research">Research</h2>
+		{
+			research.map((r) => (
+				<>
+					<h3>{"link" in r && r.link ? <a href={r.link}>{r.title}</a> : r.title}</h3>
+					{r.authors.length > 0 && (
+						<p>
+							{r.authors.map((a, i) => (
+								<>
+									{a === "M. K. Hasan" ? <strong>{a}</strong> : a}
+									{i < r.authors.length - 1 && ", "}
+								</>
+							))}
+						</p>
+					)}
+					<p>
+						<em>{r.venue}</em>. {r.kind}. My role: {r.role.toLowerCase()}.
+					</p>
+					<p class="muted">{r.detail}</p>
+				</>
+			))
+		}
+		<p class="muted small">Also on <a href={profile.orcid}>ORCID</a>.</p>
 
-		<section>
-			<div class="sec-head">
-				<span class="idx">04</span>
-				<h2>CONTACT</h2>
-			</div>
-			<p class="contact">
-				Open to conversations about systems, security research, backend
-				engineering, or anything that involves taking things apart to see how they
-				work.
-			</p>
-			<div class="contact-links">
-				<a class="btn btn-primary" href={`mailto:${siteConfig.email}`}>EMAIL ME</a>
-				<a class="btn btn-ghost" href={siteConfig.social.github}>GITHUB</a>
-				<a class="btn btn-ghost" href={siteConfig.social.linkedin}>LINKEDIN</a>
-			</div>
-			<!-- TODO: verify email, GitHub, and LinkedIn URLs before publishing -->
-		</section>
+		<h2 id="education">Education</h2>
+		<ul class="entries">
+			{
+				education.map((ed) => (
+					<li>
+						<strong>{ed.degree}</strong>, {ed.school}. <span class="muted">{ed.location}, {ed.when}.</span>
+						<br />
+						{ed.grade}. {ed.note}.
+					</li>
+				))
+			}
+		</ul>
+
+		<h2 id="skills">Skills</h2>
+		<ul class="entries">
+			{
+				skills.map((s) => (
+					<li>
+						<strong>{s.group}:</strong> {s.items.join(", ")}.
+					</li>
+				))
+			}
+		</ul>
+
+		<h2 id="contact">Contact</h2>
+		<p>
+			{profile.availability}. Email is the fastest way to reach me:
+			<a href={`mailto:${profile.email}`}>{profile.email}</a>.
+		</p>
+		<p class="muted">{profile.location} ({profile.timezone}). Résumé: <a href="/resume.pdf">PDF</a>.</p>
+		<ul class="entries">
+			{
+				profiles.flatMap((g) =>
+					g.links.map((l) => (
+						<li>
+							<a href={l.url}>{l.name}</a>: <span class="muted">{l.handle}</span>
+						</li>
+					)),
+				)
+			}
+		</ul>
 	</div>
 </Base>
 
 <style>
-	.container {
-		padding-block: 3rem;
+	.jump {
+		margin-block: 0.3rem 1.5rem;
 	}
-	.page-head {
-		margin-bottom: 3rem;
+	h3 {
+		margin-top: 1.6rem;
+		margin-bottom: 0.4rem;
 	}
-	.lead {
-		font-size: var(--text-lg);
-		color: var(--text);
-		margin-top: 1.25rem;
-		max-width: 42rem;
+	h3 a {
+		color: inherit;
 	}
-	.lead strong {
-		color: var(--heading);
-		font-weight: 600;
-	}
-	section {
-		margin-top: 3.5rem;
-	}
-
-	/* experience — timeline with square node markers */
-	.xp-list {
-		border-left: 2px solid var(--line);
-	}
-	.xp {
-		position: relative;
-		padding: 0 0 1.9rem 1.6rem;
-	}
-	.xp:last-child {
-		padding-bottom: 0.25rem;
-	}
-	.xp::before {
-		content: "";
-		position: absolute;
-		left: -8px;
-		top: 0.3rem;
-		width: 12px;
-		height: 12px;
-		background: var(--bg);
-		border: 2px solid var(--accent-muted);
-		transition:
-			background 160ms ease,
-			border-color 160ms ease;
-	}
-	.xp:hover::before {
-		background: var(--accent);
-		border-color: var(--accent);
-	}
-	.xp-top {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		align-items: baseline;
-		gap: 0.5rem;
-	}
-	.xp h3 {
-		margin: 0;
-		font-size: var(--text-base);
-		font-weight: 600;
-	}
-	.org {
-		color: var(--accent-strong);
-	}
-	.xp p {
-		color: var(--text-dim);
-		font-size: var(--text-sm);
-		margin: 0.5rem 0 0.75rem;
-	}
-	.chips {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.35rem 0.4rem;
-	}
-
-	/* research — pxbox cards, amber venue chips */
-	.res-list {
-		display: grid;
-		gap: 1.1rem;
-	}
-	.res {
-		padding: 1.2rem 1.4rem;
-	}
-	.venue {
-		font-family: var(--font-pixel);
-		font-size: 0.6rem;
-		letter-spacing: 0.1em;
-		color: var(--amber);
-		border: 1px solid var(--amber-muted);
-		padding: 0.2rem 0.55rem;
-		display: inline-block;
-	}
-	.res h3 {
-		margin: 0.75rem 0 0;
-		font-size: var(--text-base);
-		font-weight: 600;
-	}
-	.res p {
-		color: var(--text-dim);
-		font-size: var(--text-sm);
-		margin: 0.4rem 0 0;
-	}
-
-	/* toolkit — pxbox columns, pixel headings */
-	.skills {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-		gap: 1.1rem;
-	}
-	.skill-col {
-		padding: 1.2rem 1.4rem;
-	}
-	.skill-col h3 {
-		font-family: var(--font-pixel);
+	.when {
 		font-weight: 400;
-		font-size: 0.72rem;
-		letter-spacing: 0.06em;
-		color: var(--accent);
-		margin: 0 0 0.9rem;
 	}
-	.skill-col ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		display: grid;
-		gap: 0.45rem;
+	.points {
+		margin-bottom: 0.6em;
 	}
-	.skill-col li {
-		font-family: var(--font-mono);
-		font-size: 0.82rem;
-		color: var(--text-dim);
-		padding-left: 1.1rem;
-		position: relative;
+	.points li + li {
+		margin-top: 0.3em;
 	}
-	.skill-col li::before {
-		content: "▸";
-		position: absolute;
-		left: 0;
-		color: var(--accent-muted);
-	}
-
-	/* contact */
-	.contact {
-		color: var(--text-dim);
-		max-width: 38rem;
-	}
-	.contact-links {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1rem;
-		margin-top: 1.5rem;
+	h2 {
+		scroll-margin-top: 1rem;
 	}
 </style>

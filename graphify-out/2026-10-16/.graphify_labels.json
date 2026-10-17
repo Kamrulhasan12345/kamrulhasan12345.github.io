@@ -1,0 +1,15 @@
+{
+  "0": "@/data/collections",
+  "1": "dependencies",
+  "2": "@/layouts/Base.astro",
+  "3": "package.json",
+  "4": "tsconfig.json",
+  "5": "astro.config.ts",
+  "6": "kamrulhasan — portfolio & blog",
+  "7": "hello-world.md",
+  "8": "new-post.mjs",
+  "9": "@/layouts/BlogPost.astro",
+  "10": "why-polyglot-ayahbot.md",
+  "11": "content.config.ts",
+  "12": "ayahbot.md"
+}

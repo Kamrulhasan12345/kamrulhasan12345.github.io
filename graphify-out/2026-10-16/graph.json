@@ -1,0 +1,2283 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "astro.config.ts",
+      "file_type": "code",
+      "source_file": "astro.config.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "astro_config",
+      "community": 5,
+      "norm_label": "astro.config.ts"
+    },
+    {
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "package",
+      "community": 3,
+      "norm_label": "package.json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "package_name",
+      "community": 3,
+      "norm_label": "name"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "package_type",
+      "community": 3,
+      "norm_label": "type"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "package_version",
+      "community": 3,
+      "norm_label": "version"
+    },
+    {
+      "label": "private",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "package_private",
+      "community": 3,
+      "norm_label": "private"
+    },
+    {
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "package_scripts",
+      "community": 3,
+      "norm_label": "scripts"
+    },
+    {
+      "label": "dev",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "package_scripts_dev",
+      "community": 3,
+      "norm_label": "dev"
+    },
+    {
+      "label": "new-post",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "package_scripts_new_post",
+      "community": 3,
+      "norm_label": "new-post"
+    },
+    {
+      "label": "check",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "package_scripts_check",
+      "community": 3,
+      "norm_label": "check"
+    },
+    {
+      "label": "build",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "package_scripts_build",
+      "community": 3,
+      "norm_label": "build"
+    },
+    {
+      "label": "preview",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "package_scripts_preview",
+      "community": 3,
+      "norm_label": "preview"
+    },
+    {
+      "label": "dependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "package_dependencies",
+      "community": 1,
+      "norm_label": "dependencies"
+    },
+    {
+      "label": "@astrojs/rss",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "package_dependencies_astrojs_rss",
+      "community": 1,
+      "norm_label": "@astrojs/rss"
+    },
+    {
+      "label": "@astrojs/rss",
+      "file_type": "concept",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "astrojs_rss",
+      "community": 1,
+      "norm_label": "@astrojs/rss"
+    },
+    {
+      "label": "@astrojs/sitemap",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "package_dependencies_astrojs_sitemap",
+      "community": 1,
+      "norm_label": "@astrojs/sitemap"
+    },
+    {
+      "label": "@astrojs/sitemap",
+      "file_type": "concept",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "astrojs_sitemap",
+      "community": 1,
+      "norm_label": "@astrojs/sitemap"
+    },
+    {
+      "label": "astro",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "package_dependencies_astro",
+      "community": 1,
+      "norm_label": "astro"
+    },
+    {
+      "label": "astro",
+      "file_type": "concept",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "astro",
+      "community": 1,
+      "norm_label": "astro"
+    },
+    {
+      "label": "devDependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "package_devdependencies",
+      "community": 3,
+      "norm_label": "devdependencies"
+    },
+    {
+      "label": "@astrojs/check",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "package_devdependencies_astrojs_check",
+      "community": 3,
+      "norm_label": "@astrojs/check"
+    },
+    {
+      "label": "@astrojs/check",
+      "file_type": "concept",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "astrojs_check",
+      "community": 3,
+      "norm_label": "@astrojs/check"
+    },
+    {
+      "label": "typescript",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "package_devdependencies_typescript",
+      "community": 3,
+      "norm_label": "typescript"
+    },
+    {
+      "label": "typescript",
+      "file_type": "concept",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "typescript",
+      "community": 3,
+      "norm_label": "typescript"
+    },
+    {
+      "label": "new-post.mjs",
+      "file_type": "code",
+      "source_file": "scripts/new-post.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "scripts_new_post",
+      "community": 8,
+      "norm_label": "new-post.mjs"
+    },
+    {
+      "label": "title",
+      "file_type": "code",
+      "source_file": "scripts/new-post.mjs",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "scripts_new_post_title",
+      "community": 8,
+      "norm_label": "title"
+    },
+    {
+      "label": "slug",
+      "file_type": "code",
+      "source_file": "scripts/new-post.mjs",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "scripts_new_post_slug",
+      "community": 8,
+      "norm_label": "slug"
+    },
+    {
+      "label": "path",
+      "file_type": "code",
+      "source_file": "scripts/new-post.mjs",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "scripts_new_post_path",
+      "community": 8,
+      "norm_label": "path"
+    },
+    {
+      "label": "today",
+      "file_type": "code",
+      "source_file": "scripts/new-post.mjs",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "scripts_new_post_today",
+      "community": 8,
+      "norm_label": "today"
+    },
+    {
+      "label": "@/components/Footer.astro",
+      "file_type": "code",
+      "source_file": "src/components/Footer.astro",
+      "source_location": "L1",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "id": "src_components_footer",
+      "community": 2,
+      "norm_label": "@/components/footer.astro"
+    },
+    {
+      "label": "year",
+      "file_type": "code",
+      "source_file": "src/components/Footer.astro",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "src_components_footer_year",
+      "community": 2,
+      "norm_label": "year"
+    },
+    {
+      "label": "@/data/resume",
+      "file_type": "code",
+      "source_file": "src/data/resume.ts",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "source_location": "L1",
+      "id": "src_data_resume",
+      "community": 6,
+      "norm_label": "@/data/resume"
+    },
+    {
+      "label": "@/components/Header.astro",
+      "file_type": "code",
+      "source_file": "src/components/Header.astro",
+      "source_location": "L1",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "id": "src_components_header",
+      "community": 2,
+      "norm_label": "@/components/header.astro"
+    },
+    {
+      "label": "links",
+      "file_type": "code",
+      "source_file": "src/components/Header.astro",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "src_components_header_links",
+      "community": 2,
+      "norm_label": "links"
+    },
+    {
+      "label": "@/content.config",
+      "file_type": "code",
+      "source_file": "src/content.config.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "id": "src_content_config",
+      "community": 0,
+      "norm_label": "@/content.config"
+    },
+    {
+      "label": "blog",
+      "file_type": "code",
+      "source_file": "src/content.config.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "src_content_config_blog",
+      "community": 0,
+      "norm_label": "blog"
+    },
+    {
+      "label": "collections",
+      "file_type": "code",
+      "source_file": "src/content.config.ts",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "src_content_config_collections",
+      "community": 0,
+      "norm_label": "collections"
+    },
+    {
+      "label": "getPosts()",
+      "file_type": "code",
+      "source_file": "src/content.config.ts",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "src_content_config_getposts",
+      "community": 0,
+      "norm_label": "getposts()"
+    },
+    {
+      "label": "gh()",
+      "file_type": "code",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "src_data_resume_gh",
+      "community": 6,
+      "norm_label": "gh()"
+    },
+    {
+      "label": "profile",
+      "file_type": "code",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "src_data_resume_profile",
+      "community": 2,
+      "norm_label": "profile"
+    },
+    {
+      "label": "about",
+      "file_type": "code",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "src_data_resume_about",
+      "community": 6,
+      "norm_label": "about"
+    },
+    {
+      "label": "experience",
+      "file_type": "code",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "src_data_resume_experience",
+      "community": 6,
+      "norm_label": "experience"
+    },
+    {
+      "label": "education",
+      "file_type": "code",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L69",
+      "_origin": "ast",
+      "id": "src_data_resume_education",
+      "community": 6,
+      "norm_label": "education"
+    },
+    {
+      "label": "research",
+      "file_type": "code",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L78",
+      "_origin": "ast",
+      "id": "src_data_resume_research",
+      "community": 6,
+      "norm_label": "research"
+    },
+    {
+      "label": "profiles",
+      "file_type": "code",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L91",
+      "_origin": "ast",
+      "id": "src_data_resume_profiles",
+      "community": 6,
+      "norm_label": "profiles"
+    },
+    {
+      "label": "categories",
+      "file_type": "code",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L116",
+      "_origin": "ast",
+      "id": "src_data_resume_categories",
+      "community": 6,
+      "norm_label": "categories"
+    },
+    {
+      "label": "Category",
+      "file_type": "code",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L117",
+      "_origin": "ast",
+      "id": "src_data_resume_category",
+      "community": 6,
+      "norm_label": "category"
+    },
+    {
+      "label": "Project",
+      "file_type": "code",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L119",
+      "_origin": "ast",
+      "id": "src_data_resume_project",
+      "community": 6,
+      "norm_label": "project"
+    },
+    {
+      "label": "projects",
+      "file_type": "code",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L134",
+      "_origin": "ast",
+      "id": "src_data_resume_projects",
+      "community": 6,
+      "norm_label": "projects"
+    },
+    {
+      "label": "skills",
+      "file_type": "code",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L354",
+      "_origin": "ast",
+      "id": "src_data_resume_skills",
+      "community": 6,
+      "norm_label": "skills"
+    },
+    {
+      "label": "@/layouts/Base.astro",
+      "file_type": "code",
+      "source_file": "src/layouts/Base.astro",
+      "source_location": "L1",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "id": "src_layouts_base",
+      "community": 2,
+      "norm_label": "@/layouts/base.astro"
+    },
+    {
+      "label": "@/styles/tokens.css",
+      "file_type": "code",
+      "source_file": "src/styles/tokens.css",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_claude_worktrees_plain_redesign_src_styles_tokens_css",
+      "community": 2,
+      "norm_label": "@/styles/tokens.css"
+    },
+    {
+      "label": "@/styles/base.css",
+      "file_type": "code",
+      "source_file": "src/styles/base.css",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_claude_worktrees_plain_redesign_src_styles_base_css",
+      "community": 2,
+      "norm_label": "@/styles/base.css"
+    },
+    {
+      "label": "404.astro",
+      "file_type": "code",
+      "source_file": "src/pages/404.astro",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_404",
+      "community": 2,
+      "norm_label": "404.astro"
+    },
+    {
+      "label": "[slug].astro",
+      "file_type": "code",
+      "source_file": "src/pages/blog/[slug].astro",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_blog_slug",
+      "community": 0,
+      "norm_label": "[slug].astro"
+    },
+    {
+      "label": "getStaticPaths()",
+      "file_type": "code",
+      "source_file": "src/pages/blog/[slug].astro",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "src_pages_blog_slug_getstaticpaths",
+      "community": 0,
+      "norm_label": "getstaticpaths()"
+    },
+    {
+      "label": "date",
+      "file_type": "code",
+      "source_file": "src/pages/blog/[slug].astro",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "src_pages_blog_slug_date",
+      "community": 0,
+      "norm_label": "date"
+    },
+    {
+      "label": "minutes",
+      "file_type": "code",
+      "source_file": "src/pages/blog/[slug].astro",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "src_pages_blog_slug_minutes",
+      "community": 0,
+      "norm_label": "minutes"
+    },
+    {
+      "label": "astro:content",
+      "file_type": "code",
+      "source_file": "astro:content",
+      "confidence": "EXTRACTED",
+      "_origin": "ast",
+      "id": "astro_content",
+      "community": 0,
+      "norm_label": "astro:content"
+    },
+    {
+      "label": "index.astro",
+      "file_type": "code",
+      "source_file": "src/pages/blog/index.astro",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_blog_index",
+      "community": 2,
+      "norm_label": "index.astro"
+    },
+    {
+      "label": "fmt()",
+      "file_type": "code",
+      "source_file": "src/pages/blog/index.astro",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "src_pages_blog_index_fmt",
+      "community": 2,
+      "norm_label": "fmt()"
+    },
+    {
+      "label": "index.astro",
+      "file_type": "code",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_index",
+      "community": 6,
+      "norm_label": "index.astro"
+    },
+    {
+      "label": "featured",
+      "file_type": "code",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "src_pages_index_featured",
+      "community": 6,
+      "norm_label": "featured"
+    },
+    {
+      "label": "posts",
+      "file_type": "code",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "src_pages_index_posts",
+      "community": 6,
+      "norm_label": "posts"
+    },
+    {
+      "label": "fmt()",
+      "file_type": "code",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "src_pages_index_fmt",
+      "community": 6,
+      "norm_label": "fmt()"
+    },
+    {
+      "label": "projects.astro",
+      "file_type": "code",
+      "source_file": "src/pages/projects.astro",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_projects",
+      "community": 2,
+      "norm_label": "projects.astro"
+    },
+    {
+      "label": "sorted",
+      "file_type": "code",
+      "source_file": "src/pages/projects.astro",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "src_pages_projects_sorted",
+      "community": 2,
+      "norm_label": "sorted"
+    },
+    {
+      "label": "groups",
+      "file_type": "code",
+      "source_file": "src/pages/projects.astro",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "src_pages_projects_groups",
+      "community": 2,
+      "norm_label": "groups"
+    },
+    {
+      "label": "rss.xml.ts",
+      "file_type": "code",
+      "source_file": "src/pages/rss.xml.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_pages_rss_xml",
+      "community": 0,
+      "norm_label": "rss.xml.ts"
+    },
+    {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "src/pages/rss.xml.ts",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "src_pages_rss_xml_get",
+      "community": 0,
+      "norm_label": "get()"
+    },
+    {
+      "label": "tsconfig.json",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_json",
+      "community": 4,
+      "norm_label": "tsconfig.json"
+    },
+    {
+      "label": "extends",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_extends",
+      "community": 4,
+      "norm_label": "extends"
+    },
+    {
+      "label": "astro/tsconfigs/strict",
+      "file_type": "concept",
+      "source_file": "tsconfig.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "ref_astro_tsconfigs_strict",
+      "community": 4,
+      "norm_label": "astro/tsconfigs/strict"
+    },
+    {
+      "label": "include",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_include",
+      "community": 4,
+      "norm_label": "include"
+    },
+    {
+      "label": ".astro/types.d.ts",
+      "file_type": "concept",
+      "source_file": "tsconfig.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "ref_astro_types_d_ts",
+      "community": 4,
+      "norm_label": ".astro/types.d.ts"
+    },
+    {
+      "label": "src/**/*",
+      "file_type": "concept",
+      "source_file": "tsconfig.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "ref_src",
+      "community": 4,
+      "norm_label": "src/**/*"
+    },
+    {
+      "label": "exclude",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_exclude",
+      "community": 4,
+      "norm_label": "exclude"
+    },
+    {
+      "label": "dist",
+      "file_type": "concept",
+      "source_file": "tsconfig.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "ref_dist",
+      "community": 4,
+      "norm_label": "dist"
+    },
+    {
+      "label": "compilerOptions",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_compileroptions",
+      "community": 4,
+      "norm_label": "compileroptions"
+    },
+    {
+      "label": "baseUrl",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_compileroptions_baseurl",
+      "community": 4,
+      "norm_label": "baseurl"
+    },
+    {
+      "label": "paths",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_compileroptions_paths",
+      "community": 4,
+      "norm_label": "paths"
+    },
+    {
+      "label": "@/*",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_paths",
+      "community": 4,
+      "norm_label": "@/*"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_md",
+      "community": 7,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "kamrulhasan \u2014 portfolio & blog",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_kamrulhasan_portfolio_blog",
+      "community": 7,
+      "norm_label": "kamrulhasan \u2014 portfolio & blog"
+    },
+    {
+      "label": "Develop",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_develop",
+      "community": 7,
+      "norm_label": "develop"
+    },
+    {
+      "label": "Writing a post",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_writing_a_post",
+      "community": 7,
+      "norm_label": "writing a post"
+    },
+    {
+      "label": "What the Markdown pipeline gives you",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_what_the_markdown_pipeline_gives_you",
+      "community": 7,
+      "norm_label": "what the markdown pipeline gives you"
+    },
+    {
+      "label": "Adding a project",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_adding_a_project",
+      "community": 7,
+      "norm_label": "adding a project"
+    },
+    {
+      "label": "Before deploying",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_before_deploying",
+      "community": 7,
+      "norm_label": "before deploying"
+    },
+    {
+      "label": "hello-world-to-machine-code.md",
+      "file_type": "document",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_hello_world_to_machine_code_md",
+      "community": 9,
+      "norm_label": "hello-world-to-machine-code.md"
+    },
+    {
+      "label": "Stage 1: Preprocessing",
+      "file_type": "document",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_hello_world_to_machine_code_stage_1_preprocessing",
+      "community": 9,
+      "norm_label": "stage 1: preprocessing"
+    },
+    {
+      "label": "Stage 2: Compilation to assembly",
+      "file_type": "document",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_hello_world_to_machine_code_stage_2_compilation_to_assembly",
+      "community": 9,
+      "norm_label": "stage 2: compilation to assembly"
+    },
+    {
+      "label": "Stage 3: Assembly to object code",
+      "file_type": "document",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_hello_world_to_machine_code_stage_3_assembly_to_object_code",
+      "community": 9,
+      "norm_label": "stage 3: assembly to object code"
+    },
+    {
+      "label": "Stage 4: Linking",
+      "file_type": "document",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L61",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_hello_world_to_machine_code_stage_4_linking",
+      "community": 9,
+      "norm_label": "stage 4: linking"
+    },
+    {
+      "label": "Why this matters",
+      "file_type": "document",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L70",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_hello_world_to_machine_code_why_this_matters",
+      "community": 9,
+      "norm_label": "why this matters"
+    },
+    {
+      "label": "lexical-analysis-first-gate.md",
+      "file_type": "document",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_lexical_analysis_first_gate_md",
+      "community": 10,
+      "norm_label": "lexical-analysis-first-gate.md"
+    },
+    {
+      "label": "From characters to tokens",
+      "file_type": "document",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_lexical_analysis_first_gate_from_characters_to_tokens",
+      "community": 10,
+      "norm_label": "from characters to tokens"
+    },
+    {
+      "label": "Regular languages under the hood",
+      "file_type": "document",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_lexical_analysis_first_gate_regular_languages_under_the_hood",
+      "community": 10,
+      "norm_label": "regular languages under the hood"
+    },
+    {
+      "label": "Maximal munch, and where it bites",
+      "file_type": "document",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_lexical_analysis_first_gate_maximal_munch_and_where_it_bites",
+      "community": 10,
+      "norm_label": "maximal munch, and where it bites"
+    },
+    {
+      "label": "Try it yourself",
+      "file_type": "document",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_lexical_analysis_first_gate_try_it_yourself",
+      "community": 10,
+      "norm_label": "try it yourself"
+    },
+    {
+      "label": "skip-locked-job-queue.md",
+      "file_type": "document",
+      "source_file": "src/content/blog/skip-locked-job-queue.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_skip_locked_job_queue_md",
+      "community": 11,
+      "norm_label": "skip-locked-job-queue.md"
+    },
+    {
+      "label": "The core trick",
+      "file_type": "document",
+      "source_file": "src/content/blog/skip-locked-job-queue.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_skip_locked_job_queue_the_core_trick",
+      "community": 11,
+      "norm_label": "the core trick"
+    },
+    {
+      "label": "The sharp edges",
+      "file_type": "document",
+      "source_file": "src/content/blog/skip-locked-job-queue.md",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_skip_locked_job_queue_the_sharp_edges",
+      "community": 11,
+      "norm_label": "the sharp edges"
+    },
+    {
+      "label": "When to graduate",
+      "file_type": "document",
+      "source_file": "src/content/blog/skip-locked-job-queue.md",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_skip_locked_job_queue_when_to_graduate",
+      "community": 11,
+      "norm_label": "when to graduate"
+    },
+    {
+      "label": "why-i-run-arch-on-6gb.md",
+      "file_type": "document",
+      "source_file": "src/content/blog/why-i-run-arch-on-6gb.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_why_i_run_arch_on_6gb_md",
+      "community": 12,
+      "norm_label": "why-i-run-arch-on-6gb.md"
+    },
+    {
+      "label": "zram first",
+      "file_type": "document",
+      "source_file": "src/content/blog/why-i-run-arch-on-6gb.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_why_i_run_arch_on_6gb_zram_first",
+      "community": 12,
+      "norm_label": "zram first"
+    },
+    {
+      "label": "Spend RAM where it thinks",
+      "file_type": "document",
+      "source_file": "src/content/blog/why-i-run-arch-on-6gb.md",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_why_i_run_arch_on_6gb_spend_ram_where_it_thinks",
+      "community": 12,
+      "norm_label": "spend ram where it thinks"
+    },
+    {
+      "label": "The constraint is the curriculum",
+      "file_type": "document",
+      "source_file": "src/content/blog/why-i-run-arch-on-6gb.md",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_why_i_run_arch_on_6gb_the_constraint_is_the_curriculum",
+      "community": 12,
+      "norm_label": "the constraint is the curriculum"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_devdependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_private",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_scripts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_version",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_build",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_check",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_dev",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_new_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_preview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_astro",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_astrojs_rss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_astrojs_sitemap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "context": "import",
+      "source": "package_dependencies_astrojs_rss",
+      "target": "astrojs_rss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "context": "import",
+      "source": "package_dependencies_astrojs_sitemap",
+      "target": "astrojs_sitemap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "context": "import",
+      "source": "package_dependencies_astro",
+      "target": "astro",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_astrojs_check",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_typescript",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "weight": 1.0,
+      "context": "import",
+      "source": "package_devdependencies_astrojs_check",
+      "target": "astrojs_check",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "weight": 1.0,
+      "context": "import",
+      "source": "package_devdependencies_typescript",
+      "target": "typescript",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/new-post.mjs",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "scripts_new_post",
+      "target": "scripts_new_post_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/new-post.mjs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "scripts_new_post",
+      "target": "scripts_new_post_slug",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/new-post.mjs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "scripts_new_post",
+      "target": "scripts_new_post_title",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/new-post.mjs",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "scripts_new_post",
+      "target": "scripts_new_post_today",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/Footer.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_components_footer",
+      "target": "src_components_footer_year",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/Footer.astro",
+      "source": "src_components_footer",
+      "target": "src_data_resume",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/layouts/Base.astro",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_layouts_base",
+      "target": "src_components_footer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/Header.astro",
+      "source": "src_components_header",
+      "target": "src_data_resume",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "src_data_resume",
+      "target": "src_data_resume_about",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L116",
+      "weight": 1.0,
+      "source": "src_data_resume",
+      "target": "src_data_resume_categories",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L117",
+      "weight": 1.0,
+      "source": "src_data_resume",
+      "target": "src_data_resume_category",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "src_data_resume",
+      "target": "src_data_resume_education",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "src_data_resume",
+      "target": "src_data_resume_experience",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_data_resume",
+      "target": "src_data_resume_gh",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_data_resume",
+      "target": "src_data_resume_profile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L91",
+      "weight": 1.0,
+      "source": "src_data_resume",
+      "target": "src_data_resume_profiles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L119",
+      "weight": 1.0,
+      "source": "src_data_resume",
+      "target": "src_data_resume_project",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L134",
+      "weight": 1.0,
+      "source": "src_data_resume",
+      "target": "src_data_resume_projects",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "src_data_resume",
+      "target": "src_data_resume_research",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/resume.ts",
+      "source_location": "L354",
+      "weight": 1.0,
+      "source": "src_data_resume",
+      "target": "src_data_resume_skills",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/layouts/Base.astro",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_layouts_base",
+      "target": "src_data_resume",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_index",
+      "target": "src_data_resume",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/projects.astro",
+      "source": "src_pages_projects",
+      "target": "src_data_resume",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/Header.astro",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_components_header",
+      "target": "src_components_header_links",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/layouts/Base.astro",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_layouts_base",
+      "target": "src_components_header",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content.config.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_content_config",
+      "target": "src_content_config_blog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content.config.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "src_content_config",
+      "target": "src_content_config_collections",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content.config.ts",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "src_content_config",
+      "target": "src_content_config_getposts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/blog/index.astro",
+      "source": "src_pages_blog_index",
+      "target": "src_content_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/blog/[slug].astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_blog_slug",
+      "target": "src_content_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/index.astro",
+      "source": "src_pages_index",
+      "target": "src_content_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/rss.xml.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_rss_xml",
+      "target": "src_content_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/blog/[slug].astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_blog_slug",
+      "target": "src_content_config_getposts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/blog/[slug].astro",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_pages_blog_slug_getstaticpaths",
+      "target": "src_content_config_getposts"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/rss.xml.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_rss_xml",
+      "target": "src_content_config_getposts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/rss.xml.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_pages_rss_xml_get",
+      "target": "src_content_config_getposts"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/layouts/Base.astro",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_layouts_base",
+      "target": "src_data_resume_profile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_index",
+      "target": "src_data_resume_profile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_index",
+      "target": "src_data_resume_about",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_index",
+      "target": "src_data_resume_experience",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_index",
+      "target": "src_data_resume_education",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_index",
+      "target": "src_data_resume_research",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_index",
+      "target": "src_data_resume_projects",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_index",
+      "target": "src_data_resume_skills",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/layouts/Base.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_layouts_base",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_claude_worktrees_plain_redesign_src_styles_base_css",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/layouts/Base.astro",
+      "source": "src_layouts_base",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_claude_worktrees_plain_redesign_src_styles_tokens_css",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/404.astro",
+      "source": "src_pages_404",
+      "target": "src_layouts_base",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/blog/index.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_blog_index",
+      "target": "src_layouts_base",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/blog/[slug].astro",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_pages_blog_slug",
+      "target": "src_layouts_base",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_pages_index",
+      "target": "src_layouts_base",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/projects.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_projects",
+      "target": "src_layouts_base",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/blog/[slug].astro",
+      "source": "src_pages_blog_slug",
+      "target": "astro_content",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/blog/[slug].astro",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "src_pages_blog_slug",
+      "target": "src_pages_blog_slug_date",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/blog/[slug].astro",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_pages_blog_slug",
+      "target": "src_pages_blog_slug_getstaticpaths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/blog/[slug].astro",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "src_pages_blog_slug",
+      "target": "src_pages_blog_slug_minutes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/blog/index.astro",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_pages_blog_index",
+      "target": "src_pages_blog_index_fmt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_pages_index",
+      "target": "src_pages_index_featured",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_pages_index",
+      "target": "src_pages_index_fmt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/index.astro",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_pages_index",
+      "target": "src_pages_index_posts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/projects.astro",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "src_pages_projects",
+      "target": "src_pages_projects_groups",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/projects.astro",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_pages_projects",
+      "target": "src_pages_projects_sorted",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/rss.xml.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_pages_rss_xml",
+      "target": "src_pages_rss_xml_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_json",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_compileroptions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_json",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_exclude",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_json",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_extends",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_json",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_include",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "context": "import",
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_json",
+      "target": "ref_astro_tsconfigs_strict",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "context": "import",
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_include",
+      "target": "ref_astro_types_d_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "context": "import",
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_include",
+      "target": "ref_src",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "context": "import",
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_paths",
+      "target": "ref_src",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "context": "import",
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_exclude",
+      "target": "ref_dist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_compileroptions",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_compileroptions_baseurl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_compileroptions",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_compileroptions_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_compileroptions_paths",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_tsconfig_paths",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_md",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_kamrulhasan_portfolio_blog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_kamrulhasan_portfolio_blog",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_adding_a_project",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_kamrulhasan_portfolio_blog",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_before_deploying",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_kamrulhasan_portfolio_blog",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_develop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_kamrulhasan_portfolio_blog",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_writing_a_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_writing_a_post",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_readme_what_the_markdown_pipeline_gives_you",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_hello_world_to_machine_code_md",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_hello_world_to_machine_code_stage_1_preprocessing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_hello_world_to_machine_code_md",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_hello_world_to_machine_code_stage_2_compilation_to_assembly",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_hello_world_to_machine_code_md",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_hello_world_to_machine_code_stage_3_assembly_to_object_code",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_hello_world_to_machine_code_md",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_hello_world_to_machine_code_stage_4_linking",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/hello-world-to-machine-code.md",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_hello_world_to_machine_code_md",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_hello_world_to_machine_code_why_this_matters",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_lexical_analysis_first_gate_md",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_lexical_analysis_first_gate_from_characters_to_tokens",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_lexical_analysis_first_gate_md",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_lexical_analysis_first_gate_maximal_munch_and_where_it_bites",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_lexical_analysis_first_gate_md",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_lexical_analysis_first_gate_regular_languages_under_the_hood",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/lexical-analysis-first-gate.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_lexical_analysis_first_gate_md",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_lexical_analysis_first_gate_try_it_yourself",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/skip-locked-job-queue.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_skip_locked_job_queue_md",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_skip_locked_job_queue_the_core_trick",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/skip-locked-job-queue.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_skip_locked_job_queue_md",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_skip_locked_job_queue_the_sharp_edges",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/skip-locked-job-queue.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_skip_locked_job_queue_md",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_skip_locked_job_queue_when_to_graduate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/why-i-run-arch-on-6gb.md",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_why_i_run_arch_on_6gb_md",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_why_i_run_arch_on_6gb_spend_ram_where_it_thinks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/why-i-run-arch-on-6gb.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_why_i_run_arch_on_6gb_md",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_why_i_run_arch_on_6gb_the_constraint_is_the_curriculum",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/content/blog/why-i-run-arch-on-6gb.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_why_i_run_arch_on_6gb_md",
+      "target": "home_raidingshaman_projects_learning_kamrulhasan12345_src_content_blog_why_i_run_arch_on_6gb_zram_first",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "eeaa3240f84d7f943c7c2b79b05ed31ec1d89e7d"
+}

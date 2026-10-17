@@ -1,21 +1,33 @@
 ---
-import { siteConfig } from "@/site.config";
+import { getPosts } from "@/content.config";
+import { profile } from "@/data/resume";
 
-const currentPath = Astro.url.pathname;
-
-function isCurrent(href: string): boolean {
-	return href === "/" ? currentPath === "/" : currentPath.startsWith(href);
-}
+// the name links home; Writing appears once there is something to read
+const hasPosts = (await getPosts()).length > 0;
+const links = [
+	{ href: "/projects/", label: "Projects" },
+	...(hasPosts ? [{ href: "/blog/", label: "Writing" }] : []),
+	{ href: "/about/", label: "About" },
+	{ href: "/resume.pdf", label: "Résumé (PDF)" },
+];
+const path = Astro.url.pathname;
+const Name = path === "/" ? "h1" : "p";
 ---
 
-<header>
-	<div class="container container--wide inner">
-		<a class="brand" href="/">MKH</a>
+<header class="container">
+	<a class="logo" href="/" aria-hidden="true" tabindex="-1">
+		<!-- the old ">_" pixel mark -->
+		<svg viewBox="0 0 16 16" width="44" height="44" shape-rendering="crispEdges">
+			<path fill="currentColor" d="M2 4h2v2H2zM4 6h2v2H4zM6 8h2v2H6zM4 10h2v2H4zM2 12h2v2H2zM9 12h5v2H9z"></path>
+		</svg>
+	</a>
+	<div>
+		<Name class="name"><a href="/">{profile.name}</a></Name>
 		<nav aria-label="Main">
 			{
-				siteConfig.nav.map(({ label, href }) => (
-					<a href={href} aria-current={isCurrent(href) ? "page" : undefined}>
-						{label}
+				links.map((l) => (
+					<a href={l.href} aria-current={path.startsWith(l.href) ? "page" : undefined}>
+						{l.label}
 					</a>
 				))
 			}
@@ -25,59 +37,46 @@ function isCurrent(href: string): boolean {
 
 <style>
 	header {
-		border-bottom: 1px solid var(--line-soft);
-		position: sticky;
-		top: 0;
-		z-index: 50;
-		background: color-mix(in srgb, var(--bg) 85%, transparent);
-		backdrop-filter: blur(8px);
-	}
-	.inner {
 		display: flex;
 		align-items: center;
-		gap: 1.5rem;
-		padding-block: 1rem;
+		gap: 1rem;
+		padding-block: 3.5rem 2rem;
 	}
-	.brand {
-		font-family: var(--font-pixel);
-		font-weight: 400;
-		font-size: 0.95rem;
-		letter-spacing: 0.02em;
-		color: var(--heading);
-		text-decoration: none;
-	}
-	.brand:hover {
+	.logo {
 		color: var(--accent);
-		text-shadow: 0 0 12px var(--glow);
+	}
+	.name {
+		margin: 0;
+		font-size: 1.6rem;
+		font-weight: 700;
+		line-height: 1.3;
+	}
+	.name a {
+		color: var(--text);
 		text-decoration: none;
 	}
 	nav {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.4rem 1.4rem;
-		margin-left: auto;
-		font-family: var(--font-mono);
-		font-size: 0.8rem;
 	}
 	nav a {
-		color: var(--text-dim);
-		text-decoration: none;
-		text-transform: lowercase;
-	}
-	nav a::before {
-		content: "/";
-		color: var(--text-faint);
-		margin-right: 2px;
-	}
-	nav a:hover {
+		padding: 0.2rem 0.75rem;
+		font-size: 0.85rem;
 		color: var(--accent);
-		text-shadow: 0 0 10px var(--glow);
 		text-decoration: none;
+		border-left: 1px dotted var(--text-muted);
 	}
+	nav a:first-child {
+		padding-left: 0;
+		border-left: 0;
+	}
+	nav a:hover,
 	nav a[aria-current="page"] {
-		color: var(--heading);
+		text-decoration: underline;
 	}
-	nav a[aria-current="page"]::before {
-		color: var(--accent);
+	@media (max-width: 34rem) {
+		.logo {
+			display: none;
+		}
 	}
 </style>

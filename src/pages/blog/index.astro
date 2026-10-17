@@ -1,58 +1,53 @@
 ---
-import PostPreview from "@/components/PostPreview.astro";
-import { getAllTags, getPublishedPosts } from "@/data/collections";
+import { getPosts } from "@/content.config";
 import Base from "@/layouts/Base.astro";
 
-const posts = await getPublishedPosts();
-const tags = await getAllTags();
+const posts = await getPosts();
+const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "2-digit" });
 ---
 
-<Base title="Blog" description="Writing on systems programming, hardware security, compilers, and things learned the hard way.">
+<Base title="Writing" description="Write-ups on reverse engineering, security and systems, some in Bangla.">
 	<div class="container">
-		<header class="page-head">
-			<h1>BLOG</h1>
-			<p class="sub">
-				Systems programming, hardware security, compilers, and things learned the
-				hard way.
-			</p>
-		</header>
-		{
-			tags.length > 0 && (
-				<p class="tags">
-					{tags.map(({ tag, count }) => (
-						<a class="tag" href={`/tags/${tag}/`}>
-							{tag} · {count}
-						</a>
-					))}
-				</p>
-			)
-		}
-		<div class="posts">
-			{posts.map((post) => <PostPreview post={post} />)}
-			{posts.length === 0 && <p class="empty">No posts published yet.</p>}
-		</div>
+		<h1>Writing</h1>
+		<p class="muted">Write-ups on reverse engineering, security and systems, some in Bangla.{posts.length > 0 && <> <a href="/rss.xml">RSS</a>.</>}</p>
+		{posts.length === 0 && <p>Nothing published yet. Meanwhile, the <a href="/projects/">projects</a> have the details.</p>}
+		<ul class="entries">
+			{
+				posts.map((p) => (
+					<li>
+						<time class="muted" datetime={p.data.publishDate.toISOString()}>
+							{fmt(p.data.publishDate)}
+						</time>
+						<div>
+							<a href={`/blog/${p.id}/`} lang={p.data.lang}>{p.data.title}</a>
+							<p class="muted small">{p.data.description}</p>
+						</div>
+					</li>
+				))
+			}
+		</ul>
 	</div>
 </Base>
 
 <style>
-	.container {
-		padding-block: 3rem;
+	h1 {
+		margin-bottom: 0.5rem;
 	}
-	.page-head {
-		margin-bottom: 1.5rem;
+	.entries {
+		margin-top: 2rem;
 	}
-	.sub {
-		color: var(--text-dim);
-		margin-top: 0.5rem;
+	li {
+		display: grid;
+		grid-template-columns: 8.5rem 1fr;
+		gap: 1rem;
 	}
-	.tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.4rem;
-		margin-bottom: 1rem;
+	li + li {
+		margin-top: 1.2em !important;
 	}
-	.empty {
-		color: var(--text-dim);
-		padding: 2rem 0;
+	@media (max-width: 34rem) {
+		li {
+			grid-template-columns: 1fr;
+			gap: 0;
+		}
 	}
 </style>

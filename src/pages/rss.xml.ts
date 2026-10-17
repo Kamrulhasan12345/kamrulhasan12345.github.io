@@ -1,13 +1,12 @@
 import rss from "@astrojs/rss";
 import type { APIContext } from "astro";
-import { getPublishedPosts } from "@/data/collections";
-import { siteConfig } from "@/site.config";
+import { getPosts } from "@/content.config";
 
 export async function GET(context: APIContext) {
-	const posts = await getPublishedPosts();
+	const posts = await getPosts();
 	return rss({
-		title: siteConfig.title,
-		description: siteConfig.description,
+		title: "Mohammad Kamrul Hasan",
+		description: "Write-ups on reverse engineering, security and systems, some in Bangla.",
 		site: context.site!,
 		trailingSlash: true,
 		items: posts.map((post) => ({

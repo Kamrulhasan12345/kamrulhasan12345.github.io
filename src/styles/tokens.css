@@ -1,0 +1,35 @@
+/* =====================================================================
+   Tokens — plain. One column, one typeface, one accent.
+   Modelled on mehdikhan.dev (Hugo "Cactus"), with the old phosphor green.
+   Follows the visitor's system theme:
+     dark  = the old ink background with the exact old accent #74eb74
+     light = white, with the same green darkened to stay readable (4.8:1)
+   ===================================================================== */
+
+:root {
+	--bg: #ffffff;
+	--text: #383838; /* 11.7:1 */
+	--text-strong: #111111;
+	--text-muted: #666666; /* 5.7:1 */
+	--accent: #258325; /* old green, darkened for white: 4.8:1 */
+	--line: #e3e3e3;
+	--code-bg: #f4f4f2;
+
+	--font: "JetBrains Mono", "Hind Siliguri", ui-monospace, Menlo, Consolas, monospace;
+	--size: 15px;
+	--leading: 1.725;
+	--measure: 45rem;
+	--gutter: clamp(1rem, 5vw, 2rem);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #0b0f12;
+		--text: #c4cdc6; /* 11.8:1 */
+		--text-strong: #e6ece6;
+		--text-muted: #98a49d; /* 7.5:1 */
+		--accent: #74eb74; /* the old accent, unchanged: 12.7:1 */
+		--line: #22302b;
+		--code-bg: #10161a;
+	}
+}

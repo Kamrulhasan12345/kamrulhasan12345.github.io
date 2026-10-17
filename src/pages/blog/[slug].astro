@@ -1,27 +1,46 @@
 ---
 import { render } from "astro:content";
-import { getPublishedPosts } from "@/data/collections";
-import BlogPost from "@/layouts/BlogPost.astro";
+import { getPosts } from "@/content.config";
+import { profile } from "@/data/resume";
+import Base from "@/layouts/Base.astro";
 
 export async function getStaticPaths() {
-	const posts = await getPublishedPosts();
-	return posts.map((post, i) => ({
-		params: { slug: post.id },
-		// posts are newest-first: "prev" = older post, "next" = newer post
-		props: { post, prev: posts[i + 1], next: posts[i - 1] },
-	}));
+	const posts = await getPosts();
+	return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
 }
 
-const { post, prev, next } = Astro.props;
-const { Content, headings, remarkPluginFrontmatter } = await render(post);
+const { post } = Astro.props;
+const { Content } = await render(post);
+const date = post.data.publishDate.toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" });
+const words = post.body?.split(/\s+/).length ?? 0;
+const minutes = Math.max(1, Math.round(words / 220));
 ---
 
-<BlogPost
-	post={post}
-	headings={headings}
-	minutesRead={remarkPluginFrontmatter.minutesRead}
-	prev={prev}
-	next={next}
->
-	<Content />
-</BlogPost>
+<Base title={post.data.title} description={post.data.description} ogType="article">
+	<article class="container" lang={post.data.lang}>
+		<h1>{post.data.title}</h1>
+		<p class="muted small">
+			<time datetime={post.data.publishDate.toISOString()}>{date}</time> · {minutes} min read · {post.data.tags.join(", ")}
+		</p>
+		<div class="prose">
+			<Content />
+		</div>
+		<p class="back muted" lang="en">
+			Written by {profile.name}, {profile.role}. See my <a href="/projects/">projects</a> or email
+			<a href={`mailto:${profile.email}`}>{profile.email}</a>.
+		</p>
+		<p lang="en"><a href="/blog/">← All writing</a></p>
+	</article>
+</Base>
+
+<style>
+	h1 {
+		margin-bottom: 0.3rem;
+	}
+	.prose {
+		margin-top: 2rem;
+	}
+	.back {
+		margin-top: 3rem;
+	}
+</style>

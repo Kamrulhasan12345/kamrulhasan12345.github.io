@@ -1,0 +1,127 @@
+{
+  "astro.config.ts": {
+    "mtime": 1792154974.5955453,
+    "ast_hash": "041c0cbe8c6f4bac85472f4a381141f0",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1792154974.6865473,
+    "ast_hash": "a935e2d93c16e858ae323680ec0bc698",
+    "semantic_hash": ""
+  },
+  "scripts/new-post.mjs": {
+    "mtime": 1792154974.6945474,
+    "ast_hash": "4d3e7a7d2fd1398b05829d8c77498f97",
+    "semantic_hash": ""
+  },
+  "src/components/Footer.astro": {
+    "mtime": 1792155050.9441638,
+    "ast_hash": "4fbc568e09238e715a0cc8f0a2cb9e0f",
+    "semantic_hash": ""
+  },
+  "src/components/Header.astro": {
+    "mtime": 1792155050.6381574,
+    "ast_hash": "8f9e6ee208621cbe2cac020b95627849",
+    "semantic_hash": ""
+  },
+  "src/content.config.ts": {
+    "mtime": 1792154974.7185478,
+    "ast_hash": "741f9e8c44a6acd786769bbb8d5798cb",
+    "semantic_hash": ""
+  },
+  "src/layouts/Base.astro": {
+    "mtime": 1792155034.0730941,
+    "ast_hash": "ba754223bf76ca7c213202482410a40f",
+    "semantic_hash": ""
+  },
+  "src/pages/404.astro": {
+    "mtime": 1792155087.5639465,
+    "ast_hash": "b935436f5de8132b551249fcba576923",
+    "semantic_hash": ""
+  },
+  "src/pages/blog/[slug].astro": {
+    "mtime": 1792155087.2799404,
+    "ast_hash": "2800490c8ba0747e1a0c545fa6421bcc",
+    "semantic_hash": ""
+  },
+  "src/pages/blog/index.astro": {
+    "mtime": 1792155087.0449355,
+    "ast_hash": "5bfc1635508f2d0da55ed91ab8c03383",
+    "semantic_hash": ""
+  },
+  "src/pages/index.astro": {
+    "mtime": 1792155084.1628737,
+    "ast_hash": "73a521c9a8665c1829ea0f7c77dcd11c",
+    "semantic_hash": ""
+  },
+  "src/pages/rss.xml.ts": {
+    "mtime": 1792154974.7325482,
+    "ast_hash": "804816434433a2de026bc6f7a365cbdc",
+    "semantic_hash": ""
+  },
+  "tsconfig.json": {
+    "mtime": 1792154974.7375484,
+    "ast_hash": "4a22d0d7928a277e0f30cf12bd1f6e10",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1792154974.5955453,
+    "ast_hash": "ecb2e83e580e5be62bbe31f8a6221d3b",
+    "semantic_hash": ""
+  },
+  "public/favicon.svg": {
+    "mtime": 1792154974.6874502,
+    "ast_hash": "dea050a0adfe4ec193c4788611775d84",
+    "semantic_hash": ""
+  },
+  "src/styles/shiki-dark.json": {
+    "mtime": 1792154974.7365482,
+    "ast_hash": "228c030f1c8288769ffa112871eb8476",
+    "semantic_hash": ""
+  },
+  "src/assets/fonts/JetBrainsMono-OFL.txt": {
+    "mtime": 1792154974.7035475,
+    "ast_hash": "43dc1a748ef82aa746d6a645d52578a9",
+    "semantic_hash": ""
+  },
+  "src/content/blog/hello-world-to-machine-code.md": {
+    "mtime": 1792154974.7199552,
+    "ast_hash": "e8cc3421fd17901f7ea20d9e77850b07",
+    "semantic_hash": ""
+  },
+  "src/content/blog/lexical-analysis-first-gate.md": {
+    "mtime": 1792154974.7199552,
+    "ast_hash": "13c45d8a0de012653ab91ddf4a60394b",
+    "semantic_hash": ""
+  },
+  "src/content/blog/skip-locked-job-queue.md": {
+    "mtime": 1792154974.7199552,
+    "ast_hash": "d5858b97d1f27810fc039409d7d7267a",
+    "semantic_hash": ""
+  },
+  "src/content/blog/why-i-run-arch-on-6gb.md": {
+    "mtime": 1792154974.7199552,
+    "ast_hash": "b510b0d03ab6e035b25d6a587f10698b",
+    "semantic_hash": ""
+  },
+  ".github/workflows/deploy.yml": {
+    "mtime": 1792154974.5951252,
+    "ast_hash": "cbfdaef19de9c7a4096b63a76ef752c7",
+    "semantic_hash": ""
+  },
+  "src/data/resume.ts": {
+    "mtime": 1792154974.722548,
+    "ast_hash": "029f8905f010626aed9e8085703e77b1",
+    "semantic_hash": ""
+  },
+  "src/pages/projects.astro": {
+    "mtime": 1792155086.3519206,
+    "ast_hash": "90c84c7dae43607212971aa217710be4",
+    "semantic_hash": ""
+  },
+  "public/resume.pdf": {
+    "mtime": 1792154974.6915474,
+    "ast_hash": "f5f47bb55c785a5afe6e31a37f650c1d",
+    "semantic_hash": ""
+  }
+}

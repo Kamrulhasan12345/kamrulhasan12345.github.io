@@ -1,267 +1,130 @@
 ---
-import PostPreview from "@/components/PostPreview.astro";
-import ProjectCard from "@/components/ProjectCard.astro";
-import { getFeaturedProjects, getPublishedPosts } from "@/data/collections";
+import { getPosts } from "@/content.config";
+import { about, education, experience, profile, profiles, projects } from "@/data/resume";
 import Base from "@/layouts/Base.astro";
-import { siteConfig } from "@/site.config";
 
-const featured = (await getFeaturedProjects()).slice(0, 4);
-const latest = (await getPublishedPosts()).slice(0, 3);
+const featured = projects.filter((p) => p.featured);
+const posts = (await getPosts()).slice(0, 3);
+const fmt = (d: Date) => d.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "2-digit" });
+const school = education[0];
+
+const person = {
+	"@context": "https://schema.org",
+	"@type": "ProfilePage",
+	mainEntity: {
+		"@type": "Person",
+		name: profile.name,
+		jobTitle: experience[0].role,
+		worksFor: { "@type": "Organization", name: experience[0].org },
+		description: `${profile.intro} ${profile.proof}`,
+		email: `mailto:${profile.email}`,
+		address: { "@type": "PostalAddress", addressLocality: "Dhaka", addressCountry: "BD" },
+		alumniOf: { "@type": "CollegeOrUniversity", name: school.school },
+		sameAs: profiles.flatMap((g) => g.links.map((l) => l.url)),
+	},
+};
 ---
 
 <Base>
-	<div class="container container--wide">
-		<section class="hero">
-			<p class="eyebrow">{siteConfig.role} · {siteConfig.location}</p>
-			<h1 class="glitch">
-				<span class="glitch-base"
-					>MOHAMMAD<br />KAMRUL <span class="accent">HASAN</span></span
-				>
-				<span class="glitch-layer l1" aria-hidden="true">MOHAMMAD<br />KAMRUL HASAN</span>
-				<span class="glitch-layer l2" aria-hidden="true">MOHAMMAD<br />KAMRUL HASAN</span>
-			</h1>
-			<p class="lead">
-				CSE undergraduate at <strong>BUET</strong>, writing code since grade 5 and
-				drifting steadily down the stack ever since — across systems, security,
-				backends, ML, and hardware.
+	<script is:inline type="application/ld+json" set:html={JSON.stringify(person)} />
+	<div class="container">
+		<section class="hero" aria-label="Introduction">
+			<p class="role">{profile.role} · class of {school.gradYear} · {school.grade}</p>
+			<p>{profile.intro} {profile.proof}</p>
+			<p class="muted">{profile.availability} · {profile.location} ({profile.timezone})</p>
+			<p class="links">
+				<a href={`mailto:${profile.email}`}>{profile.email}</a> · <a href={profile.github}>GitHub</a> ·
+				<a href={profile.linkedin}>LinkedIn</a> · <a href="/resume.pdf">Résumé (PDF)</a>
 			</p>
-			<p class="now">
-				<span class="now-label">NOW</span>
-				Production WooCommerce plugin at Version3.ai · Bangla NLP dataset at
-				Mahzabeen Lab · Ilham hadith platform
-			</p>
-			<div class="cta">
-				<a class="btn btn-primary" href="/projects/">VIEW PROJECTS</a>
-				<a class="btn btn-ghost" href="/blog/">READ THE BLOG</a>
-			</div>
 		</section>
 
-		<section>
-			<div class="sec-head">
-				<span class="idx">01</span>
-				<h2>SELECTED WORK</h2>
-				<a class="sec-more" href="/projects/">all projects →</a>
-			</div>
-			<div class="grid">
-				{featured.map((project) => <ProjectCard project={project} />)}
-			</div>
-		</section>
+		<h2>Experience</h2>
+		<ul class="entries">
+			{
+				experience.map((e) => (
+					<li>
+						<strong>{e.role}</strong>, {e.org} <span class="muted">· {e.when}</span>
+						<br />
+						{e.points[0]}
+					</li>
+				))
+			}
+		</ul>
+		<p><a href="/about/#experience">Full experience and research →</a></p>
+
+		<h2>Projects</h2>
+		<ul class="entries projects">
+			{
+				featured.map((p) => (
+					<li>
+						<strong>{p.link ? <a href={p.link}>{p.name}</a> : p.name}</strong>: {p.title}. <span class="muted">{p.year}.</span>
+						<ul>
+							<li>{p.summary}</li>
+							{p.points.slice(0, 1).map((pt) => (
+								<li>{pt}</li>
+							))}
+						</ul>
+					</li>
+				))
+			}
+		</ul>
+		<p><a href="/projects/">All {projects.length} projects →</a></p>
 
 		{
-			latest.length > 0 && (
-				<section>
-					<div class="sec-head">
-						<span class="idx">02</span>
-						<h2>WRITING</h2>
-						<a class="sec-more" href="/blog/">
-							all posts →
-						</a>
-					</div>
-					<div class="posts">
-						{latest.map((post) => (
-							<PostPreview post={post} />
+			posts.length > 0 && (
+				<>
+					<h2>Writing</h2>
+					<ul class="entries">
+						{posts.map((p) => (
+							<li class="post">
+								<time class="muted" datetime={p.data.publishDate.toISOString()}>
+									{fmt(p.data.publishDate)}
+								</time>
+								<a href={`/blog/${p.id}/`} lang={p.data.lang}>{p.data.title}</a>
+							</li>
 						))}
-					</div>
-				</section>
+					</ul>
+					<p>
+						<a href="/blog/">All posts →</a>
+					</p>
+				</>
 			)
 		}
+
+		<h2>Now</h2>
+		<ul>
+			{about.now.map((n) => <li>{n}</li>)}
+		</ul>
 	</div>
 </Base>
 
 <style>
-	/* ---- hero ---- */
 	.hero {
-		position: relative;
-		padding-block: 4rem 3.5rem;
-		max-width: 46rem;
+		margin-top: 0.5rem;
 	}
-	/* faint pixel grid behind the hero, masked out toward the bottom */
-	.hero::before {
-		content: "";
-		position: absolute;
-		inset: 0 -20rem 0 -10rem;
-		background-image:
-			linear-gradient(var(--line-soft) 1px, transparent 1px),
-			linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-		background-size: 48px 48px;
-		opacity: 0.5;
-		pointer-events: none;
-		mask-image: radial-gradient(ellipse 90% 70% at 35% 20%, black 10%, transparent 75%);
-		z-index: -1;
+	.role {
+		text-wrap: balance;
+		font-weight: 700;
+		color: var(--text-strong);
 	}
-
-	.glitch {
-		position: relative;
-		display: inline-block;
-		font-size: clamp(1.9rem, 1.1rem + 4vw, 3.4rem);
-		line-height: 1.2;
-		letter-spacing: 0.01em;
-		margin: 1rem 0 0;
+	.links {
+		margin-top: 1rem;
 	}
-	.glitch .accent {
-		color: var(--accent);
-		text-shadow: 0 0 24px var(--glow);
+	.projects > li + li {
+		margin-top: 1.2em;
 	}
-	.glitch-base {
-		position: relative;
+	.projects ul {
+		margin-top: 0.3em;
 	}
-	.glitch-layer {
-		position: absolute;
-		inset: 0;
-		opacity: 0;
-		pointer-events: none;
-		white-space: nowrap;
-	}
-	.l1 {
-		color: var(--glitch-b);
-		clip-path: inset(18% 0 52% 0);
-		/* one short flicker burst on load, then quiet until hover */
-		animation: intro1 1.1s steps(1, end) 0.4s 1 both;
-	}
-	.l2 {
-		color: var(--glitch-a);
-		clip-path: inset(58% 0 12% 0);
-		animation: intro2 1.1s steps(1, end) 0.4s 1 both;
-	}
-	.glitch:hover .l1 {
-		opacity: 0.85;
-		animation: gl1 0.5s steps(2) infinite;
-	}
-	.glitch:hover .l2 {
-		opacity: 0.85;
-		animation: gl2 0.6s steps(2) infinite reverse;
-	}
-	@keyframes intro1 {
-		0% {
-			opacity: 0;
-			transform: translate(0, 0);
-		}
-		8% {
-			opacity: 0.8;
-			transform: translate(-3px, 1px);
-		}
-		18% {
-			opacity: 0;
-		}
-		26% {
-			opacity: 0.8;
-			transform: translate(3px, -1px);
-		}
-		38% {
-			opacity: 0;
-		}
-		58% {
-			opacity: 0.8;
-			transform: translate(-2px, 0);
-		}
-		68% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 0;
-		}
-	}
-	@keyframes intro2 {
-		0% {
-			opacity: 0;
-			transform: translate(0, 0);
-		}
-		12% {
-			opacity: 0.8;
-			transform: translate(3px, -1px);
-		}
-		22% {
-			opacity: 0;
-		}
-		34% {
-			opacity: 0.8;
-			transform: translate(-3px, 1px);
-		}
-		46% {
-			opacity: 0;
-		}
-		62% {
-			opacity: 0.8;
-			transform: translate(2px, 1px);
-		}
-		70% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 0;
-		}
-	}
-	@keyframes gl1 {
-		0% {
-			transform: translate(-3px, 1px);
-		}
-		50% {
-			transform: translate(3px, -1px);
-		}
-		100% {
-			transform: translate(-2px, 0);
-		}
-	}
-	@keyframes gl2 {
-		0% {
-			transform: translate(3px, -1px);
-		}
-		50% {
-			transform: translate(-3px, 1px);
-		}
-		100% {
-			transform: translate(2px, 0);
-		}
-	}
-
-	.lead {
-		font-size: var(--text-lg);
-		color: var(--text);
-		margin-top: 1.5rem;
-		max-width: 40rem;
-	}
-	.lead strong {
-		color: var(--heading);
-		font-weight: 600;
-	}
-	.now {
-		margin-top: 1.5rem;
-		font-size: var(--text-sm);
-		color: var(--text-dim);
-		line-height: 1.7;
-	}
-	.now-label {
-		font-family: var(--font-pixel);
-		font-size: 0.62rem;
-		letter-spacing: 0.1em;
-		color: var(--amber);
-		border: 1px solid var(--amber-muted);
-		padding: 0.12rem 0.5rem;
-		margin-right: 0.5rem;
-	}
-	.cta {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.85rem;
-		margin-top: 2.25rem;
-	}
-
-	section {
-		margin-bottom: 4.5rem;
-	}
-	.grid {
+	.post {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-		gap: 1.1rem;
+		grid-template-columns: 8.5rem 1fr;
+		gap: 1rem;
 	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.l1,
-		.l2,
-		.glitch:hover .l1,
-		.glitch:hover .l2 {
-			animation: none;
-			opacity: 0;
+	@media (max-width: 34rem) {
+		.post {
+			grid-template-columns: 1fr;
+			gap: 0;
 		}
 	}
 </style>
