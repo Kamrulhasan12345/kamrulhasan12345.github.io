@@ -1,0 +1,66 @@
+<!doctype html>
+<!--
+  Social preview card (public/og.png). Keep the text in step with profile in src/data/resume.ts.
+  Render: chromium --headless=new --hide-scrollbars --window-size=1200,630 --screenshot=public/og.png scripts/og.html
+-->
+<meta charset="utf-8" />
+<style>
+	@font-face {
+		font-family: "JetBrains Mono";
+		src: url("../src/assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+		font-weight: 400;
+	}
+	@font-face {
+		font-family: "JetBrains Mono";
+		src: url("../src/assets/fonts/JetBrainsMono-Bold.woff2") format("woff2");
+		font-weight: 700;
+	}
+	html,
+	body {
+		margin: 0;
+		width: 1200px;
+		height: 630px;
+		overflow: hidden;
+		background: #0b0f12;
+		color: #c4cdc6;
+		font-family: "JetBrains Mono", monospace;
+	}
+	main {
+		padding: 84px 96px;
+	}
+	svg {
+		color: #74eb74;
+	}
+	h1 {
+		margin: 52px 0 0;
+		font-size: 64px;
+		line-height: 1.15;
+		color: #e6ece6;
+	}
+	.role {
+		margin: 18px 0 0;
+		font-size: 30px;
+		font-weight: 700;
+		color: #74eb74;
+	}
+	.intro {
+		margin: 30px 0 0;
+		font-size: 26px;
+		line-height: 1.5;
+		max-width: 1010px;
+	}
+	.url {
+		margin: 52px 0 0;
+		font-size: 24px;
+		color: #98a49d;
+	}
+</style>
+<main>
+	<svg viewBox="0 0 16 16" width="88" height="88" shape-rendering="crispEdges" aria-hidden="true">
+		<path fill="currentColor" d="M2 4h2v2H2zM4 6h2v2H4zM6 8h2v2H6zM4 10h2v2H4zM2 12h2v2H2zM9 12h5v2H9z"></path>
+	</svg>
+	<h1>Mohammad Kamrul Hasan</h1>
+	<p class="role">CSE undergraduate at BUET</p>
+	<p class="intro">I run AI models on small hardware, from microcontrollers to phones, and build backends as an intern at Version3.ai.</p>
+	<p class="url">kamrulhasan12345.github.io</p>
+</main>

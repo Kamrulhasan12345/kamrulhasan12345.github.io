@@ -52,7 +52,6 @@ body {
 	background: var(--bg);
 	color: var(--text);
 	font: var(--size) / var(--leading) var(--font);
-	border-top: 2px solid var(--text);
 	-webkit-font-smoothing: antialiased;
 }
 img,

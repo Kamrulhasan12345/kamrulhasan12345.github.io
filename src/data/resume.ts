@@ -14,13 +14,12 @@ export const profile = {
 	orcid: "https://orcid.org/0009-0005-3843-6832",
 	availability: "Open to internships and research roles",
 	timezone: "UTC+6",
-	intro: "I'm a backend developer intern at Version3.ai, where I build store integrations and benchmark image-search models. On my own I profile and speed up LLM inference on cheap Android phones.",
-	proof: "LITTLETai made llama.cpp decode 2.2–2.6× faster with 2.6–3.3× less energy per token on a mid-range phone, without root.",
+	intro: "I run AI models on small hardware, from microcontrollers to phones, and I build backends as an intern at Version3.ai.",
+	proof: "My latest project, LITTLETai, makes llama.cpp generate text up to 2.6× faster on a budget Android phone, using up to 3.3× less energy.",
 };
 
 export const about = {
 	text: [
-		"I'm a Computer Science undergraduate at BUET and a backend developer intern at Version3.ai. At work I build backend services and store integrations, and I benchmark image-retrieval models for visual product search.",
 		"On my own I like finding out where software wastes time. LITTLETai started when I counted the instructions llama.cpp burns while its threads wait on each other. I also enjoy database design and reading binaries. I've been programming since grade 5.",
 	],
 	focus: [
@@ -30,14 +29,14 @@ export const about = {
 		},
 		{
 			title: "ML systems",
-			text: "Retrieval benchmarks and vector-search quantization at Version3.ai; LLM inference performance on Arm phones in LITTLETai.",
+			text: "Image-search benchmarks at Version3.ai; LLM inference speed on Arm phones in LITTLETai.",
 		},
 		{
 			title: "Low-level",
-			text: "Reverse engineering (see the crackme write-ups) and CPU profiling with simpleperf and Perfetto. Learning embedded on the ESP32-S3.",
+			text: "Reverse engineering (see the crackme write-ups) and CPU profiling with simpleperf and Perfetto. Embedded work on the ESP32, including running AI models on it.",
 		},
 	],
-	now: ["Writing an SH1106 OLED driver for the ESP32-S3", "Working toward my own small LLM inference engine"],
+	now: ["Building a small LLM inference engine of my own (early stage)", "Working on an AI inference engine for the ESP32"],
 };
 
 export const experience = [
@@ -46,21 +45,19 @@ export const experience = [
 		org: "Version3.ai",
 		orgNote: "Conversational-commerce AI for online stores",
 		when: "Jun 2026 — Present",
+		// site version stays general; no employer internals here or in the resume
 		points: [
-			"Built the multi-tenant product database service in NestJS, MongoDB and RabbitMQ: schema design, tenant provisioning and strict per-store data isolation.",
-			"Designed the WooCommerce and Shopify store integrations: OAuth 2.0 PKCE, HMAC-signed requests, AES-256-GCM secret storage, a durable dispatch queue, and idempotent webhook handling.",
-			"Root-caused a production bug where the OAuth callback returned 201 instead of 200, which made WooCommerce permanently delete each store's newly issued API keys.",
-			"Benchmarked SigLIP2, Marqo and fashion-tuned CLIP models for visual product search on Products-10K (9,691 SKUs, 132K images) using Recall@k, MRR and nDCG@10 with bootstrap CIs; the chosen model reached Recall@1 0.672.",
-			"Showed Qdrant int8 and binary quantization cost a median 0.004 Recall@1, and that 4 single-thread workers give 2.2× the CPU throughput of one 4-thread worker, so search can be served on CPU-only machines.",
+			"Building backend services and the WooCommerce and Shopify store integrations.",
+			"Benchmarked image models and vector-search settings for visual product search.",
 		],
-		stack: ["NestJS", "MongoDB", "RabbitMQ", "Qdrant", "SigLIP2", "OAuth 2.0"],
+		stack: ["NestJS", "MongoDB", "RabbitMQ", "Qdrant"],
 	},
 	{
 		role: "Software Engineering Intern",
 		org: "Edulytics",
 		when: "Dec 2025 — Mar 2026",
-		points: ["Built core user flows for an education MVP in React Native and TypeScript with a remote team, shipping on sprint deadlines."],
-		stack: ["React Native", "TypeScript"],
+		points: ["Built the mobile app MVP in React Native, and worked on their web app."],
+		stack: ["React Native", "Next.js", "TypeScript"],
 	},
 ];
 
@@ -68,10 +65,7 @@ export const education = [
 	{
 		school: "Bangladesh University of Engineering and Technology (BUET)",
 		degree: "B.Sc. in Computer Science and Engineering",
-		when: "2025 — 2028 (expected)",
-		gradYear: 2028,
-		grade: "CGPA 3.77/4.00",
-		note: "Ranked 79th in the national BUET admission merit list",
+		when: "Apr 2025 — present",
 		location: "Dhaka, Bangladesh",
 	},
 ];
@@ -82,18 +76,18 @@ export const research = [
 		kind: "Conference paper",
 		authors: ["M. Rahaman", "S. S. Rahman", "M. S. M. Noor", "K. S. S. Siddiquee", "M. K. Hasan", "et al."],
 		venue: "UbiComp/ISWC 2026, ISWC Notes & Briefs · ACM",
-		detail: "Turned 3 years of wearable data from 100 rickshaw pullers into heat-risk visuals that low-literacy workers can read. BUET × UC San Diego. I'm 5th of 11 authors; I transcribed the interviews behind the qualitative analysis.",
+		detail: "Follow-up to a 3-year wearable study of 100 rickshaw pullers: turns its data into heat-risk visuals that low-literacy workers can read. BUET × UC San Diego. I transcribed the interviews behind the qualitative analysis.",
 		role: "Co-author",
 		link: "https://doi.org/10.1145/3830727.3834827",
 	},
-	{
+	/*{
 		title: "ML-guided search for magnetic-material compounds",
 		kind: "Ongoing research",
 		authors: [],
 		venue: "BUET Physics, supervised by Prof. A.K.M. Akther Hossain",
 		detail: "Early stage, started 2026.",
 		role: "Undergraduate researcher",
-	},
+	},*/
 ];
 
 // Only verified accounts (name matches on the profile). Add more as { name, handle, url }.
@@ -116,10 +110,10 @@ export const profiles = [
 			{ name: "Kaggle", handle: "Kamrulhasan12345", url: "https://www.kaggle.com/Kamrulhasan12345" },
 		],
 	},
-	{
-		group: "Competitive programming",
-		links: [{ name: "Codeforces", handle: "Kamrulhasan12345", url: "https://codeforces.com/profile/Kamrulhasan12345" }],
-	},
+	// {
+	// 	group: "Competitive programming",
+	// 	links: [{ name: "Codeforces", handle: "Kamrulhasan12345", url: "https://codeforces.com/profile/Kamrulhasan12345" }],
+	// },
 ];
 
 export const categories = ["AI / ML", "Embedded & Systems", "Backend", "Apps"] as const;
@@ -146,11 +140,11 @@ export const projects: Project[] = [
 	{
 		slug: "littletai",
 		name: "LITTLETai",
-		title: "Core-aware thread presets for llama.cpp on Android",
+		title: "Faster, lower-energy llama.cpp on Android phones",
 		year: "2026",
 		categories: ["AI / ML", "Embedded & Systems"],
 		context: "Submitted to the Arm Create: AI Optimization Challenge",
-		summary: "2.2–2.6× faster decode and 2.6–3.3× less energy per token than llama.cpp's defaults, on a Helio G81 phone running Qwen2 1B Q4_0.",
+		summary: "2.2–2.6× faster decode and 2.6–3.3× less energy per token than llama.cpp's defaults, on a budget phone (Helio G81, Qwen2 1B Q4_0).",
 		points: [
 			"Profiled decode with simpleperf: the default 8 threads retired up to 5× more instructions per token, spin-waiting at thread barriers.",
 			"Wrote a POSIX shell launcher that picks cores and thread counts from the CPU topology (2× Cortex-A75 + 6× Cortex-A55), no root needed.",
@@ -168,13 +162,13 @@ export const projects: Project[] = [
 		year: "2026",
 		categories: ["Backend"],
 		context: "Database course project, team of 2",
-		summary: "An ETL loaded 14,941 hadiths, 139,766 chain positions and 20,957 narrators, resolving 99.6% of narrators.",
+		summary: "Database and ETL for 14,941 hadiths and 20,957 narrators, with 99.6% of narrators matched.",
 		points: [
-			"Schema with an ISA user hierarchy, weak entities, triggers and an audit log.",
 			"Each hadith's chain strength is computed in SQL from the weakest link in its chain.",
+			"Schema with user subtypes, triggers and an audit log.",
 			"The reference corpus is locked with REVOKE after loading, so the application cannot modify it.",
 		],
-		stack: ["PostgreSQL", "PL/pgSQL", "Node.js", "Express", "TypeScript"],
+		stack: ["PostgreSQL", "Node.js", "Express", "TypeScript"],
 		link: gh("ilham"),
 		featured: true,
 	},
@@ -204,7 +198,7 @@ export const projects: Project[] = [
 		points: [
 			"Group sessions use WebRTC audio with STOMP signaling on a Spring Boot server; bookmarks sync when back online.",
 		],
-		stack: ["Java", "JavaFX", "Spring Boot", "WebRTC", "SQLite FTS5", "PostgreSQL"],
+		stack: ["Java", "JavaFX", "Spring Boot", "WebRTC", "SQLite", "PostgreSQL"],
 		link: gh("bayyinah"),
 		featured: true,
 	},
@@ -229,7 +223,7 @@ export const projects: Project[] = [
 		context: "Internship take-home task",
 		summary: "Fine-tuned YOLOv8n at 1280 px on VisDrone merged into two classes: 0.728 mAP@0.5 on validation. Added SAHI tiled inference and ByteTrack tracking.",
 		points: [],
-		stack: ["Python", "YOLO", "SAHI", "ByteTrack"],
+		stack: ["Python", "Ultralytics YOLOv8", "SAHI"],
 		link: gh("dronecam"),
 	},
 	{
@@ -238,7 +232,7 @@ export const projects: Project[] = [
 		title: "Verse recommendation API",
 		year: "2026",
 		categories: ["AI / ML", "Backend"],
-		summary: "FAISS semantic search with re-ranking for relevance and variety; optional LLM reflections via Groq, falling back to the Hugging Face Inference API, with a 1-hour cache. Deployed on Hugging Face Spaces.",
+		summary: "FAISS semantic search with re-ranking for relevance and variety; optional LLM-written reflections. Deployed on Hugging Face Spaces.",
 		points: [],
 		stack: ["Python", "FastAPI", "sentence-transformers", "FAISS"],
 		link: gh("bayyinah-ai"),
@@ -276,7 +270,7 @@ export const projects: Project[] = [
 		status: "In progress",
 		summary: "Clients refresh their JWT over the open socket before a grace deadline, so live connections aren't dropped.",
 		points: [],
-		stack: ["Bun", "ElysiaJS", "PostgreSQL", "Drizzle", "WebSockets"],
+		stack: ["Bun", "ElysiaJS", "PostgreSQL", "Drizzle ORM"],
 		link: gh("bondhupath-backend"),
 	},
 	{
@@ -294,8 +288,9 @@ export const projects: Project[] = [
 
 // Only skills a project or job above actually uses.
 export const skills = [
-	{ group: "Languages", items: ["C", "C++", "Python", "TypeScript", "JavaScript", "Java", "SQL (PostgreSQL, PL/pgSQL)", "POSIX shell"] },
-	{ group: "ML & inference", items: ["llama.cpp", "GGUF quantization", "PyTorch", "TensorFlow Lite", "Hugging Face Transformers", "sentence-transformers", "SigLIP / CLIP", "FAISS", "Qdrant", "LightGBM", "YOLO"] },
-	{ group: "Backend & data", items: ["NestJS", "FastAPI", "Spring Boot", "Express", "REST", "WebSockets", "WebRTC", "OAuth 2.0", "JWT", "PostgreSQL", "MongoDB", "Redis", "RabbitMQ", "SQLite"] },
-	{ group: "Tools", items: ["Linux", "Docker", "Git", "GitHub Actions", "simpleperf", "Perfetto", "adb", "IDA", "Ghidra"] },
+	{ group: "Languages", items: ["C", "C++", "Python", "TypeScript", "JavaScript", "Java", "SQL", "POSIX shell"] },
+	{ group: "ML & inference", items: ["llama.cpp", "PyTorch", "TensorFlow Lite", "Keras", "Hugging Face Transformers", "sentence-transformers", "FAISS", "Qdrant", "LightGBM", "Ultralytics YOLO", "OpenCV"] },
+	{ group: "Backend & data", items: ["NestJS", "FastAPI", "Spring Boot", "Express", "ElysiaJS", "WebSockets", "WebRTC", "OAuth 2.0", "PostgreSQL", "MongoDB", "RabbitMQ", "SQLite", "Supabase"] },
+	{ group: "Embedded", items: ["ESP32"] },
+	{ group: "Tools", items: ["Linux", "Git", "GitHub Actions", "simpleperf", "Perfetto", "adb", "IDA", "Ghidra"] },
 ];
