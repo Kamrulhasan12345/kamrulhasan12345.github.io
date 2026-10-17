@@ -6,7 +6,7 @@ tags: ["llm", "android", "performance"]
 draft: true
 ---
 
-<!-- Outline only. Facts are from the LITTLETai README and résumé; write the prose yourself. -->
+<!-- Outline only. Facts are from the LITTLETai README and resume; write the prose yourself. -->
 
 ## The setup
 

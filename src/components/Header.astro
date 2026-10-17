@@ -8,7 +8,7 @@ const links = [
 	{ href: "/about/", label: "About" },
 	{ href: "/projects/", label: "Projects" },
 	...(hasPosts ? [{ href: "/blog/", label: "Writing" }] : []),
-	{ href: "/resume.pdf", label: "Résumé (PDF)" },
+	{ href: "/resume.pdf", label: "Resume (PDF)" },
 ];
 const path = Astro.url.pathname;
 const Name = path === "/" ? "h1" : "p";

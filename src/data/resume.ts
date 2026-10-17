@@ -45,7 +45,7 @@ export const experience = [
 		org: "Version3.ai",
 		orgNote: "Conversational-commerce AI for online stores",
 		when: "Jun 2026 — Present",
-		// site version stays general; the detailed bullets go only in résumés sent directly
+		// site version stays general; no employer internals here or in the resume
 		points: [
 			"Building backend services and the WooCommerce and Shopify store integrations.",
 			"Benchmarked image models and vector-search settings for visual product search.",
@@ -65,9 +65,7 @@ export const education = [
 	{
 		school: "Bangladesh University of Engineering and Technology (BUET)",
 		degree: "B.Sc. in Computer Science and Engineering",
-		when: "2025 — 2028 (expected)",
-		grade: "CGPA 3.77/4.00",
-		note: "Ranked 79th in the national BUET admission merit list",
+		when: "Apr 2025 — present",
 		location: "Dhaka, Bangladesh",
 	},
 ];
