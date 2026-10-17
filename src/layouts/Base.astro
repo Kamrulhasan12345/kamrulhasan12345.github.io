@@ -10,9 +10,10 @@ interface Props {
 	title?: string;
 	description?: string;
 	ogType?: "website" | "article";
+	noindex?: boolean;
 }
 
-const { title, description = `${profile.name}, ${profile.role}. ${profile.intro}`, ogType = "website" } = Astro.props;
+const { title, description = `${profile.name}, ${profile.role}. ${profile.intro}`, ogType = "website", noindex = false } = Astro.props;
 const pageTitle = title ? `${title} · ${profile.name}` : `${profile.name} · ${profile.role}`;
 const url = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL("/og.png", Astro.site);
@@ -28,7 +29,7 @@ const hasPosts = (await getPosts()).length > 0;
 		<meta name="theme-color" content="#0b0f12" media="(prefers-color-scheme: dark)" />
 		<title>{pageTitle}</title>
 		<meta name="description" content={description} />
-		<link rel="canonical" href={url} />
+		{noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={url} />}
 		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 		{hasPosts && <link rel="alternate" type="application/rss+xml" title={profile.name} href="/rss.xml" />}
 		<meta property="og:type" content={ogType} />

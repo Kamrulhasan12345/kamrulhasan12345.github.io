@@ -57,7 +57,7 @@ export const experience = [
 		org: "Edulytics",
 		when: "Dec 2025 — Mar 2026",
 		points: ["Built the mobile app MVP in React Native, and worked on their web app."],
-		stack: ["React Native", "TypeScript"],
+		stack: ["React Native", "Next.js", "TypeScript"],
 	},
 ];
 
